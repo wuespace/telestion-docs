@@ -1,0 +1,7 @@
+{
+  "input": "../topics/concepts/mission_statement.dita",
+  "plugins": [
+    "org.dita.pdf2"
+  ],
+  "transtype": "pdf2"
+}
