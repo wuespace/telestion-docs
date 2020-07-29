@@ -1,5 +1,5 @@
 {
-  "input": "../topics/concepts/mission_statement.dita",
+  "input": "../project_overview.ditamap",
   "plugins": [
     "org.dita.pdf2"
   ],
