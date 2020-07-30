@@ -1,9 +1,9 @@
 # Ground Station Documentation
 
-The documentation of the Telestion ground station is in this repository. 
-We use DITA. 
-As an editor Oxygen XML is recommend.
-There is a student version of it at studisoft.
+The Telestion ground station documentation. 
+We use DITA.
+As editor, we recommend the [Oxygen XML Editor](https://www.oxygenxml.com/) (Win, macOS, Linux).
+For students of the JMU, a student version gets distributed on Studisoft.
 
 ## Recommended Literature for getting started with DITA
 - _DITA – der topic-basierte XML-Standard: Ein schneller Einstieg (essentials)_ (**German!**) ([Amazon](https://www.amazon.de/DITA-topic-basierte-XML-Standard-schneller-essentials-ebook/dp/B01AWPHJTM), [Würzburg University ](https://bibliothek.uni-wuerzburg.de/permalink/bv/BV043209348)): A good introduction to writing DITA in general
