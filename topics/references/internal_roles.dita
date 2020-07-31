@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="roles">
+    <title>Internal Roles</title>
+    <shortdesc>Internal Roles within the project who need to get targeted by Documentation,
+        Requirements, etc.</shortdesc>
+    <prolog>
+        <author>Pablo Klaschka</author>
+    </prolog>
+    <refbody>
+        <table id="table_iyq_wzh_nmb">
+            <title>Internal Roles</title>
+            <tgroup cols="3">
+                <colspec colname="c1" colnum="1"/>
+                <colspec colname="c2" colnum="2"/>
+                <colspec colname="c3" colnum="3"/>
+                <thead>
+                    <row>
+                        <entry>Role</entry>
+                        <entry>DITA Audience Name</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry><keyword>Product manager</keyword></entry>
+                        <entry><varname>pm</varname></entry>
+                        <entry>In charge for keeping the project's teams coordinated and coordinate
+                            individual requests with the ultimate product's goals</entry>
+                    </row>
+                    <row>
+                        <entry><keyword>Developer Advocate</keyword></entry>
+                        <entry><varname>da</varname></entry>
+                        <entry>The connection between internal and external (plugin-)
+                            developers</entry>
+                    </row>
+                    <row>
+                        <entry><keyword>UX Designer</keyword></entry>
+                        <entry><varname>uxd</varname></entry>
+                        <entry>Designer of man-machine connections of the Telestation project. May
+                            that be in the form of a CLI, a web interface or something else</entry>
+                    </row>
+                    <row>
+                        <entry><keyword>Backend Developer</keyword></entry>
+                        <entry><varname>be-dev</varname></entry>
+                        <entry>Developer of backend components of the project.</entry>
+                    </row>
+                    <row>
+                        <entry><keyword>Frontend Developer</keyword></entry>
+                        <entry><varname>fe-dev</varname></entry>
+                        <entry>Developer of UIs of the project. Requires knowledge of design and
+                            development</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+    </refbody>
+    <related-links>
+        <link href="../concepts/roles.dita"/>
+        <link href="./external_roles.dita"/>
+    </related-links>
+</reference>

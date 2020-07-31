@@ -15,5 +15,8 @@
     </frontmatter>
     <chapter>
         <topicref href="topics/concepts/mission_statement.dita"/>
+        <topicref href="./topics/concepts/roles.dita"/>
+        <topicref href="./topics/references/internal_roles.dita"/>
+        <topicref href="./topics/references/external_roles.dita"/>
     </chapter>
 </bookmap>
