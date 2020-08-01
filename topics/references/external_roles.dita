@@ -68,8 +68,4 @@
             </tgroup>
         </table>
     </refbody>
-    <related-links>
-        <link href="../concepts/roles.dita"/>
-        <link href="./internal_roles.dita"/>
-    </related-links>
 </reference>
