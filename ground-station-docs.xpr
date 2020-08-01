@@ -2,7 +2,252 @@
 <project version="21.1">
     <meta>
         <filters directoryPatterns="" filePatterns="\Qground-station-docs.xpr\E" positiveFilePatterns="" showHiddenFiles="false"/>
-        <options/>
+        <options>
+            <serialized version="21.1" xml:space="preserve">
+                <serializableOrderedMap>
+                    <entry>
+                        <String>profiling.conditions</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
+                        <String>profiling.conditions.list</String>
+                        <profileConditionInfo-array>
+                            <profileConditionInfo>
+                                <field name="attributeName">
+                                    <String>audience</String>
+                                </field>
+                                <field name="allowsMultipleValues">
+                                    <Boolean>true</Boolean>
+                                </field>
+                                <field name="allowedValues">
+                                    <profileConditionValue-array>
+                                        <profileConditionValue>
+                                            <field name="value">
+                                                <String>be-dev</String>
+                                            </field>
+                                            <field name="description">
+                                                <String>Backend Developer</String>
+                                            </field>
+                                            <field name="level">
+                                                <Integer>0</Integer>
+                                            </field>
+                                            <field name="renderName">
+                                                <null/>
+                                            </field>
+                                        </profileConditionValue>
+                                        <profileConditionValue>
+                                            <field name="value">
+                                                <String>da</String>
+                                            </field>
+                                            <field name="description">
+                                                <String>Developer Advocate</String>
+                                            </field>
+                                            <field name="level">
+                                                <Integer>0</Integer>
+                                            </field>
+                                            <field name="renderName">
+                                                <null/>
+                                            </field>
+                                        </profileConditionValue>
+                                        <profileConditionValue>
+                                            <field name="value">
+                                                <String>fe-dev</String>
+                                            </field>
+                                            <field name="description">
+                                                <String>Frontend Developer</String>
+                                            </field>
+                                            <field name="level">
+                                                <Integer>0</Integer>
+                                            </field>
+                                            <field name="renderName">
+                                                <null/>
+                                            </field>
+                                        </profileConditionValue>
+                                        <profileConditionValue>
+                                            <field name="value">
+                                                <String>pm</String>
+                                            </field>
+                                            <field name="description">
+                                                <String>Product Manager</String>
+                                            </field>
+                                            <field name="level">
+                                                <Integer>0</Integer>
+                                            </field>
+                                            <field name="renderName">
+                                                <null/>
+                                            </field>
+                                        </profileConditionValue>
+                                        <profileConditionValue>
+                                            <field name="value">
+                                                <String>qa</String>
+                                            </field>
+                                            <field name="description">
+                                                <String>QA Tester</String>
+                                            </field>
+                                            <field name="level">
+                                                <Integer>0</Integer>
+                                            </field>
+                                            <field name="renderName">
+                                                <null/>
+                                            </field>
+                                        </profileConditionValue>
+                                        <profileConditionValue>
+                                            <field name="value">
+                                                <String>uxd</String>
+                                            </field>
+                                            <field name="description">
+                                                <String>UX Designer</String>
+                                            </field>
+                                            <field name="level">
+                                                <Integer>0</Integer>
+                                            </field>
+                                            <field name="renderName">
+                                                <null/>
+                                            </field>
+                                        </profileConditionValue>
+                                    </profileConditionValue-array>
+                                </field>
+                                <field name="documentTypePattern">
+                                    <String>*DITA*</String>
+                                </field>
+                                <field name="valuesSeparator">
+                                    <String> </String>
+                                </field>
+                                <field name="attributeRenderName">
+                                    <String>Audience</String>
+                                </field>
+                            </profileConditionInfo>
+                            <profileConditionInfo>
+                                <field name="attributeName">
+                                    <String>platform</String>
+                                </field>
+                                <field name="allowsMultipleValues">
+                                    <Boolean>true</Boolean>
+                                </field>
+                                <field name="allowedValues">
+                                    <profileConditionValue-array>
+                                        <profileConditionValue>
+                                            <field name="value">
+                                                <String>linux</String>
+                                            </field>
+                                            <field name="description">
+                                                <String>Sample value. You can change it from the "Profiling/Conditional Text" preferences page.</String>
+                                            </field>
+                                            <field name="level">
+                                                <Integer>0</Integer>
+                                            </field>
+                                            <field name="renderName">
+                                                <null/>
+                                            </field>
+                                        </profileConditionValue>
+                                        <profileConditionValue>
+                                            <field name="value">
+                                                <String>mac</String>
+                                            </field>
+                                            <field name="description">
+                                                <String>Sample value. You can change it from the "Profiling/Conditional Text" preferences page.</String>
+                                            </field>
+                                            <field name="level">
+                                                <Integer>0</Integer>
+                                            </field>
+                                            <field name="renderName">
+                                                <null/>
+                                            </field>
+                                        </profileConditionValue>
+                                        <profileConditionValue>
+                                            <field name="value">
+                                                <String>windows</String>
+                                            </field>
+                                            <field name="description">
+                                                <String>Sample value. You can change it from the "Profiling/Conditional Text" preferences page.</String>
+                                            </field>
+                                            <field name="level">
+                                                <Integer>0</Integer>
+                                            </field>
+                                            <field name="renderName">
+                                                <null/>
+                                            </field>
+                                        </profileConditionValue>
+                                    </profileConditionValue-array>
+                                </field>
+                                <field name="documentTypePattern">
+                                    <String>*DITA*</String>
+                                </field>
+                                <field name="valuesSeparator">
+                                    <String> </String>
+                                </field>
+                                <field name="attributeRenderName">
+                                    <String>Platform</String>
+                                </field>
+                            </profileConditionInfo>
+                            <profileConditionInfo>
+                                <field name="attributeName">
+                                    <String>product</String>
+                                </field>
+                                <field name="allowsMultipleValues">
+                                    <Boolean>true</Boolean>
+                                </field>
+                                <field name="allowedValues">
+                                    <profileConditionValue-array>
+                                        <profileConditionValue>
+                                            <field name="value">
+                                                <String>backend</String>
+                                            </field>
+                                            <field name="description">
+                                                <String></String>
+                                            </field>
+                                            <field name="level">
+                                                <Integer>0</Integer>
+                                            </field>
+                                            <field name="renderName">
+                                                <String>Backend</String>
+                                            </field>
+                                        </profileConditionValue>
+                                        <profileConditionValue>
+                                            <field name="value">
+                                                <String>documentation</String>
+                                            </field>
+                                            <field name="description">
+                                                <String></String>
+                                            </field>
+                                            <field name="level">
+                                                <Integer>0</Integer>
+                                            </field>
+                                            <field name="renderName">
+                                                <String>Documentation</String>
+                                            </field>
+                                        </profileConditionValue>
+                                        <profileConditionValue>
+                                            <field name="value">
+                                                <String>frontend</String>
+                                            </field>
+                                            <field name="description">
+                                                <String></String>
+                                            </field>
+                                            <field name="level">
+                                                <Integer>0</Integer>
+                                            </field>
+                                            <field name="renderName">
+                                                <String>Frontend</String>
+                                            </field>
+                                        </profileConditionValue>
+                                    </profileConditionValue-array>
+                                </field>
+                                <field name="documentTypePattern">
+                                    <String>*DITA*</String>
+                                </field>
+                                <field name="valuesSeparator">
+                                    <String> </String>
+                                </field>
+                                <field name="attributeRenderName">
+                                    <String>Product</String>
+                                </field>
+                            </profileConditionInfo>
+                        </profileConditionInfo-array>
+                    </entry>
+                </serializableOrderedMap>
+            </serialized>
+        </options>
     </meta>
     <projectTree name="ground-station-docs.xpr">
         <folder path="."/>
