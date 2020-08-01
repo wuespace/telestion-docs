@@ -26,13 +26,27 @@
                                                 <String>be-dev</String>
                                             </field>
                                             <field name="description">
-                                                <String>Backend Developer</String>
+                                                <String></String>
                                             </field>
                                             <field name="level">
                                                 <Integer>0</Integer>
                                             </field>
                                             <field name="renderName">
-                                                <null/>
+                                                <String>Backend Developer</String>
+                                            </field>
+                                        </profileConditionValue>
+                                        <profileConditionValue>
+                                            <field name="value">
+                                                <String>be-ext-dev</String>
+                                            </field>
+                                            <field name="description">
+                                                <String></String>
+                                            </field>
+                                            <field name="level">
+                                                <Integer>0</Integer>
+                                            </field>
+                                            <field name="renderName">
+                                                <String>Integration Developer</String>
                                             </field>
                                         </profileConditionValue>
                                         <profileConditionValue>
@@ -40,13 +54,41 @@
                                                 <String>da</String>
                                             </field>
                                             <field name="description">
-                                                <String>Developer Advocate</String>
+                                                <String></String>
                                             </field>
                                             <field name="level">
                                                 <Integer>0</Integer>
                                             </field>
                                             <field name="renderName">
-                                                <null/>
+                                                <String>Developer Advocate</String>
+                                            </field>
+                                        </profileConditionValue>
+                                        <profileConditionValue>
+                                            <field name="value">
+                                                <String>dm</String>
+                                            </field>
+                                            <field name="description">
+                                                <String></String>
+                                            </field>
+                                            <field name="level">
+                                                <Integer>0</Integer>
+                                            </field>
+                                            <field name="renderName">
+                                                <String>Decision Maker</String>
+                                            </field>
+                                        </profileConditionValue>
+                                        <profileConditionValue>
+                                            <field name="value">
+                                                <String>eu</String>
+                                            </field>
+                                            <field name="description">
+                                                <String></String>
+                                            </field>
+                                            <field name="level">
+                                                <Integer>0</Integer>
+                                            </field>
+                                            <field name="renderName">
+                                                <String>End-User</String>
                                             </field>
                                         </profileConditionValue>
                                         <profileConditionValue>
@@ -54,13 +96,41 @@
                                                 <String>fe-dev</String>
                                             </field>
                                             <field name="description">
-                                                <String>Frontend Developer</String>
+                                                <String></String>
                                             </field>
                                             <field name="level">
                                                 <Integer>0</Integer>
                                             </field>
                                             <field name="renderName">
-                                                <null/>
+                                                <String>Frontend Developer</String>
+                                            </field>
+                                        </profileConditionValue>
+                                        <profileConditionValue>
+                                            <field name="value">
+                                                <String>fe-ext-dev</String>
+                                            </field>
+                                            <field name="description">
+                                                <String></String>
+                                            </field>
+                                            <field name="level">
+                                                <Integer>0</Integer>
+                                            </field>
+                                            <field name="renderName">
+                                                <String>Widget Developer</String>
+                                            </field>
+                                        </profileConditionValue>
+                                        <profileConditionValue>
+                                            <field name="value">
+                                                <String>op</String>
+                                            </field>
+                                            <field name="description">
+                                                <String></String>
+                                            </field>
+                                            <field name="level">
+                                                <Integer>0</Integer>
+                                            </field>
+                                            <field name="renderName">
+                                                <String>Operator</String>
                                             </field>
                                         </profileConditionValue>
                                         <profileConditionValue>
@@ -68,13 +138,13 @@
                                                 <String>pm</String>
                                             </field>
                                             <field name="description">
-                                                <String>Product Manager</String>
+                                                <String></String>
                                             </field>
                                             <field name="level">
                                                 <Integer>0</Integer>
                                             </field>
                                             <field name="renderName">
-                                                <null/>
+                                                <String>Product Manager</String>
                                             </field>
                                         </profileConditionValue>
                                         <profileConditionValue>
@@ -82,13 +152,13 @@
                                                 <String>qa</String>
                                             </field>
                                             <field name="description">
-                                                <String>QA Tester</String>
+                                                <String></String>
                                             </field>
                                             <field name="level">
                                                 <Integer>0</Integer>
                                             </field>
                                             <field name="renderName">
-                                                <null/>
+                                                <String>QA Tester</String>
                                             </field>
                                         </profileConditionValue>
                                         <profileConditionValue>
@@ -96,13 +166,13 @@
                                                 <String>uxd</String>
                                             </field>
                                             <field name="description">
-                                                <String>UX Designer</String>
+                                                <String></String>
                                             </field>
                                             <field name="level">
                                                 <Integer>0</Integer>
                                             </field>
                                             <field name="renderName">
-                                                <null/>
+                                                <String>UX Designer</String>
                                             </field>
                                         </profileConditionValue>
                                     </profileConditionValue-array>
@@ -131,13 +201,13 @@
                                                 <String>linux</String>
                                             </field>
                                             <field name="description">
-                                                <String>Sample value. You can change it from the "Profiling/Conditional Text" preferences page.</String>
+                                                <String></String>
                                             </field>
                                             <field name="level">
                                                 <Integer>0</Integer>
                                             </field>
                                             <field name="renderName">
-                                                <null/>
+                                                <String>Linux</String>
                                             </field>
                                         </profileConditionValue>
                                         <profileConditionValue>
@@ -145,13 +215,13 @@
                                                 <String>mac</String>
                                             </field>
                                             <field name="description">
-                                                <String>Sample value. You can change it from the "Profiling/Conditional Text" preferences page.</String>
+                                                <String></String>
                                             </field>
                                             <field name="level">
                                                 <Integer>0</Integer>
                                             </field>
                                             <field name="renderName">
-                                                <null/>
+                                                <String>macOS</String>
                                             </field>
                                         </profileConditionValue>
                                         <profileConditionValue>
@@ -159,13 +229,13 @@
                                                 <String>windows</String>
                                             </field>
                                             <field name="description">
-                                                <String>Sample value. You can change it from the "Profiling/Conditional Text" preferences page.</String>
+                                                <String></String>
                                             </field>
                                             <field name="level">
                                                 <Integer>0</Integer>
                                             </field>
                                             <field name="renderName">
-                                                <null/>
+                                                <String>Windows</String>
                                             </field>
                                         </profileConditionValue>
                                     </profileConditionValue-array>
