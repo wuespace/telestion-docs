@@ -51,6 +51,11 @@
                         <entry>Developer of UIs of the project. Requires knowledge of design and
                             development</entry>
                     </row>
+                    <row>
+                        <entry><keyword>QA Tester</keyword></entry>
+                        <entry><varname>qa</varname></entry>
+                        <entry>Ensures that features meet their requirements</entry>
+                    </row>
                 </tbody>
             </tgroup>
         </table>
