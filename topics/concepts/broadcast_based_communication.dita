@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="broadcast_based_communication">
+    <title>Broadcast-Based Communication</title>
+    <shortdesc>A communication concept where <term>nodes</term> actively broadcast new information
+        when it arrives.</shortdesc>
+    <prolog>
+        <author>Pablo Klaschka</author>
+        <metadata>
+            <keywords>
+                <indexterm><indexterm>Broadcast-Based</indexterm> Communication</indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <note>Broadcasts can get received by all other nodes in the system.</note>
+        <p>Any node actively broadcasts its new information. All other nodes are responsible for
+            intrepreting broadcasted information.</p>
+        <p>
+            <note type="tip">Broadcast-Based Communication is comparable to a chat room:<ul
+                    id="ul_lw2_wlb_4mb">
+                    <li>Everyone writes to everyone</li>
+                    <li>It is up to the reader to determine whether a message is important for
+                        him/her</li>
+                </ul></note>
+        </p>
+    </conbody>
+</concept>

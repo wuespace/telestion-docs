@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="request_for_broadcast">
+    <title>Request-For-Broadcast</title>
+    <shortdesc>An intermediate form between Request- and Broadcast-Based inter-Node communication: A
+        node broadcasts a request for a specific information to all other nodes. It then awaits
+        another node broadcasting the requested information.</shortdesc>
+    <prolog>
+        <author>Pablo Klaschka</author>
+        <metadata>
+            <keywords>
+                <indexterm>Request-For-Broadcast</indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <p>
+            <note type="tip">This is comparable to someone writing <q>Does anyone know if […]</q> in
+                a chat room. The person requesting the information needs no knowledge of who
+                posesses that information. It is up to the person with this information to recognize
+                this and broadcast that information.</note>
+        </p>
+    </conbody>
+</concept>

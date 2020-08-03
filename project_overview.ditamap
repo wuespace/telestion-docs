@@ -16,4 +16,12 @@
     <chapter>
         <topicref href="topics/concepts/mission_statement.dita"/>
     </chapter>
+    <chapter navtitle="Technical Overview">
+        <mapref href="./topics/maps/high_level_communication_concepts.ditamap"/>
+    </chapter>
+    <backmatter>
+        <booklists>
+            <indexlist/>
+        </booklists>
+    </backmatter>
 </bookmap>
