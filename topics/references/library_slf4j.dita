@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="slf4j">
+    <title>Simple Logging Facade for Java (SLF4J)</title>
+    <shortdesc>SLF4J is the used logging framework. It provides a facade for terminal and file
+        loggers. All used libraries work together with this facade. We use logback as the
+        implementation. The configuration file can be found in the projects classpath and is called
+            <i>logback.xml</i>.</shortdesc>
+    <refbody> </refbody>
+    <related-links>
+        <link href="http://www.slf4j.org/" format="html" scope="external"/>
+        <link href="http://logback.qos.ch/" format="html" scope="external"/>
+    </related-links>
+</reference>
