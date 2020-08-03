@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="inter_node_communication_concepts">
+    <title>Inter-Node Communication Concepts</title>
+    <shortdesc><term>Nodes</term>  can communicate with other nodes with several methods. Each
+        method has its own advantages and disadvantages.</shortdesc>
+    <prolog>
+        <author>Pablo Kalschka</author>
+        <metadata>
+            <keywords>
+                <indexterm>Communcation</indexterm>
+                <indexterm><indexterm>Inter-Node</indexterm> Communication</indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+</concept>
