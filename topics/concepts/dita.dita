@@ -7,6 +7,13 @@
         developed by IBM and now maintained by OASIS.</shortdesc>
     <prolog>
         <author>Pablo Klaschka</author>
+        <metadata>
+            <keywords>
+                <indexterm>DITA</indexterm>
+                <indexterm>Darwin Information Typing
+                    Architecture<index-see>DITA</index-see></indexterm>
+            </keywords>
+        </metadata>
     </prolog>
     <conbody>
         <p>DITA allows semantic markup of technical documentation. This means that instead of
