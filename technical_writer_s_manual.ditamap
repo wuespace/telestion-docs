@@ -20,7 +20,10 @@
         </booklists>
     </frontmatter>
     <chapter collection-type="sequence">
-        <topicref href="./topics/tasks/documenting/setting_up_documentation_environment.dita"/>
-        <topicref href="./topics/tasks/documenting/building_the_documentation.dita"/>
+        <topicref href="./topics/tasks/telestion-docs/setting_up_documentation_environment.dita"/>
+        <topicref href="./topics/tasks/telestion-docs/building_the_documentation.dita"/>
+    </chapter>
+    <chapter>
+        <topicref href="topics/references/telestion-docs/documentation_responsibilities.dita"/>
     </chapter>
 </bookmap>
