@@ -19,6 +19,9 @@
             <toc/>
         </booklists>
     </frontmatter>
+    <chapter navtitle="Concepts">
+        <topicref href="topics/concepts/dita.dita"/>
+    </chapter>
     <chapter collection-type="sequence">
         <topicref href="./topics/tasks/telestion-docs/setting_up_documentation_environment.dita"/>
         <topicref href="./topics/tasks/telestion-docs/building_the_documentation.dita"/>
