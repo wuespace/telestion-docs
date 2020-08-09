@@ -21,14 +21,17 @@
     </frontmatter>
     <chapter navtitle="Concepts">
         <topicref href="topics/concepts/dita.dita"/>
+        <topicref href="topics/concepts/dita_ot.dita"/>
     </chapter>
-    <chapter collection-type="sequence">
+    <chapter collection-type="sequence" navtitle="Working with the Documentation">
         <topicref href="./topics/tasks/telestion-docs/setting_up_documentation_environment.dita"
             importance="required"/>
         <topicref href="./topics/tasks/telestion-docs/building_the_documentation.dita"/>
         <topicref href="topics/tasks/telestion-docs/submitting_changes_to_the_documentation.dita"/>
     </chapter>
-    <chapter>
+    <chapter navtitle="Reference">
         <topicref href="topics/references/telestion-docs/documentation_responsibilities.dita"/>
+        <topicref href="topics/references/internal_roles.dita"/>
+        <topicref href="topics/references/external_roles.dita"/>
     </chapter>
 </bookmap>
