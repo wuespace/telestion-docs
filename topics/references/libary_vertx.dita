@@ -5,7 +5,6 @@
     <shortdesc>Vert.x is a toolkit for building reactive applications on the JVM. It is the driving
         framework behind Telestion. Thus it provides communcation capablities through an eventbus
         and other tools like web server, configuration provider, logging framework etc.</shortdesc>
-    <refbody> </refbody>
     <related-links>
         <link href="https://vertx.io/" format="html" scope="external"/>
     </related-links>
