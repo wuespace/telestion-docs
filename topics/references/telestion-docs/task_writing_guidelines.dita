@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="task_writing_guidelines">
+    <title>Task Writing Guidelines</title>
+    <shortdesc>Guidelines for writing task topics.</shortdesc>
+    <refbody>
+        <section id="section_pnp_4kx_pmb">
+            <note type="other" othertype="Attribution">This is heavily inspired by the task writing
+                checklist in <cite>DITA Best Practices: A Roadmap for Writing, Editing, and
+                    Architecting in DITA (IBM Press) (English Edition)</cite>.</note>
+        </section>
+        <properties id="properties_p2t_vjx_pmb">
+            <prophead>
+                <proptypehd>Guideline</proptypehd>
+                <propdeschd>Description</propdeschd>
+            </prophead>
+            <property>
+                <proptype>Write in the present tense</proptype>
+                <propdesc>Tasks are relevant to users when they have to perform that task.
+                    Therefore, the logical choice is to write in the present tense.</propdesc>
+            </property>
+            <property>
+                <proptype>One procedure per topic</proptype>
+                <propdesc>Include only one procedure per topic. If necessary, tasks can link to
+                    other tasks. Smaller, more specific tasks increase reusability.</propdesc>
+            </property>
+            <property>
+                <proptype>Write task titles in a present-progressive verb-first form</proptype>
+                <propdesc>
+                    <p>To make it easy for readers to identify tasks, their titles should describe
+                        what a user does in this task.</p>
+                    <p>For example:</p>
+                    <ul id="ul_vkg_hkx_pmb">
+                        <li><q>Creating users</q></li>
+                        <li><q>Setting up the development environment</q></li>
+                        <li><q>Writing Task Topics</q></li>
+                    </ul>
+                </propdesc>
+            </property>
+            <property>
+                <proptype>Write short descriptions for all task topics</proptype>
+                <propdesc>For easier navigation and consistency, all topics (including tasks) should
+                    contain a <xmlelement>shortdesc</xmlelement> element providing a bit of context
+                    on when and why the task should be performed.<note type="important">This should
+                        not repeat the <xmlelement>title</xmlelement>, but instead provide more
+                        context.</note></propdesc>
+            </property>
+            <property>
+                <proptype>Begin (non-conditional) <xmlelement>cmd</xmlelement> commands with an
+                    imperative verb</proptype>
+                <propdesc>Examples:<ul id="ul_jlp_flx_pmb">
+                        <li><q>Run <userinput>dita-ot-helper</userinput></q></li>
+                        <li><q>Click <menucascade>
+                                    <uicontrol>File</uicontrol>
+                                    <uicontrol>Open</uicontrol>
+                                </menucascade></q></li>
+                    </ul></propdesc>
+            </property>
+            <property>
+                <proptype>For unordered steps, use
+                    <xmlelement>steps-unordered</xmlelement></proptype>
+                <propdesc>If steps can be performed in any order, use the
+                        <xmlelement>steps-unordered</xmlelement> element instead of
+                        <xmlelement>steps</xmlelement></propdesc>
+            </property>
+            <property>
+                <proptype>Begin conditional commands with the condition</proptype>
+                <propdesc>Examples:<ul id="ul_err_4lx_pmb">
+                        <li><q>if no name was previously specified, enter your name</q></li>
+                        <li><q>if the application prompts you to grant administrator rights, click
+                                    <uicontrol>Allow</uicontrol></q></li>
+                    </ul></propdesc>
+            </property>
+            <property>
+                <proptype>Mark optional tasks using the XML attribute
+                    <xmlatt>importance</xmlatt></proptype>
+                <propdesc>For
+                    example:<codeblock>&lt;step importance="optional">
+    &lt;cmd>[...]&lt;/cmd>
+&lt;/step></codeblock></propdesc>
+            </property>
+            <property>
+                <proptype>Use the <xmlelement>info</xmlelement> element to provide additonal
+                    information to a step</proptype>
+                <propvalue>This might include descriptions of the command specified in the
+                        <xmlelement>cmd</xmlelement> or some other relevant info.</propvalue>
+            </property>
+            <property>
+                <proptype>Use the <xmlelement>stepxmp</xmlelement> element to provide an example of
+                    something that gets performed in a step</proptype>
+                <propvalue>This could, for example, be a sample of how the output should look
+                    like:</propvalue>
+            </property>
+            <property>
+                <proptype>Use the <xmlelement>stepresult</xmlelement> element to describe the
+                    results of a step, if necessary</proptype>
+                <propvalue>Don't point out the obvious. Results obvious to the target audience, such
+                    as <q>Window X opens</q> can be ommited.</propvalue>
+            </property>
+        </properties>
+    </refbody>
+</reference>

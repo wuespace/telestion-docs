@@ -33,5 +33,6 @@
         <topicref href="topics/references/telestion-docs/documentation_responsibilities.dita"/>
         <topicref href="topics/references/internal_roles.dita"/>
         <topicref href="topics/references/external_roles.dita"/>
+        <topicref href="topics/references/telestion-docs/task_writing_guidelines.dita"/>
     </chapter>
 </bookmap>
