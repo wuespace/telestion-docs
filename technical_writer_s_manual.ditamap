@@ -23,8 +23,10 @@
         <topicref href="topics/concepts/dita.dita"/>
     </chapter>
     <chapter collection-type="sequence">
-        <topicref href="./topics/tasks/telestion-docs/setting_up_documentation_environment.dita"/>
+        <topicref href="./topics/tasks/telestion-docs/setting_up_documentation_environment.dita"
+            importance="required"/>
         <topicref href="./topics/tasks/telestion-docs/building_the_documentation.dita"/>
+        <topicref href="topics/tasks/telestion-docs/submitting_changes_to_the_documentation.dita"/>
     </chapter>
     <chapter>
         <topicref href="topics/references/telestion-docs/documentation_responsibilities.dita"/>
