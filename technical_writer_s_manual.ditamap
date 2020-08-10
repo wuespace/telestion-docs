@@ -22,8 +22,9 @@
     <chapter navtitle="Concepts">
         <topicref href="topics/concepts/dita.dita"/>
         <topicref href="topics/concepts/dita_ot.dita"/>
+        <topicref href="topics/concepts/nodejs.dita"/>
+        <topicref href="topics/concepts/npm.dita"/>
     </chapter>
-    <chapter href="topics/concepts/nodejs.dita"/>
     <chapter collection-type="sequence" navtitle="Working with the Documentation">
         <topicref href="./topics/tasks/telestion-docs/setting_up_documentation_environment.dita"
             importance="required"/>
