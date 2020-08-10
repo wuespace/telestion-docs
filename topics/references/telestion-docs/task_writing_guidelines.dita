@@ -3,6 +3,9 @@
 <reference id="task_writing_guidelines">
     <title>Task Writing Guidelines</title>
     <shortdesc>Guidelines for writing task topics.</shortdesc>
+    <prolog>
+        <author>Pablo Klaschka</author>
+    </prolog>
     <refbody>
         <section id="section_pnp_4kx_pmb">
             <note conref="../../reusables/notes.dita#notes/note_cg2_x1b_qmb"/>
@@ -80,20 +83,20 @@
             <property>
                 <proptype>Use the <xmlelement>info</xmlelement> element to provide additonal
                     information to a step</proptype>
-                <propvalue>This might include descriptions of the command specified in the
-                        <xmlelement>cmd</xmlelement> or some other relevant info.</propvalue>
+                <propdesc>This might include descriptions of the command specified in the
+                        <xmlelement>cmd</xmlelement> or some other relevant info.</propdesc>
             </property>
             <property>
                 <proptype>Use the <xmlelement>stepxmp</xmlelement> element to provide an example of
                     something that gets performed in a step</proptype>
-                <propvalue>This could, for example, be a sample of how the output should look
-                    like:</propvalue>
+                <propdesc>This could, for example, be a sample of how the output should look
+                    like:</propdesc>
             </property>
             <property>
                 <proptype>Use the <xmlelement>stepresult</xmlelement> element to describe the
                     results of a step, if necessary</proptype>
-                <propvalue>Don't point out the obvious. Results obvious to the target audience, such
-                    as <q>Window X opens</q> can be ommited.</propvalue>
+                <propdesc>Don't point out the obvious. Results obvious to the target audience, such
+                    as <q>Window X opens</q> can be ommited.</propdesc>
             </property>
         </properties>
     </refbody>

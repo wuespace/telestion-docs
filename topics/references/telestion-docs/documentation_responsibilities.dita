@@ -4,6 +4,9 @@
     <title>Documentation Responsibilities</title>
     <shortdesc>Responsibilities for creating and maintainging the project's
         documentation</shortdesc>
+    <prolog>
+        <author>Pablo Klaschka</author>
+    </prolog>
     <refbody>
         <properties id="properties_rg3_ntv_pmb">
             <prophead>

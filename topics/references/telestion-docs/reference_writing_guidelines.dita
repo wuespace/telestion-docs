@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_writing_guidelines">
+    <title>Reference Writing Guidelines</title>
+    <shortdesc>Guidelines for writing reference topics</shortdesc>
+    <prolog>
+        <author>Pablo Klaschka</author>
+    </prolog>
+    <refbody>
+        <section id="section_l3j_lbb_qmb">
+            <note conref="../../reusables/notes.dita#notes/note_cg2_x1b_qmb"/>
+        </section>
+        <properties id="properties_eh5_nbb_qmb">
+            <prophead>
+                <proptypehd>Guideline</proptypehd>
+                <propdeschd>Description</propdeschd>
+            </prophead>
+            <property>
+                <proptype>Write in the present tense except for historical or future
+                    references</proptype>
+                <propdesc>n/a</propdesc>
+            </property>
+            <property>
+                <proptype>Describe one type of reference information per topic</proptype>
+                <propdesc>To increase reusability, references should contain one "scope" of
+                    reference information. Instead of adding multiple reference tables (and/or other
+                    pieces of reference content describing different information), split it into two
+                    different references.</propdesc>
+            </property>
+            <property>
+                <proptype>Use consistent <xmlelement>title</xmlelement> content for
+                    references</proptype>
+                <propdesc>References should have titles describing (noun-based) what information the
+                    topic describes. Examples might be:<ul id="ul_lrs_brb_qmb">
+                        <li><q>REST API Endpoints</q></li>
+                        <li><q>Important Vert.x methods</q></li>
+                    </ul></propdesc>
+            </property>
+            <property>
+                <proptype>Write <xmlelement>shortdesc</xmlelement> short descriptions for
+                    references</proptype>
+                <propdesc>Describe further details about the reference or povide context for when
+                    the informtion of the topic is relevant.<p>For consistency, all reference topics
+                        require a short description.</p></propdesc>
+            </property>
+        </properties>
+    </refbody>
+</reference>

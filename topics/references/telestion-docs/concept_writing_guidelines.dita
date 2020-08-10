@@ -3,6 +3,9 @@
 <reference id="concept_writing_guidelines">
     <title>Concept Writing Guidelines</title>
     <shortdesc>Guidelines for writing concept topics</shortdesc>
+    <prolog>
+        <author>Pablo Klaschka</author>
+    </prolog>
     <refbody>
         <section id="section_l3j_lbb_qmb">
             <note conref="../../reusables/notes.dita#notes/note_cg2_x1b_qmb"/>
@@ -62,9 +65,9 @@
             </property>
             <property>
                 <proptype>Write concepts to support tasks</proptype>
-                <propvalue>Documentation should be centered on what a reader tries to do. Concepts
+                <propdesc>Documentation should be centered on what a reader tries to do. Concepts
                     that do not relate to one or more tasks are (usually) not needed and should be
-                    avoided.</propvalue>
+                    avoided.</propdesc>
             </property>
         </properties>
     </refbody>

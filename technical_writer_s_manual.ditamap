@@ -31,11 +31,14 @@
         <topicref href="./topics/tasks/telestion-docs/building_the_documentation.dita"/>
         <topicref href="topics/tasks/telestion-docs/submitting_changes_to_the_documentation.dita"/>
     </chapter>
+    <chapter navtitle="Writing Guidelines">
+        <topicref href="topics/references/telestion-docs/task_writing_guidelines.dita"/>
+        <topicref href="topics/references/telestion-docs/concept_writing_guidelines.dita"/>
+        <topicref href="topics/references/telestion-docs/reference_writing_guidelines.dita"/>
+    </chapter>
     <chapter navtitle="Reference">
         <topicref href="topics/references/telestion-docs/documentation_responsibilities.dita"/>
         <topicref href="topics/references/internal_roles.dita"/>
         <topicref href="topics/references/external_roles.dita"/>
-        <topicref href="topics/references/telestion-docs/task_writing_guidelines.dita"/>
-        <topicref href="topics/references/telestion-docs/concept_writing_guidelines.dita"/>
     </chapter>
 </bookmap>
