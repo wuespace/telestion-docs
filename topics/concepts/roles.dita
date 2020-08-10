@@ -11,8 +11,8 @@
         <p>They get used for various purpsoes:<ul id="ul_ety_rr3_nmb">
                 <li>Communication</li>
                 <li>Adudience-specific documentation<note type="tip">Audience names can get used in
-                            <xmlatt>audience</xmlatt> attributes in DITA elements. This allows us to
-                        generate audience-specific documentation.</note></li>
+                            <xmlatt>audience</xmlatt> attributes in DITA elements. This makes it
+                        possible to generate audience-specific documentation.</note></li>
                 <li>Requirement definitions</li>
             </ul></p>
     </conbody>

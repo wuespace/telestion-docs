@@ -3,7 +3,7 @@
 <reference id="slf4j">
     <title>Simple Logging Facade for Java (SLF4J)</title>
     <shortdesc>SLF4J is the used logging framework. It provides a facade for terminal and file
-        loggers. All used libraries work together with this facade. We use logback as the
+        loggers. All used libraries work together with this facade. Telestion uses logback as the
         implementation. The configuration file can be found in the projects classpath and is called
             <i>logback.xml</i>.</shortdesc>
     <related-links>
