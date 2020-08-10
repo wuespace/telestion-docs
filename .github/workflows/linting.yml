@@ -1,10 +1,6 @@
 name: Linting
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push, pull_request]
 
 jobs:
   lint:
@@ -16,12 +12,18 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - run: mkdir vale && cd vale
-    - run: curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s latest
-    - run: echo "::add-path::./bin"
+    - name: Setup Vale
+      run: |
+        mkdir vale
+        cd vale
+        curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s latest
+        echo "::add-path::./bin"
     - name: Setup DITA
-      run: wget https://github.com/dita-ot/dita-ot/releases/download/3.4/dita-ot-3.4.zip && unzip dita-ot-3.4.zip && echo "::add-path::./dita-ot-3.4/bin"
-    - run: cd ..
-    - run: vale -v
-    - run: ls
-    - run: vale --output=JSON --glob '*.dita' topics | node ci-lint.js
+      run: |
+        wget https://github.com/dita-ot/dita-ot/releases/download/3.4/dita-ot-3.4.zip && unzip dita-ot-3.4.zip
+        echo "::add-path::./dita-ot-3.4/bin"
+    - name: Run Vale Checks
+      run: |
+        cd ..
+        vale -v
+        vale --output=JSON --glob '*.dita' topics | node ci-lint.js
