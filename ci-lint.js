@@ -1,1 +1,1 @@
-console.log('echo "::error file=.vale.ini,line=1,col=1::Test"')
+console.log('::error file=.vale.ini,line=1,col=1::Test')
