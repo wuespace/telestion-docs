@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="dita_ot">
-    <title>DITA OT</title>
+    <title>DITA Open Toolkit</title>
     <shortdesc>The  <term>DITA Open Toolkit</term>, or short, <term>DITA OT</term> is an open-source
         application for transforming DITA to distributable formats such as HTML, PDF, etc. When
         installed, it can get used from the command line using the <cmdname>dita</cmdname>
