@@ -14,9 +14,6 @@ jobs:
         # Optional
         styles: |
           https://github.com/errata-ai/Microsoft/releases/latest/download/Microsoft.zip
-
-        # Optional
-        config: https://raw.githubusercontent.com/errata-ai/vale/master/.vale.ini
       env:
         # Required
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
