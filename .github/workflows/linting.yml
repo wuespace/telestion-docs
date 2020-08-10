@@ -24,4 +24,5 @@ jobs:
     - run: cd ..
     - run: vale -v
     - run: ls
+    - run: node ci-lint.js
     - run: vale --output=JSON --glob '*.dita' topics
