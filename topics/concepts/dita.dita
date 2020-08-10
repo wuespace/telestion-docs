@@ -3,7 +3,7 @@
 <concept id="dita">
     <title>DITA</title>
     <shortdesc>The <term>Darwin Information Typing Architecture</term>, or short, <term>DITA</term>,
-        is an XML standard for authoring and publishing technical documentation. It is originally
+        is an XML standard for authoring and publishing technical documentation. It's originally
         developed by IBM and now maintained by OASIS.</shortdesc>
     <prolog>
         <author>Pablo Klaschka</author>
@@ -18,8 +18,7 @@
     <conbody>
         <p>DITA allows semantic markup of technical documentation. This means that instead of
             defining how the documentation should look, authors define what the information
-            represents and it then gets formatted appropriately for the platform it is viewed
-            in.</p>
+            represents and it then gets formatted appropriately for the platform it's viewed in.</p>
         <p>DITA is a topic-based writing style. This means that one first writes self-contained
             topics which can be concepts (overviews of a concept, such as this article about DITA),
             tasks (step by step tutorials) or references (data tables etc.).</p>

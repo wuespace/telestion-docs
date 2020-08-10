@@ -29,14 +29,15 @@
             <property>
                 <proptype>Describe a concept, not how to do something</proptype>
                 <propdesc>It can be easy to include information about how something gets done in a
-                    concept about that thing (e.g., the installation of a library described in the
-                    concept). Instructions (Procedures) belong in separate task topics!</propdesc>
+                    concept about that thing (for example, the installation of a library described
+                    in the concept). Instructions (Procedures) belong in separate task
+                    topics!</propdesc>
             </property>
             <property>
                 <proptype><xmlelement>title</xmlelement>: only the concept's name</proptype>
                 <propdesc>Don't write "creative" titles such as <q>Vert.x: A microservice framework
                         for Java</q>. Instead, keep it straight to the point (<q>Vert.x</q>) and
-                    describe what it is in the <xmlelement>shortdesc</xmlelement>,
+                    describe what it's in the <xmlelement>shortdesc</xmlelement>,
                     instead.</propdesc>
             </property>
             <property>
@@ -59,14 +60,14 @@
                 <proptype>Use <xmlatt>audience</xmlatt> and <xmlatt>platform</xmlatt> attributes
                     when appropriate</proptype>
                 <propdesc>As concepts should be highly reusable, using metadata for conditional
-                    processing (showing a specific <xmlelement>note</xmlelement> only to developers
-                    and so on) highly increases their readability for specific target audiences
-                    while retaining reusability.</propdesc>
+                    processing (showing a specific <xmlelement>note</xmlelement> only to developers,
+                    etc.) highly increases their readability for specific target audiences while
+                    retaining reusability.</propdesc>
             </property>
             <property>
                 <proptype>Write concepts to support tasks</proptype>
                 <propdesc>Documentation should be centered on what a reader tries to do. Concepts
-                    that do not relate to one or more tasks are (usually) not needed and should be
+                    that don't relate to one or more tasks are (usually) not needed and should be
                     avoided.</propdesc>
             </property>
         </properties>

@@ -40,13 +40,13 @@
             <title><filepath>node_modules</filepath></title>
             <p><cmdname>npm</cmdname> installs the project dependencies in the
                     <filepath>node_modules</filepath> directory. As this will, after installation,
-                often contain a lot of files that can easily get re-installed, it is recommended to
-                include the folder in your <filepath>.gitignore</filepath> file.</p>
+                often contain a lot of files that can get re-installed, it's recommended to include
+                the folder in your <filepath>.gitignore</filepath> file.</p>
         </section>
         <example>
             <title>Installing an npm package</title>
-            <p>Let's, for this example, say we want to install the <varname>dita-ot-helper</varname>
-                package. To do so, in your project folder, we'll
+            <p>For this example, say you want to install the <varname>dita-ot-helper</varname>
+                package. To do so, in your project folder, you
                 run<codeblock>$ <userinput>npm install dita-ot-helper</userinput></codeblock></p>
             <p>This installs the package (and all its dependencies) in the
                     <filepath>node_modules</filepath> folder and adds it to the dependencies in the

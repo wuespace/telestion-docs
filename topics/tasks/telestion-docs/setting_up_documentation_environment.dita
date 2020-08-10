@@ -9,7 +9,7 @@
     </prolog>
     <taskbody>
         <context>
-            <p>In order to get up and running, this task guides you through<ul id="ul_i5d_jpv_pmb">
+            <p>To get up and running, this task guides you through<ul id="ul_i5d_jpv_pmb">
                     <li>Cloning the GitHub project</li>
                     <li>Installing NodeJS (necessary for building the documentation)</li>
                     <li>Installing project dependencies</li>

@@ -23,12 +23,12 @@
         <example><title>A sample dita-ot-helper config file</title>A build config file could looks
             like
             this:<codeblock>{
-                "input": "../project_overview.ditamap",
-                "plugins": [
-                "org.dita.pdf2"
-                ],
-                "transtype": "pdf2"
-                }</codeblock></example>
+  "input": "../project_overview.ditamap",
+  "plugins": [
+    "org.dita.pdf2"
+  ],
+  "transtype": "pdf2"
+}</codeblock></example>
     </conbody>
     <related-links>
         <link href="https://github.com/fliegwerk/dita-ot-helper" format="html" scope="external">

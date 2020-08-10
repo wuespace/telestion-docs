@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
 <task id="building_the_documentation">
     <title>Building the documentation</title>
-    <shortdesc>The raw <filepath>.dita</filepath> files are not very user-friendly. They can, to get
+    <shortdesc>The raw <filepath>.dita</filepath> files aren't user-friendly. They can, to get
         consumed by readers, be transformed to other, easier to read, file formats. Among these
         target formats can be <filepath>.pdf</filepath>, <filepath>.html</filepath> (Websites),
             <filepath>.md</filepath> (Markdown) and more.</shortdesc>

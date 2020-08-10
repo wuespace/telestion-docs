@@ -23,7 +23,7 @@
             <property>
                 <proptype>Describe one type of reference information per topic</proptype>
                 <propdesc>To increase reusability, references should contain one "scope" of
-                    reference information. Instead of adding multiple reference tables (and/or other
+                    reference information. Instead of adding multiple reference tables (and other
                     pieces of reference content describing different information), split it into two
                     different references.</propdesc>
             </property>

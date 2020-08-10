@@ -9,7 +9,7 @@
         <author>Pablo Klaschka</author>
         <metadata>
             <keywords>
-                <indexterm>Node</indexterm>
+                <indexterm>Nodee</indexterm>
                 <indexterm>NodeJS<index-see>Node</index-see></indexterm>
                 <indexterm>REPL</indexterm>
                 <indexterm><cmdname>node</cmdname></indexterm>
@@ -23,7 +23,7 @@
         <section id="section_u2y_qfb_qmb">
             <title>The command line interface</title>
             <p>To run a JS file with Node, simply run <userinput>node [JS file location]</userinput>
-                in your command line. It is also possible to open an interactive <term>REPL</term>
+                in your command line. It's also possible to open an interactive <term>REPL</term>
                 (Read-eval-print loop) by just running <cmdname>node</cmdname> without any
                 arguments.</p>
         </section>
@@ -32,8 +32,7 @@
             <p>Create a file <filepath>myFile.js</filepath> with the following content:</p>
             <codeblock>// <filepath>myFile.js</filepath>
 console.log("Hello World");</codeblock>
-            <p>You can then easily run it using <userinput>node myFile.js</userinput> in your
-                command
+            <p>You can then run it using <userinput>node myFile.js</userinput> in your command
                 line:<codeblock>$ <userinput>node myFile.js</userinput>
 <systemoutput>Hello World</systemoutput></codeblock></p>
         </example>

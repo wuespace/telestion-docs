@@ -77,7 +77,7 @@
                     <xmlatt>importance</xmlatt></proptype>
                 <propdesc>For
                     example:<codeblock>&lt;step importance="optional">
-    &lt;cmd>[...]&lt;/cmd>
+    &lt;cmd>&lt;/cmd>
 &lt;/step></codeblock></propdesc>
             </property>
             <property>
