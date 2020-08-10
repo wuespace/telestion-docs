@@ -2,7 +2,7 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="Unbenannt">
     <title>Library Vert.x</title>
-    <shortdesc>Vert.x is a toolkit for building reactive applications on the JVM. It is the driving
+    <shortdesc>Vert.x is a toolkit for building reactive applications on the JVM. It's the driving
         framework behind Telestion. Thus it provides communcation capablities through an eventbus
         and other tools like web server, configuration provider, logging framework etc.</shortdesc>
     <refbody> </refbody>

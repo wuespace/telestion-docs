@@ -16,7 +16,7 @@
     </prolog>
     <conbody>
         <note>Nodes get implemented by <term>Verticles</term> in the <keyword>Vert.x</keyword>-based
-            backend and by widgets in the Frontend</note>
+            Backend and by widgets in the Frontend</note>
         <example>
             <title>Node types</title>
             <ul id="ul_eny_xkb_4mb">
