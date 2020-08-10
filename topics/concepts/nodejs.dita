@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="nodejs">
+    <title>NodeJS</title>
+    <shortdesc><term>NodeJS</term>, also called <term>Node.js</term> or, short: <term>Node</term>,
+        is a runtime environment for JavaScript. It can be run from the command line using the
+            <cmdname>node</cmdname> command.</shortdesc>
+    <prolog>
+        <author>Pablo Klaschka</author>
+        <metadata>
+            <keywords>
+                <indexterm>Node</indexterm>
+                <indexterm>NodeJS<index-see>Node</index-see></indexterm>
+                <indexterm>REPL</indexterm>
+                <indexterm><cmdname>node</cmdname></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <p>It can be used to run applications written in JavaScript. Furthermore, it exposes APIs to
+            allow applications to access native functionality such as the file system and much
+            more.</p>
+        <section id="section_u2y_qfb_qmb">
+            <title>The command line interface</title>
+            <p>To run a JS file with Node, simply run <userinput>node [JS file location]</userinput>
+                in your command line. It is also possible to open an interactive <term>REPL</term>
+                (Read-eval-print loop) by just running <cmdname>node</cmdname> without any
+                arguments.</p>
+        </section>
+        <example>
+            <title><q>Hello world</q> in Node.js</title>
+            <p>Create a file <filepath>myFile.js</filepath> with the following content:</p>
+            <codeblock>// <filepath>myFile.js</filepath>
+console.log("Hello World");</codeblock>
+            <p>You can then easily run it using <userinput>node myFile.js</userinput> in your
+                command
+                line:<codeblock>$ <userinput>node myFile.js</userinput>
+<systemoutput>Hello World</systemoutput></codeblock></p>
+        </example>
+    </conbody>
+    <related-links>
+        <link href="https://nodejs.org/en/" format="html" scope="external"/>
+    </related-links>
+</concept>
