@@ -30,4 +30,10 @@
             PDF files, websites, or any other format imaginable. For that task, tools such as the
             DITA Open Toolkit get used.</p>
     </conbody>
+    <related-links>
+        <link href="https://de.wikipedia.org/wiki/Darwin_Information_Typing_Architecture"
+            format="html" scope="external">
+            <linktext>Wikipedia Article</linktext>
+        </link>
+    </related-links>
 </concept>
