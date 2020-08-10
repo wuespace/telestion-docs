@@ -5,9 +5,7 @@
     <shortdesc>Guidelines for writing task topics.</shortdesc>
     <refbody>
         <section id="section_pnp_4kx_pmb">
-            <note type="other" othertype="Attribution">This is heavily inspired by the task writing
-                checklist in <cite>DITA Best Practices: A Roadmap for Writing, Editing, and
-                    Architecting in DITA (IBM Press) (English Edition)</cite>.</note>
+            <note conref="../../reusables/notes.dita#notes/note_cg2_x1b_qmb"/>
         </section>
         <properties id="properties_p2t_vjx_pmb">
             <prophead>
