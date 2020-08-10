@@ -11,9 +11,6 @@ jobs:
     - name: Vale
       uses: errata-ai/vale-action@v1.2.0
       with:
-        # Optional
-        styles: |
-          https://github.com/errata-ai/Microsoft/releases/latest/download/Microsoft.zip
         files: topics
       env:
         # Required
