@@ -33,11 +33,11 @@
                     <row>
                         <entry><keyword>Operator</keyword></entry>
                         <entry><varname>op</varname></entry>
-                        <entry>The person responsible for the operations of our project within an
-                            adopting team. Needs to be able to troubleshoot quickly on-premise.
+                        <entry>The person responsible for the operations of the Telestion project
+                            within an adopting team. Needs to be able to troubleshoot on-premise.
                             Therefore requires an understanding of the technical side (on a high
-                            level), troubleshooting guides and points of contact within our
-                            project</entry>
+                            level), troubleshooting guides and points of contact within the
+                            Telestion project</entry>
                     </row>
                     <row>
                         <entry><keyword>Integration Developer</keyword></entry>
@@ -62,7 +62,8 @@
                         <entry><varname>dm</varname></entry>
                         <entry>The person deciding whether a project should adopt the Telestion
                             project for its purposes. Requires a high-level overview (or Whitepaper)
-                            of what we do and don't provide to take an educated decision</entry>
+                            of what Telestion does and doesn't provide to take an educated
+                            decision</entry>
                     </row>
                 </tbody>
             </tgroup>
