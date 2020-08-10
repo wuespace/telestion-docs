@@ -1,0 +1,4 @@
+StylesPath = .github/styles
+
+[*]
+BasedOnStyles = Microsoft

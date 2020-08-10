@@ -21,3 +21,4 @@ jobs:
     - run: echo "::add-path::./bin"
     - run: cd ..
     - run: vale -v
+    - run: vale --glob '*.dita' topics
