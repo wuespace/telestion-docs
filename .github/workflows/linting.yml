@@ -24,4 +24,4 @@ jobs:
     - run: cd ..
     - run: vale -v
     - run: ls
-    - run: vale --glob '*.dita' topics
+    - run: vale --output=JSON --glob '*.dita' topics
