@@ -24,6 +24,7 @@
         <topicref href="topics/concepts/dita_ot.dita"/>
         <topicref href="topics/concepts/nodejs.dita"/>
         <topicref href="topics/concepts/npm.dita"/>
+        <topicref href="topics/concepts/dita_ot_helper.dita"/>
     </chapter>
     <chapter collection-type="sequence" navtitle="Working with the Documentation">
         <topicref href="./topics/tasks/telestion-docs/setting_up_documentation_environment.dita"
