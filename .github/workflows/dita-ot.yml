@@ -24,7 +24,7 @@ jobs:
     - run: ls -lha build-configs/out
       name: List results
     - name: Upload results
-      uses: actions/upload-artifact@v2.1.3
+      uses: actions/upload-artifact@v2.1.4
       with:
         name: Results
         path: build-configs/out
