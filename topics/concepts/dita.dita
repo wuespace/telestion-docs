@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="dita">
+    <title>DITA</title>
+    <shortdesc>The <term>Darwin Information Typing Architecture</term>, or short, <term>DITA</term>,
+        is an XML standard for authoring and publishing technical documentation. It's originally
+        developed by IBM and now maintained by OASIS.</shortdesc>
+    <prolog>
+        <author>Pablo Klaschka</author>
+        <metadata>
+            <keywords>
+                <indexterm>DITA</indexterm>
+                <indexterm>Darwin Information Typing
+                    Architecture<index-see>DITA</index-see></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <p>DITA allows semantic markup of technical documentation. This means that instead of
+            defining how the documentation should look, authors define what the information
+            represents and it then gets formatted appropriately for the platform it's viewed in.</p>
+        <p>DITA is a topic-based writing style. This means that one first writes self-contained
+            topics which can be concepts (overviews of a concept, such as this article about DITA),
+            tasks (step by step tutorials) or references (data tables etc.).</p>
+        <p>Topics later get grouped by DITA Maps (<filepath>.ditamap</filepath> files). In this
+            step, references between topics can get created. This is usually the task of an
+            information architect.</p>
+        <p>In the last step, these maps can get transformed into user-readable output. This can be
+            PDF files, websites, or any other format imaginable. For that task, tools such as the
+            DITA Open Toolkit get used.</p>
+    </conbody>
+    <related-links>
+        <link href="https://de.wikipedia.org/wiki/Darwin_Information_Typing_Architecture"
+            format="html" scope="external">
+            <linktext>Wikipedia Article</linktext>
+        </link>
+    </related-links>
+</concept>

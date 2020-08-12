@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="submitting_changes_to_the_documentation">
+    <title>Submitting changes to the documentation</title>
+    <shortdesc>To make maintaining the documentation as easy as possible, changes get applied in a
+        defined procedure. Please follow this procedure to make including your changes as quick and
+        easy as possible.</shortdesc>
+    <prolog>
+        <author>Pablo Klaschka</author>
+    </prolog>
+    <taskbody>
+        <steps>
+            <step>
+                <cmd>Commit the changes on a separate branch</cmd>
+            </step>
+            <step>
+                <cmd>Push the branch to the GitHub Repository</cmd>
+            </step>
+            <step>
+                <cmd>Submit a Pull Request from your branch into the <keyword>master</keyword>
+                    branch</cmd>
+            </step>
+            <step>
+                <cmd>Create an Issue for adding new topics to a map <b>if new topics were added in
+                        your changes</b></cmd>
+            </step>
+        </steps>
+    </taskbody>
+</task>

@@ -1,0 +1,7 @@
+{
+  "input": "../technical_writer_s_manual.ditamap",
+  "plugins": [
+    "org.dita.pdf2"
+  ],
+  "transtype": "pdf2"
+}

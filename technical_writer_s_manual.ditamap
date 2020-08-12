@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bookmap PUBLIC "-//OASIS//DTD DITA BookMap//EN" "bookmap.dtd">
+<bookmap>
+    <booktitle>
+        <mainbooktitle>Technical Writer's Manual</mainbooktitle>
+        <booktitlealt>Writing documentation for the Telestion Project</booktitlealt>
+    </booktitle>
+    <bookmeta>
+        <author>Pablo Klaschka</author>
+        <bookrights>
+            <bookowner>
+                <person>Pablo Klaschka</person>
+                <organization>Telestion</organization>
+            </bookowner>
+        </bookrights>
+    </bookmeta>
+    <frontmatter>
+        <booklists>
+            <toc/>
+        </booklists>
+    </frontmatter>
+    <chapter navtitle="Concepts">
+        <topicref href="topics/concepts/dita.dita"/>
+        <topicref href="topics/concepts/dita_ot.dita"/>
+        <topicref href="topics/concepts/nodejs.dita"/>
+        <topicref href="topics/concepts/npm.dita"/>
+        <topicref href="topics/concepts/dita_ot_helper.dita"/>
+    </chapter>
+    <chapter collection-type="sequence" navtitle="Working with the Documentation">
+        <topicref href="./topics/tasks/telestion-docs/setting_up_documentation_environment.dita"
+            importance="required"/>
+        <topicref href="./topics/tasks/telestion-docs/building_the_documentation.dita"/>
+        <topicref href="topics/tasks/telestion-docs/submitting_changes_to_the_documentation.dita"/>
+    </chapter>
+    <chapter navtitle="Writing Guidelines">
+        <topicref href="topics/references/telestion-docs/task_writing_guidelines.dita"/>
+        <topicref href="topics/references/telestion-docs/concept_writing_guidelines.dita"/>
+        <topicref href="topics/references/telestion-docs/reference_writing_guidelines.dita"/>
+    </chapter>
+    <chapter navtitle="Reference">
+        <topicref href="topics/references/telestion-docs/documentation_responsibilities.dita"/>
+        <topicref href="topics/references/internal_roles.dita"/>
+        <topicref href="topics/references/external_roles.dita"/>
+    </chapter>
+</bookmap>

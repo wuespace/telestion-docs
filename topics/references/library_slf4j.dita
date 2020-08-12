@@ -6,7 +6,6 @@
         loggers. All used libraries work together with this facade. Telestion uses logback as the
         implementation. The configuration file can be found in the projects classpath and is called
             <i>logback.xml</i>.</shortdesc>
-    <refbody> </refbody>
     <related-links>
         <link href="http://www.slf4j.org/" format="html" scope="external"/>
         <link href="http://logback.qos.ch/" format="html" scope="external"/>

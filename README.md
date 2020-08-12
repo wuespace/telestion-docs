@@ -1,5 +1,7 @@
 # Ground Station Documentation
 
+![DITA-OT](https://github.com/TelestionGroup/telestion-docs/workflows/DITA-OT/badge.svg)
+
 The Telestion ground station documentation. 
 We use DITA.
 As editor, we recommend the [Oxygen XML Editor](https://www.oxygenxml.com/) (Win, macOS, Linux).

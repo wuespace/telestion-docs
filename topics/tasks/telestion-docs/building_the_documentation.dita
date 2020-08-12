@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="building_the_documentation">
+    <title>Building the documentation</title>
+    <shortdesc>The raw <filepath>.dita</filepath> files aren't user-friendly. They can, to get
+        consumed by readers, be transformed to other, easier to read, file formats. Among these
+        target formats can be <filepath>.pdf</filepath>, <filepath>.html</filepath> (Websites),
+            <filepath>.md</filepath> (Markdown) and more.</shortdesc>
+    <prolog>
+        <author>Pablo Klaschka</author>
+    </prolog>
+    <taskbody>
+        <steps>
+            <step>
+                <cmd>Run <userinput>npm run build</userinput> in the Command line inside the
+                    documentation directory</cmd>
+                <info>This runs <userinput>dita-ot-helper build-configs/*.json</userinput>, which in
+                    turn processes all the build configs in that directory.</info>
+            </step>
+        </steps>
+        <result id="result_ysc_s4v_pmb">The build config files in the
+                <filepath>build-configs</filepath> directory get processed. The generated outputs
+            gets written to the location specified in the configs.</result>
+    </taskbody>
+</task>

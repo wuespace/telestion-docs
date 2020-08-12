@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="documentation_responsibilities">
+    <title>Documentation Responsibilities</title>
+    <shortdesc>Responsibilities for creating and maintainging the project's
+        documentation</shortdesc>
+    <prolog>
+        <author>Pablo Klaschka</author>
+    </prolog>
+    <refbody>
+        <properties id="properties_rg3_ntv_pmb">
+            <prophead>
+                <proptypehd>Role</proptypehd>
+                <propdeschd>Reponsibilities</propdeschd>
+            </prophead>
+            <property>
+                <proptype>Any project member</proptype>
+                <propdesc>Writing task, concept and reference topics or providing technical writers
+                    information for writing documentation about a topic.</propdesc>
+            </property>
+            <property>
+                <proptype>Technical writer</proptype>
+                <propdesc>Writing task, concept and reference topics and reviewing such work to
+                    ensure consistency with the guidelines layed out in the documentation regarding
+                    writing technical documentation for this project</propdesc>
+            </property>
+            <property>
+                <proptype>Information architect</proptype>
+                <propdesc>Maintaining the structure of maps and generated documents. Adding new
+                    topics to maps as needed.</propdesc>
+            </property>
+            <property>
+                <proptype>Documentation Maintainer</proptype>
+                <propdesc>Maintaining technical aspects of the documentation, such as CI builds,
+                    distribution etc.</propdesc>
+            </property>
+        </properties>
+    </refbody>
+</reference>
