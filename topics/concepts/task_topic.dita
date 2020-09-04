@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="task_topic">
+    <title>Task Topic</title>
+    <shortdesc>A <xmlelement>task</xmlelement> is a type of DITA topic explaining how to achieve a
+        goal</shortdesc>
+    <conbody>
+        <p>Tasks serve the purpose of explaining how to do something. They should always be written
+            before other topics that support this task.</p>
+    </conbody>
+</concept>

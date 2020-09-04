@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="writing_task_topics">
+    <title>Writing task topics</title>
+    <shortdesc>Explaining to users how they can achieve what they are tyring to do is an essential
+        part of documentation.</shortdesc>
+    <taskbody>
+        <steps>
+            <step>
+                <cmd>Create a new task topic</cmd>
+                <stepxmp>For our purposes, we'll call this
+                    <filepath>writing-topics.dita</filepath></stepxmp>
+                <stepresult>The <filepath>writing-topics.dita</filepath> file gets
+                    created</stepresult>
+            </step>
+            <step>
+                <cmd>Open the created file in the Oxygen XML Editor</cmd>
+                <info>This can be achieved by double-clicking the file in the project overview on
+                    the left</info>
+                <stepxmp>In our example, we'll double-click
+                    <filepath>writing-topics.dita</filepath></stepxmp>
+            </step>
+            <step>
+                <cmd>Write the documentation</cmd>
+                <substeps id="substeps_q11_dz1_xmb">
+                    <substep>
+                        <cmd>Write a title</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>Write a short description in the XML element
+                                <xmlelement>shortdesc</xmlelement></cmd>
+                    </substep>
+                </substeps>
+            </step>
+        </steps>
+        <result id="result_q2b_gz1_xmb">The task is now ready to be integrated into a
+            publication</result>
+    </taskbody>
+</task>
