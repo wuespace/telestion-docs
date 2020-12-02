@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bookmap PUBLIC "-//OASIS//DTD DITA BookMap//EN" "bookmap.dtd">
+<bookmap>
+    <booktitle>
+        <mainbooktitle><ph conref="topics/reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"/>
+            <cmdname>git</cmdname> and versioning Conventions</mainbooktitle>
+        <booktitlealt>A guide for contributors and maintainers of the <ph
+                conref="topics/reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"/> GitHub
+            repository</booktitlealt>
+    </booktitle>
+    <frontmatter>
+        <mapref processing-role="resource-only" href="topics/reusables/reusables.ditamap"/>
+        <booklists>
+            <toc/>
+        </booklists>
+    </frontmatter>
+    <chapter navtitle="Concepts">
+        <topicref href="topics/concepts/conventional_commits.dita"/>
+        <topicref href="topics/concepts/lerna.dita"/>
+        <topicref href="topics/concepts/npm.dita"/>
+        <topicref href="topics/concepts/nodejs.dita"/>
+    </chapter>
+    <chapter navtitle="Procedures">
+        <topichead navtitle="Initial Setup" collection-type="sequence">
+            <topicref href="topics/tasks/telestion-client/installing_lerna.dita"/>
+            <topicref
+                href="topics/tasks/telestion-client/setting_up_the_telestion_client_development_environment.dita"
+            />
+        </topichead>
+    </chapter>
+    <chapter navtitle="References">
+        <topicref href="topics/references/telestion-client/key_git_principles.dita"/>
+        <topicref href="topics/references/telestion-client/conventional_commit_types.dita"/>
+    </chapter>
+    <reltable title="CTR-Relations">
+        <relheader>
+            <relcolspec type="concept"/>
+            <relcolspec type="task"/>
+            <relcolspec type="reference"/>
+        </relheader>
+        <relrow>
+            <relcell>
+                <topicref href="topics/concepts/conventional_commits.dita"/>
+            </relcell>
+            <relcell/>
+            <relcell>
+                <topicref href="topics/references/telestion-client/conventional_commit_types.dita"/>
+            </relcell>
+        </relrow>
+        <relrow>
+            <relcell>
+                <topicref href="topics/concepts/lerna.dita"/>
+            </relcell>
+            <relcell>
+                <topicref href="topics/tasks/telestion-client/installing_lerna.dita"/>
+            </relcell>
+            <relcell/>
+        </relrow>
+        <relrow>
+            <relcell>
+                <topicref href="topics/concepts/lerna.dita"/>
+                <topicref href="topics/concepts/npm.dita"/>
+                <topicref href="topics/concepts/nodejs.dita"/>
+            </relcell>
+            <relcell/>
+            <relcell/>
+        </relrow>
+        <relrow>
+            <relcell/>
+            <relcell/>
+            <relcell/>
+        </relrow>
+        <relrow>
+            <relcell/>
+            <relcell/>
+            <relcell/>
+        </relrow>
+    </reltable>
+</bookmap>
