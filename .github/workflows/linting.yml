@@ -16,9 +16,9 @@ jobs:
     - run: curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s latest
     - run: echo "./bin" >> $GITHUB_PATH
     - name: Setup DITA
-      run: wget https://github.com/dita-ot/dita-ot/releases/download/3.4/dita-ot-3.4.zip
-    - run: unzip dita-ot-3.4.zip
-    - run: echo "./dita-ot-3.4/bin" >> $GITHUB_PATH
+      run: wget https://github.com/dita-ot/dita-ot/releases/download/3.5.4/dita-ot-3.5.4.zip
+    - run: unzip dita-ot-3.5.4.zip
+    - run: echo "./dita-ot-3.5.4/bin" >> $GITHUB_PATH
     - run: cd ..
     - run: vale -v
     - run: ls
