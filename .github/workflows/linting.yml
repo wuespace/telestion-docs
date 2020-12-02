@@ -18,7 +18,7 @@ jobs:
     - name: Setup DITA
       run: wget https://github.com/dita-ot/dita-ot/releases/download/3.4/dita-ot-3.4.zip
     - run: unzip dita-ot-3.4.zip
-    - run: echo ./dita-ot-3.4/bin" >> $GITHUB_PATH
+    - run: echo "./dita-ot-3.4/bin" >> $GITHUB_PATH
     - run: cd ..
     - run: vale -v
     - run: ls
