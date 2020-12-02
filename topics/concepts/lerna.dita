@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="lerna">
+    <title><cmdname>lerna</cmdname></title>
+    <shortdesc><cmdname>lerna</cmdname> is a CLI to manage monorepo structures of JS-based
+        projects.</shortdesc>
+    <conbody>
+        <p>It provides the capability to correctly bump versions based on conventional commit
+            messages, update cross-dependencies of the different packages and publish all packages
+            to npm while simaltaniously creating a release on GitHub and updating the
+                <filepath>CHANGELOG.md</filepath>.</p>
+    </conbody>
+    <related-links>
+        <link href="https://lerna.js.org/" format="html" scope="external"/>
+        <link href="https://github.com/lerna/lerna" format="html" scope="external"/>
+    </related-links>
+</concept>

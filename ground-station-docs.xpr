@@ -6,6 +6,10 @@
             <serialized version="21.1" xml:space="preserve">
                 <serializableOrderedMap>
                     <entry>
+                        <String>keys.context</String>
+                        <String>${pdu}/topics/reusables/reusables.ditamap</String>
+                    </entry>
+                    <entry>
                         <String>profiling.conditions</String>
                         <Boolean>true</Boolean>
                     </entry>

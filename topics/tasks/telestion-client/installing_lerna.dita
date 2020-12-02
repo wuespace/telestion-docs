@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="installing_lerna">
+    <title>Installing <cmdname>lerna</cmdname></title>
+    <shortdesc><cmdname>lerna</cmdname> is a CLI to manage monorepo structures of JS-based projects.
+        It can be installed using <cmdname>npm</cmdname>.</shortdesc>
+    <taskbody>
+        <prereq id="prereq_twj_5dv_vnb">Ensure that you have <cmdname>node</cmdname> and
+                <cmdname>npm</cmdname> installed on your machine.</prereq>
+        <steps id="steps_gbx_tdv_vnb">
+            <step>
+                <cmd>Run <codeph>npm install -g lerna</codeph> in your command line</cmd>
+                <steptroubleshooting>If you get error messages regarding insufficient permissions on
+                    the file system on Linux or macOS, try to re-run the command using
+                        <cmdname>sudo</cmdname>.</steptroubleshooting>
+            </step>
+        </steps>
+    </taskbody>
+</task>

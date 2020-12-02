@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bookmap PUBLIC "-//OASIS//DTD DITA BookMap//EN" "bookmap.dtd">
+<bookmap>
+    <booktitle>
+        <mainbooktitle>telestion-client git Methodology</mainbooktitle>
+    </booktitle>
+    <frontmatter>
+        <mapref processing-role="resource-only" href="topics/reusables/reusables.ditamap"/>
+        <booklists>
+            <toc/>
+        </booklists>
+    </frontmatter>
+    <chapter navtitle="Concepts">
+        <topicref href="topics/concepts/conventional_commits.dita"/>
+        <topicref href="topics/concepts/lerna.dita"/>
+        <topicref href="topics/concepts/npm.dita"/>
+        <topicref href="topics/concepts/nodejs.dita"/>
+    </chapter>
+    <chapter navtitle="Procedures">
+        <topichead navtitle="Initial Setup" collection-type="sequence">
+            <topicref href="topics/tasks/telestion-client/installing_lerna.dita"/>
+            <topicref
+                href="topics/tasks/telestion-client/setting_up_the_telestion_client_development_environment.dita"
+            />
+        </topichead>
+    </chapter>
+    <chapter navtitle="References"/>
+</bookmap>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="conventional_commits">
+    <title>Conventional Commits</title>
+    <shortdesc>Conventional commits are a method of writing git commit messages in a standardized
+        format that also allows automatic determination of the next release type in a semantic
+        versioning system.</shortdesc>
+    <conbody>
+        <p>Conventional commits consist of a few key primary elements:<ul id="ul_vrm_cfv_vnb">
+                <li><varname>type</varname>: The type of the commit. This can be one of a
+                    pre-configured number of elements, including (in our project) <q>feat</q> for
+                    features, <q>fix</q> for bug fixes, <q>docs</q> for documentation updates,
+                        <q>chore</q> for meta-stuff in the repo (not actually updating the
+                    packages), and some more.</li>
+                <li><varname>scope</varname> (optional): The scope of the change, e.g., the package
+                    name or something like <q>CI</q></li>
+                <li><varname>description</varname>: a one-liner description of the
+                        <varname>type</varname> (i.e., feature, bug fix, or something else)</li>
+                <li><varname>body</varname> (optional): more detailed descriptions</li>
+                <li><varname>footer</varname> (optional): key-value-pairs of additional meta
+                    information, e.g., fixed GitHub issues</li>
+            </ul></p>
+        <p>All in all, the structure looks something like
+            this:<codeblock>&lt;type>[(optional scope)][!]: &lt;description>
+
+[optional body]
+
+[optional footers]</codeblock></p>
+        <p>Since this doesn't look too intuitive, let's look at a few actual examples of commit
+            messages:</p>
+        <example>
+            <title>A commit message for a bug fix introducing breaking changes</title>
+            <codeblock>fix!: Fixed parameter conversion in updateParents()
+
+Before, it automatically converted strings to numbers in such a 
+way that non-number inputs also got allowed. This is now changed.
+
+Fixes: #8
+BREAKING CHANGE: Non-number inputs no lead to updateParents() to
+throw</codeblock>
+        </example>
+        <example>
+            <title>A commit message for a feature in the package <codeph>pkg-1</codeph></title>
+            <codeblock>feat(pkg-1): Constructor for JSON parameter
+
+added an additional constructor for a JSON string as single parameter
+to PackageOneClass
+
+Fixes: #22
+Co-Authored-By: Pablo Klaschka &lt;contact@pabloklaschka.de></codeblock>
+        </example>
+    </conbody>
+    <related-links>
+        <link href="https://www.conventionalcommits.org/en/v1.0.0/" format="html" scope="external"/>
+    </related-links>
+</concept>
