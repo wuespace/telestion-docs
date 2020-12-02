@@ -14,7 +14,7 @@ jobs:
         java-version: 1.8
     - run: mkdir vale && cd vale
     - run: curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s latest
-    - run: echo "::add-path::./bin"
+    - run: echo "./bin" >> $GITHUB_PATH
     - name: Setup DITA
       run: wget https://github.com/dita-ot/dita-ot/releases/download/3.4/dita-ot-3.4.zip && unzip dita-ot-3.4.zip && echo "::add-path::./dita-ot-3.4/bin"
     - run: cd ..
