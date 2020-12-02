@@ -27,6 +27,9 @@
                 href="topics/tasks/telestion-client/setting_up_the_telestion_client_development_environment.dita"
             />
         </topichead>
+        <topichead navtitle="Releases and versioning" collection-type="family">
+            <topicref href="topics/tasks/telestion-client/creating_a_release.dita"/>
+        </topichead>
     </chapter>
     <chapter navtitle="References">
         <topicref href="topics/references/telestion-client/key_git_principles.dita"/>
@@ -66,14 +69,25 @@
             <relcell/>
         </relrow>
         <relrow>
-            <relcell/>
-            <relcell/>
-            <relcell/>
+            <relcell>
+                <topicref href="topics/concepts/lerna.dita"/>
+                <topicref href="topics/concepts/conventional_commits.dita"/>
+            </relcell>
+            <relcell>
+                <topicref href="topics/tasks/telestion-client/creating_a_release.dita"/>
+            </relcell>
+            <relcell>
+                <topicref href="topics/references/telestion-client/conventional_commit_types.dita"/>
+            </relcell>
         </relrow>
         <relrow>
             <relcell/>
             <relcell/>
-            <relcell/>
+            <relcell>
+                <topicref href="topics/references/telestion-client/conventional_commit_types.dita">
+                    <topicref href="topics/references/telestion-client/key_git_principles.dita"/>
+                </topicref>
+            </relcell>
         </relrow>
     </reltable>
 </bookmap>
