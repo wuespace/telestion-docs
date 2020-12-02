@@ -4,6 +4,14 @@
     <title>Installing <cmdname>lerna</cmdname></title>
     <shortdesc> You can install <cmdname>lerna</cmdname> it using
         <cmdname>npm</cmdname>.</shortdesc>
+    <prolog>
+        <author>Pablo Klaschka</author>
+        <metadata>
+            <keywords>
+                <indexterm><cmdname>lerna</cmdname><indexterm>installing</indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
     <taskbody>
         <prereq id="prereq_twj_5dv_vnb">Ensure that you have <cmdname>node</cmdname> and
                 <cmdname>npm</cmdname> installed on your machine.</prereq>

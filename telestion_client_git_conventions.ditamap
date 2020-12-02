@@ -35,6 +35,11 @@
         <topicref href="topics/references/telestion-client/key_git_principles.dita"/>
         <topicref href="topics/references/telestion-client/conventional_commit_types.dita"/>
     </chapter>
+    <backmatter>
+        <booklists>
+            <indexlist/>
+        </booklists>
+    </backmatter>
     <reltable title="CTR-Relations">
         <relheader>
             <relcolspec type="concept"/>

@@ -4,6 +4,16 @@
     <title>Setting up the telestion-client development environment</title>
     <shortdesc>The steps necessary to contribute to any packages in the <ph
             conref="../../reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"/> repository.</shortdesc>
+    <prolog>
+        <author>Pablo Klaschka</author>
+        <metadata>
+            <keywords>
+                <indexterm>telestion-client</indexterm>
+                <indexterm>development environment<indexterm>setup</indexterm></indexterm>
+                <indexterm><cmdname>lerna</cmdname><indexterm><cmdname>bootstrap</cmdname></indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
     <taskbody>
         <prereq id="prereq_ngj_kcv_vnb">Ensure that you have <cmdname>node</cmdname>,
                 <cmdname>npm</cmdname>, <cmdname>git</cmdname> and <cmdname>lerna</cmdname>

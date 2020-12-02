@@ -5,6 +5,15 @@
     <shortdesc>Conventional commits are a method of writing git commit messages in a standardized
         format that also allows automatic determination of the next release type in a semantic
         versioning system.</shortdesc>
+    <prolog>
+        <author>Pablo Klaschka</author>
+        <metadata>
+            <keywords>
+                <indexterm>Conventional Commits</indexterm>
+                <indexterm>Commit messages</indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
     <conbody>
         <p>Conventional commits consist of a few key primary elements:<ul id="ul_vrm_cfv_vnb">
                 <li><varname>type</varname>: The type of the commit. This can be one of a

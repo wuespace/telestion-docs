@@ -4,6 +4,15 @@
     <title><cmdname>lerna</cmdname></title>
     <shortdesc><cmdname>lerna</cmdname> is a CLI to manage monorepo structures of JS-based
         projects.</shortdesc>
+    <prolog>
+        <author>Pablo Klaschka</author>
+        <metadata>
+            <keywords>
+                <indexterm><cmdname>lerna</cmdname></indexterm>
+                <indexterm>Monorepo</indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
     <conbody>
         <p>It provides the capability to correctly bump versions based on conventional commit
             messages, update cross-dependencies of the different packages and publish all packages

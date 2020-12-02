@@ -39,9 +39,14 @@
             <step>
                 <cmd>Select the <varname>main</varname> branch and click <uicontrol>Run
                         workflow</uicontrol></cmd>
+                <stepresult>The CI workflow runs and creates a new release. This might take a few
+                    minutes.</stepresult>
             </step>
         </steps>
-        <result id="result_y35_j21_wnb">The workflow runs and creates a new release. This might take
-            a few minutes.</result>
+        <result id="result_y35_j21_wnb">The workflow adjusts the changelogs and version numbers,
+            commits the changes, creates a new release (and tag) on GitHub, and publishes the
+            updated packages to the npm registry.<note type="remember">Under the hood, this workflow
+                runs:<codeblock>$ lerna version --conventional-commits --create-release github
+$ lerna publish from-git</codeblock></note></result>
     </taskbody>
 </task>
