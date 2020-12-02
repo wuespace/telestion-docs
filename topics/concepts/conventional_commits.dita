@@ -8,17 +8,17 @@
     <conbody>
         <p>Conventional commits consist of a few key primary elements:<ul id="ul_vrm_cfv_vnb">
                 <li><varname>type</varname>: The type of the commit. This can be one of a
-                    pre-configured number of elements, including (in our project) <q>feat</q> for
+                    pre-configured number of elements, including (in this project) <q>feat</q> for
                     features, <q>fix</q> for bug fixes, <q>docs</q> for documentation updates,
                         <q>chore</q> for meta-stuff in the repo (not actually updating the
                     packages), and some more.</li>
-                <li><varname>scope</varname> (optional): The scope of the change, e.g., the package
-                    name or something like <q>CI</q></li>
+                <li><varname>scope</varname> (optional): The scope of the change, for example, the
+                    package name or something like <q>CI</q></li>
                 <li><varname>description</varname>: a one-liner description of the
-                        <varname>type</varname> (i.e., feature, bug fix, or something else)</li>
+                        <varname>type</varname> (feature, bug fix, or something else)</li>
                 <li><varname>body</varname> (optional): more detailed descriptions</li>
                 <li><varname>footer</varname> (optional): key-value-pairs of additional meta
-                    information, e.g., fixed GitHub issues</li>
+                    information, for example, fixed GitHub issues</li>
             </ul></p>
         <p>All in all, the structure looks something like
             this:<codeblock>&lt;type>[(optional scope)][!]: &lt;description>
@@ -26,7 +26,7 @@
 [optional body]
 
 [optional footers]</codeblock></p>
-        <p>Since this doesn't look too intuitive, let's look at a few actual examples of commit
+        <p>Since this doesn't look too intuitive, here are a few examples of actual commit
             messages:</p>
         <example>
             <title>A commit message for a bug fix introducing breaking changes</title>
