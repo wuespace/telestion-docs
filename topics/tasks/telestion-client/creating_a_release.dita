@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="creating_a_release">
+    <title>Creating a release</title>
+    <shortdesc>Creating a release for the <ph
+            conref="../../reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"/> repo using the predefined
+        GitHub Actions workflow.</shortdesc>
+    <taskbody>
+        <prereq id="prereq_jxy_md1_wnb">Open a web browser and log into GitHub.</prereq>
+        <context>
+            <p>You can manually trigger the GitHub workflow to create the release. It then uses
+                    <cmdname>lerna</cmdname> to automatically detect the required new version number
+                from the commit messages, create a release on GitHub and publish the updated version
+                to npm.<note type="tip">Since one of the core principles of this repository is to
+                    always keep the <varname>main</varname> branch releasable, you can, at all
+                    times, create a release from this branch. The conventional commit system ensures
+                    that <cmdname>lerna</cmdname> determines the correct next version
+                number.</note></p>
+        </context>
+        <steps>
+            <step>
+                <cmd>Open the <ph conref="../../reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"/>
+                    repository on GitHub</cmd>
+            </step>
+            <step>
+                <cmd>Go to <menucascade>
+                        <uicontrol>Actions</uicontrol>
+                        <uicontrol>Workflows</uicontrol>
+                        <uicontrol>Lerna Release</uicontrol>
+                        <uicontrol>Run workflow</uicontrol>
+                    </menucascade></cmd>
+                <stepresult>A popup looking like this appears:<fig id="fig_drb_f21_wnb">
+                        <title>Run workflow popup</title>
+                        <image
+                            href="../../../material/images/telestion-client/git-workflows/release_action_trigger.png"
+                            id="image_xym_221_wnb"/>
+                    </fig></stepresult>
+            </step>
+            <step>
+                <cmd>Select the <varname>main</varname> branch and click <uicontrol>Run
+                        workflow</uicontrol></cmd>
+                <stepresult>The CI workflow runs and creates a new release. This might take a few
+                    minutes.</stepresult>
+            </step>
+        </steps>
+        <result id="result_y35_j21_wnb">The workflow adjusts the changelogs and version numbers,
+            commits the changes, creates a new release (and tag) on GitHub, and publishes the
+            updated packages to the npm registry.<note type="remember">Under the hood, this workflow
+                runs:<codeblock>$ lerna version --conventional-commits --create-release github
+$ lerna publish from-git</codeblock></note></result>
+    </taskbody>
+</task>

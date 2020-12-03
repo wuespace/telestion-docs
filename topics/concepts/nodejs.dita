@@ -9,8 +9,7 @@
         <author>Pablo Klaschka</author>
         <metadata>
             <keywords>
-                <indexterm>Nodee</indexterm>
-                <indexterm>NodeJS<index-see>Node</index-see></indexterm>
+                <indexterm>NodeJS<index-see><cmdname>node</cmdname></index-see></indexterm>
                 <indexterm>REPL</indexterm>
                 <indexterm><cmdname>node</cmdname></indexterm>
             </keywords>

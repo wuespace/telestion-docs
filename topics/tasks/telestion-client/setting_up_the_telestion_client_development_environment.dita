@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="setting_up_the_telestion_client_development_environment">
+    <title>Setting up the telestion-client development environment</title>
+    <shortdesc>The steps necessary to contribute to any packages in the <ph
+            conref="../../reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"/> repository.</shortdesc>
+    <prolog>
+        <author>Pablo Klaschka</author>
+        <metadata>
+            <keywords>
+                <indexterm>telestion-client</indexterm>
+                <indexterm>development environment<indexterm>setup</indexterm></indexterm>
+                <indexterm><cmdname>lerna</cmdname><indexterm><cmdname>bootstrap</cmdname></indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <taskbody>
+        <prereq id="prereq_ngj_kcv_vnb">Ensure that you have <cmdname>node</cmdname>,
+                <cmdname>npm</cmdname>, <cmdname>git</cmdname> and <cmdname>lerna</cmdname>
+            installed on your machine.</prereq>
+        <context>
+            <p>To develop modules, you'll need to clone the project and then setup its
+                dependencies.</p>
+        </context>
+        <steps>
+            <step>
+                <cmd>Run <codeph>git clone
+                        git@github.com:TelestionTeam/telestion-client.git</codeph> in your command
+                    line</cmd>
+                <stepresult>This clones the repository to the <filepath>telestion-client</filepath>
+                    folder.</stepresult>
+                <steptroubleshooting>If an error message regarding missing authentication/authority
+                    to clone the repository appears, make sure that you have added your public SSH
+                    key to GitHub (<menucascade>
+                        <uicontrol>Settings</uicontrol>
+                        <uicontrol>SSH and GPG Keys</uicontrol>
+                        <uicontrol>SSH Keys</uicontrol>
+                    </menucascade>)</steptroubleshooting>
+            </step>
+            <step>
+                <cmd>Run <codeph>cd telestion-client</codeph></cmd>
+                <stepresult>You've now entered the <filepath>telestion-client</filepath> folder with
+                    your command line</stepresult>
+            </step>
+            <step>
+                <cmd>Run <codeph>npm run bootstrap</codeph></cmd>
+                <info>This runs <codeph>lerna bootstrap --hoist</codeph> in the background.</info>
+                <stepresult>All dependencies get installed and linked automatically.</stepresult>
+            </step>
+        </steps>
+        <result id="result_dqz_3dv_vnb">Your development environment is now completely set up and
+            ready to go. Thank you so much in advance for your contributions ;)</result>
+    </taskbody>
+</task>

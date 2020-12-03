@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="key_git_principles">
+    <title>Key git principles</title>
+    <shortdesc>Key principles for contributing to and maintaining the <ph
+            conref="../../reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"/> repository</shortdesc>
+    <refbody>
+        <section id="section_cln_43v_vnb">
+            <title>The simple bare necessities</title>
+            <dl>
+                <dlentry>
+                    <dt>Be kind!</dt>
+                    <dd>Yes, it sounds silly, but it's probably the most important principle of them
+                        all. Open-Source contributions are, in 99 % of the cases, side-projects.
+                        Open-Source is a great principle and you can be proud to contribute to the
+                        pool of open-source software. While this may be different in other
+                        communities, you shouldn't use comments like <q>RTFM!</q> etc. in this
+                        community.</dd>
+                    <dd>Contributing to an open-source project is scary enough already: Your code
+                        will be available for the world to see (and judge). But you do need and
+                        should much appreciate these contributions. Therefore, if the best you can
+                        do is some discouraging comment about why something is just bad, just keep
+                        it to yourself! Constructive criticism is great, but it should always be
+                        combined with explicit appreciation for the time the other person has
+                            taken.<note>Online comments can often be mis-intrepreted in the
+                            worst-possible (as it's also the safest) way. Especially when they begin
+                            to cross culture and language differences, happens far sooner than you
+                            might think. Keep that in mind when writing comments.</note></dd>
+                </dlentry>
+                <dlentry>
+                    <dt>Keep <varname>main</varname> instantly releasable</dt>
+                    <dd>The state of the <varname>main</varname> branch should <b>always</b> be kept
+                        releasable. As this project implements automation in such a way that
+                            <cmdname>lerna</cmdname> automatically releases the correct kind of
+                        semantic release on the press of a button (which, theoretically, anyone
+                        should be able to press), pressing that buttons should result in a
+                            <i>good</i> release whenever it gets pressed.<note type="note">This
+                            allows this project to release changes in no time, if needed or wanted.</note></dd>
+                </dlentry>
+                <dlentry>
+                    <dt>One branch per change</dt>
+                    <dd>don't try to put more than one kind of change (bug fix, feature, …) into a
+                        single branch, except explicitly adviced by one of the maintainers. This
+                        ensures the ability to correctly merge it with a conventional commit
+                        message, should the need arise, and guarantees correct generation of release
+                        notes and changelog in releases.</dd>
+                </dlentry>
+                <dlentry>
+                    <dt>Use the conventional commit commit-name system</dt>
+                    <dd>It allows release notes and the required next release to get generated at
+                        the push of a button, without having to think about it (sticking with the
+                        instantly releasable theme). Don't worry that you might do something wrong.
+                        Even the "worst" of mistakes there can be fixed by a maintainer,
+                        either when merging your Pull Request (by squashing the commits with a new
+                        commit message) or in some other way.</dd>
+                </dlentry>
+                <dlentry>
+                    <dt>Don't be afraid to ask</dt>
+                    <dd>While everyone claims that JavaScript is easy compared to other languages
+                        (that might be the case), what this project uses is a rather complex and
+                        large ecosystem with a lot of tooling etc. While, at its core, it's still
+                        "easy old JS," a lot might not be immediately obvious. Always feel free to
+                        ask anything. If someone isn't kind in their response, they don't belong
+                        into this project, and in 99 % of the cases, you'll get a kind reply by
+                        someone else, anyway. Remember: You're not the first to feel this way (and
+                        even the most experienced of developers sometimes have to ask someone else
+                        to find out they've forgotten to hit <uicontrol>Compile</uicontrol> ;))</dd>
+                </dlentry>
+            </dl>
+        </section>
+        <section id="section_vlr_njv_vnb">
+            <title>Maintainer's tasks</title>
+            <dl>
+                <dlentry>
+                    <dt>Ensure all contributions are by contributors who have signed the CLA</dt>
+                    <dd>Otherwise, this project will get into a lot of legal trouble.<note
+                            type="danger">If a Pull Request doesn't contain a filled checkbox or
+                            other notice about the contributor having signed the NDA, <b>don't
+                                merge it!</b>. If you suspect you might have made a mistake in this
+                            regard, please talk to your team leader about it
+                        immediately.</note></dd>
+                </dlentry>
+                <dlentry>
+                    <dt>Ensure every change has a conventional commit associated with it</dt>
+                    <dd>This enables automatic generation of the release notes and next released
+                        version. If a branch contains valid and correct conventional commit
+                        messages, you can just go ahead and merge it using a merge commit with
+                        something like <q>chore: Merge <varname>PR name</varname></q>. Otherwise, you may have to squash
+                        and commit using a valid conventional commit message. In the end, the only
+                        thing that's important is that every change that's relevant for the next
+                        type of version (for example, a feature or a breaking change) or the next version's
+                        release notes has a valid conventional commit for it in the
+                            <varname>main</varname> branch.<note type="warning">Merge commits appear
+                            to not get used (to their full extent). Therefore, if, for merging a
+                            Pull Request, a new conventional commit message is required, use
+                                <uicontrol>Squash and Merge</uicontrol></note></dd>
+                </dlentry>
+            </dl>
+        </section>
+    </refbody>
+</reference>

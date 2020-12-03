@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="phrases">
+    <title>phrases</title>
+    <body>
+        <section id="section_psc_4bv_vnb">
+            <title>Repositories</title>
+            <p>
+                <table id="table_mb3_pbv_vnb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1"/>
+                        <colspec colname="c2" colnum="2"/>
+                        <colspec colname="c3" colnum="3"/>
+                        <thead>
+                            <row>
+                                <entry>Repository name</entry>
+                                <entry>Product name</entry>
+                                <entry>Repository URL</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry><ph id="ph_f2l_tbv_vnb">telestion</ph></entry>
+                                <entry><ph id="ph_lhd_vbv_vnb">Telestion Core</ph></entry>
+                                <entry/>
+                            </row>
+                            <row>
+                                <entry><ph id="ph_gxh_bcv_vnb">telestion-client</ph></entry>
+                                <entry><ph id="ph_xrx_xbv_vnb">Telestion Client</ph></entry>
+                                <entry/>
+                            </row>
+                            <row>
+                                <entry/>
+                                <entry/>
+                                <entry/>
+                            </row>
+                            <row>
+                                <entry/>
+                                <entry/>
+                                <entry/>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+    </body>
+</topic>
