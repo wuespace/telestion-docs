@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="adding_internal_dependencies" audience="fe-dev">
+    <title>Adding dependencies to <ph conref="../../reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"
+        /></title>
+    <shortdesc>You can use <cmdname>lerna add</cmdname> to add dependencies to packages contained in
+        the monorepo structure of <ph conref="../../reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"
+        />.</shortdesc>
+    <prolog>
+        <author>Pablo Klaschka</author>
+        <metadata>
+            <keywords>
+                <indexterm><cmdname>lerna</cmdname><indexterm>adding internal
+                        dependencies</indexterm></indexterm>
+                <indexterm><cmdname>lerna</cmdname><indexterm><cmdname>add</cmdname></indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <taskbody>
+        <steps>
+            <step>
+                <cmd>Run <codeph><cmdname>lerna add</cmdname>
+                        <varname>package</varname>
+                        --scope=<varname>target-package</varname></codeph></cmd>
+                <info>
+                    <p>This adds <varname>package</varname> as a dependency to
+                            <varname>target-package</varname> and automatically runs <cmdname>lerna
+                            bootstrap</cmdname> to link the dependencies.</p>
+                    <p><varname>package</varname> can either be one of the internal packages or an
+                        external package available in the npm registry.</p>
+                    <note type="tip">You can use <codeph>--dev</codeph> and <codeph>--peer</codeph>
+                        to add the <varname>package</varname> as a development- or peer dependency
+                        respectively.</note>
+                </info>
+                <stepxmp>To add <codeph>@wuespace/telestion-mock-server</codeph> as a dependency of
+                        <codeph>@wuespace/telestion-client-cli</codeph>,
+                    run<codeblock>$ <cmdname>lerna add</cmdname> @wuespace/telestion-mock-server \
+   --scope=@wuespace/telestion-client-cli</codeblock></stepxmp>
+            </step>
+        </steps>
+        <result id="result_lbr_n1g_wnb"><varname>package</varname> got added as a dependency of
+                <varname>target-package</varname> and can get used there.</result>
+    </taskbody>
+    <related-links>
+        <link href="https://github.com/lerna/lerna/tree/main/commands/add#readme" format="html"
+            scope="external">
+            <linktext><cmdname>lerna add</cmdname> documentation</linktext>
+            <desc>Complete reference for <cmdname>lerna add</cmdname> options</desc>
+        </link>
+    </related-links>
+</task>

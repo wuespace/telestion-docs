@@ -27,6 +27,9 @@
                 href="topics/tasks/telestion-client/setting_up_the_telestion_client_development_environment.dita"
             />
         </topichead>
+        <topichead navtitle="Dependency Management" collection-type="family">
+            <topicref href="topics/tasks/telestion-client/adding_dependencies.dita"/>
+        </topichead>
         <topichead navtitle="Releases and versioning" collection-type="family">
             <topicref href="topics/tasks/telestion-client/creating_a_release.dita"/>
         </topichead>
@@ -95,6 +98,36 @@
                     <topicref href="topics/references/telestion-client/key_git_principles.dita"/>
                 </topicref>
             </relcell>
+        </relrow>
+    </reltable>
+    <reltable title="One-Way Task=>other">
+        <relheader>
+            <relcolspec linking="sourceonly" type="task"/>
+            <relcolspec linking="targetonly"/>
+        </relheader>
+        <relrow>
+            <relcell>
+                <topicref href="topics/tasks/telestion-client/adding_dependencies.dita"/>
+            </relcell>
+            <relcell>
+                <topicref href="topics/concepts/lerna.dita"/>
+            </relcell>
+        </relrow>
+        <relrow>
+            <relcell/>
+            <relcell/>
+        </relrow>
+        <relrow>
+            <relcell/>
+            <relcell/>
+        </relrow>
+        <relrow>
+            <relcell/>
+            <relcell/>
+        </relrow>
+        <relrow>
+            <relcell/>
+            <relcell/>
         </relrow>
     </reltable>
 </bookmap>

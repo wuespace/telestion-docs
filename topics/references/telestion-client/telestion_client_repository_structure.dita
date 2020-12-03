@@ -5,6 +5,26 @@
     <shortdesc>The repository structure of the <ph
             conref="../../reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"/> repo, including its npm
         packages and external relations.</shortdesc>
+    <prolog>
+        <author>Pablo Klaschka</author>
+        <metadata>
+            <keywords>
+                <indexterm><ph conref="../../reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"
+                    /></indexterm>
+                <indexterm><ph conref="../../reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"
+                        /><indexterm>Repository structure</indexterm></indexterm>
+                <indexterm><ph conref="../../reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"
+                        /><indexterm>npm packages</indexterm></indexterm>
+                <indexterm><codeph>@wuespace/telestion-client-core</codeph></indexterm>
+                <indexterm><codeph>@wuespace/telestion-client-common</codeph></indexterm>
+                <indexterm><codeph>@wuespace/telestion-client-template</codeph></indexterm>
+                <indexterm><codeph>@wuespace/telestion-client-cli</codeph></indexterm>
+                <indexterm><codeph>@wuespace/telestion-mock-server</codeph></indexterm>
+                <indexterm>PCS<index-see>Project-Specific Client</index-see></indexterm>
+                <indexterm>Project-Specific Client</indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
     <refbody>
         <section id="section_scm_gpf_wnb"><title>Overview diagram</title><fig id="fig_m4z_gpf_wnb">
                 <title>telestion-client Repository structure</title>
