@@ -4,5 +4,6 @@
   "plugins": [
     "org.dita.html5"
   ],
-  "transtype": "html5"
+  "transtype": "html5",
+  "propertyfile": "./general-settings.properties"
 }
