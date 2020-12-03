@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="Unbenannt">
-    <title>Library Vert.x</title>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="Unbenannt">
+    <title>Vert.x</title>
     <shortdesc>Vert.x is a toolkit for building reactive applications on the JVM. It's the driving
         framework behind Telestion. Thus it provides communcation capablities through an eventbus
         and other tools like web server, configuration provider, logging framework etc.</shortdesc>
     <related-links>
         <link href="https://vertx.io/" format="html" scope="external"/>
     </related-links>
-</reference>
+</concept>
