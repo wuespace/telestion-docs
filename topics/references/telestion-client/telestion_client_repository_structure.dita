@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="telestion_client_repository_structure">
+    <title>telestion-client Repository structure</title>
+    <shortdesc>The repository structure of the <ph
+            conref="../../reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"/> repo, including its npm
+        packages and external relations.</shortdesc>
+    <refbody>
+        <section id="section_scm_gpf_wnb"><title>Overview diagram</title><fig id="fig_m4z_gpf_wnb">
+                <title>telestion-client Repository structure</title>
+            </fig><image href="../../../material/drawio-diagrams/frontend/structure-overview.png"
+                id="image_xwy_3pf_wnb" scalefit="yes"/></section>
+        <section id="section_prs_kpf_wnb">
+            <title>npm packages</title>
+        </section>
+        <properties frame="all" id="properties_udt_npf_wnb">
+            <prophead>
+                <proptypehd>Path in <ph conref="../../reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"
+                    /> repository</proptypehd>
+                <propvaluehd>npm package name</propvaluehd>
+                <propdeschd>Description</propdeschd>
+            </prophead>
+            <property>
+                <proptype><filepath>packages/telestion-client-core</filepath></proptype>
+                <propvalue><codeph>@wuespace/telestion-client-core</codeph></propvalue>
+                <propdesc>
+                    <p>Core components: Basic UI, eventbus connector, High-Level components for
+                        building Project-Specific Clients</p>
+                </propdesc>
+            </property>
+            <property>
+                <proptype><filepath>packages/telestion-client-common</filepath></proptype>
+                <propvalue><codeph>@wuespace/telestion-client-common</codeph></propvalue>
+                <propdesc>
+                    <p>Common widgets (for example, a backend status widget) and non-essential, but
+                        helpful hooks</p>
+                </propdesc>
+            </property>
+            <property>
+                <proptype><filepath>packages/telestion-client-template</filepath></proptype>
+                <propvalue><codeph>@wuespace/telestion-client-template</codeph></propvalue>
+                <propdesc>Template for Project-Specific Clients. Used by
+                        <codeph>@wuespace/telestion-client-cli</codeph> to bootstrap new
+                        PSCs.<note>The template contains <filepath>.ejs</filepath> files that need
+                        to get bootstrapped using the EJS templating engine to create a valid PSC
+                        repository.</note></propdesc>
+            </property>
+            <property>
+                <proptype><filepath>packages/telestion-client-cli</filepath></proptype>
+                <propvalue><codeph>@wuespace/telestion-client-cli</codeph></propvalue>
+                <propdesc>
+                    <p>compiles the Electron app, bootstraps PSCs,  generates boilerplate widgets,
+                        etc.</p>
+                </propdesc>
+            </property>
+            <property>
+                <proptype><filepath>packages/telestion-mock-server</filepath></proptype>
+                <propvalue><codeph>@wuespace/telestion-mock-server</codeph></propvalue>
+                <propdesc>Provides a mock for the real Telestion Backend for an easier PSC
+                    development workflow.</propdesc>
+            </property>
+        </properties>
+    </refbody>
+</reference>

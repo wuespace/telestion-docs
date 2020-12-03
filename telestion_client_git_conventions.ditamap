@@ -34,6 +34,8 @@
     <chapter navtitle="References">
         <topicref href="topics/references/telestion-client/key_git_principles.dita"/>
         <topicref href="topics/references/telestion-client/conventional_commit_types.dita"/>
+        <topicref
+            href="topics/references/telestion-client/telestion_client_repository_structure.dita"/>
     </chapter>
     <backmatter>
         <booklists>
