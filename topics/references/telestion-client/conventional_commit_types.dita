@@ -3,6 +3,13 @@
 <reference id="conventional_commit_types">
     <title>Conventional Commit Types</title>
     <shortdesc>The values for the <varname>type</varname> field of conventional commits.</shortdesc>
+    <prolog>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2020-12-04"/>
+        </critdates>
+    </prolog>
     <refbody>
         <section id="section_f5z_l4v_vnb">
             <note>If a commit includes multiple commit types, use the <i>biggest</i> type, meaning

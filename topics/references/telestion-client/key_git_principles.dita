@@ -4,6 +4,13 @@
     <title>Key git principles</title>
     <shortdesc>Key principles for contributing to and maintaining the <ph
             conref="../../reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"/> repository</shortdesc>
+    <prolog>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2020-12-04"/>
+        </critdates>
+    </prolog>
     <refbody>
         <section id="section_cln_43v_vnb">
             <title>The simple bare necessities</title>
