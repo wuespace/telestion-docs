@@ -6,6 +6,11 @@
         (often running on NodeJS)</shortdesc>
     <prolog>
         <author>Pablo Klaschka</author>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2020-12-04"/>
+        </critdates>
         <metadata>
             <keywords>
                 <indexterm><cmdname>npm</cmdname></indexterm>
@@ -32,7 +37,7 @@
             <title><filepath>package-lock.json</filepath></title>
             <p>The <filepath>package-lock.json</filepath> file gets generated when running
                         <userinput><cmdname>npm</cmdname> install</userinput> and notes the exact
-                dependency versions that were installed. Later, by running
+                dependency versions that you've installed. Later, by running
                         <userinput><cmdname>npm</cmdname> ci</userinput>, these exact versions can
                 be re-installed, allowing for a consistent working environment.</p>
         </section>

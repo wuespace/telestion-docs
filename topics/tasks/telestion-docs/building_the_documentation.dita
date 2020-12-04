@@ -2,12 +2,18 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
 <task id="building_the_documentation">
     <title>Building the documentation</title>
-    <shortdesc>The raw <filepath>.dita</filepath> files aren't user-friendly. They can, to get
-        consumed by readers, be transformed to other, easier to read, file formats. Among these
-        target formats can be <filepath>.pdf</filepath>, <filepath>.html</filepath> (Websites),
+    <shortdesc>The raw <filepath>.dita</filepath> files aren't user-friendly. You can transform
+            <filepath>.dita</filepath> files to other, easier to read, file formats, that are more
+        readable for your target audience. Among these target formats can be
+            <filepath>.pdf</filepath>, <filepath>.html</filepath> (Websites),
             <filepath>.md</filepath> (Markdown) and more.</shortdesc>
     <prolog>
         <author>Pablo Klaschka</author>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2020-12-04"/>
+        </critdates>
     </prolog>
     <taskbody>
         <steps>

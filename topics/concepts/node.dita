@@ -2,10 +2,15 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="node">
     <title>Node</title>
-    <shortdesc>A <term>node</term> is a self-contained component with the ability to communicate
-        with other nodes.</shortdesc>
+    <shortdesc>A <term>node</term> is a self-contained part with the ability to communicate with
+        other nodes.</shortdesc>
     <prolog>
         <author>Pablo Klaschka</author>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2020-12-04"/>
+        </critdates>
         <metadata>
             <keywords>
                 <indexterm>Node</indexterm>

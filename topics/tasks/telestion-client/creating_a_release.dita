@@ -5,6 +5,13 @@
     <shortdesc>Creating a release for the <ph
             conref="../../reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"/> repo using the predefined
         GitHub Actions workflow.</shortdesc>
+    <prolog>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2020-12-04"/>
+        </critdates>
+    </prolog>
     <taskbody>
         <prereq id="prereq_jxy_md1_wnb">Open a web browser and log into GitHub.</prereq>
         <context>
@@ -12,9 +19,9 @@
                     <cmdname>lerna</cmdname> to automatically detect the required new version number
                 from the commit messages, create a release on GitHub and publish the updated version
                 to npm.<note type="tip">Since one of the core principles of this repository is to
-                    always keep the <varname>main</varname> branch releasable, you can, at all
-                    times, create a release from this branch. The conventional commit system ensures
-                    that <cmdname>lerna</cmdname> determines the correct next version
+                    always keep the <varname>main</varname> branch releasable, you can, always,
+                    create a release from this branch. The conventional commit system ensures that
+                        <cmdname>lerna</cmdname> determines the correct next version
                 number.</note></p>
         </context>
         <steps>

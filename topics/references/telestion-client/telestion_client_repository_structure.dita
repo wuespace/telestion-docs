@@ -7,6 +7,11 @@
         packages and external relations.</shortdesc>
     <prolog>
         <author>Pablo Klaschka</author>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2020-12-04"/>
+        </critdates>
         <metadata>
             <keywords>
                 <indexterm><ph conref="../../reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"
@@ -61,8 +66,8 @@
                 <propvalue><codeph>@wuespace/telestion-client-template</codeph></propvalue>
                 <propdesc>Template for Project-Specific Clients. Used by
                         <codeph>@wuespace/telestion-client-cli</codeph> to bootstrap new
-                        PSCs.<note>The template contains <filepath>.ejs</filepath> files that need
-                        to get bootstrapped using the EJS templating engine to create a valid PSC
+                        PSCs.<note>The template has <filepath>.ejs</filepath> files that need to get
+                        bootstrapped using the EJS templating engine to create a valid PSC
                         repository.</note></propdesc>
             </property>
             <property>

@@ -6,6 +6,11 @@
         installed on your computer.</shortdesc>
     <prolog>
         <author>Pablo Klaschka</author>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2020-12-04"/>
+        </critdates>
     </prolog>
     <taskbody>
         <context>
@@ -33,8 +38,8 @@
                     line</cmd>
                 <stepresult>The directory <filepath>telestion-docs</filepath>, containing the
                     repository's contents, gets created on your system</stepresult>
-                <steptroubleshooting>If the command fails with the message that no valid credentials
-                    were supplied, make sure you have your SSH key setup in your GitHub
+                <steptroubleshooting>If the command fails with the message that you haven't supplied
+                    valid credentials, make sure you have your SSH key setup in your GitHub
                     Account.</steptroubleshooting>
             </step>
             <step>
@@ -45,7 +50,7 @@
                 <cmd>Run <userinput>npm ci</userinput> to install the project's dependencies</cmd>
             </step>
         </steps>
-        <result id="result_btd_vqv_pmb">All necessary dependencies are installed and your work
+        <result id="result_btd_vqv_pmb">You've installed all necessary dependencies and your work
             environment is ready to start documenting the project.</result>
     </taskbody>
 </task>

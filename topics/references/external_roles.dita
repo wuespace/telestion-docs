@@ -6,6 +6,11 @@
         etc.</shortdesc>
     <prolog>
         <author>Pablo Klaschka</author>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2020-12-04"/>
+        </critdates>
     </prolog>
     <refbody>
         <table id="table_jys_qyh_nmb">
@@ -62,7 +67,7 @@
                         <entry><varname>dm</varname></entry>
                         <entry>The person deciding whether a project should adopt the Telestion
                             project for its purposes. Requires a high-level overview (or Whitepaper)
-                            of what Telestion does and doesn't provide to take an educated
+                            of what Telestion does and doesn't offer to take an educated
                             decision</entry>
                     </row>
                 </tbody>

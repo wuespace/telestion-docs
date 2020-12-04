@@ -12,16 +12,15 @@
     </prolog>
     <refbody>
         <section id="section_f5z_l4v_vnb">
-            <note>If a commit includes multiple commit types, use the <i>biggest</i> type, meaning
-                the one highest in the table below. This ensures correct versioning.</note>
+            <note>If a commit includes more than one commit type, use the <i>biggest</i> type,
+                meaning the one highest in the table below. This ensures correct versioning.</note>
             <note>If a commit conatains breaking changes, you need to declare it using an
                 exclamation mark (<codeph>!</codeph>) before the colon (between the
                     <varname>type</varname> and the colon (<codeph>:</codeph>), for example,
                     <codeph>fix!: Hello world</codeph>, or, if it exists, the
                     <varname>scope</varname> and the colon, for example, <codeph>feat(scope)!: Hello
-                    World</codeph>). With breaking changes, you should use an additional
-                    <codeph>BREAKING CHANGE: [description]</codeph> footer describing the breaking
-                change.</note>
+                    World</codeph>). With breaking changes, you should include a <codeph>BREAKING
+                    CHANGE: [description]</codeph> footer describing the breaking change.</note>
         </section>
         <table id="table_fhj_gnv_vnb">
             <tgroup cols="4">

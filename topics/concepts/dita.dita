@@ -7,6 +7,11 @@
         developed by IBM and now maintained by OASIS.</shortdesc>
     <prolog>
         <author>Pablo Klaschka</author>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2020-12-04"/>
+        </critdates>
         <metadata>
             <keywords>
                 <indexterm>DITA</indexterm>
@@ -16,7 +21,7 @@
         </metadata>
     </prolog>
     <conbody>
-        <p>DITA allows semantic markup of technical documentation. This means that instead of
+        <p>DITA enables semantic markup of technical documentation. This means that instead of
             defining how the documentation should look, authors define what the information
             represents and it then gets formatted appropriately for the platform it's viewed in.</p>
         <p>DITA is a topic-based writing style. This means that one first writes self-contained

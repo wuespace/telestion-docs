@@ -6,6 +6,11 @@
         pre-determined other nodes to retrieve information</shortdesc>
     <prolog>
         <author>Pablo Klaschka</author>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2020-12-04"/>
+        </critdates>
         <metadata>
             <keywords>
                 <indexterm><indexterm>Request-Based</indexterm> Communication</indexterm>
@@ -13,9 +18,9 @@
         </metadata>
     </prolog>
     <conbody>
-        <note>Nodes need to know which node holds the required information as requests are directed
-            at one node only. If this knowledge is unavailable, <term>Request-For-Broadcast</term>
-            might be the better choice.</note>
+        <note>Nodes need to know which node holds the required information as nodes direct requests
+            to one other node only. If this knowledge is unavailable,
+                <term>Request-For-Broadcast</term> might be the better choice.</note>
         <p>Request-based communication requires continuous, recurring polls for information to keep
             information up-to-date. </p>
         <p>Each transaction in communication is a self-contained set of a Request and a Response (or

@@ -6,6 +6,11 @@
             conref="../../reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"/> repository.</shortdesc>
     <prolog>
         <author>Pablo Klaschka</author>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2020-12-04"/>
+        </critdates>
         <metadata>
             <keywords>
                 <indexterm>telestion-client</indexterm>
@@ -15,7 +20,7 @@
         </metadata>
     </prolog>
     <taskbody>
-        <prereq id="prereq_ngj_kcv_vnb">Ensure that you have <cmdname>node</cmdname>,
+        <prereq id="prereq_ngj_kcv_vnb">Make sure that you have <cmdname>node</cmdname>,
                 <cmdname>npm</cmdname>, <cmdname>git</cmdname> and <cmdname>lerna</cmdname>
             installed on your machine.</prereq>
         <context>

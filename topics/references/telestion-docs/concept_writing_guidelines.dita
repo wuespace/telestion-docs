@@ -5,6 +5,11 @@
     <shortdesc>Guidelines for writing concept topics</shortdesc>
     <prolog>
         <author>Pablo Klaschka</author>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2020-12-04"/>
+        </critdates>
     </prolog>
     <refbody>
         <section id="section_l3j_lbb_qmb">
@@ -42,7 +47,7 @@
             </property>
             <property>
                 <proptype>Always have a <xmlelement>shortdesc</xmlelement></proptype>
-                <propdesc>Short descriptions get used at multiple points (such as the topic itself,
+                <propdesc>Short descriptions get used at many points (such as the topic itself,
                     links to the topic and more). For consistency, every
                         <xmlelement>concept</xmlelement> should include a
                         <xmlelement>shortdesc</xmlelement> (this could, in short topics, even
@@ -66,9 +71,9 @@
             </property>
             <property>
                 <proptype>Write concepts to support tasks</proptype>
-                <propdesc>Documentation should be centered on what a reader tries to do. Concepts
-                    that don't relate to one or more tasks are (usually) not needed and should be
-                    avoided.</propdesc>
+                <propdesc>Center documentation on what a reader tries to do. You (usually) don't
+                    need and should avoid concepts that don't relate to one or more
+                    tasks.</propdesc>
             </property>
         </properties>
     </refbody>

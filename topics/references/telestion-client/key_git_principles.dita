@@ -27,8 +27,8 @@
                         will be available for the world to see (and judge). But you do need and
                         should much appreciate these contributions. Therefore, if the best you can
                         do is some discouraging comment about why something is just bad, just keep
-                        it to yourself! Constructive criticism is great, but it should always be
-                        combined with explicit appreciation for the time the other person has
+                        it to yourself! Constructive criticism is great, but you should always
+                        cobine it with explicit appreciation for the time the other person has
                             taken.<note>Online comments can often be mis-intrepreted in the
                             worst-possible (as it's also the safest) way. Especially when they begin
                             to cross culture and language differences, happens far sooner than you
@@ -36,13 +36,14 @@
                 </dlentry>
                 <dlentry>
                     <dt>Keep <varname>main</varname> instantly releasable</dt>
-                    <dd>The state of the <varname>main</varname> branch should <b>always</b> be kept
+                    <dd><b>Always</b> keep the state of the <varname>main</varname> branch should
                         releasable. As this project implements automation in such a way that
                             <cmdname>lerna</cmdname> automatically releases the correct kind of
                         semantic release on the press of a button (which, theoretically, anyone
                         should be able to press), pressing that buttons should result in a
                             <i>good</i> release whenever it gets pressed.<note type="note">This
-                            allows this project to release changes in no time, if needed or wanted.</note></dd>
+                            enables this project to release changes in no time, if needed or
+                            wanted.</note></dd>
                 </dlentry>
                 <dlentry>
                     <dt>One branch per change</dt>
@@ -54,12 +55,12 @@
                 </dlentry>
                 <dlentry>
                     <dt>Use the conventional commit commit-name system</dt>
-                    <dd>It allows release notes and the required next release to get generated at
+                    <dd>It lets this project generate release notes and the required next release at
                         the push of a button, without having to think about it (sticking with the
                         instantly releasable theme). Don't worry that you might do something wrong.
-                        Even the "worst" of mistakes there can be fixed by a maintainer,
-                        either when merging your Pull Request (by squashing the commits with a new
-                        commit message) or in some other way.</dd>
+                        Even the "worst" of mistakes, a maintainer can fix, either when merging your
+                        Pull Request (by squashing the commits with a new commit message) or in some
+                        other way.</dd>
                 </dlentry>
                 <dlentry>
                     <dt>Don't be afraid to ask</dt>
@@ -79,7 +80,8 @@
             <title>Maintainer's tasks</title>
             <dl>
                 <dlentry>
-                    <dt>Ensure all contributions are by contributors who have signed the CLA</dt>
+                    <dt>Make sure that all contributions are by contributors who have signed the
+                        CLA</dt>
                     <dd>Otherwise, this project will get into a lot of legal trouble.<note
                             type="danger">If a Pull Request doesn't contain a filled checkbox or
                             other notice about the contributor having signed the NDA, <b>don't
@@ -88,18 +90,19 @@
                         immediately.</note></dd>
                 </dlentry>
                 <dlentry>
-                    <dt>Ensure every change has a conventional commit associated with it</dt>
+                    <dt>Make sure that every change has a conventional commit associated with
+                        it</dt>
                     <dd>This enables automatic generation of the release notes and next released
-                        version. If a branch contains valid and correct conventional commit
-                        messages, you can just go ahead and merge it using a merge commit with
-                        something like <q>chore: Merge <varname>PR name</varname></q>. Otherwise, you may have to squash
-                        and commit using a valid conventional commit message. In the end, the only
-                        thing that's important is that every change that's relevant for the next
-                        type of version (for example, a feature or a breaking change) or the next version's
-                        release notes has a valid conventional commit for it in the
+                        version. If a branch has valid and correct conventional commit messages, you
+                        can just go ahead and merge it using a merge commit with something like
+                            <q>chore: Merge <varname>PR name</varname></q>. Otherwise, you may have
+                        to squash and commit using a valid conventional commit message. In the end,
+                        the only thing that's important is that every change that's relevant for the
+                        next type of version (for example, a feature or a breaking change) or the
+                        next version's release notes has a valid conventional commit for it in the
                             <varname>main</varname> branch.<note type="warning">Merge commits appear
                             to not get used (to their full extent). Therefore, if, for merging a
-                            Pull Request, a new conventional commit message is required, use
+                            Pull Request, you need a new conventional commit message, use
                                 <uicontrol>Squash and Merge</uicontrol></note></dd>
                 </dlentry>
             </dl>

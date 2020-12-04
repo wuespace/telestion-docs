@@ -6,6 +6,11 @@
         when it arrives.</shortdesc>
     <prolog>
         <author>Pablo Klaschka</author>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2020-12-04"/>
+        </critdates>
         <metadata>
             <keywords>
                 <indexterm><indexterm>Broadcast-Based</indexterm> Communication</indexterm>
@@ -20,7 +25,7 @@
             <note type="tip">Broadcast-Based Communication is comparable to a chat room:<ul
                     id="ul_lw2_wlb_4mb">
                     <li>Everyone writes to everyone</li>
-                    <li>It's up to the reader to determine whether a message is important for
+                    <li>It's up to the reader to decide whether a message is important for
                         him/her</li>
                 </ul></note>
         </p>

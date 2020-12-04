@@ -5,6 +5,11 @@
     <shortdesc>A CLI for automating DITA-OT workflows</shortdesc>
     <prolog>
         <author>Pablo Klaschka</author>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2020-12-04"/>
+        </critdates>
         <metadata>
             <keywords>
                 <indexterm>dita-ot-helper</indexterm>
@@ -16,13 +21,12 @@
             necessary plugins and running DITA-OT transformations using easy-to-understand JSON
             build config files.</p>
         <p>
-            <note><cmdname>dita-ot-helper</cmdname> is based on (and therefore requires an
-                installation of) <cmdname>node</cmdname> version 10+. It additionally requires an
-                installed version of Java.</note>
+            <note><cmdname>dita-ot-helper</cmdname> requires an installation of
+                    <cmdname>node</cmdname> version 10+. It additionally requires an installed
+                version of Java.</note>
         </p>
-        <example><title>A sample dita-ot-helper config file</title>A build config file could looks
-            like
-            this:<codeblock>{
+        <example><title>An example of a dita-ot-helper config file</title>A build config file could
+            looks like this:<codeblock>{
   "input": "../project_overview.ditamap",
   "plugins": [
     "org.dita.pdf2"

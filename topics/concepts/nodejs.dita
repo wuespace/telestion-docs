@@ -3,10 +3,15 @@
 <concept id="nodejs">
     <title>NodeJS</title>
     <shortdesc><term>NodeJS</term>, also called <term>Node.js</term> or, short: <term>Node</term>,
-        is a runtime environment for JavaScript. It can be run from the command line using the
+        is a runtime environment for JavaScript. You can run it from the command line using the
             <cmdname>node</cmdname> command.</shortdesc>
     <prolog>
         <author>Pablo Klaschka</author>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2020-12-04"/>
+        </critdates>
         <metadata>
             <keywords>
                 <indexterm>NodeJS<index-see><cmdname>node</cmdname></index-see></indexterm>
@@ -16,8 +21,8 @@
         </metadata>
     </prolog>
     <conbody>
-        <p>It can be used to run applications written in JavaScript. Furthermore, it exposes APIs to
-            allow applications to access native functionality such as the file system and much
+        <p>You can use it to run applications written in JavaScript. Furthermore, it exposes APIs
+            that enable applications to access native functionality such as the file system and much
             more.</p>
         <section id="section_u2y_qfb_qmb">
             <title>The command line interface</title>

@@ -2,6 +2,13 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
 <topic id="phrases">
     <title>phrases</title>
+    <prolog>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2020-12-04"/>
+        </critdates>
+    </prolog>
     <body>
         <section id="section_psc_4bv_vnb">
             <title>Repositories</title>
@@ -15,7 +22,7 @@
                             <row>
                                 <entry>Repository name</entry>
                                 <entry>Product name</entry>
-                                <entry>Repository URL</entry>
+                                <entry>Repository link</entry>
                             </row>
                         </thead>
                         <tbody>

@@ -6,6 +6,11 @@
         documentation</shortdesc>
     <prolog>
         <author>Pablo Klaschka</author>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2020-12-04"/>
+        </critdates>
     </prolog>
     <refbody>
         <properties id="properties_rg3_ntv_pmb">
@@ -21,8 +26,8 @@
             <property>
                 <proptype>Technical writer</proptype>
                 <propdesc>Writing task, concept and reference topics and reviewing such work to
-                    ensure consistency with the guidelines layed out in the documentation regarding
-                    writing technical documentation for this project</propdesc>
+                    guarantee consistency with the guidelines layed out in the documentation
+                    regarding writing technical documentation for this project</propdesc>
             </property>
             <property>
                 <proptype>Information architect</proptype>

@@ -5,6 +5,11 @@
     <shortdesc>Guidelines for writing reference topics</shortdesc>
     <prolog>
         <author>Pablo Klaschka</author>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2020-12-04"/>
+        </critdates>
     </prolog>
     <refbody>
         <section id="section_l3j_lbb_qmb">
@@ -23,9 +28,9 @@
             <property>
                 <proptype>Describe one type of reference information per topic</proptype>
                 <propdesc>To increase reusability, references should contain one "scope" of
-                    reference information. Instead of adding multiple reference tables (and other
-                    pieces of reference content describing different information), split it into two
-                    different references.</propdesc>
+                    reference information. Instead of adding more than one reference table (and
+                    other pieces of reference content describing different information), split it
+                    into two different references.</propdesc>
             </property>
             <property>
                 <proptype>Use consistent <xmlelement>title</xmlelement> content for

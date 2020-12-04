@@ -5,6 +5,11 @@
     <shortdesc>Guidelines for writing task topics.</shortdesc>
     <prolog>
         <author>Pablo Klaschka</author>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2020-12-04"/>
+        </critdates>
     </prolog>
     <refbody>
         <section id="section_pnp_4kx_pmb">
@@ -42,8 +47,8 @@
                 <proptype>Write short descriptions for all task topics</proptype>
                 <propdesc>For easier navigation and consistency, all topics (including tasks) should
                     contain a <xmlelement>shortdesc</xmlelement> element providing a bit of context
-                    on when and why the task should be performed.<note type="important">This should
-                        not repeat the <xmlelement>title</xmlelement>, but instead provide more
+                    on when and why users should perform the task.<note type="important">This
+                        shouldn't repeat the <xmlelement>title</xmlelement>, but instead give more
                         context.</note></propdesc>
             </property>
             <property>
@@ -60,14 +65,14 @@
             <property>
                 <proptype>For unordered steps, use
                     <xmlelement>steps-unordered</xmlelement></proptype>
-                <propdesc>If steps can be performed in any order, use the
+                <propdesc>If users can perform steps in any order, use the
                         <xmlelement>steps-unordered</xmlelement> element instead of
                         <xmlelement>steps</xmlelement></propdesc>
             </property>
             <property>
                 <proptype>Begin conditional commands with the condition</proptype>
                 <propdesc>Examples:<ul id="ul_err_4lx_pmb">
-                        <li><q>if no name was previously specified, enter your name</q></li>
+                        <li><q>if you didn't specify your name before, enter your name</q></li>
                         <li><q>if the application prompts you to grant administrator rights, click
                                     <uicontrol>Allow</uicontrol></q></li>
                     </ul></propdesc>
@@ -81,22 +86,22 @@
 &lt;/step></codeblock></propdesc>
             </property>
             <property>
-                <proptype>Use the <xmlelement>info</xmlelement> element to provide additonal
+                <proptype>Use the <xmlelement>info</xmlelement> element to give additonal
                     information to a step</proptype>
                 <propdesc>This might include descriptions of the command specified in the
                         <xmlelement>cmd</xmlelement> or some other relevant info.</propdesc>
             </property>
             <property>
-                <proptype>Use the <xmlelement>stepxmp</xmlelement> element to provide an example of
+                <proptype>Use the <xmlelement>stepxmp</xmlelement> element to give an example of
                     something that gets performed in a step</proptype>
-                <propdesc>This could, for example, be a sample of how the output should look
-                    like:</propdesc>
+                <propdesc>This could, for example, be an example of how the output should look
+                    like.</propdesc>
             </property>
             <property>
                 <proptype>Use the <xmlelement>stepresult</xmlelement> element to describe the
                     results of a step, if necessary</proptype>
-                <propdesc>Don't point out the obvious. Results obvious to the target audience, such
-                    as <q>Window X opens</q> can be ommited.</propdesc>
+                <propdesc>Don't point out the obvious. You can leave out any results that are
+                    obvious to the target audience, such as <q>Window X opens</q>.</propdesc>
             </property>
         </properties>
     </refbody>
