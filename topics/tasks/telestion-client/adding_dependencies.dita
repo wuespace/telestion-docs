@@ -8,6 +8,11 @@
         />.</shortdesc>
     <prolog>
         <author>Pablo Klaschka</author>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2020-12-04"/>
+        </critdates>
         <metadata>
             <keywords>
                 <indexterm><cmdname>lerna</cmdname><indexterm>adding internal
