@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="bootstrapping_a_psc_project">
+    <title>Creating a PSC project</title>
+    <shortdesc>The <cmdname>tc-cli</cmdname> makes it quick and easy to create a new PSC project. By
+        using the CLI, you can create a runnable PSC project by running just one
+        command.</shortdesc>
+    <prolog>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2021-01-20"/>
+        </critdates>
+    </prolog>
+    <taskbody>
+        <prereq id="prereq_jv5_1pr_j4b">To bootstrap a PSC project using the
+                <cmdname>tc-cli</cmdname>, you need to have the CLI installed and the
+                <cmdname>tc-cli</cmdname> command in your your path.</prereq>
+        <steps>
+            <step>
+                <cmd>Run <codeph><cmdname>tc-cli</cmdname> init
+                        <varname>project-name</varname></codeph></cmd>
+                <info>If you don't specify the <varname>project-name</varname>, you'll get asked for
+                    it in a next step.</info>
+            </step>
+        </steps>
+        <result id="result_lxm_jpr_j4b">A folder matching the <varname>project-name</varname> gets
+            created and a PSC project created in it. You can now begin developing your PSC.</result>
+    </taskbody>
+</task>

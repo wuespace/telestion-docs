@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="telestion_client_cli">
+    <title>telestion-client CLI</title>
+    <shortdesc>The <term>telestion-client CLI</term>, which gets called with the
+            <cmdname>tc-cli</cmdname> command, is a CLI for developing Project-Specific clients, or
+        short, PSCs.</shortdesc>
+    <prolog>
+        <author type="creator">Pablo Klaschka</author>
+        <critdates>
+            <created date="2021-01-20"/>
+        </critdates>
+    </prolog>
+</concept>

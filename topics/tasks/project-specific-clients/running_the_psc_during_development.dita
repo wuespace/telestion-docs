@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="running_the_psc_during_development">
+    <title>Running the PSC during development</title>
+    <shortdesc>You'll, most likely, want to run your client to test it during development. That's
+        easy to do using the <cmdname>tc-cli</cmdname>.</shortdesc>
+    <prolog>
+        <author type="creator">Pablo Klaschka</author>
+        <critdates>
+            <created date="2021-01-20"/>
+        </critdates>
+    </prolog>
+    <taskbody>
+        <prereq id="prereq_l4c_54r_j4b">This requires a PSC and and installation, either locally in
+            the PSC or globally, of the <cmdname>tc-cli</cmdname>. This is automatically
+            pre-configured and installed when using a PSC bootstrapped using
+                    <codeph><cmdname>tc-cli</cmdname> init</codeph>.</prereq>
+        <steps>
+            <step>
+                <cmd>Open a terminal in your PSC folder</cmd>
+            </step>
+            <step>
+                <cmd>Run <codeph>npm start</codeph></cmd>
+                <info>This runs <codeph>tc-cli start</codeph>. You can, instead, also run that
+                    command directly, allowing you to specify further options.</info>
+            </step>
+        </steps>
+        <result id="result_pxc_34r_j4b">The files get transpiled by <cmdname>webpack</cmdname> and
+            the PSC opens in a new window. If you make any changes to your files, the files
+            automatically re-transpile and the window reloads, including your changes.</result>
+    </taskbody>
+</task>

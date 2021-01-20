@@ -1,0 +1,8 @@
+{
+  "input": "../psc_dev_manual.ditamap",
+  "plugins": [
+    "org.dita.pdf2"
+  ],
+  "transtype": "pdf2",
+  "propertyfile": "./general-settings.properties"
+}

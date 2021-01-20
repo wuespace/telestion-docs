@@ -2,12 +2,18 @@
 <!DOCTYPE bookmap PUBLIC "-//OASIS//DTD DITA BookMap//EN" "bookmap.dtd">
 <bookmap>
     <booktitle>
-        <mainbooktitle><ph conref="topics/reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"/>
-            <cmdname>git</cmdname> and versioning Conventions</mainbooktitle>
-        <booktitlealt>A guide for contributors and maintainers of the <ph
-                conref="topics/reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"/> GitHub
-            repository</booktitlealt>
+        <mainbooktitle>PSC Developer Manual</mainbooktitle>
+        <booktitlealt>A guide for developers of Project-Specific clients, using the <ph
+                conref="topics/reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"/>
+            architecture</booktitlealt>
     </booktitle>
+    <bookmeta>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2021-01-20"/>
+        </critdates>
+    </bookmeta>
     <frontmatter>
         <mapref processing-role="resource-only" href="topics/reusables/reusables.ditamap"/>
         <booklists>
@@ -15,31 +21,27 @@
         </booklists>
     </frontmatter>
     <chapter navtitle="Concepts">
-        <topicref href="topics/concepts/conventional_commits.dita"/>
-        <topicref href="topics/concepts/lerna.dita"/>
+        <topicref href="topics/concepts/project_specific_client.dita"/>
+        <topicref href="topics/concepts/telestion_client_cli.dita"/>
         <topicref href="topics/concepts/npm.dita"/>
         <topicref href="topics/concepts/nodejs.dita"/>
     </chapter>
     <chapter navtitle="Procedures">
         <topichead navtitle="Initial Setup" collection-type="sequence">
-            <topicref href="topics/tasks/telestion-client/installing_lerna.dita"/>
             <topicref
-                href="topics/tasks/telestion-client/setting_up_the_telestion_client_development_environment.dita"
+                href="topics/tasks/project-specific-clients/installing_the_telestion_client_cli.dita">
+                <topicref href="topics/tasks/project-specific-clients/creating_a_psc_project.dita"/>
+            </topicref>
+        </topichead>
+        <topichead navtitle="Running the PSC" collection-type="family">
+            <topicref
+                href="topics/tasks/project-specific-clients/running_the_psc_during_development.dita"
             />
         </topichead>
-        <topichead navtitle="Dependency Management" collection-type="family">
-            <topicref href="topics/tasks/telestion-client/adding_dependencies.dita"/>
-        </topichead>
-        <topichead navtitle="Releases and versioning" collection-type="family">
-            <topicref href="topics/tasks/telestion-client/creating_a_release.dita"/>
-        </topichead>
+        <topichead navtitle="Building for production" collection-type="family"/>
     </chapter>
-    <chapter navtitle="References">
-        <topicref href="topics/references/telestion-client/key_git_principles.dita"/>
-        <topicref href="topics/references/telestion-client/conventional_commit_types.dita"/>
-        <topicref
-            href="topics/references/telestion-client/telestion_client_repository_structure.dita"/>
-    </chapter>
+    <chapter navtitle="References"/>
+    <chapter navtitle="telestion-client API Reference"/>
     <backmatter>
         <booklists>
             <indexlist/>
@@ -53,51 +55,11 @@
         </relheader>
         <relrow>
             <relcell>
-                <topicref href="topics/concepts/conventional_commits.dita"/>
-            </relcell>
-            <relcell/>
-            <relcell>
-                <topicref href="topics/references/telestion-client/conventional_commit_types.dita"/>
-            </relcell>
-        </relrow>
-        <relrow>
-            <relcell>
-                <topicref href="topics/concepts/lerna.dita"/>
-            </relcell>
-            <relcell>
-                <topicref href="topics/tasks/telestion-client/installing_lerna.dita"/>
-            </relcell>
-            <relcell/>
-        </relrow>
-        <relrow>
-            <relcell>
-                <topicref href="topics/concepts/lerna.dita"/>
                 <topicref href="topics/concepts/npm.dita"/>
                 <topicref href="topics/concepts/nodejs.dita"/>
             </relcell>
             <relcell/>
             <relcell/>
-        </relrow>
-        <relrow>
-            <relcell>
-                <topicref href="topics/concepts/lerna.dita"/>
-                <topicref href="topics/concepts/conventional_commits.dita"/>
-            </relcell>
-            <relcell>
-                <topicref href="topics/tasks/telestion-client/creating_a_release.dita"/>
-            </relcell>
-            <relcell>
-                <topicref href="topics/references/telestion-client/conventional_commit_types.dita"/>
-            </relcell>
-        </relrow>
-        <relrow>
-            <relcell/>
-            <relcell/>
-            <relcell>
-                <topicref href="topics/references/telestion-client/conventional_commit_types.dita">
-                    <topicref href="topics/references/telestion-client/key_git_principles.dita"/>
-                </topicref>
-            </relcell>
         </relrow>
     </reltable>
     <reltable title="One-Way Task=>other">
@@ -105,26 +67,6 @@
             <relcolspec linking="sourceonly" type="task"/>
             <relcolspec linking="targetonly"/>
         </relheader>
-        <relrow>
-            <relcell>
-                <topicref href="topics/tasks/telestion-client/adding_dependencies.dita"/>
-            </relcell>
-            <relcell>
-                <topicref href="topics/concepts/lerna.dita"/>
-            </relcell>
-        </relrow>
-        <relrow>
-            <relcell/>
-            <relcell/>
-        </relrow>
-        <relrow>
-            <relcell/>
-            <relcell/>
-        </relrow>
-        <relrow>
-            <relcell/>
-            <relcell/>
-        </relrow>
         <relrow>
             <relcell/>
             <relcell/>

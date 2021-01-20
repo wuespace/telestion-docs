@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="installing_the_telestion_client_cli">
+    <title>Installing the telestion-client CLI</title>
+    <shortdesc>You can install the telestion-client CLI using <cmdname>npm</cmdname>. It provides a
+        lot of functionality for developing PSCs, including creating new projects, bootstrapping
+        widgets, building PSCs, and more.</shortdesc>
+    <prolog>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2021-01-20"/>
+        </critdates>
+        <metadata>
+            <keywords>
+                <indexterm>telestion-client-cli<indexterm>installing</indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <taskbody>
+        <prereq id="prereq_rlm_yrr_j4b">Since the CLI is available via the npm registry, you need to
+            have <cmdname>npm</cmdname> installed on your system and ready to use.</prereq>
+        <steps>
+            <step>
+                <cmd>Run <codeph><cmdname>npm</cmdname> install -g
+                        @wuespace/telestion-client-cli</codeph></cmd>
+                <steptroubleshooting>If you run into permission issues on UNIX-based systems (macOS
+                    and Linux), try running the command as root, using <codeph>sudo npm install -g
+                        @wuespace/telestion-client-cli</codeph>.</steptroubleshooting>
+            </step>
+        </steps>
+        <result id="result_rtz_srr_j4b">The telestion-client CLI is now installed and the
+                <cmdname>tc-cli</cmdname> commanded added to your path and ready to use.</result>
+    </taskbody>
+</task>
