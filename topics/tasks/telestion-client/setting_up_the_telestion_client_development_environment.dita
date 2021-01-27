@@ -10,6 +10,8 @@
         <critdates>
             <!--Pablo Klaschka-->
             <revised modified="2020-12-04"/>
+            <!--Pablo Klaschka-->
+            <revised modified="2021-01-26"/>
         </critdates>
         <metadata>
             <keywords>
@@ -48,8 +50,9 @@
                     your command line</stepresult>
             </step>
             <step>
-                <cmd>Run <codeph>npm run bootstrap</codeph></cmd>
-                <info>This runs <codeph>lerna bootstrap --hoist</codeph> in the background.</info>
+                <cmd>Run <codeph>npm ci</codeph></cmd>
+                <info>This will also build all packages in the background, as they may depend on
+                    each other during development.</info>
                 <stepresult>All dependencies get installed and linked automatically.</stepresult>
             </step>
         </steps>
