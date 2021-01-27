@@ -103,6 +103,8 @@ dist
 # TernJS port file
 .tern-port
 
+.idea
+
 # Build artifacts
 /build-configs/out/**
 out

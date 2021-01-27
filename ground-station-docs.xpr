@@ -357,6 +357,26 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
+                                    <String>psc_dev_manual.ditamap</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>DITA Map PDF - based on XSL-FO - Kopie</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>DITAMAP</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioStorageLocations">
+                                    <list>
+                                        <Byte>2</Byte>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
                                     <String>telestion_client_git_conventions.ditamap</String>
                                 </field>
                                 <field name="scenarioIds">
@@ -370,7 +390,9 @@
                                     </list>
                                 </field>
                                 <field name="scenarioStorageLocations">
-                                    <list/>
+                                    <list>
+                                        <Byte>2</Byte>
+                                    </list>
                                 </field>
                             </scenarioAssociation>
                         </scenarioAssociation-array>

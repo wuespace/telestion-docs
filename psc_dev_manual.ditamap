@@ -15,6 +15,8 @@
             <revised modified="2021-01-20"/>
             <!--Pablo Klaschka-->
             <revised modified="2021-01-20"/>
+            <!--Pablo Klaschka-->
+            <revised modified="2021-01-26"/>
         </critdates>
     </bookmeta>
     <frontmatter>
@@ -24,9 +26,8 @@
         </booklists>
     </frontmatter>
     <chapter navtitle="General Concepts">
-        <topicref href="topics/concepts/project_specific_client.dita">
-            <topicref href="topics/concepts/telestion_client_cli.dita"/>
-        </topicref>
+        <topicref href="topics/concepts/project_specific_client.dita"/>        
+        <topicref href="topics/concepts/telestion_client_cli.dita"/>
         <topicref href="topics/concepts/npm.dita"/>
         <topicref href="topics/concepts/nodejs.dita"/>
     </chapter>
@@ -45,7 +46,9 @@
     </chapter>
     <chapter navtitle="Widget Development"/>
     <chapter navtitle="References"/>
-    <chapter navtitle="telestion-client API Reference"/>
+    <chapter navtitle="telestion-client API Reference">
+        <mapref href="topics/__generated/api-reference/index.ditamap"/>
+    </chapter>
     <backmatter>
         <booklists>
             <indexlist/>

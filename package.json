@@ -4,11 +4,16 @@
   "version": "1.0.0",
   "scripts": {
     "start": "npm run build",
-    "build": "dita-ot-helper -i 3.5.1 build-configs/\\*.json"
+    "build": "dita-ot-helper -i 3.5.1 build-configs/\\*.json",
+    "prepare": "fliegdoc build"
   },
   "author": "Pablo Klaschka",
   "license": "MIT",
   "dependencies": {
-    "dita-ot-helper": "^0.13.0"
+    "@wuespace/telestion-client-common": "^0.3.3",
+    "@wuespace/telestion-client-core": "^0.3.3",
+    "dita-ot-helper": "^0.13.0",
+    "fliegdoc": "^0.4.5",
+    "@fliegwerk/fliegdoc-dita-theme": "^0.0.6"
   }
 }
