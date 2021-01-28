@@ -8,12 +8,18 @@
         <critdates>
             <!--Pablo Klaschka-->
             <revised modified="2020-12-04"/>
+            <!--Pablo Klaschka-->
+            <revised modified="2021-01-28"/>
         </critdates>
     </prolog>
     <refbody>
         <section id="section_f5z_l4v_vnb">
             <note>If a commit includes more than one commit type, use the <i>biggest</i> type,
-                meaning the one highest in the table below. This ensures correct versioning.</note>
+                meaning the one highest in the table below. This ensures correct versioning. For
+                example, if a feature, as a side-effect, also fixes a bug, it's still a feature. If
+                it closes an issue, please still include <codeph>Closes:
+                        #<varname>issue-number</varname></codeph> in the commit's footer to signify
+                the fix.</note>
             <note>If a commit conatains breaking changes, you need to declare it using an
                 exclamation mark (<codeph>!</codeph>) before the colon (between the
                     <varname>type</varname> and the colon (<codeph>:</codeph>), for example,
