@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/TelestionTeam/telestion-docs/compare/v1.1.2...v1.2.0) (2021-01-28)
+
+
+### Features
+
+* Improve Conventional Commit Type Reference ([b32c05c](https://github.com/TelestionTeam/telestion-docs/commit/b32c05c70e4f043eb31ccedef221381a6baacd97))
+* Improve telestion-client Key Git Principles ([ac1f733](https://github.com/TelestionTeam/telestion-docs/commit/ac1f733ba3cc30ee5d1e5ef4e9247b79f73768d0))
+
+
+### Other
+
+* Upgrade to DITA OT 3.6 and optimizations ([9708866](https://github.com/TelestionTeam/telestion-docs/commit/9708866344a68fbbaddbbf71371685acb36e8263))
+
 ### [1.1.2](https://github.com/TelestionTeam/telestion-docs/compare/v1.1.1...v1.1.2) (2021-01-28)
 
 
