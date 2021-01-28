@@ -1,7 +1,7 @@
 {
   "name": "dita-ot-helper-boilerplate",
   "private": true,
-  "version": "1.1.0",
+  "version": "1.1.1",
   "scripts": {
     "start": "npm run build",
     "build": "dita-ot-helper --verbose -i 3.5.1 build-configs/\\*.json",
