@@ -4,7 +4,7 @@
   "version": "1.1.2",
   "scripts": {
     "start": "npm run build",
-    "build": "dita-ot-helper --verbose -i 3.5.1 build-configs/\\*.json",
+    "build": "dita-ot-helper --verbose -i 3.6.0 build-configs/\\*.json",
     "prepare": "fliegdoc build",
     "release": "standard-version"
   },
