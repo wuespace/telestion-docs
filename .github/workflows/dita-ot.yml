@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: self-hosted
 
     steps:
     - uses: actions/checkout@v2
@@ -17,7 +17,7 @@ jobs:
         node-version: '12'
     - run: npm ci
     - run: npm run build
-    - run: ls -lha build-configs/out
+    - run: dir build-configs/out
       name: List results
     - name: Upload results
       uses: actions/upload-artifact@v2.2.2
