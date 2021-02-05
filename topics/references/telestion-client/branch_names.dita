@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="branch_names">
+    <title>Branch Names</title>
+    <shortdesc>Branch naming convention for the <ph
+            conref="../../reusables/phrases.dita#phrases/ph_gxh_bcv_vnb"/> repository. Following
+        this convention helps keeping things consistent and also encourages following the
+        conventional commit method.</shortdesc>
+    <prolog>
+        <author type="contributor">Pablo Klaschka</author>
+        <critdates>
+            <!--Pablo Klaschka-->
+            <revised modified="2021-02-05"/>
+        </critdates>
+    </prolog>
+    <refbody>
+        <section id="section_r4y_cwz_n4b">
+            <p>The branch name should consist of three parts, separated by slashes
+                    (<codeph>/</codeph>):<ul id="ul_yvd_gwz_n4b">
+                    <li>the <varname>conventional-commit-type</varname>, for example, <q>feat</q> or
+                            <q>fix</q></li>
+                    <li>the <varname>scope</varname> that, within a conventional commit, you would
+                        write in parenthesis after the type, for example, <q>cli</q> or <q>core</q>.
+                        Skip if not applicable. That may, for example, be the case if a branch makes
+                        a lot of changes to different parts of the repository.</li>
+                    <li>a short description of the contents in lowercase, using dashes
+                            (<codeph>-</codeph>) instead of spaces.</li>
+                </ul>All in all, you therefore get a structure that looks something like
+                this:<codeblock><varname>conventional-commit-type</varname>/(<varname>scope</varname>/)?<varname>description-in-param-case</varname></codeblock></p>
+        </section>
+        <example>
+            <title>Branch name examples</title>
+            <simpletable relcolwidth="1* 1*" id="simpletable_pdr_twz_n4b">
+                <sthead>
+                    <stentry>Branch Name</stentry>
+                    <stentry>Description</stentry>
+                </sthead>
+                <strow>
+                    <stentry>
+                        <codeblock>feat/cli/json-output</codeblock>
+                    </stentry>
+                    <stentry>A branch adding a feature for JSON output to the CLI</stentry>
+                </strow>
+                <strow>
+                    <stentry>
+                        <codeblock>chore/ci/fix-config</codeblock>
+                    </stentry>
+                    <stentry>A branch fixing the CI configuration (no actual package content gets
+                        changed!)</stentry>
+                </strow>
+                <strow>
+                    <stentry>
+                        <codeblock>fix/common/header</codeblock>
+                    </stentry>
+                    <stentry>Fix a problem within the header in the <q>common</q> package</stentry>
+                </strow>
+                <strow>
+                    <stentry>
+                        <codeblock>feat/refactoring</codeblock>
+                    </stentry>
+                    <stentry>Refactoring in more than one scope</stentry>
+                </strow>
+            </simpletable>
+        </example>
+    </refbody>
+</reference>

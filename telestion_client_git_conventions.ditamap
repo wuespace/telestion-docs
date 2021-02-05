@@ -13,6 +13,8 @@
         <critdates>
             <!--Pablo Klaschka-->
             <revised modified="2021-01-26"/>
+            <!--Pablo Klaschka-->
+            <revised modified="2021-02-05"/>
         </critdates>
     </bookmeta>
     <frontmatter>
@@ -43,6 +45,7 @@
     </chapter>
     <chapter navtitle="References">
         <topicref href="topics/references/telestion-client/key_git_principles.dita"/>
+        <topicref href="topics/references/telestion-client/branch_names.dita"/>
         <topicref href="topics/references/telestion-client/conventional_commit_types.dita"/>
         <topicref
             href="topics/references/telestion-client/telestion_client_repository_structure.dita"/>
@@ -104,6 +107,16 @@
                 <topicref href="topics/references/telestion-client/conventional_commit_types.dita">
                     <topicref href="topics/references/telestion-client/key_git_principles.dita"/>
                 </topicref>
+            </relcell>
+        </relrow>
+        <relrow>
+            <relcell>
+                <topicref href="topics/concepts/conventional_commits.dita"/>
+            </relcell>
+            <relcell/>
+            <relcell>
+                <topicref href="topics/references/telestion-client/branch_names.dita"/>
+                <topicref href="topics/references/telestion-client/conventional_commit_types.dita"/>
             </relcell>
         </relrow>
     </reltable>
