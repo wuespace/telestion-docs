@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/TelestionTeam/telestion-docs/compare/v1.2.0...v1.3.0) (2021-02-09)
+
+
+### Features
+
+* Add branch naming conventions for telestion-client ([#42](https://github.com/TelestionTeam/telestion-docs/issues/42)) ([4d67500](https://github.com/TelestionTeam/telestion-docs/commit/4d67500c830333d5aa4e25fa10eadb45d68c721c))
+
+
+### Other
+
+* **deps:** bump @wuespace/telestion-client-common from 0.3.3 to 0.6.0 ([#44](https://github.com/TelestionTeam/telestion-docs/issues/44)) ([7d55c9b](https://github.com/TelestionTeam/telestion-docs/commit/7d55c9bb00031779099d1f17c02dca4532aeb470))
+* **deps:** bump @wuespace/telestion-client-common from 0.6.0 to 0.8.0 ([#49](https://github.com/TelestionTeam/telestion-docs/issues/49)) ([47951d9](https://github.com/TelestionTeam/telestion-docs/commit/47951d90f06f568dd9bf3010ece44ebf19ce07fe))
+* **deps:** bump @wuespace/telestion-client-core from 0.3.3 to 0.6.0 ([#43](https://github.com/TelestionTeam/telestion-docs/issues/43)) ([9f0d575](https://github.com/TelestionTeam/telestion-docs/commit/9f0d575e26921356123e1e6362df75ef108e1d49))
+* **deps:** bump @wuespace/telestion-client-core from 0.6.0 to 0.8.0 ([#48](https://github.com/TelestionTeam/telestion-docs/issues/48)) ([6cbffe7](https://github.com/TelestionTeam/telestion-docs/commit/6cbffe7567b3f8e4fb1e2cf1797e7602f5980c49))
+* **deps:** bump fliegdoc from 0.4.5 to 0.4.7 ([#45](https://github.com/TelestionTeam/telestion-docs/issues/45)) ([81dd105](https://github.com/TelestionTeam/telestion-docs/commit/81dd1055ba812430abd7b7ef62805480b55262bf))
+
 ## [1.2.0](https://github.com/TelestionTeam/telestion-docs/compare/v1.1.2...v1.2.0) (2021-01-28)
 
 
