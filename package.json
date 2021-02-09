@@ -12,7 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "@wuespace/telestion-client-common": "^0.8.0",
-    "@wuespace/telestion-client-core": "^0.6.0",
+    "@wuespace/telestion-client-core": "^0.8.0",
     "dita-ot-helper": "^0.13.0",
     "fliegdoc": "^0.4.7",
     "@fliegwerk/fliegdoc-dita-theme": "^0.0.6"
