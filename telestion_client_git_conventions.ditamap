@@ -15,6 +15,8 @@
             <revised modified="2021-01-26"/>
             <!--Pablo Klaschka-->
             <revised modified="2021-02-05"/>
+            <!--Pablo Klaschka-->
+            <revised modified="2021-02-10"/>
         </critdates>
     </bookmeta>
     <frontmatter>
@@ -39,7 +41,8 @@
         <topichead navtitle="Dependency Management" collection-type="family">
             <topicref href="topics/tasks/telestion-client/adding_dependencies.dita"/>
         </topichead>
-        <topichead navtitle="Releases and versioning" collection-type="family">
+        <topichead navtitle="Maintainer Tasks" collection-type="family">
+            <topicref href="topics/tasks/telestion-client/merging_pull_requests.dita"/>
             <topicref href="topics/tasks/telestion-client/creating_a_release.dita"/>
         </topichead>
     </chapter>
