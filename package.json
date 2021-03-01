@@ -11,7 +11,7 @@
   "author": "Pablo Klaschka",
   "license": "MIT",
   "dependencies": {
-    "@wuespace/telestion-client-common": "^0.10.0",
+    "@wuespace/telestion-client-common": "^0.11.1",
     "@wuespace/telestion-client-core": "^0.11.1",
     "dita-ot-helper": "^0.13.0",
     "fliegdoc": "^0.4.7",
