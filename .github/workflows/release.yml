@@ -27,7 +27,7 @@ jobs:
     name: Upload artifacts
     needs:
       - create-release
-    runs-on: self-hosted
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
