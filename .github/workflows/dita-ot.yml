@@ -20,7 +20,7 @@ jobs:
     - run: dir build-configs/out
       name: List results
     - name: Upload results
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v2.2.3
       with:
         name: Results
         path: build-configs/out
