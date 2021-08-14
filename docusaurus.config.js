@@ -105,10 +105,15 @@ module.exports = {
 		}
 	},
 	clientModules: [],
-	plugins: [[require.resolve('@cmfcmf/docusaurus-search-local'), {
-		docsRouteBasePath: '/',
-		indexBlog: false
-	}]],
+	plugins: [
+		[
+			require.resolve('@cmfcmf/docusaurus-search-local'),
+			{
+				docsRouteBasePath: '/',
+				indexBlog: false
+			}
+		]
+	],
 	presets: [
 		[
 			'@docusaurus/preset-classic',
