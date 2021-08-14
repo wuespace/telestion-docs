@@ -1,8 +1,0 @@
-{
-  "input": "../telestion_client_git_conventions.ditamap",
-  "plugins": [
-    "org.dita.pdf2"
-  ],
-  "transtype": "pdf2",
-  "propertyfile": "./general-settings.properties"
-}

@@ -1,8 +1,0 @@
-{
-  "input": "../project_overview.ditamap",
-  "plugins": [
-    "org.dita.pdf2"
-  ],
-  "transtype": "pdf2",
-  "propertyfile": "./general-settings.properties"
-}

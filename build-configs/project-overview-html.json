@@ -1,9 +1,0 @@
-{
-  "input": "../project_overview.ditamap",
-  "output": "./out/project-overview-html5",
-  "plugins": [
-    "org.dita.html5"
-  ],
-  "transtype": "html5",
-  "propertyfile": "./general-settings.properties"
-}

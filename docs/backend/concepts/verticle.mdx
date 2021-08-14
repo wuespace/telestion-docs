@@ -1,0 +1,34 @@
+---
+title: Verticle
+---
+
+import { Reference } from '/components';
+
+Verticles are the "building blocks," so to speak, of the
+[Vert.x framework](vertx).
+
+## Basic mechanism
+
+<img src="/telestion-docs/img/excalidraw-diagrams/vertx/verticle.svg" className="invertable" />
+
+<!-- ![Diagram](/img/excalidraw-diagrams/vertx/verticle.svg) -->
+
+## Example Code
+
+```java
+public class MyVerticle extends AbstractVerticle {
+    // Called when verticle is deployed
+    public void start() {
+    }
+
+    // Optional - called when verticle is undeployed
+    public void stop() {
+    }
+}
+```
+
+## See also
+
+<Reference to="../tutorials/writing-a-verticle">
+	Tutorial: Writing a verticle
+</Reference>
