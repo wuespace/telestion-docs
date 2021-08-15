@@ -1,5 +1,3 @@
 {
-    "conventionalCommits.scopes": [
-        "readme"
-    ]
+	"conventionalCommits.scopes": ["readme"]
 }

@@ -3,7 +3,10 @@
 This repository contains the documentation for the Telestion Project. It will,
 eventually, be available at https://wuespace.github.io/telestion-docs.
 
-_Please note that this **does not** contain technical references for all Telestion modules. For that, please refer to the individual READMEs and other resources of the individual modules. Instead, this documentation focuses on more general documentation of the Telestion project._
+_Please note that this **does not** contain technical references for all
+Telestion modules. For that, please refer to the individual READMEs and other
+resources of the individual modules. Instead, this documentation focuses on more
+general documentation of the Telestion project._
 
 ## Writer's guide
 
