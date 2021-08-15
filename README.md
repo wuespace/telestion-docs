@@ -1,6 +1,7 @@
 # Telestion Docs
 
-This repository contains the documentation for the Telestion Project. It is available at https://wuespace.github.io/telestion-docs.
+This repository contains the documentation for the Telestion Project. It is
+available at https://wuespace.github.io/telestion-docs.
 
 _Please note that this **does not** contain technical references for all
 Telestion modules. For that, please refer to the individual READMEs and other
