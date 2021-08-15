@@ -1,6 +1,7 @@
 {
 	"name": "docusaurus-2-test",
 	"version": "0.0.0",
+	"description": "Documentation for the Telestion project, created using Docusaurus v2",
 	"private": true,
 	"scripts": {
 		"docusaurus": "docusaurus",
