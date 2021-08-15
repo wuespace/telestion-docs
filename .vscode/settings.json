@@ -1,3 +1,7 @@
 {
-	"conventionalCommits.scopes": ["readme", "ci"]
+	"conventionalCommits.scopes": [
+		"readme",
+		"ci",
+		"vscode-config"
+	]
 }

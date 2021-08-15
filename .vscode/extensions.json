@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "vivaxy.vscode-conventional-commits",
+        "silvenon.mdx",
+        "esbenp.prettier-vscode",
+        "redhat.vscode-yaml",
+        "yzhang.markdown-all-in-one",
+        "davidanson.vscode-markdownlint",
+        "znck.grammarly"
+    ]
+}
