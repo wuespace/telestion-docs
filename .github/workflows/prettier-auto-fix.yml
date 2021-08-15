@@ -13,6 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          token: ${{ secrets.ADMIN_REPO_TOKEN }}
           ref: ${{ github.head_ref }}
       - name: Install dependencies
         run: npm ci
@@ -20,7 +21,6 @@ jobs:
         run: npm run prettier:fix
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          token: ${{ secrets.ADMIN_REPO_TOKEN }}
           commit_message:
             'style: :white_check_mark: Fix prettier issues in `main`
             automatically'
