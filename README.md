@@ -1,5 +1,11 @@
 # Telestion Docs
 
+[![CI](https://github.com/wuespace/telestion-docs/actions/workflows/ci.yml/badge.svg)](https://github.com/wuespace/telestion-docs/actions/workflows/ci.yml)
+[![Build and Deploy](https://github.com/wuespace/telestion-docs/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/wuespace/telestion-docs/actions/workflows/gh-pages.yml)
+[![Prettier Auto Fix on main](https://github.com/wuespace/telestion-docs/actions/workflows/prettier-auto-fix.yml/badge.svg)](https://github.com/wuespace/telestion-docs/actions/workflows/prettier-auto-fix.yml)
+[![GitHub](https://img.shields.io/github/license/wuespace/telestion-docs)](LICENSE)
+[![Twitter Follow](https://img.shields.io/twitter/follow/wuespace?style=social)](https://twitter.com/wuespace)
+
 This repository contains the documentation for the Telestion Project. It is
 available at https://wuespace.github.io/telestion-docs.
 
