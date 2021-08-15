@@ -22,5 +22,4 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message:
-            'style: :rotating_light: Fix prettier issues in `main`
-            automatically'
+            'style: :rotating_light: Fix prettier issues in `main` automatically'
