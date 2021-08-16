@@ -7,7 +7,7 @@
 		"templates",
 		"stylesheet",
 		"components",
-		"docs/telestion-client-internal",
+		"docs/internal",
 		"docs/client"
 	]
 }
