@@ -8,6 +8,7 @@
 		"stylesheet",
 		"components",
 		"docs/internal",
-		"docs/client"
+		"docs/client",
+		"docs/application"
 	]
 }
