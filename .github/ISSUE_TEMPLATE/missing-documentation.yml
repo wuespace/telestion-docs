@@ -2,6 +2,7 @@ name: Feature Request (missing/incomplete documentation)
 description:
   Report a topic for which no documentation exists, yet or where documentation
   is incomplete
+title: 'Feature Request (missing/incomplete docs): '
 labels:
   - 'enhancement'
   - 'documentation'

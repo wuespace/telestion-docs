@@ -1,5 +1,6 @@
 name: Bug Report
 description: Reporting wrong documentation / typos / etc.
+title: 'Bug: '
 labels:
   - 'bug'
   - 'documentation'
