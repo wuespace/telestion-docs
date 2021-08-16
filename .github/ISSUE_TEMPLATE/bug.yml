@@ -9,17 +9,14 @@ body:
       label: 'URL'
       description: 'URL of the affected page'
       placeholder: 'https://wuespace.github.io/telestion-docs/'
-  - type: dropdown
+  - type: checkboxes
     attributes:
       label: 'Affected content type'
       options:
-        - 'Text'
-        - 'Image/Diagram'
-        - 'Code sample'
-        - 'other (please specify in comments)'
-      multiple: true
-    validations:
-      required: true
+        - label: 'Text'
+        - label: 'Image/Diagram'
+        - label: 'Code sample'
+        - label: 'other (please specify in comments)'
   - type: textarea
     attributes:
       label: 'What I expected'
