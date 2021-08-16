@@ -10,6 +10,7 @@
 		"docs/internal",
 		"docs/client",
 		"docs/application",
-		"docs/general"
+		"docs/general",
+		"images"
 	]
 }
