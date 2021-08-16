@@ -6,6 +6,8 @@
 		"deployment",
 		"templates",
 		"stylesheet",
-		"components"
+		"components",
+		"docs/telestion-client-internal",
+		"docs/client"
 	]
 }
