@@ -28,7 +28,7 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 	background-color: rgba(0, 0, 0, 0.3);
 }
 
-html[data-theme='dark'] img.invertable {
+html[data-theme='dark'] img.invertible {
 	filter: invert(1);
 }
 
