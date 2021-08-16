@@ -4,6 +4,7 @@
 		"ci",
 		"vscode-config",
 		"deployment",
-		"templates"
+		"templates",
+		"stylesheet"
 	]
 }

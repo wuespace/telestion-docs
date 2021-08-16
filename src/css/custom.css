@@ -32,11 +32,6 @@ html[data-theme='dark'] img.invertable {
 	filter: invert(1);
 }
 
-/* .navbar,
-.footer {
-  display: none;
-} */
-
 .block-link {
 	display: block;
 	border: 1px solid var(--ifm-color-emphasis-300);
