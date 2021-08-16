@@ -9,6 +9,7 @@
 		"components",
 		"docs/internal",
 		"docs/client",
-		"docs/application"
+		"docs/application",
+		"docs/general"
 	]
 }
