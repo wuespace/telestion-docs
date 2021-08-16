@@ -10,7 +10,12 @@ export function Image({ src, invertible = false, alt = '', ...args }) {
 			<Link to={mySrc} style={{ display: 'none' }}>
 				Link to {alt}
 			</Link>
-			<img src={realSrc} className={invertible ? 'invertible' : ''} alt={alt} {...args} />
+			<img
+				src={realSrc}
+				className={invertible ? 'invertible' : ''}
+				alt={alt}
+				{...args}
+			/>
 		</>
 	);
 }
