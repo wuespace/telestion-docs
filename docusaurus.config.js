@@ -95,7 +95,7 @@ module.exports = {
 			copyright: `Copyright © ${new Date().getFullYear()} WüSpace e. V. Built with Docusaurus.`
 		},
 		prism: {
-			additionalLanguages: ['java', 'powershell'],
+			additionalLanguages: ['java', 'powershell', 'ebnf'],
 			theme: lightCodeTheme,
 			darkTheme: darkCodeTheme
 		},
