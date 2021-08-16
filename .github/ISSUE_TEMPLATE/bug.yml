@@ -1,0 +1,38 @@
+name: Bug Report
+description: Reporting wrong documentation / typos / etc.
+labels:
+  - 'bug'
+  - 'documentation'
+body:
+  - type: input
+    attributes:
+      label: 'URL'
+      description: 'URL of the affected page'
+      placeholder: 'https://wuespace.github.io/telestion-docs/'
+  - type: dropdown
+    attributes:
+      label: 'Affected content type'
+      options:
+        - 'Text'
+        - 'Image/Diagram'
+        - 'Code sample'
+        - 'other (please specify in comments)'
+      multiple: true
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 'What I expected'
+      description: 'What you would have expected the documentation to say'
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 'What I instead saw'
+      description: 'What the documentation currently says'
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 'Additional comments'
+      description: 'Whatever other context you want to provide'
