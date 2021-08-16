@@ -1,6 +1,6 @@
 ---
-title: npm
-description: An overview of the npm package manager
+title: NodeJS
+description: Short overview of NodeJS, a runtime environment for JavaScript.
 ---
 
 <!--
@@ -40,36 +40,39 @@ import { Reference } from '/components';
 
 <!-- Brief Description (1-3 lines) of the concept: -->
 
-`npm` is a package manager for applications written in JavaScript (often running
-on NodeJS) Similar to PIP for Python world or composer for PHP, npm is a package
-manager for JavaScript, allowing installation and management of the project's
-dependencies (such as libraries, build tools, and more).
+_NodeJS_, also called _Node.js_ or, short: _Node_, is a runtime environment for
+JavaScript. You can run it from the command line using the node command.
 
-## `package.json`
+You can use it to run applications written in JavaScript. Furthermore, it
+exposes APIs that enable applications to access native functionality such as the
+file system and much more.
 
-`npm` uses a file called `package.json` to keep track of the required
-dependencies. Dependencies will, themselves, have a `package.json` that can also
-list dependencies. Installing dependencies using the `npm install` command
-automatically resolves and installs these recursive dependencies.
+## The command-line interface
 
-## `package-lock.json`
+To run a JS file with Node, simply run `node [JS file location]` in your command
+line. It's also possible to open an interactive REPL (Read-eval-print loop) by
+just running `node` without any arguments.
 
-The `package-lock.json` file gets generated when running `npm install` and notes
-the exact dependency versions you've installed. Later, by running `npm ci`,
-these exact versions can be re-installed, allowing for a consistent working
-environment.
+## _"Hello World"_ in Node.js
 
-## `node_modules`
+Create a file `myFile.js` with the following content:
 
-`npm` installs the project dependencies in the `node_modules` directory. As this
-will, after installation, often contain many files that can get re-installed, we
-recommend to include the folder in your .gitignore file
+```js title='myFile.js'
+console.log('Hello World');
+```
+
+You can then run it using `node myFile.js` in your command line:
+
+```sh
+$ node myFile.js
+Hello World
+```
 
 ## See also
 
-<Reference to="./nodejs">NodeJS</Reference>
+<Reference to="./npm">npm: A package manager for NodeJS applications</Reference>
 
-<Reference to="https://www.npmjs.com">npm Package Registry</Reference>
+<Reference to="https://nodejs.org/en/">NodeJS Website / Download</Reference>
 
 <!--
 Snippets
