@@ -55,7 +55,7 @@ html[data-theme='dark'] img.invertable {
 	word-break: break-word;
 }
 
-.block-link span:last-child {
+.block-link span:last-child:not(:first-child) {
 	display: block;
 	/* text-align: right; */
 	color: var(--ifm-color-content-secondary);

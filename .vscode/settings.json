@@ -5,6 +5,7 @@
 		"vscode-config",
 		"deployment",
 		"templates",
-		"stylesheet"
+		"stylesheet",
+		"components"
 	]
 }

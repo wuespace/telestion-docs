@@ -4,7 +4,7 @@ title: Writer's guide
 
 # Writer's Guide
 
-import { Reference, Grid } from '/components';
+import { Reference, Grid, FileDownload } from '/components';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -233,6 +233,20 @@ import { Reference } from '/components';
 <Reference to="https://docusaurus.io/docs/markdown-features">
 	Docusuarus Docs regarding Mardkown
 </Reference>
+
+### `<FileDownload />`
+
+#### Code:
+
+```mdx
+import { FileDownload } from '/components';
+
+<FileDownload file="/img/logo.svg">XD Template</FileDownload>
+```
+
+#### Result:
+
+<FileDownload file="/img/logo.svg">XD Template</FileDownload>
 
 ### Markdown content inside MDX components
 
