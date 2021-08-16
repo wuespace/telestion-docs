@@ -6,6 +6,7 @@
 		"redhat.vscode-yaml",
 		"yzhang.markdown-all-in-one",
 		"davidanson.vscode-markdownlint",
-		"znck.grammarly"
+		"znck.grammarly",
+		"hediet.vscode-drawio"
 	]
 }
