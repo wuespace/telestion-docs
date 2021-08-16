@@ -123,7 +123,7 @@ module.exports = {
 
 					routeBasePath: '/',
 					// Please change this to your repo.
-					editUrl: 'https://github.com/wuespace/telestion-docs'
+					editUrl: 'https://github.com/wuespace/telestion-docs/edit/main'
 				},
 				blog: false,
 				theme: {
