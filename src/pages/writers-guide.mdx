@@ -4,7 +4,7 @@ title: Writer's guide
 
 # Writer's Guide
 
-import { Reference, Grid, FileDownload } from '/components';
+import { Reference, Grid, FileDownload, Image } from '/components';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -248,6 +248,65 @@ import { FileDownload } from '/components';
 
 <FileDownload file="/img/logo.svg">XD Template</FileDownload>
 
+### `<Image />`
+
+#### Code:
+
+```mdx
+import { Image } from '/components';
+
+<Image src="/img/logo.svg" />
+<Image src="/static/img/logo.svg" /> <!-- identical -->
+
+<Image src="/img/logo.svg" alt="Telestion Logo" />
+<Image src="/img/logo.svg" invertible />
+```
+
+#### Props
+
+<table>
+	<thead>
+		<tr>
+			<td>prop</td>
+			<td>description</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<code>src: string</code>
+			</td>
+			<td>
+				url of the image. Must not include base url (`/telestion-docs`). May
+				include `/static` (this gets handled automatically)
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<code>invertible: boolean = false</code>
+			</td>
+			<td>Whether the image may be inverted for the dark theme</td>
+		</tr>
+		<tr>
+			<td>
+				<code>...</code>
+			</td>
+			<td>
+				All other props get passed to the `<img />` element itself without
+				modification.
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+#### Result:
+
+<Image width="200" src="/img/logo.svg" />
+<Image width="200" src="/static/img/logo.svg" />
+
+<Image width="200" src="/img/logo.svg" alt="Telestion Logo" />
+<Image width="200" src="/img/logo.svg" invertible />
+
 ### Markdown content inside MDX components
 
 To write Markdown content inside MDX components, leave a blank line before and
@@ -287,23 +346,23 @@ to reduce its size with these steps before using them:
 
 :::
 
-To include an image, you can simply use the standard Markdown image syntax:
+To include an image, you can use the `<Image />` component from above:
 
 #### Code:
 
 ```mdx
-![Description of the image](/img/logo.svg)
+<Image alt="Description of the image" src="/img/logo.svg" width="200" />
 ```
 
 #### Result:
 
-![Description of the image](/img/logo.svg)
+<Image alt="Description of the image" src="/img/logo.svg" width="200" />
 
 ### Images and dark mode
 
 If your image has no problems with being inverted (light becomes dark and vice
-versa), you can alternatively include your images like this and allow the
-website to invert them when users open the website in dark mode:
+versa), you can set the `invertible` attribute and allow the website to invert
+them when users open the website in dark mode:
 
 :::tip
 
@@ -315,14 +374,17 @@ text/shapes on a white/transparent background.
 #### Code:
 
 ```mdx
-<img src="/img/excalidraw-diagrams/vertx/verticle.svg" className="invertable" />
+<Image
+	src="/static/img/drawio-diagrams/conventional-commits/conventional-commits-decision-table.drawio.svg"
+	invertible
+/>
 ```
 
 #### Result:
 
-<img
-	src="/telestion-docs/img/excalidraw-diagrams/vertx/verticle.svg"
-	className="invertable"
+<Image
+	src="/static/img/drawio-diagrams/conventional-commits/conventional-commits-decision-table.drawio.svg"
+	invertible
 />
 
 (switch to dark mode to see the effect)
