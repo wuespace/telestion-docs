@@ -1,5 +1,6 @@
 import CodeBlock from '@theme/CodeBlock';
 import React, { useMemo, useState } from 'react';
+
 export function BranchNameCalculator() {
 	const [owner, setOwner] = useState('');
 
@@ -51,6 +52,45 @@ export function BranchNameCalculator() {
 	);
 }
 
+function calculateBranchName(
+	owner,
+	issueBased,
+	issueNumber,
+	commitType,
+	scope,
+	description
+) {
+	let branchName = owner.length ? `${owner}/` : ``;
+
+	if (issueBased) branchName += `issue-${issueNumber}`;
+	else {
+		branchName += `${commitType}/${
+			scope.length ? `${normalize(scope)}/` : ''
+		}${normalize(description)}`;
+	}
+
+	return branchName;
+}
+
+function normalize(string) {
+	return string
+		.toLowerCase()
+		.split(/[^a-z\-\/]/g)
+		.join('-');
+}
+
+function OwnershipFields(props) {
+	return (
+		<fieldset>
+			<legend>Ownership</legend>
+			<GitHubUsernameInput
+				owner={props.owner}
+				setOwner={props.setOwner}
+			></GitHubUsernameInput>
+		</fieldset>
+	);
+}
+
 function GitHubUsernameInput(props) {
 	return (
 		<label>
@@ -63,6 +103,24 @@ function GitHubUsernameInput(props) {
 				placeholder="No ownership specified"
 			/>
 		</label>
+	);
+}
+
+function IssueBasedFields(props) {
+	return (
+		<fieldset>
+			<legend>Issue-based</legend>
+			<IsIssueBasedCheckbox
+				issueBased={props.issueBased}
+				setIssueBased={props.setIssueBased}
+			></IsIssueBasedCheckbox>
+			<br />
+			<IssueNumberInput
+				issueBased={props.issueBased}
+				issueNumber={props.issueNumber}
+				setIssueNumber={props.setIssueNumber}
+			></IssueNumberInput>
+		</fieldset>
 	);
 }
 
@@ -93,6 +151,36 @@ function IssueNumberInput(props) {
 				onChange={e => props.setIssueNumber(e.target.value)}
 			/>
 		</label>
+	);
+}
+
+function ConventionalCommitBasedFields(props) {
+	return (
+		<fieldset>
+			<legend>Conventional Commit Based</legend>
+			{props.issueBased && (
+				<p>
+					<i>Only available if name is not issue-based.</i>
+				</p>
+			)}
+			<CommitTypeInput
+				issueBased={props.issueBased}
+				commitType={props.commitType}
+				setCommitType={props.setCommitType}
+			></CommitTypeInput>
+			<br />
+			<ScopeInput
+				issueBased={props.issueBased}
+				scope={props.scope}
+				setScope={props.setScope}
+			></ScopeInput>
+			<br />
+			<CommitDescriptionInput
+				issueBased={props.issueBased}
+				description={props.description}
+				setDescription={props.setDescription}
+			></CommitDescriptionInput>
+		</fieldset>
 	);
 }
 
@@ -154,91 +242,4 @@ function CommitTypeInput(props) {
 			</select>
 		</label>
 	);
-}
-
-function OwnershipFields(props) {
-	return (
-		<fieldset>
-			<legend>Ownership</legend>
-			<GitHubUsernameInput
-				owner={props.owner}
-				setOwner={props.setOwner}
-			></GitHubUsernameInput>
-		</fieldset>
-	);
-}
-
-function IssueBasedFields(props) {
-	return (
-		<fieldset>
-			<legend>Issue-based</legend>
-			<IsIssueBasedCheckbox
-				issueBased={props.issueBased}
-				setIssueBased={props.setIssueBased}
-			></IsIssueBasedCheckbox>
-			<br />
-			<IssueNumberInput
-				issueBased={props.issueBased}
-				issueNumber={props.issueNumber}
-				setIssueNumber={props.setIssueNumber}
-			></IssueNumberInput>
-		</fieldset>
-	);
-}
-
-function ConventionalCommitBasedFields(props) {
-	return (
-		<fieldset>
-			<legend>Conventional Commit Based</legend>
-			{props.issueBased && (
-				<p>
-					<i>Only available if name is not issue-based.</i>
-				</p>
-			)}
-			<CommitTypeInput
-				issueBased={props.issueBased}
-				commitType={props.commitType}
-				setCommitType={props.setCommitType}
-			></CommitTypeInput>
-			<br />
-			<ScopeInput
-				issueBased={props.issueBased}
-				scope={props.scope}
-				setScope={props.setScope}
-			></ScopeInput>
-			<br />
-			<CommitDescriptionInput
-				issueBased={props.issueBased}
-				description={props.description}
-				setDescription={props.setDescription}
-			></CommitDescriptionInput>
-		</fieldset>
-	);
-}
-
-function calculateBranchName(
-	owner,
-	issueBased,
-	issueNumber,
-	commitType,
-	scope,
-	description
-) {
-	let branchName = owner.length ? `${owner}/` : ``;
-
-	if (issueBased) branchName += `issue-${issueNumber}`;
-	else {
-		branchName += `${commitType}/${
-			scope.length ? `${normalize(scope)}/` : ''
-		}${normalize(description)}`;
-	}
-
-	return branchName;
-}
-
-function normalize(string) {
-	return string
-		.toLowerCase()
-		.split(/[^a-z\-\/]/g)
-		.join('-');
 }
