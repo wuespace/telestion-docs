@@ -41,6 +41,19 @@ encourages following the conventional commit method.
 
 <!-- Content (e.g., a table, a list, a diagram, or a definition list) -->
 
+import { BranchNameCalculator } from './branch-names/BranchNameCalculator';
+
+:::tip Branch name calculator
+
+If you don't want to read through this page, you can simply use the interactive
+"branch name calculator" below :wink::
+
+<BranchNameCalculator />
+
+:::
+
+## Reading this document
+
 :::tip Reading the EBNF grammar in this document
 
 This document uses the EBNF language to describe a technical grammar for branch
@@ -137,7 +150,7 @@ like this:
 
 <scope-name> ::= <valid-char> {<valid-char>} ;
 
-<valid-char> ::= "a" | "b" | ... | "z" | "-" ;
+<valid-char> ::= "a" | "b" | ... | "z" | "-" | "/" ;
 ```
 
 where
