@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.1.0](https://www.github.com/wuespace/telestion-docs/compare/v2.0.0...v2.1.0) (2021-08-31)
+
+
+### Features
+
+* :sparkles: Add information architecture problem issue form ([e545f31](https://www.github.com/wuespace/telestion-docs/commit/e545f31ce034360d33fbecc69e0705d30db0c1b6))
+* :sparkles: Add missing/incomplete documentation issue form ([626b31f](https://www.github.com/wuespace/telestion-docs/commit/626b31f30f20d211095a147521152634fb618bb7))
+* **components:** :sparkles: Add `<Image />` component for more consistent image handling ([cfa8097](https://www.github.com/wuespace/telestion-docs/commit/cfa8097d6aca18be85b563feda9e9000547290e0))
+* **docs/internal:** :sparkles: Add an interactive branch name calculator to the branch names reference ([3bcd22f](https://www.github.com/wuespace/telestion-docs/commit/3bcd22f9fc191fa19404fdd6c87305e8ef456566))
+* **templates:** :seedling: Include `<Image />` component import by default in all templates ([d8ff855](https://www.github.com/wuespace/telestion-docs/commit/d8ff855b450b7cb73bc0432247e89f029ba5f160))
+
 ## [2.0.0](https://www.github.com/wuespace/telestion-docs/compare/v1.3.0...v2.0.0) (2021-08-16)
 
 
