@@ -94,7 +94,7 @@ function OwnershipFields(props) {
 function GitHubUsernameInput(props) {
 	return (
 		<label>
-			Your GitHub Username (only set if you'll be de only one working on the
+			Your GitHub Username (only set if you'll be the only one working on the
 			branch):
 			<br />
 			<input
