@@ -1,0 +1,130 @@
+---
+title: Start a new Project
+# e.g., "Publishing messages to the event bus" or "Installing a dependency using npm"
+
+description: Start a new Telestion Project with the Telestion Project template
+---
+
+<!--
+Tutorial
+========
+
+=== When to use this template:
+Use this template when you want to give a quick, step-by-step tutorial for solving a specific
+technical problem. Tutorials allow the reader to learn how to implement something within
+their projects quickly.
+
+=== When not to use this template:
+When your article focuses more on a concept/technology and is not rooted in a specific technical
+problem ("how to do XY?"), consider using a guide instead.
+
+=== Guide or Tutorial
+A tutorial provides a quick, technical "step-by-step" tutorial for a
+given problem. Thus, a guide describes less the handling of a specific problem
+and more the general interaction of the reader with a given concept.
+
+Example with npm articles:
+- "npm": (Concept, explaining what npm is)
+- "Installing a dependency with npm" (Tutorial, providing a quick tutorial to
+  solve a technical problem)
+- "Managing dependencies with npm" (Guide, including both technical knowledge, but
+  also best practices and more)
+
+=== Writing tips:
+- Write in the present tense
+- Use neutral pronouns (they/them instead of he/she and him/her)
+- Be respectful to everyone
+- Be aware of the potential for cultural misunderstandings
+- Provide explanations for what you do, but focus on the step-by-step guide
+  without deeply explaining every technical decision and why it's best prcatice
+  to do so (you can describe best practices in a guide, a tutorial must focus on
+  keeping the "step by step" flow going)
+-->
+
+<!-- Relevant imports: -->
+
+import { Reference, Image } from '/components';
+
+<!-- Short description of what the article covers: -->
+
+In this tutorial, we start a new Telestion Project based on the provided template.
+
+:::info Prerequisites
+
+To complete this tutorial, you should be familiar with the functionality of Git and the usage of GitHub templates 
+as well as the GitHub web interface.
+
+:::
+
+## What we'll build
+
+A "ready to implement" project for your specific groundstation-related problem.
+
+## Step 1: Create a new Project repository
+
+First, log in into GitHub with your user account.
+
+Head to our project template and press the `Use this template button`.
+
+<Reference to="https://github.com/wuespace/telestion-project-template">
+  Telestion Project Template
+</Reference>
+
+<Image src="/img/new-project/github-use-this-template.png" alt="GitHub's Use this template button" />
+
+Now, GitHub asks you some required information.
+Please select suitable user/group and give the repository a meaningful name.
+
+Next, select your repository's visibility.
+When you are satisfied with your information, press the `Create repository from template` button.
+
+<Image src="/img/new-project/github-create-repo.png" alt="GitHub's Create repository from template interface" />
+
+That's it!
+
+## Step 2: Initialize the new project
+
+Now, you should have a new repository under your control.
+
+Next, initialize the Telestion project.
+The template ships with a GitHub action which does the Initialzation steps for you.
+
+Go to the `Actions` tab and select the `Initialize` in the left sidebar.
+
+<Image src="/img/new-project/github-actions-initialize.png" alt="GitHub Actions page with the selected Initialize action" />
+
+Now press the `Run workflow` button in the Action list.
+In the popup enter your preferences and then press `Run workflow`.
+
+<Image src="/img/new-project/github-initialize-run-workflow.png" alt="Open popup to run the Initialize workflow in GitHub Actions" />
+
+:::tip Java package naming
+
+It is recommended to follow the 
+[Maven Central `groupId` naming conventions](https://maven.apache.org/guides/mini/guide-naming-conventions.html), 
+e.g. beginning with the company url in reverse.
+
+:::
+
+## Next steps
+
+<!-- Short concluding sentence: -->
+
+That's it! Now you have a new Telestion Project ready for development.
+
+<!-- Links to next steps/related articles -->
+
+Next steps: Coming soon™
+
+<!--
+Snippets
+--------
+
+<Reference to="../other-article">
+    Relative Link to other article
+</Reference>
+
+<Reference to="https://www.example.com">
+    Example Website
+</Reference>
+-->
