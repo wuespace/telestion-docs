@@ -1,0 +1,23 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "build",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: build",
+			"detail": "docusaurus build"
+		},
+		{
+			"type": "npm",
+			"script": "serve",
+			"dependsOn": ["npm: build"],
+			"dependsOrder": "sequence",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: serve",
+			"detail": "docusaurus serve"
+		}
+	]
+}
