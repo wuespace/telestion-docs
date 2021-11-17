@@ -67,6 +67,12 @@ html[data-theme='dark'] img.invertible {
     text-transform: none;
 }
 
+img.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 @media print {
 	.col.col--8,
 	.col.col--8 > * {
