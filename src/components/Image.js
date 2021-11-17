@@ -1,8 +1,9 @@
 import React from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Link from '@docusaurus/Link';
+import clsx from 'clsx';
 
-export function Image({ src, invertible = false, alt = '', ...args }) {
+export function Image({ src, invertible = false, center = false, alt = '', ...args }) {
 	const mySrc = src.startsWith('/static') ? src.substr(7) : src;
 	const realSrc = useBaseUrl(mySrc);
 	return (
@@ -12,7 +13,7 @@ export function Image({ src, invertible = false, alt = '', ...args }) {
 			</Link>
 			<img
 				src={realSrc}
-				className={invertible ? 'invertible' : ''}
+				className={clsx(invertible && 'invertible', center && 'center')}
 				alt={alt}
 				{...args}
 			/>
