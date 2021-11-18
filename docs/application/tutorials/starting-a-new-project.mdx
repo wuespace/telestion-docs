@@ -47,12 +47,13 @@ import { Reference, Image } from '/components';
 
 <!-- Short description of what the article covers: -->
 
-In this tutorial, we start a new Telestion Project based on the provided template.
+In this tutorial, we start a new Telestion Project based on the provided
+template.
 
 :::info Prerequisites
 
-To complete this tutorial, you should be familiar with the functionality of Git and the usage of GitHub templates 
-as well as the GitHub web interface.
+To complete this tutorial, you should be familiar with the functionality of Git
+and the usage of GitHub templates as well as the GitHub web interface.
 
 :::
 
@@ -67,18 +68,24 @@ First, log into GitHub with your user account.
 Head to our project template and press the `Use this template button`.
 
 <Reference to="https://github.com/wuespace/telestion-project-template">
-  Telestion Project Template
+	Telestion Project Template
 </Reference>
 
-<Image src="/img/new-project/github-use-this-template.png" alt="GitHub's Use this template button" />
+<Image
+	src="/img/new-project/github-use-this-template.png"
+	alt="GitHub's Use this template button"
+/>
 
-Now, GitHub asks you some required information.
-Select a suitable user/group and give the repository a meaningful name.
+Now, GitHub asks you some required information. Select a suitable user/group and
+give the repository a meaningful name.
 
-Next, select your repository's visibility.
-When you are satisfied with your information, press the `Create repository from template` button.
+Next, select your repository's visibility. When you are satisfied with your
+information, press the `Create repository from template` button.
 
-<Image src="/img/new-project/github-create-repo.png" alt="GitHub's Create repository from template interface" />
+<Image
+	src="/img/new-project/github-create-repo.png"
+	alt="GitHub's Create repository from template interface"
+/>
 
 That's it!
 
@@ -86,22 +93,28 @@ That's it!
 
 Now, you should have a new repository under your control.
 
-Next, initialize the Telestion project.
-Our template already has a GitHub Action configuration that does the initialization steps for you.
+Next, initialize the Telestion project. Our template already has a GitHub Action
+configuration that does the initialization steps for you.
 
 Go to the `Actions` tab and select the `Initialize` in the left sidebar.
 
-<Image src="/img/new-project/github-actions-initialize.png" alt="GitHub Actions page with the selected Initialize action" />
+<Image
+	src="/img/new-project/github-actions-initialize.png"
+	alt="GitHub Actions page with the selected Initialize action"
+/>
 
-Now press the `Run workflow` button in the Action list.
-In the popup, enter your preferences and then press `Run workflow`.
+Now press the `Run workflow` button in the Action list. In the popup, enter your
+preferences and then press `Run workflow`.
 
-<Image src="/img/new-project/github-initialize-run-workflow.png" alt="Open popup to run the Initialize workflow in GitHub Actions" />
+<Image
+	src="/img/new-project/github-initialize-run-workflow.png"
+	alt="Open popup to run the Initialize workflow in GitHub Actions"
+/>
 
 :::tip Java package naming
 
 We recommend following the
-[Maven Central `groupId` naming conventions](https://maven.apache.org/guides/mini/guide-naming-conventions.html), 
+[Maven Central `groupId` naming conventions](https://maven.apache.org/guides/mini/guide-naming-conventions.html),
 e.g., beginning with the company URL in reverse.
 
 :::
