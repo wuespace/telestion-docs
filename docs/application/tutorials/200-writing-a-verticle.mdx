@@ -144,7 +144,7 @@ You should only ever use JSON based messages in real Telestion projects.
 
 There are uses for Verticles that only listen to channels without ever
 publishing anything themselves. For example, you could write a Verticle that
-simply logs all incoming messages to a file or saved them to the database. In
+simply logs all incoming messages to a file or saves them to the database. In
 this case, however, we want to transform the data and "republish" it to the
 event bus (this time, on a different channel called `"output"`).
 
