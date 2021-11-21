@@ -40,7 +40,7 @@ public class MessageTransformer extends AbstractVerticle {
 		var eb = getVertx().eventBus();
 
 		eb.consumer("input", message -> {
-			int received = (int) message.body(); // cast body to integer
+			var received = (int) message.body(); // cast body to integer
 			eb.publish("output", received * 2); // republish
 		});
 	}
@@ -104,7 +104,7 @@ public class MessageTransformer extends AbstractVerticle {
 		var eb = getVertx().eventBus();
 
 		eb.consumer("input", message -> {
-			int received = (int) message.body(); // cast body to integer
+			var received = (int) message.body(); // cast body to integer
 			// further process the received value
 		});
 	}
@@ -116,7 +116,7 @@ We first get an instance to the Event Bus APIs using `getVertx().eventBus()`.
 Then, using `eb.consumer(address, handler)`, we can register a `handler` that
 reacts to messages on the channel with the address `address`.
 
-The first argument to that `handler(message)` callback is the `message` and
+The first argument to that `handler(message)` callback is the `message` which
 contains all information about the message, including the body, optional
 headers, and more.
 
