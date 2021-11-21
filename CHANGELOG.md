@@ -1,5 +1,24 @@
 # Changelog
 
+## [2.2.0](https://www.github.com/wuespace/telestion-docs/compare/v2.1.0...v2.2.0) (2021-11-21)
+
+
+### Features
+
+* **application:** Add a tutorial to start a new Telestion project ([a3143d3](https://www.github.com/wuespace/telestion-docs/commit/a3143d3e522519314fce45597c82e56e9f285b15))
+* **docs/application:** :sparkles: Add tutorial about using the `JsonMessage` inteface ([29fdcb9](https://www.github.com/wuespace/telestion-docs/commit/29fdcb9ebf0a7dd69970a3db836ff85354af5a89))
+* **docs/application:** :sparkles: Add tutorial for adding configuration options to Verticles ([f54a162](https://www.github.com/wuespace/telestion-docs/commit/f54a162a37c1c6f40deef9f11b9c23b202a25d6b))
+* **docs/application:** :sparkles: Fill out (i.e., actually write) the "Writing a Verticle" tutorial ([405335f](https://www.github.com/wuespace/telestion-docs/commit/405335f75ef1a8c176b0f446326ed3cdd81485cd))
+* **images:** :bento: Add event bus bridge explanation diagram to assets ([d9ff906](https://www.github.com/wuespace/telestion-docs/commit/d9ff906842ea82dd7937edb33f0333e803d5ecae))
+* **images:** :bento: Add event bus explanation diagram to assets ([0ea91cc](https://www.github.com/wuespace/telestion-docs/commit/0ea91cce8d1588ddf0d659d1b3c66366c8de0864))
+* **images:** :bento: Add general Telestion structure overview diagram to assets ([e2a1fcd](https://www.github.com/wuespace/telestion-docs/commit/e2a1fcdbe76c93cfd92fcd5df15e74c278eecbd3))
+* **stylesheet:** :lipstick: Make it possible to center images ([d505b2f](https://www.github.com/wuespace/telestion-docs/commit/d505b2f7e67e8e0828e6cb85d6f361a0ca67ae59))
+
+
+### Bug Fixes
+
+* **docs/application:** :bug: Add missing reference to Backend Tutorials overview page ([dfc7694](https://www.github.com/wuespace/telestion-docs/commit/dfc76949a99ad1a6df9c82a85aaab3a568701531))
+
 ## [2.1.0](https://www.github.com/wuespace/telestion-docs/compare/v2.0.0...v2.1.0) (2021-08-31)
 
 
