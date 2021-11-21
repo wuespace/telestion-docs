@@ -8,7 +8,7 @@ description:
 
 import { Reference, Image } from '/components';
 
-In this tutorial, we write a simple Verticle for the Telestion ecosystem.
+In this tutorial, we write a simple [Verticle](/application/concepts/verticle) for the Telestion ecosystem.
 
 :::info Prerequisites
 
@@ -77,7 +77,7 @@ public class MessageTransformer extends AbstractVerticle {
 ### Step 2: Listen to messages
 
 Basically, every Verticle's main functionality is to listen for messages on the
-so-called event bus, process them, and potentially publish new information to
+so-called [event bus](/application/concepts/event-bus), process them, and potentially publish new information to
 the event bus.
 
 Messages on the event bus are "grouped" on so-called channels that are
@@ -253,6 +253,6 @@ configurability to your verticle (allowing you to re-use it), and more.
 
 <!-- TODO: Add references, as soon as they exist -->
 
-<Reference to="using-jsonmessage">
+<Reference to="/application/tutorials/using-jsonmessage/">
 	Using <code>JsonMessage</code> for event bus messages
 </Reference>

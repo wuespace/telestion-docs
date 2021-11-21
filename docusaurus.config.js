@@ -7,6 +7,7 @@ module.exports = {
 	tagline: 'A modular Ground Station',
 	url: 'https://wuespace.github.io/',
 	baseUrl: '/telestion-docs/',
+	trailingSlash: true,
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'warn',
 	favicon: 'img/favicon.ico',
