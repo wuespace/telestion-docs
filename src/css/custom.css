@@ -64,7 +64,7 @@ html[data-theme='dark'] img.invertible {
 }
 
 .admonition-heading code {
-    text-transform: none;
+	text-transform: none;
 }
 
 img.center {

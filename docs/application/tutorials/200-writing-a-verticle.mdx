@@ -83,12 +83,12 @@ the event bus.
 Messages on the event bus are "grouped" on so-called channels that are
 identified by their address (a `String`):
 
-<Image 
-src="/img/drawio-diagrams/vertx/eventbus.drawio.svg" 
-alt="Diagram that shows two Verticles publishing to a bus with an address 'xy' and 
+<Image
+	src="/img/drawio-diagrams/vertx/eventbus.drawio.svg"
+	alt="Diagram that shows two Verticles publishing to a bus with an address 'xy' and 
 one verticle receiving messages from that bus"
-invertible 
-center
+	invertible
+	center
 />
 
 For now, let's keep it simple and listen to the `"input"` channel:
@@ -252,4 +252,7 @@ using Telestion's APIs to get type safety in event bus messages, add
 configurability to your verticle (allowing you to re-use it), and more.
 
 <!-- TODO: Add references, as soon as they exist -->
-<Reference to="using-jsonmessage">Using <code>JsonMessage</code> for event bus messages</Reference>
+
+<Reference to="using-jsonmessage">
+	Using <code>JsonMessage</code> for event bus messages
+</Reference>

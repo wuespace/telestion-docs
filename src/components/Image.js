@@ -3,7 +3,13 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Link from '@docusaurus/Link';
 import clsx from 'clsx';
 
-export function Image({ src, invertible = false, center = false, alt = '', ...args }) {
+export function Image({
+	src,
+	invertible = false,
+	center = false,
+	alt = '',
+	...args
+}) {
 	const mySrc = src.startsWith('/static') ? src.substr(7) : src;
 	const realSrc = useBaseUrl(mySrc);
 	return (
