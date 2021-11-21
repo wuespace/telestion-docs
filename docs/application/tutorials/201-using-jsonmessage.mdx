@@ -191,7 +191,7 @@ public class MessageTransformer extends AbstractVerticle {
 ```
 
 Instead of handling the `event` directly, we pass it into the `JsonMessage.on()`
-function. This, then, filters messages and calls a handler passed into it if and
+function. This then filters messages and calls a handler passed into it if and
 only if the message type matches the specified class (here: `IntegerMessage`).
 
 The first argument to the handler, `message`, then is the already deserialized
