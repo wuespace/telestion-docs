@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.2.1](https://www.github.com/wuespace/telestion-docs/compare/v2.2.0...v2.2.1) (2021-11-21)
+
+
+### Bug Fixes
+
+* **deployment:** :ambulance: Force trailing slashes for better GitHub pages support ([239d5d4](https://www.github.com/wuespace/telestion-docs/commit/239d5d48b17b5555ecb8f872ffcd5b1047e1b820))
+
 ## [2.2.0](https://www.github.com/wuespace/telestion-docs/compare/v2.1.0...v2.2.0) (2021-11-21)
 
 
