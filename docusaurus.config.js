@@ -110,7 +110,7 @@ module.exports = {
 		[
 			require.resolve('@cmfcmf/docusaurus-search-local'),
 			{
-				docsRouteBasePath: '/',
+				// docsRouteBasePath: '/',
 				indexBlog: false
 			}
 		]
