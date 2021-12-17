@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.3.0](https://www.github.com/wuespace/telestion-docs/compare/v2.2.1...v2.3.0) (2021-12-17)
+
+
+### Features
+
+* **docs/general:** :building_construction: Add category index pages to public documentation pages ([ee30bef](https://www.github.com/wuespace/telestion-docs/commit/ee30bef4b86c346a477b4bf6adc26d791afbbe73))
+
+
+### Bug Fixes
+
+* **docs/application:** Fix a small typo ([5e22acf](https://www.github.com/wuespace/telestion-docs/commit/5e22acf5006ec415b3729131c384741831bf298f))
+* **docs/general:** :adhesive_bandage: Fix concept topic order ([7547833](https://www.github.com/wuespace/telestion-docs/commit/75478332a91ddcb2e810f63951edd8819f0f4bc9))
+
 ### [2.2.1](https://www.github.com/wuespace/telestion-docs/compare/v2.2.0...v2.2.1) (2021-11-21)
 
 
