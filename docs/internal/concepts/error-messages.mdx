@@ -50,8 +50,7 @@ good error messages are crucial for a good developer experience.
 
 Developers using your libraries **shouldn't have to know** how your library
 works to solve problems. It is therefore crucial to handle potential errors of a
-library in the library itself and, if necessary, throw (to the developer using
-the library) only higher-level exceptions with good error messages.
+library in the library itself and, if necessary, throw only higher-level exceptions with good error messages to the developer using the library.
 
 Even the best error message can't solve that a few abstractions down the line
 (i.e., a few layers further up the call stack), they don't really make sense
@@ -68,7 +67,7 @@ developer experience!_
 
 It might seem strange, but most errors are actually "expected" errors. For
 example, when opening a file, we can already anticipate that the user might not
-have the rights to read the file and the operation might, therefore, fail.
+have the rights to read the file and the operation might therefore fail.
 
 This, in turn, means that we're able to write "actionable" error messages, i.e.,
 messages that already contain potential solutions.
