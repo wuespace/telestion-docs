@@ -1,0 +1,115 @@
+---
+title: Error/Exception Messages (Code)
+description:
+  Error messages are a part of every application and getting them right is
+  crucial for a good developer experience.
+---
+
+<!--
+Concept
+=======
+
+=== When to use this template:
+Use this template when you need to describe a concept, technology,
+or something similar. In other words: whenever you need to write an
+article that describes a concept where the concept's name can be the
+article's title (e.g., "Vert. x", "Verticle", "Event Bus")
+
+=== When not to use this template:
+Do not use these templates for articles that give context on how
+to use/approach the topic. Instead, it would be best if you used a guide for that.
+
+Writing a guide and a concept article are not mutually exclusive. Instead,
+you should, in most cases, write both, where the concept gives a brief overview
+of what it is, and the guide is a longer article explaining best practices on using
+it.
+
+E.g.:
+Concept: Event Bus
+Guide: Interacting with the Event Bus
+
+
+=== Writing tips:
+- Write in the present tense
+- Use neutral pronouns (they/them instead of he/she and him/her)
+- Be respectful to everyone
+- Be aware of the potential for cultural misunderstandings
+-->
+
+<!-- Relevant imports: -->
+
+import { Reference, Image } from '/components';
+
+<!-- Brief Description (1-3 lines) of the concept: -->
+
+Error messages are a part of practically every application or library we
+develop. Especially in libraries (like `telestion-core` or `telestion-client`),
+good error messages are crucial for a good developer experience.
+
+:::warning
+
+Developers using your libraries **shouldn't have to know** how your library
+works to solve problems. It is therefore crucial to handle potential errors of a
+library in the library itself and, if necessary, throw only higher-level exceptions with good error messages to the developer using the library.
+
+Even the best error message can't solve that a few abstractions down the line
+(i.e., a few layers further up the call stack), they don't really make sense
+anymore.
+
+Therefore, _**all** library functions must **always** catch **all** possible
+errors and provide **their own** error messages that are helpful in **the
+context of the immediate caller** of that function to guarantee for a good
+developer experience!_
+
+:::
+
+## Error messages for expected errors
+
+It might seem strange, but most errors are actually "expected" errors. For
+example, when opening a file, we can already anticipate that the user might not
+have the rights to read the file and the operation might therefore fail.
+
+This, in turn, means that we're able to write "actionable" error messages, i.e.,
+messages that already contain potential solutions.
+
+Whenever it is possible to already "know what went wrong", you should write
+so-called _Actionable Error Messages_ that already provide potential solutions
+within the error message itself.
+
+<Reference to="/internal/references/actionable-error-message-structure">
+	Actionable Error Message Structure
+</Reference>
+
+## Error messages for unexpected errors
+
+Sometimes, you know that an error is theoretically possible, but you can't
+imagine any scenario where it would actually occur.
+
+What's important here is to be up-front with it. While it'll still be
+frustrating for developers to learn that you don't have a solution for them,
+it's even more frustrating to learn that from a 2 hour search for a solution
+that doesn't exist.
+
+In these cases, it's important to be honest and give developers a way to easily
+report this bug to us. You should also include a quick apology in your error
+message since the fact that you hadn't anticipated the scenerio means it's you
+who messed up, and it's also up to you to fix it asap.
+
+<Reference to="/internal/references/unexpected-error-message-structure">
+	Unexpected Error Message Structure
+</Reference>
+
+<!-- ## See also -->
+
+<!--
+Snippets
+--------
+
+<Reference to="../other-article">
+    Relative Link to other article
+</Reference>
+
+<Reference to="https://www.example.com">
+    Example Website
+</Reference>
+-->

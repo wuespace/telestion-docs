@@ -1,0 +1,166 @@
+---
+title: Actionable Error Message Structure
+description:
+  You should use Actionable Error Messages whenever you expect for an error to
+  occur. Learn how to write them well and improve your library's developer
+  experience.
+---
+
+<!--
+Reference
+=========
+
+=== When to use this template:
+When you're documenting some topic so that users (e.g., ecosystem developers)
+can quickly lookup a fact. These articles typically consist of a list, a
+definition list, a table, or some other form of "quick-to-lookup" information.
+
+=== When not to use this template:
+Do not use a reference article to explain a concept. You should keep additional
+information within the reference article to a minimum so that knowledgeable users
+can quickly see the facts that are relevant to them. You can link to concepts and
+other topics to explain specific concepts, if necessary.
+
+=== Writing tips:
+- Write in the present tense
+- Use neutral pronouns (they/them instead of he/she and him/her)
+- Be respectful to everyone
+- Be aware of the potential for cultural misunderstandings
+- Keep the amount of additional information to a minimum (focus on the facts)
+- If necessary, link to concept topics. Do not explain them in the article
+- Use a suitable form of content so that readers can quickly look up the desired
+  information (e.g., a table, a list, a diagram, or something else)
+-->
+
+<!-- Relevant imports: -->
+
+import { Reference, Image } from '/components';
+
+<!-- Short description of what information this document provides: -->
+
+:::tip Warning messages
+
+Warnings and non-aborting errors (i.e., error logs that don't cause runtime
+exceptions) are also considered to be error messages in this context.
+
+:::
+
+Use this error message structure whenever you expected for this error to occur
+in specific situations and are able to provide suggestions on how to solve the
+problem.
+
+:::note Example
+
+For this example, we'll assume that the developer passed an invalid hostname to
+your function.
+
+:::
+
+## AWESA: Actionable Error Message components
+
+Actionable Error Messages should follow the **AWESA** (inspired by the Swahili
+term "kuweza" = "to be able to") structure:
+
+### Attention
+
+Describe, as quickly as possible, that an error occurred and what type of error
+happened.
+
+```text
+Error validating the passed hostname.
+```
+
+### Where (Context)
+
+Describe where and when the error took place.
+
+```text
+The hostname provided to validateHostnameOrThrow(hostname) is invalid.
+```
+
+:::info Skipping this section
+
+If the context is already clear from the error's
+stack trace, you can skip this section.
+
+You should, however, only ever skip this section if it is completely and utterly
+clear without any knowledge about your library. 
+
+If in doubt, just leave it in!
+
+:::
+
+### Expected (, but got)
+
+Describe the technical details of what would have been required for the
+operation to succeed and what you got instead. This, then, gives developers a
+clear idea of your expectations and can help explain any misunderstandings in
+the documentation.
+
+```text
+Expected hostname to match /^[a-z]+$/, but got "hello1".
+```
+
+:::info Skipping this section
+
+You can skip this step if you're unable to provide any further details than the
+ones you've already provided in the "Attention" section.
+
+For example, if the validation of the hostname was too complex, you don't need
+to write "expected hostname to be valid, but got 'abc'" if your "Attention" step
+already says "Hostname 'abc' is invalid."
+
+If, however, like here, you can describe more details (e.g., the validation
+regular expression), you should always provide these details to enable
+developers to more easily debug the error without having to study your source
+code.
+
+:::
+
+### So (... we did this)
+
+Inform the developer about what already happened / where in the process (if at
+all) you aborted the code's execution and how you otherwise handled the error.
+
+- Did you simply skip the item but otherwise continue the execution?
+- Did you already insert a "blank" item into a Database that now contains
+  invalid data?
+- etc.
+
+```text
+The error occurred during the initial validation and no further action took place.
+```
+
+### Action (to rectify the situation)
+
+Given that you're writing an actionable error message, you already expected for
+this error to occur, and thus, have an idea about what the developer needs to do
+in order to not run into this error.
+
+So ... be helpful for once and tell them :wink::
+
+```text
+Hostnames can only contain lowercase alphabetic characters (a-z).
+Make sure that the host name passed to the function is valid.
+```
+
+<!-- Content (e.g., a table, a list, a diagram, or a definition list) -->
+
+## See also
+
+<Reference to="/internal/concepts/error-messages">
+	Error Message Types
+</Reference>
+
+<!--
+Snippets
+--------
+
+<Reference to="../other-article">
+    Relative Link to other article
+</Reference>
+
+<Reference to="https://www.example.com">
+    Example Website
+</Reference>
+-->

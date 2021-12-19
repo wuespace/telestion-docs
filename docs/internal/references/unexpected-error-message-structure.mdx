@@ -1,0 +1,133 @@
+---
+title: Unexpected Error Message Structure
+description:
+  You should use Unexpected Error Messages whenever you didn't expect a
+  developer to hit an error case. While there's only so much you can do, it's
+  crucial to be as helpful as possible to frustrate the developer even further.
+---
+
+<!--
+Reference
+=========
+
+=== When to use this template:
+When you're documenting some topic so that users (e.g., ecosystem developers)
+can quickly lookup a fact. These articles typically consist of a list, a
+definition list, a table, or some other form of "quick-to-lookup" information.
+
+=== When not to use this template:
+Do not use a reference article to explain a concept. You should keep additional
+information within the reference article to a minimum so that knowledgeable users
+can quickly see the facts that are relevant to them. You can link to concepts and
+other topics to explain specific concepts, if necessary.
+
+=== Writing tips:
+- Write in the present tense
+- Use neutral pronouns (they/them instead of he/she and him/her)
+- Be respectful to everyone
+- Be aware of the potential for cultural misunderstandings
+- Keep the amount of additional information to a minimum (focus on the facts)
+- If necessary, link to concept topics. Do not explain them in the article
+- Use a suitable form of content so that readers can quickly look up the desired
+  information (e.g., a table, a list, a diagram, or something else)
+-->
+
+<!-- Relevant imports: -->
+
+import { Reference, Image } from '/components';
+
+<!-- Short description of what information this document provides: -->
+
+Only use this error message if you didn't expect this exception to ever get
+thrown (but couldn't exclude the possibility) and thus have no idea what caused
+it.
+
+:::note Example
+
+For this example, we'll assume that for whatever reason, a seemingly valid path
+(that already passed validation) got rejected later in the code.
+
+:::
+
+## NADAD: Unepxected Error Message components
+
+Unexpected error messages should follow the **NADAD** structure:
+
+### Notify
+
+Developers appreciate directly getting information, even if it's information
+that they don't like. Therefore, you should notify them what caused that unexpected error and where
+it occurred:
+
+```text
+Unexpected error while trying to perform a network request.
+```
+
+### Apologize
+
+The fact that you didn't expect for this to happen means that it is you who
+messed up. So instead of trying to blame the developer who uses your library,
+admit your mistake and apologize:
+
+```text
+We're sorry, it looks like we got an unexpected error.
+```
+
+### Describe
+
+Give as good of an explanation as you can to give the other developer a general
+understanding of what happened. Maybe, this can help them solve the error
+themselves.
+
+```text
+We had already validated the requested address, but when trying to request the
+resource, the address could no longer be parsed.
+```
+
+### Action
+
+We've already discussed that it was your mistake. Thus, it's up to you to fix
+it.
+
+Provide instructions on what the developer should do so that you can fix the
+mistake. In other words: Provide instructions to, with minimal effort, file a
+bug:
+
+```text
+Please help us fix the mistake by filing an issue at https://github.com/wuespace/telestion-core/issues/new
+and include the entire error message (including the details below) and we'll have a look as soon as we can.
+Thanks in advance!
+```
+
+### Details
+
+Include any details you might need to find the mistake and either fix a bug or
+at least provide an actionable error message:
+
+```text
+Details
+=======
+requestAddress: "http://noejow"
+telestion-core version: v0.3.0
+```
+
+<!-- Content (e.g., a table, a list, a diagram, or a definition list) -->
+
+## See also
+
+<Reference to="/internal/concepts/error-messages">
+	Error Message Types
+</Reference>
+
+<!--
+Snippets
+--------
+
+<Reference to="../other-article">
+    Relative Link to other article
+</Reference>
+
+<Reference to="https://www.example.com">
+    Example Website
+</Reference>
+-->
