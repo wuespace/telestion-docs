@@ -53,13 +53,14 @@ works to solve problems. It is therefore crucial to handle potential errors of a
 library in the library itself and, if necessary, throw (to the developer using
 the library) only higher-level exceptions with good error messages.
 
-However well-written an error message might be: A few abstractions down the line
+Even the best error message can't solve that a few abstractions down the line
 (i.e., a few layers further up the call stack), they don't really make sense
 anymore.
 
-Therefore, _**all** library functions must **always** catch **all** possible errors
-and provide **their own** error messages that are helpful in **the context of the
-immediate caller** of that function to guarantee for a good developer experience!_
+Therefore, _**all** library functions must **always** catch **all** possible
+errors and provide **their own** error messages that are helpful in **the
+context of the immediate caller** of that function to guarantee for a good
+developer experience!_
 
 :::
 
