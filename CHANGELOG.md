@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.4.0](https://www.github.com/wuespace/telestion-docs/compare/v2.3.0...v2.4.0) (2021-12-23)
+
+
+### Features
+
+* **docs/client:** :memo: Add development environment setup tutorial ([#128](https://www.github.com/wuespace/telestion-docs/issues/128)) ([19706ce](https://www.github.com/wuespace/telestion-docs/commit/19706ce423877fbb5f9dcbd20e2bc11f4ce5b835))
+* **docs/internal:** :sparkles: Add documentation/guiedlines on writing good error/exception messages in our libraries. ([#137](https://www.github.com/wuespace/telestion-docs/issues/137)) ([e41b6bf](https://www.github.com/wuespace/telestion-docs/commit/e41b6bf2265435fc56736b0d6dadba5882a31749))
+
 ## [2.3.0](https://www.github.com/wuespace/telestion-docs/compare/v2.2.1...v2.3.0) (2021-12-17)
 
 
