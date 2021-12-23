@@ -1,6 +1,6 @@
 {
   "name": "telestion-docs",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Documentation for the Telestion project, created using Docusaurus v2",
   "private": true,
   "scripts": {
