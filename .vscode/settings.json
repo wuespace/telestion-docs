@@ -12,5 +12,8 @@
 		"docs/application",
 		"docs/general",
 		"images"
-	]
+	],
+	"pasteImage.basePath": "${projectRoot}/static",
+	"pasteImage.path": "${projectRoot}/static/img",
+	"pasteImage.insertPattern": "<Image src=\"${imageSyntaxPrefix}${imageFilePath}${imageSyntaxSuffix}\" />"
 }
