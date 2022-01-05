@@ -226,6 +226,14 @@ When you now re-start the `npm start` command (i.e., re-run
 `tc-cli start --electron`), you can see the message
 `Starting Mock Application Server` in the terminal.
 
+:::tip
+
+When making changes to the `telestion.config.js` file or any file referenced by
+it (e.g., plugins), you need to completely restart the `tc-cli start` command
+(or `npm start`) to use your changes.
+
+:::
+
 After logging in as `admin` into `http://localhost:9870/bridge` (with an
 arbitrary password) in your Electron application, after a few seconds, you
 should see the connection status indicator in the navbar turning green and
