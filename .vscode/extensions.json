@@ -7,6 +7,7 @@
 		"yzhang.markdown-all-in-one",
 		"davidanson.vscode-markdownlint",
 		"znck.grammarly",
-		"hediet.vscode-drawio"
+		"hediet.vscode-drawio",
+		"mushan.vscode-paste-image"
 	]
 }
