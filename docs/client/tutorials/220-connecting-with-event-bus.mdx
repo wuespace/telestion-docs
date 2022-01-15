@@ -106,6 +106,7 @@ class MyMockServer extends MockServer implements OnInit, OnClose {
 
 	onClose() {
 		this.unregister(this.resetListener);
+		clearInterval(this.systemStatusIntervalId);
 	}
 }
 
@@ -190,6 +191,7 @@ class MyMockServer extends MockServer implements OnInit, OnClose {
 
 	onClose() {
 		this.unregister(this.resetListener);
+		clearInterval(this.systemStatusIntervalId);
 	}
 }
 
@@ -246,7 +248,7 @@ we need to connect our widget to that data. Thankfully, this isn't too difficult
 with the help of the `useChannelLatest` hook exported by the
 `@wuespace/telestion-client-core` package.
 
-The `useChannelLatest()` hook listens to messages on a specific channel adress
+The `useChannelLatest()` hook listens to messages on a specific channel address
 and always returns the latest status from there.
 
 Adjust the `<Indicator />` functional component to use the hook to listen to the
