@@ -73,8 +73,8 @@ test our widget without the overhead of running the entire (Java-based)
 Application layer.
 
 First, we'll add a mock Application server. Then, we'll use the
-`useChannelLatest()` hook to display actual data. Last, but not least, we'll
-send an Event Bus message when an operator presses the "Reset" button.
+`useChannelLatest()` hook to display actual data. Last but not least, we'll send
+an Event Bus message when an operator presses the "Reset" button.
 
 In the end, you'll have written the following code:
 
@@ -203,14 +203,14 @@ export function onReady() {
 }
 ```
 
-This creates a plugin that gets called in the Electron thread once the Electron
-thread gets started (when running `npm start`). It creates a mock server which
-does two things:
+This code creates a plugin that gets called in the Electron thread once the
+Electron thread gets started (when running `npm start`). It creates a mock
+server which does two things:
 
 1. it registers a listener on the `reset` channel address and logs messages to
    that channel to the console (for our reset buttons)
-2. in an interval of two seconds, send a connected status (`boolean`) to the
-   channel address `system-status/[system]` for our three systems
+2. every two seconds, send a connected status (`boolean`) to the channel address
+   `system-status/[system]` for our three systems
 
 To load the plugin, you need to do one last step: In the client's root folder,
 there is a `telestion.config.js` that currently exports an empty object. Adjust
@@ -224,15 +224,15 @@ module.exports = {
 };
 ```
 
-When you now re-start the `npm start` command (i.e., re-run
+When you now restart the `npm start` command (i.e., re-run
 `tc-cli start --electron`), you can see the message
 `Starting Mock Application Server` in the terminal.
 
 :::tip
 
 When making changes to the `telestion.config.js` file or any file referenced by
-it (e.g., plugins), you need to completely restart the `tc-cli start` command
-(or `npm start`) to use your changes.
+it (e.g., plugins), you need to restart the `tc-cli start` command (or
+`npm start`) completely to use your changes.
 
 :::
 
@@ -280,9 +280,9 @@ function Indicator(props: { system: string }) {
 }
 ```
 
-Note that we default this value to `false` using `?? false`. This is for when we
-haven't received a system status, yet (which happens when initially loading the
-widget).
+Note that we default this value to `false` using `?? false`. The default value
+is for when we haven't received a system status yet (which happens when
+initially loading the widget).
 
 After saving the file and reloading the client, you can see the status
 indicators change randomly every two seconds:
@@ -295,12 +295,12 @@ To make the "Reset" button broadcast a message to the `reset` channel (that
 we're listening for in our mock server) when pressed, you can use the
 `useBroadcast()` hook from the `@wuespace/telestion-client-core` package.
 
-Like before, we can just do this directly in our `<Indicator />` component. The
+Like before, we can do this directly in our `<Indicator />` component. The
 `useBroadcast()` hook takes the channel address as its first argument and
 returns a function to broadcast a message to that address.
 
 In this case, we define a function `broadcast` that publishes to our `reset`
-channel. Then, we can just use the Reset button's `onPress` event to call that
+channel. Then, we can use the Reset button's `onPress` event to call that
 function to broadcast a message to that channel. Here, we'll pass an object
 containing details about the system into the message:
 
@@ -354,12 +354,12 @@ to the backend developers to implement Verticles that connect the actual mission
 I/O interfaces to these Event Bus messages :wink:.
 
 But even more, you're now capable of wiring up any system to the event bus,
-meaning you can build any widget you need using plain React for the UI and the
+meaning you can build any widget, you need using plain React for the UI and the
 APIs to connect to the event bus.
 
-In the next tutorial, we'll take a look at adding configuration options to your
-widget to allow Ground Station operators (i.e., your users) to re-configure your
-widget's behaviour on the fly.
+In the following tutorial, we'll take a look at adding configuration options to
+your widget to allow Ground Station operators (i.e., your users) to re-configure
+your widget's behavior on the fly.
 
 We also encourage you to check out the API Reference for the
 `@wuespace/vertx-mock-server` package to implement more complex mock servers as
