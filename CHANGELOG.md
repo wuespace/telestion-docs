@@ -1,5 +1,25 @@
 # Changelog
 
+## [2.5.0](https://github.com/wuespace/telestion-docs/compare/v2.4.0...v2.5.0) (2022-01-15)
+
+
+### Features
+
+* **docs/client:** :children_crossing: Add note about `telestion-project-template` usage of `tc-cli init` ([ead9603](https://github.com/wuespace/telestion-docs/commit/ead9603920834075ca443012cacaeb9314c4349e))
+* **docs/client:** :children_crossing: Add note about restarting the development server after plugin changes ([172a1d9](https://github.com/wuespace/telestion-docs/commit/172a1d94c371d2384875904762b4ac78731235c7))
+* **docs/client:** :sparkles: Add client tutorials index page ([a72c39c](https://github.com/wuespace/telestion-docs/commit/a72c39ce4de175a8ce5d0394520e4f948eb88135))
+* **docs/client:** :sparkles: Add tutorial on bootstrapping a widget ([db91a88](https://github.com/wuespace/telestion-docs/commit/db91a888295247f78b953470575cfc917df415ea))
+* **docs/client:** :sparkles: Add tutorial on building the widget's UI using React Spectrum ([54ce83e](https://github.com/wuespace/telestion-docs/commit/54ce83eedb5a835cb263b7831d66a97468e4e2c2))
+* **docs/client:** :sparkles: Add tutorial on using the event bus hooks from `@wuespace/telestion-client-core` to connect the widget to the event bus ([68d4258](https://github.com/wuespace/telestion-docs/commit/68d4258633a104d2c5d1b01bac19446b8bcb9423))
+* **docs/general:** :ambulance: Add a proper homepage ([18a2a41](https://github.com/wuespace/telestion-docs/commit/18a2a415b1ce4a9cd1c5e4e1ebf635edce411159))
+
+
+### Bug Fixes
+
+* **docs/client:** :bug: Add missing tutorials reference to client index page ([a51424c](https://github.com/wuespace/telestion-docs/commit/a51424cbcb275acdea95804aa41a877d2025e0a4))
+* **docs/client:** :bug: Fix a few grammatical inconsistencies ([59acf2b](https://github.com/wuespace/telestion-docs/commit/59acf2be6a3d39f545b523547b8955c79ad639bb))
+* **docs/client:** :truck: Rename Development Environment Setup tutorial `tutorial` to `dev-env-setup` ([17a6117](https://github.com/wuespace/telestion-docs/commit/17a6117fb1610103771ee40924f80a9f2314b1fd))
+
 ## [2.4.0](https://www.github.com/wuespace/telestion-docs/compare/v2.3.0...v2.4.0) (2021-12-23)
 
 
