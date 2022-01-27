@@ -186,7 +186,7 @@ If you start the Web Client and add the widget to your dashboard you should see 
 ## Step 3: Add some state
 
 To send custom telecommands, we need access to the user input from the `TextField`.
-Let's add React state which holds the current user input
+Let's add a React state which holds the current user input
 and switch the `TextField` from uncontrolled to controlled mode:
 
 ```tsx file='widget.tsx' {1,5,10-15}
@@ -216,7 +216,7 @@ The `useState` hook from React provides the current state and a function to upda
 These two things are provided to the `TextField` which now renders the current command
 and updates it on user input.
 
-Let's add an on press event handler to react on send requests from the `ActionButton`:
+Let's add an `onPress` event handler to react on send requests from the `ActionButton`:
 
 ```tsx file='widget.tsx' {4-6,11-13,24}
 import { useState } from 'react';
@@ -300,7 +300,7 @@ export function Widget() {
 }
 ```
 
-The `showDialog` function needs an unique id across the Web Client and a configuration object.
+The `showDialog` function needs a unique id across the Web Client and a configuration object.
 
 The object is the main part of the dialog.
 It defines the content of the different parts in the dialog.
