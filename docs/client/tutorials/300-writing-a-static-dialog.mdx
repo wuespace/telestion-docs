@@ -50,6 +50,7 @@ import { Reference, Image } from '/components';
 <!-- Short description of what the article covers: -->
 
 In this tutorial, we write a static dialog for a widget in the web client.
+A static dialog has no state and therefore doesn't change its content during rendering.
 
 :::info Prerequisites
 
@@ -104,7 +105,7 @@ export function Widget() {
 
 ## Step 1: Generate a new widget
 
-Let's create a new widget with the Telestion Client CLI:
+Let's create a new widget with the Telestion Client CLI.
 
 ```sh
 tc-cli generate widget custom-tc-widget
@@ -175,7 +176,14 @@ export function Widget() {
 }
 ```
 
-If you start the Web Client and add the widget to your dashboard you should see something like:
+Now, add the widget to your dashboard.
+If you need help, please take a look at our tutorial to bootstrapping a widget:
+
+<Reference to="/client/tutorials/bootstrapping-a-widget/">
+	Bootstrapping a widget
+</Reference>
+
+Now, start the Web Client and you should see something like this:
 
 <Image
   src="/img/dialogs/simple-dialog-structure.png"
@@ -306,6 +314,12 @@ The object is the main part of the dialog.
 It defines the content of the different parts in the dialog.
 For example, the `title` property defines the content in the upper left corner
 or the `content` property the center part of the dialog.
+
+For a better understanding take a look at the Spectrum design guidelines for a modal:
+
+<Reference to="https://spectrum.adobe.com/page/dialog/">
+	Spectrum Dialog
+</Reference>
 
 Here we only use simple strings as parameters
 and build a "dynamic" string out of the currently entered command.
