@@ -3,8 +3,8 @@ title: Writing a stateful dialog
 # e.g., "Publishing messages to the event bus" or "Installing a dependency using npm"
 
 description:
-  Dialogs can do much more than just showing static content. Learn how you
-  can create a stateful and complex dialog with the Telestion Client Common package.
+  Dialogs can do much more than just showing static content. Learn how you can
+  create a stateful and complex dialog with the Telestion Client Common package.
 ---
 
 <!--
@@ -49,19 +49,21 @@ import { Reference, Image } from '/components';
 
 <!-- Short description of what the article covers: -->
 
-In this tutorial, we write a more complex and stateful dialog for a widget in the web client.
+In this tutorial, we write a more complex and stateful dialog for a widget in
+the web client.
 
 :::info Prerequisites
 
-To complete this tutorial, you should be familiar with TypeScript language
-and the React framework. This tutorials builds upon the code from the simple dialog tutorial.
+To complete this tutorial, you should be familiar with TypeScript language and
+the React framework. This tutorials builds upon the code from the simple dialog
+tutorial.
 
 :::
 
 ## What we'll build
 
-In this tutorial, we'll extend the functionality from the simple dialog of the last tutorial
-and add delivery options to our telecommand we want to send.
+In this tutorial, we'll extend the functionality from the simple dialog of the
+last tutorial and add delivery options to our telecommand we want to send.
 
 Take a look at the last tutorial, in case you missed anything:
 
@@ -172,8 +174,8 @@ export function Widget() {
 
 ## Step 1: Define the delivery options
 
-To be able to send delivery options with the telecommand,
-we need a new type that defines the delivery options first.
+To be able to send delivery options with the telecommand, we need a new type
+that defines the delivery options first.
 
 Let's add an interface to our widget describing the new delivery options:
 
@@ -213,7 +215,8 @@ export function Widget() {
 	const handle = () => {
 		showDialog('custom-tc', {
 			title: 'Send telecommand',
-			content: 'Are you sure you want to send the telecommand "' + command + '"?',
+			content:
+				'Are you sure you want to send the telecommand "' + command + '"?',
 			initialState: undefined
 		}).then(() => sendTC(command));
 	};
@@ -234,11 +237,11 @@ export function Widget() {
 }
 ```
 
-We also create default delivery options
-which we'll use later as initial value in the React state.
+We also create default delivery options which we'll use later as initial value
+in the React state.
 
-Now update our `sendTC` placeholder function
-to accept the previously defined delivery options:
+Now update our `sendTC` placeholder function to accept the previously defined
+delivery options:
 
 ```tsx title='widget.tsx' {26-28}
 import { useState } from 'react';
@@ -276,7 +279,8 @@ export function Widget() {
 	const handle = () => {
 		showDialog('custom-tc', {
 			title: 'Send telecommand',
-			content: 'Are you sure you want to send the telecommand "' + command + '"?',
+			content:
+				'Are you sure you want to send the telecommand "' + command + '"?',
 			initialState: undefined
 		}).then(() => sendTC(command));
 	};
@@ -299,9 +303,9 @@ export function Widget() {
 
 ## Step 2: Add state for storing the delivery options
 
-To pass the user defined delivery options to our external telecommand API,
-we need another React state which stores them.
-Then, we pass these options to the `sendTC` function in the resolved promise:
+To pass the user defined delivery options to our external telecommand API, we
+need another React state which stores them. Then, we pass these options to the
+`sendTC` function in the resolved promise:
 
 ```tsx title='widget.tsx' {31,39}
 import { useState } from 'react';
@@ -340,7 +344,8 @@ export function Widget() {
 	const handle = () => {
 		showDialog('custom-tc', {
 			title: 'Send telecommand',
-			content: 'Are you sure you want to send the telecommand "' + command + '"?',
+			content:
+				'Are you sure you want to send the telecommand "' + command + '"?',
 			initialState: undefined
 		}).then(() => sendTC(command, options));
 	};
@@ -363,9 +368,9 @@ export function Widget() {
 
 ## Step 3: Add an action button for the options dialog
 
-Currently, the user cannot change the delivery options through the widget.
-To change that, we need another action button which triggers a dialog
-that present the current selection to the user.
+Currently, the user cannot change the delivery options through the widget. To
+change that, we need another action button which triggers a dialog that present
+the current selection to the user.
 
 Lets place it beside the telecommand text field:
 
@@ -406,7 +411,8 @@ export function Widget() {
 	const handle = () => {
 		showDialog('custom-tc', {
 			title: 'Send telecommand',
-			content: 'Are you sure you want to send the telecommand "' + command + '"?',
+			content:
+				'Are you sure you want to send the telecommand "' + command + '"?',
 			initialState: undefined
 		}).then(() => sendTC(command, options));
 	};
@@ -421,9 +427,7 @@ export function Widget() {
 						value={command}
 						onChange={setCommand}
 					/>
-					<ActionButton flexShrink={0}>
-						Options
-					</ActionButton>
+					<ActionButton flexShrink={0}>Options</ActionButton>
 				</Flex>
 				<ActionButton onPress={handle}>Send</ActionButton>
 			</Flex>
@@ -432,27 +436,25 @@ export function Widget() {
 }
 ```
 
-We wrap the existing text field in another flex container with the new action button
-and align them horizontally.
-Give the action button a flex shrink of `0` so it doesn't
-collapse in the flex container.
-Add some spacing between both items with `gap="size-100"`
-and align them with `alignItems="end"` in the flex container.
-This puts the action button on the same height as the text field input.
+We wrap the existing text field in another flex container with the new action
+button and align them horizontally. Give the action button a flex shrink of `0`
+so it doesn't collapse in the flex container. Add some spacing between both
+items with `gap="size-100"` and align them with `alignItems="end"` in the flex
+container. This puts the action button on the same height as the text field
+input.
 
 Now, your widget should look like this:
 
 <Image
-  src="/img/dialogs/stateful-dialog-layout.png"
-  alt="The custom telecommand widget with the options button"
-  center
+	src="/img/dialogs/stateful-dialog-layout.png"
+	alt="The custom telecommand widget with the options button"
+	center
 />
 
 ## Step 4: Open the options dialog
 
-Currently, the added action button does nothing.
-Let's attach an event handler that opens the dialog
-which presents the delivery options to the user:
+Currently, the added action button does nothing. Let's attach an event handler
+that opens the dialog which presents the delivery options to the user:
 
 ```tsx title='widget.tsx' {34-40,42,60,64}
 import { useState } from 'react';
@@ -488,7 +490,7 @@ export function Widget() {
 	const [options, setOptions] = useState(defaultOptions);
 	const [command, setCommand] = useState('default-command');
 
-  const onOptions = () => {
+	const onOptions = () => {
 		showDialog('options-tc', {
 			title: 'Telecommand options',
 			content: 'TODO',
@@ -499,7 +501,8 @@ export function Widget() {
 	const onSend = () => {
 		showDialog('custom-tc', {
 			title: 'Send telecommand',
-			content: 'Are you sure you want to send the telecommand "' + command + '"?',
+			content:
+				'Are you sure you want to send the telecommand "' + command + '"?',
 			initialState: undefined
 		}).then(() => sendTC(command, options));
 	};
@@ -526,8 +529,8 @@ export function Widget() {
 ```
 
 We create a new event handler called `onOptions` which opens the options dialog.
-The new dialog receives the current options as initial state
-and sets the "global" options state via the setter when it succeeds.
+The new dialog receives the current options as initial state and sets the
+"global" options state via the setter when it succeeds.
 
 ## Step 5: Make the options dialog interactive
 
@@ -568,12 +571,10 @@ export function Widget() {
 	const [options, setOptions] = useState(defaultOptions);
 	const [command, setCommand] = useState('default-command');
 
-  const onOptions = () => {
+	const onOptions = () => {
 		showDialog('options-tc', {
 			title: 'Telecommand options',
-			content: (state, setState) => (
-				<div>TODO</div>
-			),
+			content: (state, setState) => <div>TODO</div>,
 			initialState: options
 		}).then(setOptions);
 	};
@@ -581,7 +582,8 @@ export function Widget() {
 	const onSend = () => {
 		showDialog('custom-tc', {
 			title: 'Send telecommand',
-			content: 'Are you sure you want to send the telecommand "' + command + '"?',
+			content:
+				'Are you sure you want to send the telecommand "' + command + '"?',
 			initialState: undefined
 		}).then(() => sendTC(command, options));
 	};
@@ -608,9 +610,9 @@ export function Widget() {
 ```
 
 Here comes the trick: Instead of using strings or static components as content,
-we give the dialog a function that returns the content.
-This function receives from the dialog the current dialog state (here called `state`)
-and as second argument a function to change it (here called `setState`).
+we give the dialog a function that returns the content. This function receives
+from the dialog the current dialog state (here called `state`) and as second
+argument a function to change it (here called `setState`).
 
 Now, we define the layout in the dialogs center part:
 
@@ -648,7 +650,7 @@ export function Widget() {
 	const [options, setOptions] = useState(defaultOptions);
 	const [command, setCommand] = useState('default-command');
 
-  const onOptions = () => {
+	const onOptions = () => {
 		showDialog('options-tc', {
 			title: 'Telecommand options',
 			content: (state, setState) => (
@@ -680,7 +682,8 @@ export function Widget() {
 	const onSend = () => {
 		showDialog('custom-tc', {
 			title: 'Send telecommand',
-			content: 'Are you sure you want to send the telecommand "' + command + '"?',
+			content:
+				'Are you sure you want to send the telecommand "' + command + '"?',
 			initialState: undefined
 		}).then(() => sendTC(command, options));
 	};
@@ -706,20 +709,22 @@ export function Widget() {
 }
 ```
 
-Every option gets an own check box which shows the current state of the specific option.
-When the user presses on the check box, the check box emits an event
-which changes only the specific option leaving the rest of the dialog state untouched.
+Every option gets an own check box which shows the current state of the specific
+option. When the user presses on the check box, the check box emits an event
+which changes only the specific option leaving the rest of the dialog state
+untouched.
 
-This comes from the nature of the `setState` function. It accepts a new partial dialog state
-(e.g. one specific boolean value like in this tutorial) and shallow merges it with current state.
-In the end, the changes "win" but the other values remain intact.
+This comes from the nature of the `setState` function. It accepts a new partial
+dialog state (e.g. one specific boolean value like in this tutorial) and shallow
+merges it with current state. In the end, the changes "win" but the other values
+remain intact.
 
 To wrap it up:
 
 1. the dialog receives the "global" options state
 2. the dialog it opens
-3. the dialog content receives the dialog state (which is currently equal to the "global" state)
-   and renders
+3. the dialog content receives the dialog state (which is currently equal to the
+   "global" state) and renders
 4. the user changes something
 5. the dialog content changes the dialog state through the given function
 6. the dialog state diverts from the "global" state
@@ -729,28 +734,28 @@ To wrap it up:
 
 :::tip Dynamic content
 
-Not only the `content` property can receive the dialog state,
-but also every other property in the dialog configuration,
-which defines the dialog layout.
+Not only the `content` property can receive the dialog state, but also every
+other property in the dialog configuration, which defines the dialog layout.
 
-Take a look and the API definition of the `showDialog` function for further information.
+Take a look and the API definition of the `showDialog` function for further
+information.
 
 :::
 
 Now, press the "Options" button in your widget and change some delivery options:
 
 <Image
-  src="/img/dialogs/stateful-dialog-options-dialog.png"
-  alt="The open options dialog from the custom telecommand widget"
-  center
+	src="/img/dialogs/stateful-dialog-options-dialog.png"
+	alt="The open options dialog from the custom telecommand widget"
+	center
 />
 
 The send a new telecommand and look in the development console of your browser:
 
 <Image
-  src="/img/dialogs/stateful-dialog-dev-console.png"
-  alt="Console log of send API"
-  center
+	src="/img/dialogs/stateful-dialog-dev-console.png"
+	alt="Console log of send API"
+	center
 />
 
 ## Next steps
@@ -759,10 +764,11 @@ The send a new telecommand and look in the development console of your browser:
 
 That's it! You've successfully written your first stateful dialog!
 
-Due to the usage of the `showDialog` function, you also can add modals in other parts
-of the web client very easily.
+Due to the usage of the `showDialog` function, you also can add modals in other
+parts of the web client very easily.
 
-As previously mentioned, take a look at the API reference of the dialog function:
+As previously mentioned, take a look at the API reference of the dialog
+function:
 
 <!-- Links to next steps/related articles -->
 
