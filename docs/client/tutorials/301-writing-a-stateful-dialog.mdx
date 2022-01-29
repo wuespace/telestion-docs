@@ -49,8 +49,8 @@ import { Reference, Image } from '/components';
 
 <!-- Short description of what the article covers: -->
 
-In this tutorial, we write a more complex and stateful dialog for a widget in
-the web client.
+In this tutorial, you'll write a more complex and stateful dialog for a widget
+in the web client.
 
 :::info Prerequisites
 
@@ -60,10 +60,10 @@ tutorial.
 
 :::
 
-## What we'll build
+## What you'll build
 
-In this tutorial, we'll extend the functionality from the simple dialog of the
-last tutorial and add delivery options to our telecommand we want to send.
+In this tutorial, you'll extend the features of your simple dialog from the last
+tutorial and add delivery options to the telecommand you want to send.
 
 Take a look at the last tutorial, in case you missed anything:
 
@@ -71,7 +71,7 @@ Take a look at the last tutorial, in case you missed anything:
 	Writing a static dialog
 </Reference>
 
-The full code for this tutorial will look like this:
+The full code for this tutorial looks like this:
 
 ```tsx title='widget.tsx'
 import { useState } from 'react';
@@ -134,7 +134,7 @@ export function Widget() {
 						isSelected={state.forceExecution}
 						onChange={forceExecution => setState({ forceExecution })}
 					>
-						Force the telecommand to be executed on the target
+						Force telecommand execution on the target
 					</Checkbox>
 				</Flex>
 			),
@@ -177,7 +177,7 @@ export function Widget() {
 To be able to send delivery options with the telecommand, we need a new type
 that defines the delivery options first.
 
-Let's add an interface to our widget describing the new delivery options:
+Add an interface to our widget describing the new delivery options:
 
 ```tsx title='widget.tsx' {5-18,20-24}
 import { useState } from 'react';
@@ -237,11 +237,11 @@ export function Widget() {
 }
 ```
 
-We also create default delivery options which we'll use later as initial value
-in the React state.
+This also creates default delivery options which you'll use later as initial
+value in the React state.
 
-Now update our `sendTC` placeholder function to accept the previously defined
-delivery options:
+Now update your `sendTC` placeholder function to accept the delivery options you
+defined before:
 
 ```tsx title='widget.tsx' {26-28}
 import { useState } from 'react';
@@ -303,9 +303,9 @@ export function Widget() {
 
 ## Step 2: Add state for storing the delivery options
 
-To pass the user defined delivery options to our external telecommand API, we
-need another React state which stores them. Then, we pass these options to the
-`sendTC` function in the resolved promise:
+To pass the user defined delivery options to your external telecommand API, you
+need another React state which stores them. Then, you can pass these options to
+the `sendTC` function in the resolved promise:
 
 ```tsx title='widget.tsx' {31,39}
 import { useState } from 'react';
@@ -368,11 +368,11 @@ export function Widget() {
 
 ## Step 3: Add an action button for the options dialog
 
-Currently, the user cannot change the delivery options through the widget. To
-change that, we need another action button which triggers a dialog that present
+Right now, the user cannot change the delivery options through the widget. To
+change that, you need another action button which triggers a dialog that present
 the current selection to the user.
 
-Lets place it beside the telecommand text field:
+Place it beside the telecommand text field:
 
 ```tsx title='widget.tsx' {45,52-55}
 import { useState } from 'react';
@@ -436,8 +436,8 @@ export function Widget() {
 }
 ```
 
-We wrap the existing text field in another flex container with the new action
-button and align them horizontally. Give the action button a flex shrink of `0`
+This wraps the existing text field in another flex container with the new action
+button and aligns them horizontally. Give the action button a flex shrink of `0`
 so it doesn't collapse in the flex container. Add some spacing between both
 items with `gap="size-100"` and align them with `alignItems="end"` in the flex
 container. This puts the action button on the same height as the text field
@@ -453,8 +453,8 @@ Now, your widget should look like this:
 
 ## Step 4: Open the options dialog
 
-Currently, the added action button does nothing. Let's attach an event handler
-that opens the dialog which presents the delivery options to the user:
+Now, the added action button does nothing. Attach an event handler that opens
+the dialog which presents the delivery options to the user:
 
 ```tsx title='widget.tsx' {34-40,42,60,64}
 import { useState } from 'react';
@@ -528,14 +528,14 @@ export function Widget() {
 }
 ```
 
-We create a new event handler called `onOptions` which opens the options dialog.
-The new dialog receives the current options as initial state and sets the
-"global" options state via the setter when it succeeds.
+This creates a new event handler called `onOptions` which opens the options
+dialog. The new dialog receives the current options as initial state and sets
+the "global" options state via the setter when it succeeds.
 
 ## Step 5: Make the options dialog interactive
 
-Currently the dialog has no content which can interact with the dialog state.
-Lets change that:
+The dialog has no content which can interact with the dialog state. Define the
+dialog's content:
 
 ```tsx title='widget.tsx' {37-39}
 import { useState } from 'react';
@@ -610,7 +610,7 @@ export function Widget() {
 ```
 
 Here comes the trick: Instead of using strings or static components as content,
-we give the dialog a function that returns the content. This function receives
+you give the dialog a function that returns the content. This function receives
 from the dialog the current dialog state (here called `state`) and as second
 argument a function to change it (here called `setState`).
 
@@ -671,7 +671,7 @@ export function Widget() {
 						isSelected={state.forceExecution}
 						onChange={forceExecution => setState({ forceExecution })}
 					>
-						Force the telecommand to be executed on the target
+						Force telecommand execution on the target
 					</Checkbox>
 				</Flex>
 			),
