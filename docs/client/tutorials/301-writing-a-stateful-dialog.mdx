@@ -1,0 +1,790 @@
+---
+title: Writing a stateful dialog
+# e.g., "Publishing messages to the event bus" or "Installing a dependency using npm"
+
+description:
+  Dialogs can do much more than just showing static content. Learn how you can
+  create a stateful and complex dialog with the Telestion Client Common package.
+---
+
+<!--
+Tutorial
+========
+
+=== When to use this template:
+Use this template when you want to give a quick, step-by-step tutorial for solving a specific
+technical problem. Tutorials allow the reader to learn how to implement something within
+their projects quickly.
+
+=== When not to use this template:
+When your article focuses more on a concept/technology and is not rooted in a specific technical
+problem ("how to do XY?"), consider using a guide instead.
+
+=== Guide or Tutorial
+A tutorial provides a quick, technical "step-by-step" tutorial for a
+given problem. Thus, a guide describes less the handling of a specific problem
+and more the general interaction of the reader with a given concept.
+
+Example with npm articles:
+- "npm": (Concept, explaining what npm is)
+- "Installing a dependency with npm" (Tutorial, providing a quick tutorial to
+  solve a technical problem)
+- "Managing dependencies with npm" (Guide, including both technical knowledge, but
+  also best practices and more)
+
+=== Writing tips:
+- Write in the present tense
+- Use neutral pronouns (they/them instead of he/she and him/her)
+- Be respectful to everyone
+- Be aware of the potential for cultural misunderstandings
+- Provide explanations for what you do, but focus on the step-by-step guide
+  without deeply explaining every technical decision and why it's best prcatice
+  to do so (you can describe best practices in a guide, a tutorial must focus on
+  keeping the "step by step" flow going)
+-->
+
+<!-- Relevant imports: -->
+
+import { Reference, Image } from '/components';
+
+<!-- Short description of what the article covers: -->
+
+In this tutorial, we write a more complex and stateful dialog for a widget in
+the web client.
+
+:::info Prerequisites
+
+To complete this tutorial, you should be familiar with TypeScript language and
+the React framework. This tutorials builds upon the code from the simple dialog
+tutorial.
+
+:::
+
+## What we'll build
+
+In this tutorial, we'll extend the functionality from the simple dialog of the
+last tutorial and add delivery options to our telecommand we want to send.
+
+Take a look at the last tutorial, in case you missed anything:
+
+<Reference to="/client/tutorials/writing-a-static-dialog/">
+	Writing a static dialog
+</Reference>
+
+The full code for this tutorial will look like this:
+
+```tsx title='widget.tsx'
+import { useState } from 'react';
+import {
+	ActionButton,
+	Checkbox,
+	Flex,
+	TextField,
+	View
+} from '@adobe/react-spectrum';
+import { showDialog } from '@wuespace/telestion-client-common';
+
+interface DeliveryOptions {
+	/**
+	 * Request a transmission receipt from the target.
+	 */
+	requestReceipt: boolean;
+	/**
+	 * Resend the telecommand if a failure has happened during transmission.
+	 */
+	resendOnFailure: boolean;
+	/**
+	 * Force the telecommand to be executed on the target.
+	 */
+	forceExecution: boolean;
+}
+
+const defaultOptions: DeliveryOptions = {
+	requestReceipt: false,
+	resendOnFailure: false,
+	forceExecution: false
+};
+
+function sendTC(command: string, options: DeliveryOptions): void {
+	console.log('Send telecommand:', command, ', with options:', options);
+}
+
+export function Widget() {
+	const [options, setOptions] = useState(defaultOptions);
+	const [command, setCommand] = useState('default-command');
+
+	const onOptions = () => {
+		showDialog('options-tc', {
+			title: 'Telecommand options',
+			content: (state, setState) => (
+				<Flex direction="column" gap="size-100">
+					<Checkbox
+						isSelected={state.requestReceipt}
+						onChange={requestReceipt => setState({ requestReceipt })}
+					>
+						Request a transmission receipt from the target
+					</Checkbox>
+					<Checkbox
+						isSelected={state.resendOnFailure}
+						onChange={resendOnFailure => setState({ resendOnFailure })}
+					>
+						Resend the telecommand if a failure has happened during transmission
+					</Checkbox>
+					<Checkbox
+						isSelected={state.forceExecution}
+						onChange={forceExecution => setState({ forceExecution })}
+					>
+						Force the telecommand to be executed on the target
+					</Checkbox>
+				</Flex>
+			),
+			initialState: options
+		}).then(setOptions);
+	};
+
+	const onSend = () => {
+		showDialog('custom-tc', {
+			title: 'Send telecommand',
+			content:
+				'Are you sure you want to send the telecommand "' + command + '"?',
+			initialState: undefined
+		}).then(() => sendTC(command, options));
+	};
+
+	return (
+		<View padding="size-200">
+			<Flex direction="column" gap="size-100">
+				<Flex direction="row" gap="size-100" alignItems="end">
+					<TextField
+						label="Telecommand"
+						width="100%"
+						value={command}
+						onChange={setCommand}
+					/>
+					<ActionButton flexShrink={0} onPress={onOptions}>
+						Options
+					</ActionButton>
+				</Flex>
+				<ActionButton onPress={onSend}>Send</ActionButton>
+			</Flex>
+		</View>
+	);
+}
+```
+
+## Step 1: Define the delivery options
+
+To be able to send delivery options with the telecommand, we need a new type
+that defines the delivery options first.
+
+Let's add an interface to our widget describing the new delivery options:
+
+```tsx title='widget.tsx' {5-18,20-24}
+import { useState } from 'react';
+import { ActionButton, Flex, TextField, View } from '@adobe/react-spectrum';
+import { showDialog } from '@wuespace/telestion-client-common';
+
+interface DeliveryOptions {
+	/**
+	 * Request a transmission receipt from the target.
+	 */
+	requestReceipt: boolean;
+	/**
+	 * Resend the telecommand if a failure has happened during transmission.
+	 */
+	resendOnFailure: boolean;
+	/**
+	 * Force the telecommand to be executed on the target.
+	 */
+	forceExecution: boolean;
+}
+
+const defaultOptions: DeliveryOptions = {
+	requestReceipt: false,
+	resendOnFailure: false,
+	forceExecution: false
+};
+
+function sendTC(command: string): void {
+	console.log('Send telecommand: ' + command);
+}
+
+export function Widget() {
+	const [command, setCommand] = useState('default-command');
+
+	const handle = () => {
+		showDialog('custom-tc', {
+			title: 'Send telecommand',
+			content:
+				'Are you sure you want to send the telecommand "' + command + '"?',
+			initialState: undefined
+		}).then(() => sendTC(command));
+	};
+
+	return (
+		<View padding="size-200">
+			<Flex direction="column" gap="size-100">
+				<TextField
+					label="Telecommand"
+					width="100%"
+					value={command}
+					onChange={setCommand}
+				/>
+				<ActionButton onPress={handle}>Send</ActionButton>
+			</Flex>
+		</View>
+	);
+}
+```
+
+We also create default delivery options which we'll use later as initial value
+in the React state.
+
+Now update our `sendTC` placeholder function to accept the previously defined
+delivery options:
+
+```tsx title='widget.tsx' {26-28}
+import { useState } from 'react';
+import { ActionButton, Flex, TextField, View } from '@adobe/react-spectrum';
+import { showDialog } from '@wuespace/telestion-client-common';
+
+interface DeliveryOptions {
+	/**
+	 * Request a transmission receipt from the target.
+	 */
+	requestReceipt: boolean;
+	/**
+	 * Resend the telecommand if a failure has happened during transmission.
+	 */
+	resendOnFailure: boolean;
+	/**
+	 * Force the telecommand to be executed on the target.
+	 */
+	forceExecution: boolean;
+}
+
+const defaultOptions: DeliveryOptions = {
+	requestReceipt: false,
+	resendOnFailure: false,
+	forceExecution: false
+};
+
+function sendTC(command: string, options: DeliveryOptions): void {
+	console.log('Send telecommand:', command, ', with options:', options);
+}
+
+export function Widget() {
+	const [command, setCommand] = useState('default-command');
+
+	const handle = () => {
+		showDialog('custom-tc', {
+			title: 'Send telecommand',
+			content:
+				'Are you sure you want to send the telecommand "' + command + '"?',
+			initialState: undefined
+		}).then(() => sendTC(command));
+	};
+
+	return (
+		<View padding="size-200">
+			<Flex direction="column" gap="size-100">
+				<TextField
+					label="Telecommand"
+					width="100%"
+					value={command}
+					onChange={setCommand}
+				/>
+				<ActionButton onPress={handle}>Send</ActionButton>
+			</Flex>
+		</View>
+	);
+}
+```
+
+## Step 2: Add state for storing the delivery options
+
+To pass the user defined delivery options to our external telecommand API, we
+need another React state which stores them. Then, we pass these options to the
+`sendTC` function in the resolved promise:
+
+```tsx title='widget.tsx' {31,39}
+import { useState } from 'react';
+import { ActionButton, Flex, TextField, View } from '@adobe/react-spectrum';
+import { showDialog } from '@wuespace/telestion-client-common';
+
+interface DeliveryOptions {
+	/**
+	 * Request a transmission receipt from the target.
+	 */
+	requestReceipt: boolean;
+	/**
+	 * Resend the telecommand if a failure has happened during transmission.
+	 */
+	resendOnFailure: boolean;
+	/**
+	 * Force the telecommand to be executed on the target.
+	 */
+	forceExecution: boolean;
+}
+
+const defaultOptions: DeliveryOptions = {
+	requestReceipt: false,
+	resendOnFailure: false,
+	forceExecution: false
+};
+
+function sendTC(command: string, options: DeliveryOptions): void {
+	console.log('Send telecommand:', command, ', with options:', options);
+}
+
+export function Widget() {
+	const [options, setOptions] = useState(defaultOptions);
+	const [command, setCommand] = useState('default-command');
+
+	const handle = () => {
+		showDialog('custom-tc', {
+			title: 'Send telecommand',
+			content:
+				'Are you sure you want to send the telecommand "' + command + '"?',
+			initialState: undefined
+		}).then(() => sendTC(command, options));
+	};
+
+	return (
+		<View padding="size-200">
+			<Flex direction="column" gap="size-100">
+				<TextField
+					label="Telecommand"
+					width="100%"
+					value={command}
+					onChange={setCommand}
+				/>
+				<ActionButton onPress={handle}>Send</ActionButton>
+			</Flex>
+		</View>
+	);
+}
+```
+
+## Step 3: Add an action button for the options dialog
+
+Currently, the user cannot change the delivery options through the widget. To
+change that, we need another action button which triggers a dialog that present
+the current selection to the user.
+
+Lets place it beside the telecommand text field:
+
+```tsx title='widget.tsx' {45,52-55}
+import { useState } from 'react';
+import { ActionButton, Flex, TextField, View } from '@adobe/react-spectrum';
+import { showDialog } from '@wuespace/telestion-client-common';
+
+interface DeliveryOptions {
+	/**
+	 * Request a transmission receipt from the target.
+	 */
+	requestReceipt: boolean;
+	/**
+	 * Resend the telecommand if a failure has happened during transmission.
+	 */
+	resendOnFailure: boolean;
+	/**
+	 * Force the telecommand to be executed on the target.
+	 */
+	forceExecution: boolean;
+}
+
+const defaultOptions: DeliveryOptions = {
+	requestReceipt: false,
+	resendOnFailure: false,
+	forceExecution: false
+};
+
+function sendTC(command: string, options: DeliveryOptions): void {
+	console.log('Send telecommand:', command, ', with options:', options);
+}
+
+export function Widget() {
+	const [options, setOptions] = useState(defaultOptions);
+	const [command, setCommand] = useState('default-command');
+
+	const handle = () => {
+		showDialog('custom-tc', {
+			title: 'Send telecommand',
+			content:
+				'Are you sure you want to send the telecommand "' + command + '"?',
+			initialState: undefined
+		}).then(() => sendTC(command, options));
+	};
+
+	return (
+		<View padding="size-200">
+			<Flex direction="column" gap="size-100">
+				<Flex direction="row" gap="size-100" alignItems="end">
+					<TextField
+						label="Telecommand"
+						width="100%"
+						value={command}
+						onChange={setCommand}
+					/>
+					<ActionButton flexShrink={0}>Options</ActionButton>
+				</Flex>
+				<ActionButton onPress={handle}>Send</ActionButton>
+			</Flex>
+		</View>
+	);
+}
+```
+
+We wrap the existing text field in another flex container with the new action
+button and align them horizontally. Give the action button a flex shrink of `0`
+so it doesn't collapse in the flex container. Add some spacing between both
+items with `gap="size-100"` and align them with `alignItems="end"` in the flex
+container. This puts the action button on the same height as the text field
+input.
+
+Now, your widget should look like this:
+
+<Image
+	src="/img/dialogs/stateful-dialog-layout.png"
+	alt="The custom telecommand widget with the options button"
+	center
+/>
+
+## Step 4: Open the options dialog
+
+Currently, the added action button does nothing. Let's attach an event handler
+that opens the dialog which presents the delivery options to the user:
+
+```tsx title='widget.tsx' {34-40,42,60,64}
+import { useState } from 'react';
+import { ActionButton, Flex, TextField, View } from '@adobe/react-spectrum';
+import { showDialog } from '@wuespace/telestion-client-common';
+
+interface DeliveryOptions {
+	/**
+	 * Request a transmission receipt from the target.
+	 */
+	requestReceipt: boolean;
+	/**
+	 * Resend the telecommand if a failure has happened during transmission.
+	 */
+	resendOnFailure: boolean;
+	/**
+	 * Force the telecommand to be executed on the target.
+	 */
+	forceExecution: boolean;
+}
+
+const defaultOptions: DeliveryOptions = {
+	requestReceipt: false,
+	resendOnFailure: false,
+	forceExecution: false
+};
+
+function sendTC(command: string, options: DeliveryOptions): void {
+	console.log('Send telecommand:', command, ', with options:', options);
+}
+
+export function Widget() {
+	const [options, setOptions] = useState(defaultOptions);
+	const [command, setCommand] = useState('default-command');
+
+	const onOptions = () => {
+		showDialog('options-tc', {
+			title: 'Telecommand options',
+			content: 'TODO',
+			initialState: options
+		}).then(setOptions);
+	};
+
+	const onSend = () => {
+		showDialog('custom-tc', {
+			title: 'Send telecommand',
+			content:
+				'Are you sure you want to send the telecommand "' + command + '"?',
+			initialState: undefined
+		}).then(() => sendTC(command, options));
+	};
+
+	return (
+		<View padding="size-200">
+			<Flex direction="column" gap="size-100">
+				<Flex direction="row" gap="size-100" alignItems="end">
+					<TextField
+						label="Telecommand"
+						width="100%"
+						value={command}
+						onChange={setCommand}
+					/>
+					<ActionButton flexShrink={0} onPress={onOptions}>
+						Options
+					</ActionButton>
+				</Flex>
+				<ActionButton onPress={onSend}>Send</ActionButton>
+			</Flex>
+		</View>
+	);
+}
+```
+
+We create a new event handler called `onOptions` which opens the options dialog.
+The new dialog receives the current options as initial state and sets the
+"global" options state via the setter when it succeeds.
+
+## Step 5: Make the options dialog interactive
+
+Currently the dialog has no content which can interact with the dialog state.
+Lets change that:
+
+```tsx title='widget.tsx' {37-39}
+import { useState } from 'react';
+import { ActionButton, Flex, TextField, View } from '@adobe/react-spectrum';
+import { showDialog } from '@wuespace/telestion-client-common';
+
+interface DeliveryOptions {
+	/**
+	 * Request a transmission receipt from the target.
+	 */
+	requestReceipt: boolean;
+	/**
+	 * Resend the telecommand if a failure has happened during transmission.
+	 */
+	resendOnFailure: boolean;
+	/**
+	 * Force the telecommand to be executed on the target.
+	 */
+	forceExecution: boolean;
+}
+
+const defaultOptions: DeliveryOptions = {
+	requestReceipt: false,
+	resendOnFailure: false,
+	forceExecution: false
+};
+
+function sendTC(command: string, options: DeliveryOptions): void {
+	console.log('Send telecommand:', command, ', with options:', options);
+}
+
+export function Widget() {
+	const [options, setOptions] = useState(defaultOptions);
+	const [command, setCommand] = useState('default-command');
+
+	const onOptions = () => {
+		showDialog('options-tc', {
+			title: 'Telecommand options',
+			content: (state, setState) => <div>TODO</div>,
+			initialState: options
+		}).then(setOptions);
+	};
+
+	const onSend = () => {
+		showDialog('custom-tc', {
+			title: 'Send telecommand',
+			content:
+				'Are you sure you want to send the telecommand "' + command + '"?',
+			initialState: undefined
+		}).then(() => sendTC(command, options));
+	};
+
+	return (
+		<View padding="size-200">
+			<Flex direction="column" gap="size-100">
+				<Flex direction="row" gap="size-100" alignItems="end">
+					<TextField
+						label="Telecommand"
+						width="100%"
+						value={command}
+						onChange={setCommand}
+					/>
+					<ActionButton flexShrink={0} onPress={onOptions}>
+						Options
+					</ActionButton>
+				</Flex>
+				<ActionButton onPress={onSend}>Send</ActionButton>
+			</Flex>
+		</View>
+	);
+}
+```
+
+Here comes the trick: Instead of using strings or static components as content,
+we give the dialog a function that returns the content. This function receives
+from the dialog the current dialog state (here called `state`) and as second
+argument a function to change it (here called `setState`).
+
+Now, we define the layout in the dialogs center part:
+
+```tsx title='widget.tsx' {38-57}
+import { useState } from 'react';
+import { ActionButton, Flex, TextField, View } from '@adobe/react-spectrum';
+import { showDialog } from '@wuespace/telestion-client-common';
+
+interface DeliveryOptions {
+	/**
+	 * Request a transmission receipt from the target.
+	 */
+	requestReceipt: boolean;
+	/**
+	 * Resend the telecommand if a failure has happened during transmission.
+	 */
+	resendOnFailure: boolean;
+	/**
+	 * Force the telecommand to be executed on the target.
+	 */
+	forceExecution: boolean;
+}
+
+const defaultOptions: DeliveryOptions = {
+	requestReceipt: false,
+	resendOnFailure: false,
+	forceExecution: false
+};
+
+function sendTC(command: string, options: DeliveryOptions): void {
+	console.log('Send telecommand:', command, ', with options:', options);
+}
+
+export function Widget() {
+	const [options, setOptions] = useState(defaultOptions);
+	const [command, setCommand] = useState('default-command');
+
+	const onOptions = () => {
+		showDialog('options-tc', {
+			title: 'Telecommand options',
+			content: (state, setState) => (
+				<Flex direction="column" gap="size-100">
+					<Checkbox
+						isSelected={state.requestReceipt}
+						onChange={requestReceipt => setState({ requestReceipt })}
+					>
+						Request a transmission receipt from the target
+					</Checkbox>
+					<Checkbox
+						isSelected={state.resendOnFailure}
+						onChange={resendOnFailure => setState({ resendOnFailure })}
+					>
+						Resend the telecommand if a failure has happened during transmission
+					</Checkbox>
+					<Checkbox
+						isSelected={state.forceExecution}
+						onChange={forceExecution => setState({ forceExecution })}
+					>
+						Force the telecommand to be executed on the target
+					</Checkbox>
+				</Flex>
+			),
+			initialState: options
+		}).then(setOptions);
+	};
+
+	const onSend = () => {
+		showDialog('custom-tc', {
+			title: 'Send telecommand',
+			content:
+				'Are you sure you want to send the telecommand "' + command + '"?',
+			initialState: undefined
+		}).then(() => sendTC(command, options));
+	};
+
+	return (
+		<View padding="size-200">
+			<Flex direction="column" gap="size-100">
+				<Flex direction="row" gap="size-100" alignItems="end">
+					<TextField
+						label="Telecommand"
+						width="100%"
+						value={command}
+						onChange={setCommand}
+					/>
+					<ActionButton flexShrink={0} onPress={onOptions}>
+						Options
+					</ActionButton>
+				</Flex>
+				<ActionButton onPress={onSend}>Send</ActionButton>
+			</Flex>
+		</View>
+	);
+}
+```
+
+Every option gets an own check box which shows the current state of the specific
+option. When the user presses on the check box, the check box emits an event
+which changes only the specific option leaving the rest of the dialog state
+untouched.
+
+This comes from the nature of the `setState` function. It accepts a new partial
+dialog state (e.g. one specific boolean value like in this tutorial) and shallow
+merges it with current state. In the end, the changes "win" but the other values
+remain intact.
+
+To wrap it up:
+
+1. the dialog receives the "global" options state
+2. the dialog it opens
+3. the dialog content receives the dialog state (which is currently equal to the
+   "global" state) and renders
+4. the user changes something
+5. the dialog content changes the dialog state through the given function
+6. the dialog state diverts from the "global" state
+7. the user accepts the changes
+8. the promise resolves and returns the dialog state (which is still diverged)
+9. the promise handler updates the "global" options state
+
+:::tip Dynamic content
+
+Not only the `content` property can receive the dialog state, but also every
+other property in the dialog configuration, which defines the dialog layout.
+
+Take a look and the API definition of the `showDialog` function for further
+information.
+
+:::
+
+Now, press the "Options" button in your widget and change some delivery options:
+
+<Image
+	src="/img/dialogs/stateful-dialog-options-dialog.png"
+	alt="The open options dialog from the custom telecommand widget"
+	center
+/>
+
+The send a new telecommand and look in the development console of your browser:
+
+<Image
+	src="/img/dialogs/stateful-dialog-dev-console.png"
+	alt="Console log of send API"
+	center
+/>
+
+## Next steps
+
+<!-- Short concluding sentence: -->
+
+That's it! You've successfully written your first stateful dialog!
+
+Due to the usage of the `showDialog` function, you also can add modals in other
+parts of the web client very easily.
+
+As previously mentioned, take a look at the API reference of the dialog
+function:
+
+<!-- Links to next steps/related articles -->
+
+<Reference to="https://wuespace.github.io/telestion-client/@wuespace/telestion-client-common/#showDialog">
+	<code>showDialog</code> API reference
+</Reference>
+
+<!--
+Snippets
+--------
+
+<Reference to="../other-article">
+    Relative Link to other article
+</Reference>
+
+<Reference to="https://www.example.com">
+    Example Website
+</Reference>
+-->
