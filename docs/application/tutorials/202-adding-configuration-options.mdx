@@ -69,76 +69,59 @@ and using the `JsonMessage` interface from the Telestion APIs.
 
 Based on the code from the
 [`JsonMessage` tutorial](/application/tutorials/using-jsonmessage/), we'll add
-configurability to our `MessageTransformer` verticle.
+configurability to our `MessageTransformer` Verticle.
 
 After the tutorial, our Verticle will look like this:
 
-```java title='MessageTransformer.java' {12-21,26-29,37-42,46,51-52,58-66}
+```java title='MessageTransformer.java' {3-4,5,7-9,11,18,20-23,28-36,42,45,46}
 package de.wuespace.telestion.project.example;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import de.wuespace.telestion.api.config.Config;
 import de.wuespace.telestion.api.message.JsonMessage;
-import io.vertx.core.AbstractVerticle;
+import de.wuespace.telestion.api.verticle.TelestionConfiguration;
+import de.wuespace.telestion.api.verticle.TelestionVerticle;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
 
-public class MessageTransformer extends AbstractVerticle {
-	private Configuration config;
-
-	@SuppressWarnings("unused")
-	public MessageTransformer() {
-		this(null);
-	}
-
-	public MessageTransformer(Configuration config) {
-		this.config = config;
-	}
+public class MessageTransformer extends TelestionVerticle<MessageTransformer.Configuration> {
 
 	public static void main(String[] args) throws InterruptedException {
 		var vertx = Vertx.vertx();
-		vertx.deployVerticle(MessageTransformer.class,
-				new DeploymentOptions().setConfig(
-						new JsonObject()
-								.put("multiplier", 6)
-				)
-		);
 
 		// [...]
-	}
 
-	@Override
-	public void start() throws Exception {
-		this.config = Config.get(
-				this.config, // "forced" configuration, typically null
-				new Configuration(), // default value
-				config(), // passed to Verticle
-				Configuration.class // the configuration class
-		);
+		var config = new JsonObject().put("multiplier", 6);
 
-		var eb = getVertx().eventBus();
-
-		eb.consumer(this.config.inAddress(), event ->
-				JsonMessage.on(IntegerMessage.class, event,
-						message ->
-						{
-							int received = message.value();
-							var output = new IntegerMessage(received * this.config.multiplier());
-							eb.publish(this.config.outAddress(), output.json());
-						}
-				)
-		);
+		vertx.deployVerticle(
+			new MessageTransformer(),
+			new DeploymentOptions().setConfig(config)
+		).onSuccess(res -> {
+			// [...]
+		});
 	}
 
 	public record Configuration(
 			@JsonProperty String inAddress,
 			@JsonProperty String outAddress,
 			@JsonProperty int multiplier
-	) implements JsonMessage {
+	) implements TelestionVerticle {
 		public Configuration() {
 			this("input", "output", 2); // default values
 		}
+	}
+
+	@Override
+	public void onStart() {
+		var eb = getVertx().eventBus();
+
+		eb.consumer(getConfig().inAddress(), event -> {
+			JsonMessage.on(IntegerMessage.class, event, message -> {
+				int received = message.value();
+				var output = new IntegerMessage(received * getConfig().multiplier());
+				eb.publish(getConfig().outAddress(), output.json());
+			});
+		});
 	}
 }
 ```
@@ -159,7 +142,7 @@ could expose to be configurable:
 1. the event bus address we're publishing to
 1. the multiplier
 
-Add a `record Configuration implements JsonMessage` containing these fields as a
+Add a `record Configuration implements TelestionConfiguration` containing these fields as a
 member of our `MessageTransformer` Verticle:
 
 :::tip
@@ -169,55 +152,53 @@ Verticle and name them `Configuration`.
 
 :::
 
-```java title="MessageTransformer.java"
+```java title="MessageTransformer.java" {11-16}
+package de.wuespace.telestion.project.example;
+
 // [...]
-public class MessageTransformer extends AbstractVerticle {
-	// [...]
+
+public class MessageTransformer extends TelestionVerticle<GenericConfiguration> {
+
+	public static void main(String[] args) throws InterruptedException {
+		// [...]
+	}
+
 	public record Configuration(
 			@JsonProperty String inAddress,
 			@JsonProperty String outAddress,
 			@JsonProperty int multiplier
-	) implements JsonMessage {
+	) implements TelestionConfiguration {
+	}
+
+	@Override
+	public void onStart() {
+		// [...]
 	}
 }
 ```
 
-Now that we have to find a configuration record, let's take a look at how we can
+Now that we have defined a configuration record, let's take a look at how we can
 apply it in our Verticle.
 
 ## Step 2: Adjusting the Verticle structure
 
 To actually use our configuration, we need to make some slight adjustments to
-all code:
+the existing code:
 
-```java title='MessageTransformer.java' {3-12}
+```java title='MessageTransformer.java' {5}
+package de.wuespace.telestion.project.example;
+
 // [...]
-public class MessageTransformer extends AbstractVerticle {
-	private Configuration config;
 
-	@SuppressWarnings("unused")
-	public MessageTransformer() {
-		this(null);
-	}
-
-	public MessageTransformer(Configuration config) {
-		this.config = config;
-	}
-
+public class MessageTransformer extends TelestionVerticle<MessageTransformer.Configuration> {
 	// [...]
-
-	public record Configuration(
-			@JsonProperty String inAddress,
-			@JsonProperty String outAddress,
-			@JsonProperty int multiplier
-	) implements JsonMessage {
-	}
 }
 ```
 
-First, we need to add a `config` field that stores our configuration. We also
-need two constructors: One that gets passed a `Configuration` object, and
-another that has no parameters.
+Now, the generic type enters the game.
+We need to give the `TelestionVerticle` class a hint about our new configuration.
+So we replace the `GenericConfiguration` type
+with our configuration type `MessageTransformer.Configuration`.
 
 With that, our Verticle is fully set up to handle our configuration objects.
 Next, let's take a look at how we can retrieve configuration values to actually
@@ -225,39 +206,34 @@ use them within our Verticle.
 
 ## Step 3: Retrieving configuration values
 
-We can use another one of Telestion's convenience methods to retrieve our
-configuration.
+When the Verticle starts, it automatically retrieves
+and merges the configuration provided by the `Vertx` context with the default configuration.
 
-Use `Config.get()` and pass our forced config, the configuration passed to the
-Verticle, and a reference to the configuration class:
+Then it maps the merged configuration back to our `Configuration` type.
 
-```java title='MessageTransformer.java' {2,9-13,17,22-23}
-[...]
+To access the configuration, use one of the `TelestionVerticle`'s convenience methods:
+
+```java title='MessageTransformer.java' {}
+package de.wuespace.telestion.project.example;
+
+// [...]
 import de.wuespace.telestion.api.config.Config;
+// [...]
 
-public class MessageTransformer extends AbstractVerticle {
+public class MessageTransformer extends TelestionVerticle<MessageTransformer.Configuration> {
 	// [...]
 
 	@Override
-	public void start() throws Exception {
-		this.config = Config.get(
-				this.config, // "forced" configuration, typically null
-				config(), // passed to Verticle
-				Configuration.class // the configuration class
-		);
-
+	public void onStart() {
 		var eb = getVertx().eventBus();
 
-		eb.consumer(this.config.inAddress(), event ->
-				JsonMessage.on(IntegerMessage.class, event,
-						message ->
-						{
-							int received = message.value();
-							var output = new IntegerMessage(received * this.config.multiplier());
-							eb.publish(this.config.outAddress(), output.json());
-						}
-				)
-		);
+		eb.consumer(getConfig().inAddress(), event -> {
+			JsonMessage.on(IntegerMessage.class, event, message -> {
+				int received = message.value();
+				var output = new IntegerMessage(received * getConfig().multiplier());
+				eb.publish(getConfig().outAddress(), output.json());
+			});
+		});
 	}
 
 	// [...]
@@ -265,15 +241,13 @@ public class MessageTransformer extends AbstractVerticle {
 ```
 
 As you can see, we can now just access configuration options by using the
-`this.config` field of our Verticle.
+`getConfig` method provided by the `TelestionVerticle` base class.
 
-:::warning `this.config` vs `this.config()`
+To access the configuration in other types, take a look at the API reference of the `TelestionVerticle`:
 
-Always retrieve configuration using `this.config`. `this.config()` should only
-get passed to `Config.get()` as it returns the "native" JsonObject (as part of
-the Vert.x APIs) instead of the `Configuration` instance!
-
-:::
+<Reference to="https://javadoc.io/doc/de.wuespace.telestion/telestion-api/latest/de/wuespace/telestion/api/verticle/TelestionVerticle.html">
+	<code>TelestionVerticle</code> API reference
+</Reference>
 
 ## Step 4: Adding default configuration parameters
 
@@ -283,12 +257,18 @@ can be quite cumbersome.
 Therefore, it is good practice to define the default values for your
 `Configuration` record.
 
-And a default constructor defining the default values:
+And a default constructor with no arguments defining the default values
+to our `Configuration` class:
 
-```java title="MessageTransformer.java" {9-11}
+```java title="MessageTransformer.java" {14-16}
+package de.wuespace.telestion.project.example;
+
 // [...]
-public class MessageTransformer extends AbstractVerticle {
+
+public class MessageTransformer extends TelestionVerticle<MessageTransformer.Configuration> {
+
 	// [...]
+
 	public record Configuration(
 			@JsonProperty String inAddress,
 			@JsonProperty String outAddress,
@@ -298,64 +278,44 @@ public class MessageTransformer extends AbstractVerticle {
 			this("input", "output", 2); // default values
 		}
 	}
-}
-```
-
-After that, all that you need to do is to add another parameter in the Telestion
-convenience function.
-
-Add your default configuration as the second parameter of the `config.get()`
-function:
-
-```java title='MessageTransformer.java' {9}
-// [...]
-public class MessageTransformer extends AbstractVerticle {
-	// [...]
-
-	@Override
-	public void start() throws Exception {
-		this.config = Config.get(
-				this.config, // "forced" configuration, typically null
-				new Configuration(), // default value
-				config(), // passed to Verticle
-				Configuration.class // the configuration class
-		);
-
-		// [...]
-	}
 
 	// [...]
 }
 ```
+
+That's it! The `TelestionVerticle` class will try to load the default configuration
+once the Verticle is created.
 
 ## Step 5: Adjusting the `main()` method
 
 To test what we've just written, we also need to adjust our main method.
 
-Use `newDeploymentOptions().setConfig(jsonObject)` to pass a configuration
-object to the deployed verticle:
+Use `new DeploymentOptions().setConfig(jsonObject)` to pass a configuration
+object to the deployed Verticle:
 
-```java title='MessageTransformer.java' {13-16}
+```java title='MessageTransformer.java' {14,16-19}
 package de.wuespace.telestion.project.example;
 
 // [...]
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.json.JsonObject;
 
-public class MessageTransformer extends AbstractVerticle {
-	// [...]
+public class MessageTransformer extends TelestionVerticle<MessageTransformer.Configuration> {
 
-    public static void main(String[] args) throws InterruptedException {
-        var vertx = Vertx.vertx();
-        vertx.deployVerticle(MessageTransformer.class,
-                new DeploymentOptions().setConfig(
-                        new JsonObject()
-                                .put("multiplier", 6)
-                )
-        );
+  public static void main(String[] args) throws InterruptedException {
+		var vertx = Vertx.vertx();
 
-        // [...]
-    }
+		// [...]
+
+		var config = new JsonObject().put("multiplier", 6);
+
+		vertx.deployVerticle(
+			new MessageTransformer(),
+			new DeploymentOptions().setConfig(config)
+		).onSuccess(res -> {
+			// [...]
+		});
+	}
 
 	// [...]
 }
@@ -378,9 +338,13 @@ wouldn't be possible to test our default values if we instantiated a "full"
 
 And that's already it. While you may, of course, need to know how to use other
 Java functionalities, this is all the Telestion-specific knowledge you need to
-write verticles and even whole extensions for the Telestion projects.
+write Verticles and even whole extensions for the Telestion projects.
 
 <!-- Links to next steps/related articles -->
+
+<Reference to="https://javadoc.io/doc/de.wuespace.telestion/telestion-api/latest/de/wuespace/telestion/api/verticle/TelestionVerticle.html">
+	<code>TelestionVerticle</code> API reference
+</Reference>
 
 <!--
 Snippets
