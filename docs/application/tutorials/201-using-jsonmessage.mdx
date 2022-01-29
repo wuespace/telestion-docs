@@ -97,32 +97,33 @@ record IntegerMessage(
 ) implements JsonMessage {}
 ```
 
-```java title='MessageTransformer.java' {9,16-25}
+```java title='MessageTransformer.java' {12,21-25}
 package de.wuespace.telestion.project.example;
 
-// [...]
+import de.wuespace.telestion.api.verticle.GenericConfiguration;
+import de.wuespace.telestion.api.verticle.TelestionVerticle;
 
-public class MessageTransformer extends AbstractVerticle {
+public class MessageTransformer extends TelestionVerticle<GenericConfiguration> {
   public static void main(String[] args) throws InterruptedException {
 		// [...]
 
-		vertx.eventBus().publish("input", new IntegerMessage(3).json());
+		vertx.deployVerticle(new MessageTransformer()).onSuccess(res -> {
+			// publish a number once the Verticle is deployed
+			vertx.eventBus().publish("input", new IntegerMessage(3).json());
+		});
 	}
 
 	@Override
-	public void start() throws Exception {
+	public void onStart() {
 		var eb = getVertx().eventBus();
 
-		eb.consumer("input", event ->
-				JsonMessage.on(IntegerMessage.class, event,
-						message ->
-						{
-							int received = message.value();
-							var output = new IntegerMessage(received * 2);
-							eb.publish("output", output.json());
-						}
-				)
-		);
+		eb.consumer("input", event -> {
+			JsonMessage.on(IntegerMessage.class, event, message -> {
+				int received = message.value();
+				var output = new IntegerMessage(received * 2);
+				eb.publish("output", output.json());
+			});
+		});
 	}
 }
 ```
@@ -165,30 +166,28 @@ Since we now have a proper `JsonMessage` wrapper, we can drop the previous
 instead, use one of Telestion's convenience functions for easily filtering for
 valid messages.
 
-Replace our previous `eb.consumer()` logic in `MessageTransformer::start()` with
+Replace our previous `eb.consumer()` logic in `MessageTransformer::onStart()` with
 this code:
 
-```java title='MessageTransformer.java' {12-20}
+```java title='MessageTransformer.java' {13-16}
 package de.wuespace.telestion.project.example;
 
 // [...]
 
-public class MessageTransformer extends AbstractVerticle {
+public class MessageTransformer extends TelestionVerticle<GenericConfiguration> {
 	// [...]
 
 	@Override
-	public void start() throws Exception {
+	public void onStart() {
+		// TODO: use vertx instead of getVertx
 		var eb = getVertx().eventBus();
 
-		eb.consumer("input", event ->
-				JsonMessage.on(IntegerMessage.class, event,
-						message ->
-						{
-							int received = message.value();
-							eb.publish("output", received * 2);
-						}
-				)
-		);
+		eb.consumer("input", event -> {
+			JsonMessage.on(IntegerMessage.class, event, message -> {
+				int received = message.value();
+				eb.publish("output", received * 2);
+			});
+		});
 	}
 }
 ```
@@ -213,26 +212,23 @@ Now that we can receive `IntegerMessage` messages, we also need to publish them.
 Create a new `IntegerMessage` instance called `output` and instead of publishing
 `received * 2`, publish `output.json()`:
 
-```java title='MessageTransformer.java' {15-16}
+```java title='MessageTransformer.java' {13-14}
 // [...]
 
-public class MessageTransformer extends AbstractVerticle {
+public class MessageTransformer extends TelestionVerticle<GenericConfiguration> {
 	// [...]
 
 	@Override
-	public void start() throws Exception {
+	public void onStart() {
 		var eb = getVertx().eventBus();
 
-		eb.consumer("input", event ->
-				JsonMessage.on(IntegerMessage.class, event,
-						message ->
-						{
-							int received = message.value();
-							var output = new IntegerMessage(received * 2);
-							eb.publish("output", output.json());
-						}
-				)
-		);
+		eb.consumer("input", event -> {
+			JsonMessage.on(IntegerMessage.class, event, message -> {
+				int received = message.value();
+				var output = new IntegerMessage(received * 2);
+				eb.publish("output", output.json());
+			});
+		});
 	}
 }
 ```
@@ -251,12 +247,15 @@ within our `main()` method using the same method as above:
 ```java title='MessageTransformer.java' {7}
 // [...]
 
-public class MessageTransformer extends AbstractVerticle {
+public class MessageTransformer extends TelestionVerticle<GenericConfiguration> {
   public static void main(String[] args) throws InterruptedException {
-        // [...]
+    // [...]
 
-        vertx.eventBus().publish("input", new IntegerMessage(3).json());
-    }
+    vertx.deployVerticle(new MessageTransformer()).onSuccess(res -> {
+			// publish a number once the Verticle is deployed
+			vertx.eventBus().publish("input", new IntegerMessage(3).json());
+		});
+  }
 
 	// [...]
 }
@@ -284,7 +283,7 @@ With that, you've used your first actual Telestion API. And you've gotten away
 from nasty, unsafe type casts.
 
 In the next tutorial, you'll learn how to add configuration options to your
-verticle. After that, you're already equipped with the knowledge to understand
+Verticle. After that, you're already equipped with the knowledge to understand
 almost all real Verticles in Telestion projects.
 
 <!-- Links to next steps/related articles -->
