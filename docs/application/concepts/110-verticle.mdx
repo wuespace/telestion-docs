@@ -14,13 +14,18 @@ Verticles are the "building blocks," so to speak, of the
 ## Example Code
 
 ```java
-public class MyVerticle extends AbstractVerticle {
-    // Called when verticle is deployed
-    public void start() {
+import de.wuespace.telestion.api.verticle.GenericConfiguration;
+import de.wuespace.telestion.api.verticle.TelestionVerticle;
+
+public class MyVerticle extends TelestionVerticle<GenericConfiguration> {
+    // Called when Verticle is deployed
+    @Override
+    public void onStart() {
     }
 
-    // Optional - called when verticle is undeployed
-    public void stop() {
+    // Optional - called when Verticle is undeployed
+    @Override
+    public void onStop() {
     }
 }
 ```
