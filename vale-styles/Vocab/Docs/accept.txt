@@ -1,0 +1,18 @@
+Telestion
+Application
+Client
+Verticle
+(?i)Widget
+(?i)Dashboards?
+Traits?
+npm
+CLI
+Telemetry
+Telecommand
+Event Bus
+(?i)message
+implement
+Klaschka
+monorepo
+only
+rebasing

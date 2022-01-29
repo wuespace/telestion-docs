@@ -42,38 +42,39 @@ import { Reference, Image } from '/components';
 
 <!-- Brief Description (1-3 lines) of the concept: -->
 
-Error messages are a part of practically every application or library we
-develop. Especially in libraries (like `telestion-core` or `telestion-client`),
-good error messages are crucial for a good developer experience.
+Error messages are a part of practically every application or library that your
+develop. Even more so in libraries (like `telestion-core` or
+`telestion-client`), good error messages are crucial for a good developer
+experience.
 
 :::warning
 
 Developers using your libraries **shouldn't have to know** how your library
-works to solve problems. It is therefore crucial to handle potential errors of a
-library in the library itself and, if necessary, throw only higher-level
-exceptions with good error messages to the developer using the library.
+works to solve problems. Thus, it's crucial to handle potential errors of a
+library in the library itself and, if necessary, throw higher-level exceptions
+with good error messages to the developer using the library.
 
-Even the best error message can't solve that a few abstractions down the line
-(i.e., a few layers further up the call stack), they don't really make sense
+Even the best error message can't solve that two or three abstractions down the
+line (two or three layers further up the call stack), they don't make sense
 anymore.
 
-Therefore, _**all** library functions must **always** catch **all** possible
-errors and provide **their own** error messages that are helpful in **the
-context of the immediate caller** of that function to guarantee for a good
-developer experience!_
+Because of that, _**all** library functions must **always** catch **all**
+possible errors and provide **their own** error messages that are helpful in
+**the context of the immediate caller** of that function to guarantee for a good
+developer experience._
 
 :::
 
 ## Error messages for expected errors
 
 It might seem strange, but most errors are actually "expected" errors. For
-example, when opening a file, we can already anticipate that the user might not
-have the rights to read the file and the operation might therefore fail.
+example, when opening a file, you can already expect that the user might not
+have the rights to read the file and the operation might fail because of that.
 
-This, in turn, means that we're able to write "actionable" error messages, i.e.,
-messages that already contain potential solutions.
+This, in turn, means that you're able to write "actionable" error messages,
+meaning messages that already contain potential solutions.
 
-Whenever it is possible to already "know what went wrong", you should write
+Whenever it's possible to already "know what went wrong," you should write
 so-called _Actionable Error Messages_ that already provide potential solutions
 within the error message itself.
 
@@ -91,10 +92,10 @@ frustrating for developers to learn that you don't have a solution for them,
 it's even more frustrating to learn that from a 2 hour search for a solution
 that doesn't exist.
 
-In these cases, it's important to be honest and give developers a way to easily
-report this bug to us. You should also include a quick apology in your error
-message since the fact that you hadn't anticipated the scenerio means it's you
-who messed up, and it's also up to you to fix it asap.
+In these cases, it's important to be honest and give developers a way to report
+this bug with as little friction as possible. You should also include a quick
+apology in your error message since the fact that you hadn't anticipated the
+scenario means it's you who messed up, and it's also up to you to fix it asap.
 
 <Reference to="/internal/references/unexpected-error-message-structure">
 	Unexpected Error Message Structure

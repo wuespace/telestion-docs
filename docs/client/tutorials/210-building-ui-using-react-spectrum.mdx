@@ -50,11 +50,11 @@ import { Reference, Image } from '/components';
 
 <!-- Short description of what the article covers: -->
 
-In this tutorial, we'll use the React Spectrum library to build our widget's UI.
-React Spectrum is a React-based implementation of Adobe's Spectrum Design
+In this tutorial, you'll use the React Spectrum library to build your widget's
+UI. React Spectrum is a React-based implementation of Adobe's Spectrum Design
 system. Spectrum Design is the design system used by
-`@wuespace/telestion-client-common` library and therefore neatly integrates into
-the other parts of the client's UI.
+`@wuespace/telestion-client-common` library and integrates well into the other
+parts of the client's UI.
 
 :::info Prerequisites
 
@@ -64,18 +64,19 @@ have a widget bootstrapped according to the
 
 :::
 
-## What we'll build
+## What you'll build
 
-We'll build our widget's UI. It should display the connection status (Connected
-/ Disconnected) of three different I/O interfaces: `SAT A`, `SAT B`, and `SAT C`
-and have "Reset" buttons that could, for example, trigger a Telecommand:
+You'll build your widget's UI. It should display the connection status
+(Connected / Disconnected) of three different I/O interfaces: `SAT A`, `SAT B`,
+and `SAT C` and have "Reset" buttons that could, for example, trigger a
+Telecommand:
 
 <Image src="img/client/my-first-widget/04.png" center />
 
-In this tutorial, we won't connect this to any actual data source (the event
+In this tutorial, you won't connect this to any actual data source (the event
 bus) that's a part of the following tutorial.
 
-The code we'll write looks like this:
+The code you'll write looks like this:
 
 ```ts title='src/widgets/my-new-widget/widget.tsx'
 import {
@@ -141,9 +142,9 @@ The result should look something like this:
 
 ## Step 2: Add component for a system's indicator
 
-Since we have three different systems, we'll extract their connection status UI
-into one reusable `<Indicator />` component and use it for our three different
-systems:
+Since you have three different systems, you'll extract their connection status
+UI into one reusable `<Indicator />` component and use it for your three
+different systems:
 
 ```java title='Car.java'
 import {
@@ -188,7 +189,9 @@ function Indicator(props: { system: string }) {
 Now, our UI has status-light indicators for the connection status of the three
 different systems and reset buttons:
 
+<!-- vale off -->
 <Image src="img/client/my-first-widget/04.png" center />
+<!-- vale on -->
 
 ## Next steps
 
@@ -196,8 +199,8 @@ different systems and reset buttons:
 
 You have now developed a realistic widget using the Spectrum Design system.
 
-We recommend that you familiarize yourself with both the Spectrum Design system
-in general as well as the React Spectrum implementation using Adobe's resources:
+You should familiarize yourself with both the Spectrum Design system in general
+as well as the React Spectrum implementation using Adobe's resources:
 
 <Reference to="https://spectrum.adobe.com/">
 	Adobe Spectrum Design System
@@ -206,7 +209,7 @@ in general as well as the React Spectrum implementation using Adobe's resources:
 	React Spectrum Documentation
 </Reference>
 
-Of course, this widget currently doesn't reflect the actual connection status.
+Of course, this widget, right now, doesn't reflect the actual connection status.
 To change that, you'll learn how to connect this widget to the Application's
 event bus using the APIs from `@wuespace/telestion-client-core` in the next
 tutorial:

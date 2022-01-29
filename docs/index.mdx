@@ -5,20 +5,20 @@ title: Telestion Developer Documentation
 
 import { Reference, Grid, Image } from '/components';
 
-Welcome to the Telestion Documentation pages!
+Welcome to the Telestion Documentation pages.
 
-Telestion is an extensible, open-source ecosystem for building Ground Station
-Software. It is based on Java for the backend and React on the frontend side.
+Telestion is an extensible, open source ecosystem for building Ground Station
+Software. It's based on Java for the backend and React on the frontend side.
 
 :::info Intended for developers
 
-Telestion is, first and foremost, an ecosystem for building mission-specific
-Ground Station Software. Since every mission's requirements are different, this
-documentation can only describe the general concepts and how to use the
-ecosystem to develop mission-specific software.
+Telestion is an ecosystem for building mission-specific Ground Station Software.
+Since every mission's requirements are different, this documentation describes
+the general concepts and how to use the ecosystem to develop mission-specific
+software.
 
 For end-user instructions for a Telestion-based Ground Station software, please
-ask your Ground Station Software Development Team!
+ask your Ground Station Software Development Team.
 
 :::
 
@@ -27,9 +27,9 @@ ask your Ground Station Software Development Team!
 Before you get started with developing within the Telestion Ecosystem, it's
 important to grasp the various bits and pieces in the ecosystem.
 
-We recommend watching our _Telestion Concepts_ YouTube playlist, a set of short
-videos explaining the most important concepts you need to know to dive into
-developing a Ground Station using Telestion:
+To start, you should watch the _Telestion Concepts_ YouTube playlist, a set of
+short videos explaining the most important concepts you need to know to dive
+into developing a Ground Station using Telestion:
 
 <Reference to="https://www.youtube.com/playlist?list=PLIg6wHc9-7aXgtMEL8SQc6bp-b0JhKpYT">
 	Telestion Concepts Playlist
@@ -38,8 +38,8 @@ developing a Ground Station using Telestion:
 ## High-level ecosystem overview
 
 To give you an idea of where to might go next (if you haven't watched the
-YouTube playlist), let's take a quick look at the two main components of every
-Telestion Project: The _Application_ and the _Client_.
+YouTube playlist), take a quick look at the two main components of every
+Telestion Project: the _Application_ and the _Client_.
 
 <Image
 	src="/static/img/drawio-diagrams/general-telestion-structure/application-and-client.drawio.svg"
@@ -50,13 +50,13 @@ Telestion Project: The _Application_ and the _Client_.
 
 The _Application_ is a Java-based software (using the Vert.x framework)
 responsible for all the backend work within a Telestion project. It communicates
-with the various mission I/O devices, processes the data (e.g., saving telemetry
-to the database), and communicates with the client.
+with the various mission I/O devices, processes the data (for example, saving
+telemetry to the database), and communicates with the Client.
 
-The _Client_ is the User Inteface your Ground Station operators interact with.
+The _Client_ is the User Interface your Ground Station operators interact with.
 It's based on web technologies (with React and TypeScript at the core of its
-tech stack) and provides a framework for building re-usable widgets that are
-displayed in multiple dashboards.
+tech stack) and provides a framework for building re-usable widgets that get
+displayed in dashboards.
 
 <Grid>
 	<Reference to="/application/">

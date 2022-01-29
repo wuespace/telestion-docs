@@ -50,8 +50,8 @@ import { Reference, Image } from '/components';
 
 <!-- Short description of what the article covers: -->
 
-In this tutorial, we'll generate a new widget from scratch and include it in one
-of our dashboards.
+In this tutorial, you'll generate a new widget from scratch and include it in
+one of your dashboards.
 
 :::info Prerequisites
 
@@ -67,14 +67,14 @@ screen:
 
 If you log in using the username `admin` and an arbitrary password (since you
 haven't configured any authentication yet, you can just log in using random
-credentials), you can see a dashboard with a sample widget (_Hello world_) and a
-few missing widgets:
+credentials), you can see a dashboard with a sample widget (_Hello world_) and
+some missing widgets:
 
 <Image src="img/client/default-dashboard.png" />
 
-## What we'll build
+## What you'll build
 
-In this tutorial, we won't build anything fancy, but you'll learn:
+In this tutorial, you won't build anything fancy, but you'll learn:
 
 1. how to bootstrap a new widget using the Telestion Client CLI
 2. how to add your new widget to a dashboard
@@ -108,18 +108,18 @@ This command does four things:
 2. the CLI created a file `src/widgets/my-first-widget/widget.tsx` that contains
    the React component that the dashboard renders for your widget
 3. the CLI created a file `src/widgets/my-first-widget/index.ts` that exports
-   the component from `widget.tsx` with some additional metadata
+   the component from `widget.tsx` with some metadata
 4. the CLI modified the file `src/widgets/index.ts` to include your new widget
    `myFirstWidget` in the array of available widgets.
 
 With that, you already have all the files you need and even have a working
-widget. However, when you look at your dashboard again, your widget isn't
-visible yet.
+widget. But when you look at your dashboard again, your widget isn't visible
+yet.
 
 ## Step 2: Add the widget to your dashboard
 
-To add the new widget to your dashboard, you must modify the dashboard
-configuration. For that, we need a way to reference your newly created widget.
+To add the new widget to your dashboard, you must edit the dashboard
+configuration. For that, you need a way to reference your newly created widget.
 
 Thankfully, if you take a closer look at the `index.ts` of your new widget, you
 can see that it already exports a name (`'myFirstWidget'`):
@@ -137,9 +137,9 @@ export const widget: Widget = {
 };
 ```
 
-The admin's dashboard is currently defined in the
-`src/model/sample-user-config.ts` file. Let's replace the second widget's
-`widgetName` property with our widget name:
+You can find the administrator user's dashboard's configuration in the
+`src/model/sample-user-config.ts` file. Replace the second widget's `widgetName`
+property with your widget name:
 
 ```ts title=src/model/sample-user-config.ts
 import { UserConfig } from '@wuespace/telestion-client-types';
@@ -180,14 +180,14 @@ reloads the page, and you can see your widget on the left of the second row:
 
 ## Step 3: Add first customizations to the widget
 
-Let's face it: While it's cool that you just created your first own widget, that
-headline _myFirstWidget widget_ looks a bit hideous :wink:.
+While it's cool that you just created your first own widget, that headline
+_myFirstWidget widget_ looks a bit hideous :wink:.
 
-However, since the React component within your `widget.tsx` defines your UI, you
-can create whatever UI you want.
+But since the React component within your `widget.tsx` defines your UI, you can
+create whatever UI you want.
 
-For demonstration purposes, we'll adjust the heading to something more readable.
-Open the file and modify the headline to something you like:
+For demonstration purposes, you'll adjust the heading to something more
+readable. Open the file and edit the headline to something you like:
 
 ```tsx title=src/widgets/my-first-widget/widget.tsx
 import { Heading } from '@adobe/react-spectrum';
@@ -198,9 +198,9 @@ export function Widget() {
 }
 ```
 
-Once again, all you need to do is save the file, wait for a few seconds, and
-return to the client window. Now, you should be able to see your first "really
-own" widget come to life:
+Once again, all you need to do is save the file, wait for a couple of seconds,
+and return to the client window. Now, you should be able to see your first "own"
+widget come to life:
 
 <Image src="img/client/my-first-widget/02.png" />
 
@@ -208,9 +208,9 @@ own" widget come to life:
 
 <!-- Short concluding sentence: -->
 
-Congratulations! You've already built your first widget. While, of course, it
+Congratulations: you've already built your first widget. While, of course, it
 doesn't look like much, yet, all you now need to do is write a "plain" React
-component with the help of many abstractions for communicating with the backend
+component with the help of abstractions for communicating with the backend
 Application and much more.
 
 Even better: Telestion does all the heavy lifting in the background
@@ -219,10 +219,11 @@ meaning you can focus on an isolated context within your widget.
 
 <!-- Links to next steps/related articles -->
 
-In the following tutorials, we'll take a look at how you can use the React
+In the following tutorials, you'll take a look at how you can use the React
 Spectrum library to build widgets that are consistent with the other parts of
-the UI, interact with our event bus abstractions to interact with the backend,
-and using our simple way of adding user configuration options to your widget.
+the UI, interact with Telestion's event bus abstractions to interact with the
+backend, and using a simple way of adding user configuration options to your
+widget.
 
 <!--
 Snippets

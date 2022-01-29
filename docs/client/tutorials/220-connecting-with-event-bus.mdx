@@ -50,7 +50,7 @@ import { Reference, Image } from '/components';
 
 <!-- Short description of what the article covers: -->
 
-In this tutorial, we'll extend our widget from the
+In this tutorial, you'll extend your widget from the
 [Building UI using React Spectrum tutorial](../building-ui-using-react-spectrum)
 to show some actual data and be able to send commands when pressing the "Reset"
 button.
@@ -60,21 +60,21 @@ button.
 To complete this tutorial, you should be familiar with React hooks, NodeJS, and
 the concept of the Event Bus. You should also have access to the code from the
 [Building UI using React Spectrum tutorial](../building-ui-using-react-spectrum)
-as we'll extend the widget from that tutorial.
+as you'll extend the widget from that tutorial.
 
 :::
 
-## What we'll build
+## What you'll build
 
-We'll use the Event Bus bridge and its APIs from the
+You'll use the Event Bus bridge and its APIs from the
 `@wuespace/telestion-client-core` package to interact with the Event Bus
-directly from our widget. Additionally, we'll build a mock server so that we can
-test our widget without the overhead of running the entire (Java-based)
-Application layer.
+directly from your widget. You'll also build a mock server so that you can test
+your widget without the overhead of running the entire (Java-based) Application
+layer.
 
-First, we'll add a mock Application server. Then, we'll use the
-`useChannelLatest()` hook to display actual data. Last but not least, we'll send
-an Event Bus message when an operator presses the "Reset" button.
+First, you'll add a mock Application server. Then, you'll use the
+`useChannelLatest()` hook to display actual data. Lastly, you'll send an Event
+Bus message when an operator presses the "Reset" button.
 
 In the end, you'll have written the following code:
 
@@ -160,7 +160,7 @@ terminal in your client project folder:
 npm i -D @wuespace/vertx-mock-server
 ```
 
-Add a file for our new plugin called `src/plugins/mock-server.ts` with the
+Add a file for your new plugin called `src/plugins/mock-server.ts` with the
 following code:
 
 ```ts title=src/plugins/mock-server.ts
@@ -208,13 +208,13 @@ Electron thread gets started (when running `npm start`). It creates a mock
 server which does two things:
 
 1. it registers a listener on the `reset` channel address and logs messages to
-   that channel to the console (for our reset buttons)
+   that channel to the console (for your reset buttons)
 2. every two seconds, send a connected status (`boolean`) to the channel address
-   `system-status/[system]` for our three systems
+   `system-status/[system]` for your three systems
 
-To load the plugin, you need to do one last step: In the client's root folder,
-there is a `telestion.config.js` that currently exports an empty object. Adjust
-it to include a list of plugins with our new plugin:
+To load the plugin, you need to do one last step: in the client's root folder,
+there is a `telestion.config.js` that exports an empty object right now. Adjust
+it to include a list of plugins with your new plugin:
 
 ```js title=telestion.config.js
 const path = require('path');
@@ -224,35 +224,35 @@ module.exports = {
 };
 ```
 
-When you now restart the `npm start` command (i.e., re-run
+When you now restart the `npm start` command (that is, re-run
 `tc-cli start --electron`), you can see the message
 `Starting Mock Application Server` in the terminal.
 
 :::tip
 
 When making changes to the `telestion.config.js` file or any file referenced by
-it (e.g., plugins), you need to restart the `tc-cli start` command (or
-`npm start`) completely to use your changes.
+it (for example, plugins), you need to restart the `tc-cli start` command (or
+`npm start`) to use your changes.
 
 :::
 
 After logging in as `admin` into `http://localhost:9870/bridge` (with an
-arbitrary password) in your Electron application, after a few seconds, you
-should see the connection status indicator in the navbar turning green and
-saying "Connected".
+arbitrary password) in your Electron application, after a couple of seconds, you
+should see the connection status indicator in the navigation bar turning green
+and saying "Connected."
 
 ## Step 2: Connect the widget's connection status indicators to the event bus
 
-Now that we have a mock server publishing our system status every two seconds,
-we need to connect our widget to that data. Thankfully, this isn't too difficult
-with the help of the `useChannelLatest` hook exported by the
+Now that you have a mock server publishing your system status every two seconds,
+you need to connect your widget to that data. Thankfully, this isn't too
+difficult with the help of the `useChannelLatest` hook exported by the
 `@wuespace/telestion-client-core` package.
 
 The `useChannelLatest()` hook listens to messages on a specific channel address
 and always returns the latest status from there.
 
 Adjust the `<Indicator />` functional component to use the hook to listen to the
-system status on the system's system status channel and wire up our UI to use
+system status on the system's system status channel and wire up your UI to use
 the new status:
 
 ```ts title=src/widgets/my-new-widget/widget.tsx
@@ -280,9 +280,9 @@ function Indicator(props: { system: string }) {
 }
 ```
 
-Note that we default this value to `false` using `?? false`. The default value
-is for when we haven't received a system status yet (which happens when
-initially loading the widget).
+Take note of the `?? false`. This defaults the value to `false` in case it's
+`undefined`. The default value is for when the widget hasn't received a system
+status yet (which happens when initially loading the widget).
 
 After saving the file and reloading the client, you can see the status
 indicators change randomly every two seconds:
@@ -292,17 +292,17 @@ indicators change randomly every two seconds:
 ## Step 3: Wiring up the "Reset" button
 
 To make the "Reset" button broadcast a message to the `reset` channel (that
-we're listening for in our mock server) when pressed, you can use the
+you're listening for in your mock server) when pressed, you can use the
 `useBroadcast()` hook from the `@wuespace/telestion-client-core` package.
 
-Like before, we can do this directly in our `<Indicator />` component. The
+Like before, you can do this directly in your `<Indicator />` component. The
 `useBroadcast()` hook takes the channel address as its first argument and
 returns a function to broadcast a message to that address.
 
-In this case, we define a function `broadcast` that publishes to our `reset`
-channel. Then, we can use the Reset button's `onPress` event to call that
-function to broadcast a message to that channel. Here, we'll pass an object
-containing details about the system into the message:
+Define a function `broadcast` that publishes to your `reset` channel. Use the
+Reset button's `onPress` event to call that function to broadcast a message to
+that channel. Pass an object containing details about the system into the
+message:
 
 ```ts title=src/widgets/my-new-widget/widget.tsx
 // [...]
@@ -357,11 +357,11 @@ But even more, you're now capable of wiring up any system to the event bus,
 meaning you can build any widget, you need using plain React for the UI and the
 APIs to connect to the event bus.
 
-In the following tutorial, we'll take a look at adding configuration options to
-your widget to allow Ground Station operators (i.e., your users) to re-configure
-your widget's behavior on the fly.
+In the following tutorial, you'll learn how you can add adding configuration
+options to your widget to allow Ground Station operators (that is, your users)
+to re-configure your widget's behavior on the fly.
 
-We also encourage you to check out the API Reference for the
+You should also familiarize yourself with the API Reference for the
 `@wuespace/vertx-mock-server` package to implement more complex mock servers as
 well as the API Reference for the various Event Bus hooks in the
 `@wuespace/telestion-client-core` package:
