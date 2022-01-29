@@ -5,8 +5,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 module.exports = {
 	title: 'Telestion Dev Hub',
 	tagline: 'A modular Ground Station',
-	url: 'https://wuespace.github.io/',
-	baseUrl: '/telestion-docs/',
+	url: 'https://docs.telestion.wuespace.de/',
+	baseUrl: '/',
 	trailingSlash: true,
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'warn',
