@@ -40,7 +40,7 @@ import { Reference, Image } from '/components';
 
 :::tip Warning messages
 
-Warnings and non-aborting errors (i.e., error logs that don't cause runtime
+Warnings and non-aborting errors (error logs that don't cause runtime
 exceptions) are also considered to be error messages in this context.
 
 :::
@@ -51,8 +51,7 @@ problem.
 
 :::note Example
 
-For this example, we'll assume that the developer passed an invalid hostname to
-your function.
+For this example, the developer passed an invalid host name to your function.
 
 :::
 
@@ -63,7 +62,7 @@ term "kuweza" = "to be able to") structure:
 
 ### Attention
 
-Describe, as quickly as possible, that an error occurred and what type of error
+Describe, as fast as possible, that an error occurred and what kind of error
 happened.
 
 ```text
@@ -83,19 +82,18 @@ The hostname provided to validateHostnameOrThrow(hostname) is invalid.
 If the context is already clear from the error's stack trace, you can skip this
 section.
 
-You should, however, only ever skip this section if it is completely and utterly
-clear without any knowledge about your library.
+You should only ever skip this section if it's 100 % clear without any knowledge
+about your library.
 
-If in doubt, just leave it in!
+If in doubt, just leave it in.
 
 :::
 
 ### Expected (, but got)
 
-Describe the technical details of what would have been required for the
-operation to succeed and what you got instead. This, then, gives developers a
-clear idea of your expectations and can help explain any misunderstandings in
-the documentation.
+Describe the technical details of what's required for the operation to succeed
+and what you got instead. This, then, gives developers a clear idea of your
+expectations and can help explain any misunderstandings in the documentation.
 
 ```text
 Expected hostname to match /^[a-z]+$/, but got "hello1".
@@ -106,23 +104,22 @@ Expected hostname to match /^[a-z]+$/, but got "hello1".
 You can skip this step if you're unable to provide any further details than the
 ones you've already provided in the "Attention" section.
 
-For example, if the validation of the hostname was too complex, you don't need
+For example, if the validation of the host name was too complex, you don't need
 to write "expected hostname to be valid, but got 'abc'" if your "Attention" step
 already says "Hostname 'abc' is invalid."
 
-If, however, like here, you can describe more details (e.g., the validation
+But if, like here, you can describe more details (for example, the validation
 regular expression), you should always provide these details to enable
-developers to more easily debug the error without having to study your source
-code.
+developers to debug the error without having to study your source code.
 
 :::
 
-### So (... we did this)
+### "So (... we did this)"
 
 Inform the developer about what already happened / where in the process (if at
 all) you aborted the code's execution and how you otherwise handled the error.
 
-- Did you simply skip the item but otherwise continue the execution?
+- Did you skip the item but otherwise continue the execution?
 - Did you already insert a "blank" item into a Database that now contains
   invalid data?
 - etc.
@@ -135,9 +132,9 @@ The error occurred during the initial validation and no further action took plac
 
 Given that you're writing an actionable error message, you already expected for
 this error to occur, and thus, have an idea about what the developer needs to do
-in order to not run into this error.
+to not run into this error.
 
-So ... be helpful for once and tell them :wink::
+Be helpful for once and tell them :wink::
 
 ```text
 Hostnames can only contain lowercase alphabetic characters (a-z).

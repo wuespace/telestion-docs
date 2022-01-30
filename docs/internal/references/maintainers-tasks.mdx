@@ -45,14 +45,14 @@ Telestion ecosystem have to fulfill.
 ## CLAs
 
 Make sure that all contributions are by contributors who have signed the CLA.
-Otherwise, this project will get into a lot of legal trouble.
+Otherwise, this project gets into a lot of legal trouble.
 
 :::danger
 
 If a Pull Request doesn't contain a filled checkbox or other notice about the
 contributor having signed the NDA, ** don't merge it!**. If you suspect you
 might have made a mistake in this regard, please talk to your team leader about
-it immediately.
+it as soon as possible.
 
 :::
 
@@ -60,35 +60,34 @@ it immediately.
 
 Make sure that every change has a conventional commit associated with it.
 
-Having a conventional commit for every change enables our tools to automatically
-generate the release notes and the next released version. Thus, if a branch has
-valid and correct conventional commit messages, you can go ahead and merge it by
-rebasing it onto the `main` branch.
+Having a conventional commit for every change enables the project's tools to
+automatically generate the release notes and the next released version. Thus, if
+a branch has valid and correct conventional commit messages, you can go ahead
+and merge it by rebasing it onto the `main` branch.
 
 Otherwise, you may have to squash and merge using a valid conventional commit
 message. In the end, the only important thing is that every change that's
-relevant for the following type of version (for example, a feature or a breaking
+relevant for the following kind of version (for example, a feature or a breaking
 change) or the next version's release notes have a valid conventional commit for
 it in the main branch.
 
 :::caution Merge commits
 
-Merge commits appear not to get used (to their full extent). Therefore, if, for
-merging a Pull Request, you need a new conventional commit message, use Squash
-and Merge
+Merge commits appear not to get used (to their full extent). If, for merging a
+Pull Request, you need a new conventional commit message, use Squash and Merge
 
 :::
 
 :::tip
 
-For some contributions, it just isn't practical to have one mergeable branch per
-change. For example, refactoring might, in the process, also fix a lot of old
-issues. In that case, you can squash and merge using the "biggest" applicable
-conventional commit (for example, `feat: Big Refactoring`), while putting
-`Closes: #issuenumber` for every closed issue into the commit's footer. So even
-though fixing a bug would, initially, be a fix, the feature of an overall
-refactoring (with possibly a few breaking changes) outweighs that, and fixing a
-bug is just a side-effect.
+For some contributions, it just isn't practical to have one merge-able branch
+per change. For example, refactoring might, in the process, also fix a lot of
+old issues. In that case, you can squash and merge using the "biggest"
+applicable conventional commit (for example, `feat: Big Refactoring`), while
+putting `Closes: #issuenumber` for every closed issue into the commit's footer.
+Even though fixing a bug would, initially, be a fix, the feature of a more
+wide-spread refactoring (with possibly one or two breaking changes) outweighs
+that, and fixing a bug is just a side-effect.
 
 :::
 

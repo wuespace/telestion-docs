@@ -36,8 +36,8 @@ import { Reference } from '/components';
 
 <!-- Short description of what information this document provides: -->
 
-Following our branch naming convention helps to keep things consistent and also
-encourages following the conventional commit method.
+Following the project's branch naming convention helps to keep things consistent
+and also encourages following the conventional commit method.
 
 <!-- Content (e.g., a table, a list, a diagram, or a definition list) -->
 
@@ -45,8 +45,8 @@ import { BranchNameCalculator } from './branch-names/BranchNameCalculator';
 
 :::tip Branch name calculator
 
-If you don't want to read through this page, you can simply use the interactive
-"branch name calculator" below :wink::
+If you don't want to read through this page, you can use the interactive "branch
+name calculator" below :wink::
 
 <BranchNameCalculator />
 
@@ -71,7 +71,7 @@ This is quite easy to read:
 
 ## General Structure
 
-Overall, your branch names should have the following structure:
+Your branch names should have the following structure:
 
 ```ebnf
 <branch name> ::= [<branch ownership prefix>] <branch content> ;
@@ -94,10 +94,10 @@ A branch ownership prefix consists of your GitHub username, followed by a `/`:
 
 ## Branch content
 
-It's essential to, as short as possible, describe the content of the branch
-(i.e., the changes it attempts to make).
+It's essential to, as short as possible, describe the content of the branch (the
+changes it attempts to make).
 
-Within the Telestion Ecosystem, we recommend using one of two ways:
+Within the Telestion Ecosystem, you should use one of two ways:
 
 - an issue-based approach (cf. [Issue-based](#issue-based))
 - a conventional commit-based approach (cf.
@@ -155,20 +155,19 @@ like this:
 
 where
 
-- `<description>` describes the actual change (e.g., `add-send-function`)
+- `<description>` describes the actual change (for example, `add-send-function`)
 - `<scope-name>` is a conventional commit scope present within the repository
-  (cf. repo docs/guidelines for available scope names)
+  (cf. repository docs/guidelines for available scope names)
 
 ## Examples
 
-Since EBNF can be a little bit ... abstract, let's take a look at a few
-examples.
+Since EBNF can be a little bit abstract, here are three examples:
 
-For the following examples, we assume that your username is `@githubuser`.
+For the following examples, assume that your username is `@githubuser`.
 
 :::tip Example: Fixing a long-discussed issue
 
-A change has been discussed in issue `#83` for quite a while. You're
+You have discussed a change in issue `#83` for quite a while. You're
 contributing a fix on your branch.
 
 ```text
@@ -179,10 +178,10 @@ githubuser/issue-83
 
 :::tip Example: Working on an enormous change together
 
-An extensive restructuring of the CLI is needed. This is too big to be discussed
-in a single issue and instead covers multiple issues.
+The CLI needs an extensive restructuring. This is too big to discuss in a single
+issue and instead covers more than one issue.
 
-Multiple contributors are working on this branch.
+Two or more contributors are working on this branch.
 
 ```text
 feat/cli/restructure-the-cli
@@ -193,9 +192,9 @@ feat/cli/restructure-the-cli
 :::tip Example: A minor fix
 
 You've spotted a bug in the CLI. Writing an extensive issue would cost you more
-time than just quickly changing the line yourself.
+time than just changing the line yourself.
 
-You, therefore, omit opening an issue and instead commit the change immediately.
+You omit opening an issue and instead commit the change without any issue.
 
 ```text
 githubuser/fix/cli/fix-args-parsing

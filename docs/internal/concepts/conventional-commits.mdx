@@ -44,12 +44,12 @@ Conventional commits are a method of writing git commit messages in a
 standardized format that also enables automatic determination of the next
 release type in a semantic versioning system.
 
-Conventional commits consist of a few primary elements:
+Conventional commits consist of five primary elements:
 
-- _type_: The type of the commit. The type can be one of a pre-configured number
+- _type_: The kind of the commit. The type can be one of a pre-configured number
   of elements, including (in this project) `feat` for features, `fix` for bug
-  fixes, `docs` for documentation updates, `chore` for meta-stuff in the repo
-  (not updating the packages), and some more.
+  fixes, `docs` for documentation updates, `chore` for meta-stuff in the
+  repository (not updating the packages), and some more.
 - _scope_ (optional): The scope of the change, for example, the package name or
   something like `ci`
 - _description_: a one-liner description of the type (feature, bug fix, or
@@ -76,7 +76,7 @@ messages:
 :::tip Example: A commit message for a bug fix introducing breaking changes
 
 ```
-fix!: Fixed parameter conversion in `updateParents()`
+fix!: Fix parameter conversion in `updateParents()`
 
 Before, it automatically converted strings to numbers in such a
 way that non-number inputs also got allowed. This is now changed.

@@ -6,7 +6,7 @@
 [![GitHub](https://img.shields.io/github/license/wuespace/telestion-docs)](LICENSE)
 [![Twitter Follow](https://img.shields.io/twitter/follow/wuespace?style=social)](https://twitter.com/wuespace)
 
-This repository contains the documentation for the Telestion Project. It is
+This repository contains the documentation for the Telestion Project. It's
 available at https://wuespace.github.io/telestion-docs.
 
 _Please note that this **does not** contain technical references for all
@@ -25,13 +25,13 @@ documentation for the project.
 
 ## Templates
 
-The `docs/_templates` folder has a few templates for the most common types of
-pages you need to write to document the project.
+The `docs/_templates` folder has templates for the most common types of pages
+you need to write to document the project.
 
 These also include tips and tricks (as comments) as well as valuable snippets
-relevant to this specific type of page (e.g., tutorial)
+relevant to this specific kind of page (for example, a tutorial)
 
 If you feel like any basic templates are lacking, please search through
 [this repository's issues](https://github.com/wuespace/telestion-docs/issues)
-for a reference to this type of template. If you don't find any reference to it,
+for a reference to this kind of template. If you don't find any reference to it,
 please feel free to open an issue for it yourself.
