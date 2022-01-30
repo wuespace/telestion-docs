@@ -44,20 +44,20 @@ it.
 
 :::note Example
 
-For this example, we'll assume that for whatever reason, a seemingly valid path
-(that already passed validation) got rejected later in the code.
+For this example, for whatever reason, a seemingly valid path (that already
+passed validation) got rejected later in the code.
 
 :::
 
-## NADAD: Unepxected Error Message components
+## NADAD: Unexpected Error Message components
 
 Unexpected error messages should follow the **NADAD** structure:
 
 ### Notify
 
 Developers appreciate directly getting information, even if it's information
-that they don't like. Therefore, you should notify them what caused that
-unexpected error and where it occurred:
+that they don't like. You should notify them what caused that unexpected error
+and where it occurred:
 
 ```text
 Unexpected error while trying to perform a network request.
@@ -65,9 +65,9 @@ Unexpected error while trying to perform a network request.
 
 ### Apologize
 
-The fact that you didn't expect for this to happen means that it is you who
-messed up. So instead of trying to blame the developer who uses your library,
-admit your mistake and apologize:
+The fact that you didn't expect for this to happen means that it's you who
+messed up. Instead of trying to blame the developer who uses your library, admit
+your mistake and apologize:
 
 ```text
 We're sorry, it looks like we got an unexpected error.
@@ -86,8 +86,7 @@ resource, the address could no longer be parsed.
 
 ### Action
 
-We've already discussed that it was your mistake. Thus, it's up to you to fix
-it.
+It's your mistake. Thus, it's up to you to fix it.
 
 Provide instructions on what the developer should do so that you can fix the
 mistake. In other words: Provide instructions to, with minimal effort, file a
