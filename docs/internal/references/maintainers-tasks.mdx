@@ -73,22 +73,21 @@ it in the main branch.
 
 :::caution Merge commits
 
-Merge commits appear not to get used (to their full extent). If, for
-merging a Pull Request, you need a new conventional commit message, use Squash
-and Merge
+Merge commits appear not to get used (to their full extent). If, for merging a
+Pull Request, you need a new conventional commit message, use Squash and Merge
 
 :::
 
 :::tip
 
-For some contributions, it just isn't practical to have one merge-able branch per
-change. For example, refactoring might, in the process, also fix a lot of old
-issues. In that case, you can squash and merge using the "biggest" applicable
-conventional commit (for example, `feat: Big Refactoring`), while putting
-`Closes: #issuenumber` for every closed issue into the commit's footer. Even
-though fixing a bug would, initially, be a fix, the feature of a more wide-spread
-refactoring (with possibly one or two breaking changes) outweighs that, and fixing a
-bug is just a side-effect.
+For some contributions, it just isn't practical to have one merge-able branch
+per change. For example, refactoring might, in the process, also fix a lot of
+old issues. In that case, you can squash and merge using the "biggest"
+applicable conventional commit (for example, `feat: Big Refactoring`), while
+putting `Closes: #issuenumber` for every closed issue into the commit's footer.
+Even though fixing a bug would, initially, be a fix, the feature of a more
+wide-spread refactoring (with possibly one or two breaking changes) outweighs
+that, and fixing a bug is just a side-effect.
 
 :::
 

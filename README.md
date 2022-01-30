@@ -25,8 +25,8 @@ documentation for the project.
 
 ## Templates
 
-The `docs/_templates` folder has templates for the most common types of
-pages you need to write to document the project.
+The `docs/_templates` folder has templates for the most common types of pages
+you need to write to document the project.
 
 These also include tips and tricks (as comments) as well as valuable snippets
 relevant to this specific kind of page (for example, a tutorial)
