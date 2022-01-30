@@ -1,0 +1,256 @@
+---
+title: Using header information
+# e.g., "Publishing messages to the event bus" or "Installing a dependency using npm"
+
+description:
+  Header information can add additional metadata to messages.
+  Learn, how you attach and extract header information from messages.
+---
+
+<!--
+Tutorial
+========
+
+=== When to use this template:
+Use this template when you want to give a quick, step-by-step tutorial for solving a specific
+technical problem. Tutorials allow the reader to learn how to implement something within
+their projects quickly.
+
+=== When not to use this template:
+When your article focuses more on a concept/technology and is not rooted in a specific technical
+problem ("how to do XY?"), consider using a guide instead.
+
+=== Guide or Tutorial
+A tutorial provides a quick, technical "step-by-step" tutorial for a
+given problem. Thus, a guide describes less the handling of a specific problem
+and more the general interaction of the reader with a given concept.
+
+Example with npm articles:
+- "npm": (Concept, explaining what npm is)
+- "Installing a dependency with npm" (Tutorial, providing a quick tutorial to
+	solve a technical problem)
+- "Managing dependencies with npm" (Guide, including both technical knowledge, but
+	also best practices and more)
+
+=== Writing tips:
+- Write in the present tense
+- Use neutral pronouns (they/them instead of he/she and him/her)
+- Be respectful to everyone
+- Be aware of the potential for cultural misunderstandings
+- Provide explanations for what you do, but focus on the step-by-step guide
+	without deeply explaining every technical decision and why it's best prcatice
+	to do so (you can describe best practices in a guide, a tutorial must focus on
+	keeping the "step by step" flow going)
+-->
+
+<!-- Relevant imports: -->
+
+import { Reference, Image } from '/components';
+
+<!-- Short description of what the article covers: -->
+
+Message bodies are not the only way the transfer information between verticles.
+Vert.x provides HTTP header like information you can attach to a message.
+These headers are of the type `MultiMap` and can store `String` metadata
+on a key-value based principle.
+
+The Telestion API provide a convenient way to access and modify
+the header information of messages.
+
+:::info Prerequisites
+
+To complete this tutorial, you should be familiar with with writing basic Verticles
+and using traits in your verticles.
+
+:::
+
+## What we'll build
+
+We will implement two verticles where one sends a `"ping"` message
+and the other verticle replies with a `"pong"` message.
+
+Additionally we will attach the send time to the messages
+with the `HeaderInformation` API.
+
+```java title='Sender.java'
+package de.wuespace.telestion.project.example;
+
+import de.wuespace.telestion.api.message.HeaderInformation;
+import de.wuespace.telestion.api.verticle.GenericConfiguration;
+import de.wuespace.telestion.api.verticle.TelestionVerticle;
+import de.wuespace.telestion.api.verticle.trait.WithTiming;
+import de.wuespace.telestion.api.verticle.trait.WithEventBus;
+import io.vertx.core.Vertx;
+
+public class Sender extends TelestionVerticle<GenericConfiguration>
+		implements WithTiming, WithEventBus {
+
+	public static void main(String[] args) throws InterruptedException {
+		var vertx = Vertx.vertx();
+		vertx.deployVerticle(new Sender());
+		vertx.deployVerticle(new Receiver());
+	}
+
+	@Override
+	public void onStart() {
+		interval(Duration.ofSeconds(1), id -> {
+			var requestInfos = new HeaderInformation()
+					.add("send-time", System.currentTimeInMillis());
+			
+			request("send-address", "Ping", requestInfos).onSuccess(response -> {
+				var responseInfos = HeaderInformation.from(response);
+				logger.info("Response send time: {}", responseInfos.getLong("send-time", 0));
+			});
+		});
+	}
+}
+```
+
+```java title="Responder.java"
+package de.wuespace.telestion.project.example;
+
+import de.wuespace.telestion.api.message.HeaderInformation;
+import de.wuespace.telestion.api.verticle.GenericConfiguration;
+import de.wuespace.telestion.api.verticle.TelestionVerticle;
+import de.wuespace.telestion.api.verticle.trait.WithEventBus;
+
+public class Responder extends TelestionVerticle<GenericConfiguration>
+		implements WithEventBus {
+
+	public static void main(String[] args) throws InterruptedException {
+		Sender.main(args);
+	}
+
+	@Override
+	public void onStart() {
+		register("send-address", request -> {
+			var requestInfos = HeaderInformation.from(request);
+			logger.info("Request send time: {}", requestInfos.getLong("send-time", 0));
+
+			var responseInfos = new HeaderInformation()
+					.add("send-time", System.currentTimeInMillis());
+			request.reply("Pong", responseInfos.toOptions());
+		});
+	}
+}
+```
+
+## Step 1: Create the sender and responder verticle
+
+Before we can transmit header information, we need two verticles
+which interact with each other.
+
+The first verticle sends a `"Ping"` message in regular intervals
+onto the `"send-address"` event bus channel:
+
+```java title='Sender.java'
+package de.wuespace.telestion.project.example;
+
+import de.wuespace.telestion.api.verticle.GenericConfiguration;
+import de.wuespace.telestion.api.verticle.TelestionVerticle;
+import de.wuespace.telestion.api.verticle.trait.WithTiming;
+import de.wuespace.telestion.api.verticle.trait.WithEventBus;
+
+public class Sender extends TelestionVerticle<GenericConfiguration>
+		implements WithTiming, WithEventBus {
+
+	@Override
+	public void onStart() {
+		interval(Duration.ofSeconds(1), id -> {
+			request("send-address", "Ping").onSuccess(response -> {
+				// [...]
+			});
+	}
+}
+```
+
+Additionally, the `"Sender"` verticle waits for a response
+on the sent `"Ping"` message.
+
+The second verticle hears on the `"send-address"` event bus channel,
+receives a message and replies with a `"Pong"` message:
+
+```java title="Responder.java"
+package de.wuespace.telestion.project.example;
+
+import de.wuespace.telestion.api.verticle.GenericConfiguration;
+import de.wuespace.telestion.api.verticle.TelestionVerticle;
+import de.wuespace.telestion.api.verticle.trait.WithEventBus;
+
+public class Responder extends TelestionVerticle<GenericConfiguration>
+		implements WithEventBus {
+
+	@Override
+	public void onStart() {
+		register("send-address", request -> {
+			request.reply("Pong");
+		});
+	}
+}
+```
+
+## Step 2: Add the basic class declaration
+
+In the new file, write the following code:
+
+```java title='Car.java'
+public class Car { }
+```
+
+## Step 3: Add an `engine` field to the `Car` class
+
+Within our class declaration, we now add a new field called `engine`, which has
+to implement the `interface Engine`:
+
+```java title='Car.java' {2}
+public class Car {
+	public Engine engine;
+}
+```
+
+Adding this field lets us define an object that implements this interface and
+then access it within a car object.
+
+## Step 4: Add a `maxSpeed` field to the `Car` class
+
+Adding the field for the car's maximum speed (which is an integer) works the
+same:
+
+```java title='Car.java' {3}
+public class Car {
+	public Engine engine;
+	public int maxSpeed;
+}
+```
+
+:::tip Integers (`int`)
+
+Integers are "whole" numbers that do not have any decimal places.
+
+:::
+
+## Next steps
+
+<!-- Short concluding sentence: -->
+
+Adipisicing sit mollit officia laborum dolor amet mollit. Sint ad nostrud nulla
+exercitation laboris Lorem nulla exercitation velit tempor magna.
+
+<!-- Links to next steps/related articles -->
+
+<Reference to="../creating-objects">
+	Creating a new <code>Car</code> object
+</Reference>
+
+<!--
+Snippets
+--------
+
+<Reference to="../other-article">
+		Relative Link to other article
+</Reference>
+
+<Reference to="https://www.example.com">
+		Example Website
+</Reference>
+-->
