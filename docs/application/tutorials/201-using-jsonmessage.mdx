@@ -49,8 +49,8 @@ import { Reference, Image } from '/components';
 
 <!-- Short description of what the article covers: -->
 
-In this tutorial, we extend our basic Verticle by using the `JsonMessage` APIs
-from the `telestion-core` packages to get some type safety in event bus
+In this tutorial, you'll extend your basic Verticle by using the `JsonMessage`
+APIs from the `telestion-core` packages to get some type safety in event bus
 messages.
 
 :::info Prerequisites
@@ -60,15 +60,15 @@ to write basic Verticles.
 
 :::
 
-## What we'll build
+## What you'll build
 
-We will extend the code from
+You'll extend the code from
 [Writing a Verticle](/application/tutorials/writing-a-verticle) with the
-`JsonMessage` APIs. This stops us from having to guess about the type of message
-sent and therefore poses much fewer edge cases we may need to handle.
+`JsonMessage` APIs. This stops you from having to guess about the kind of
+message sent and poses much fewer edge cases you may need to handle.
 
-It is also highly compatible with various event bus bridges, for example
-allowing to exchange these messages with web clients.
+It's also highly compatible with various event bus bridges, for example allowing
+to exchange these messages with web clients.
 
 :::tip When not to use `JsonMessage`
 
@@ -78,7 +78,7 @@ send serialized forms via the event bus (to ensure compatibility with event bus
 bridges).
 
 One case where this might make sense is when you handle arbitrary input data
-that doesn't necesserily have fixed types.
+that doesn't necessarily have fixed types.
 
 :::
 
@@ -130,11 +130,11 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration> 
 
 ## Step 1: Creating the `record`
 
-The first thing we need to do is to create the _message container_, a `record`
-that contains our message data.
+The first thing you need to do is to create the _message container_, a `record`
+that contains your message data.
 
-In this case, we'll just expand upon our "integer processor" and create a record
-that simply holds one integer value.
+In this case, you'll just expand upon your "integer processor" and create a
+record that holds one integer value.
 
 Create a file `IntegerMessage.java` in the
 `de.wuespace.telestion.project.example` package and add the following code:
@@ -157,17 +157,17 @@ The two _special ingredients_ to make this a `JsonMessage` are:
 - marking its attribute(/-s) as JSON properties using the `@JsonProperty`
   decorator
 
-Now, we can begin using our `IntegerMessage` with the Telestion APIs.
+Now, you can begin using you `IntegerMessage` with the Telestion APIs.
 
 ## Step 2: Listening for messages of that class
 
-Since we now have a proper `JsonMessage` wrapper, we can drop the previous
-"casting to `int`" from the raw `Object message.body()` in our consumer and can,
-instead, use one of Telestion's convenience functions for easily filtering for
+Since you now have a proper `JsonMessage` wrapper, you can drop the previous
+"casting to `int`" from the raw `Object message.body()` in your consumer and
+can, instead, use one of Telestion's convenience functions for filtering for
 valid messages.
 
-Replace our previous `eb.consumer()` logic in `MessageTransformer::onStart()` with
-this code:
+Replace your previous `eb.consumer()` logic in `MessageTransformer::onStart()`
+with this code:
 
 ```java title='MessageTransformer.java' {13-16}
 package de.wuespace.telestion.project.example;
@@ -192,22 +192,22 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration> 
 }
 ```
 
-Instead of handling the `event` directly, we pass it into the `JsonMessage.on()`
+Instead of handling the `event` directly, you pass it into the `JsonMessage.on()`
 function. This then filters messages and calls a handler passed into it if and
 only if the message type matches the specified class (here: `IntegerMessage`).
 
 The first argument to the handler, `message`, then is the already deserialized
-instance of `IntegerMessage` and we can, therefore, use it to further process
+instance of `IntegerMessage` and you can, thus, use it to further process
 the data.
 
-In this case, we use `message.value()` to retrieve the `value` field within the
-record. Since we already know that it's of the type `IntegerMessage` where
-`value` is an integer, we no longer need to cast any types or handle other edge
+In this case, you use `message.value()` to retrieve the `value` field within the
+record. Since you already know that it's of the type `IntegerMessage` where
+`value` is an integer, you no longer need to cast any types or handle other edge
 cases.
 
 ## Step 3: Publishing messages
 
-Now that we can receive `IntegerMessage` messages, we also need to publish them.
+Now that you can receive `IntegerMessage` messages, you also need to publish them.
 
 Create a new `IntegerMessage` instance called `output` and instead of publishing
 `received * 2`, publish `output.json()`:
@@ -241,8 +241,8 @@ a JSON `String` that can get parsed on the receiving end.
 
 :::
 
-Now, all we need to do to test our code is to also publish an `IntegerMessage`
-within our `main()` method using the same method as above:
+Now, all you need to do to test our code is to also publish an `IntegerMessage`
+within your `main()`:
 
 ```java title='MessageTransformer.java' {7}
 // [...]

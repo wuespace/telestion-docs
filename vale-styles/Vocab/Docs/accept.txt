@@ -17,6 +17,8 @@ monorepo
 only
 rebasing
 Docusaurus
-src
+lerna
+Dialogs
 tada
 [...]
+namespace

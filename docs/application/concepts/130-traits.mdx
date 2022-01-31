@@ -40,27 +40,27 @@ import { Reference, Image } from '/components';
 
 <!-- Brief Description (1-3 lines) of the concept: -->
 
-Traits add additional functionality to your Java class
-by providing default implementations you can then "import".
+Traits add new features to your Java class by providing default implementations
+you can then "import".
 
-## Basic functionality
+## Basic explanation
 
-Traits are essentially nothing more than Java interfaces.
-They provide default methods to the implementing class or interface.
-You can "import" traits via the `implements` statement in your class definition.
+Traits are essentially nothing more than Java interfaces. They provide default
+methods to the implementing class or interface. You can "import" traits via the
+`implements` statement in your class definition.
 
-The difference between traits and normal Java interfaces are essentially that a trait
-adds functionality without forcing the implementing class
-to overwrite/implement the defined methods like normal interfaces would do.
+The difference between traits and normal Java interfaces are essentially that a
+trait adds features without forcing the implementing class to
+overwrite/implement the defined methods like normal interfaces would do.
 
 After importing a trait you have access to the provided methods from the trait
 in your current scope.
 
-Let's look on an example for a better understanding:
+Take a look at the following example for a better understanding:
 
-## A very basic logging trait
+## A basic logging trait
 
-Let's say, we have a class that wants to log a message to the console:
+Imagine you have a class that wants to log a message to the console:
 
 ```java title="MyClass.java"
 public class MyClass {
@@ -68,12 +68,12 @@ public class MyClass {
 		int sum = 1 + 2;
 		// that's tedious
 		// and where's the classname in front of the logging message?
-		System.out.printf("The sum is %d", sum); 
+		System.out.printf("The sum is %d", sum);
 	}
 }
 ```
 
-And we have a trait to support the requested feature:
+And you have a trait to support the requested feature:
 
 ```java title="WithLogging.java"
 public interface WithLogging {
@@ -84,8 +84,8 @@ public interface WithLogging {
 }
 ```
 
-You can now implement the `WithLogging` and simply
-using the default implemented method `log`:
+You can now implement the `WithLogging` by using the default implemented method
+`log`:
 
 ```java title="MyClass.java" {1,4}
 public class MyClass implements WithLogging {
@@ -98,9 +98,9 @@ public class MyClass implements WithLogging {
 
 ## Conventions
 
-The name of a trait usually contains the prefix `With`
-and an action call describing what the trait provides
-to the implementing class or interface. For example:
+The name of a trait usually contains the prefix `With` and an action call
+describing what the trait provides to the implementing class or interface. For
+example:
 
 - `WithLogging`
 - `WithEventBus`
@@ -113,8 +113,8 @@ to the implementing class or interface. For example:
 	Using traits in Verticles
 </Reference>
 
-<Reference to="/application/guides/writing-own-traits/">
-	Writing own traits
+<Reference to="/application/guides/writing-your-own-traits/">
+	Writing your own traits
 </Reference>
 
 <Reference to="https://javadoc.io/doc/de.wuespace.telestion/telestion-api/latest/de/wuespace/telestion/api/verticle/trait/package-summary.html">

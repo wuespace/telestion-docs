@@ -8,27 +8,27 @@ description:
 
 import { Reference, Image } from '/components';
 
-In this tutorial, we write a simple [Verticle](/application/concepts/verticle)
-for the Telestion ecosystem.
+In this tutorial, you'll write a simple
+[Verticle](/application/concepts/verticle) for the Telestion ecosystem.
 
 :::info Prerequisites
 
 To complete this tutorial, you should be familiar with standard Java programming
-structures. Additionally, you need to have a Telestion Project repository set up
-on your machine.
+structures. You also need to have a Telestion Project repository set up on your
+machine.
 
 :::
 
-## What we'll build
+## What you'll build
 
-In this tutorial, we'll build a very basic Verticle that listens for a message
+In this tutorial, you'll build a basic Verticle that listens for a message
 containing a number on a specific channel and republishes the number times two
 on another channel.
 
 In real applications, this could, for example, transform incoming Telemetry data
 into a suitable format for the database.
 
-The full code for this tutorial will look like this:
+The full code for this tutorial looks like this:
 
 ```java title='MessageTransformer.java'
 package de.wuespace.telestion.project.example;
@@ -57,7 +57,7 @@ A _Verticle_ is nothing else than a Java class that extends the
 `de.wuespace.telestion.api.verticle.TelestionVerticle` class.
 
 Therefore, to create a new Verticle, the first thing you need to do is to create
-a new class. For this tutorial, we assume that we're working in the
+a new class. This tutorial assumes that you're working in the
 `de.wuespace.telestion.project.example` package.
 
 Within that package, create a new class called `MessageTransformer` and paste
@@ -94,7 +94,7 @@ one Verticle receiving messages from that bus"
 	center
 />
 
-For now, let's keep it simple and listen to the `"input"` channel:
+For now, keep it simple and listen to the `"input"` channel:
 
 ```java title='MessageTransformer.java' {9,11-14}
 package de.wuespace.telestion.project.example;
@@ -115,18 +115,18 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration> 
 }
 ```
 
-We first get an instance to the Event Bus APIs using `vertx.eventBus()`.
+This first gets an instance to the Event Bus APIs using `vertx.eventBus()`.
 
-Then, using `eb.consumer(address, handler)`, we can register a `handler` that
+Then, using `eb.consumer(address, handler)`, this registers a `handler` that
 reacts to messages on the channel with the address `address`.
 
 The first argument to that `handler(message)` callback is the `message` which
 contains all information about the message, including the body, optional
 headers, and more.
 
-We can get the message's body by calling its `body()` method. Since this returns
-an `Object` (containing whatever we published to that channel), we need to cast
-it to an integer.
+You can get the message's body by calling its `body()` method. Since this
+returns an `Object` (containing whatever we published to that channel), you need
+to cast it to an integer.
 
 :::tip Body data type
 
@@ -149,7 +149,7 @@ You should only ever use JSON based messages in real Telestion projects.
 There are uses for Verticles that only listen to channels without ever
 publishing anything themselves. For example, you could write a Verticle that
 simply logs all incoming messages to a file or saves them to the database. In
-this case, however, we want to transform the data and "republish" it to the
+this case, however, you want to transform the data and "republish" it to the
 event bus (this time, on a different channel called `"output"`).
 
 Thankfully, the Event Bus APIs make this quite easy using the
@@ -174,12 +174,12 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration> 
 }
 ```
 
-With that, whenever we receive a value `received` on `"input"`, we publish
+With that, whenever this receives a value `received` on `"input"`, it publishes
 `received * 2` to `"output"`.
 
 ### Step 4: Test the Verticle
 
-To test Verticles, we recommend adding a
+To test Verticles, you can add a
 `public static void main(String[] args)` method to the Verticle class that tests
 the Verticle.
 
@@ -188,7 +188,7 @@ other Verticles, all you need to do to test the Verticle is to spawn it, send
 some messages to a channel it listens to and monitor the reaction / messages on
 its output channels.
 
-Let's put theory into practice and write our static `main()` method:
+Put theory into practice and write our static `main()` method:
 
 ```java title='MessageTransformer.java' {5,9-21}
 package de.wuespace.telestion.project.example;
@@ -217,18 +217,19 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration> 
 }
 ```
 
-First, we create a `Vertx` instance called `vertx` using `Vertx.vertx()`.
+First, you create a `Vertx` instance called `vertx` using `Vertx.vertx()`.
 
-Then, we add a listener on the `"output"` address that just prints
-`"Output: [body]"` to the console for every message. We can get an `EventBus`
+Then, you add a listener on the `"output"` address that just prints
+`"Output: [body]"` to the console for every message. You can get an `EventBus`
 instance using `vertx.eventBus()` and just use the same APIs we used inside the
 Verticle's `onStart()` method to interact with the event bus.
 
-Next, we deploy our `MessageTransformer` Verticle by creating an instance and hand it over to `Vertx`.
-This will, in turn, call its `onStart()` method to deploy the Verticle.
+Next, you deploy our `MessageTransformer` Verticle by creating an instance and
+hand it over to `Vertx`. This will, in turn, call its `onStart()` method to
+deploy the Verticle.
 
-The deployment process returns a future object. When it resolves,
-we publish a random number (here: `3`) to the `"input"` channel.
+The deployment process returns a future object. When it resolves, you publish a
+random number (here: `3`) to the `"input"` channel.
 
 If everything worked out, you should, after a short while, see `Output: 6` in
 your console. If it doesn't work, double-check that your code matches the code
@@ -248,7 +249,7 @@ projects, the basis always consists of a subset of the following steps:
 3. Process that event
 4. Publish new information to the event bus
 
-In the following sections, we'll take a look at how to improve our Verticle by
+In the following sections, you can take a look at how to improve your Verticle by
 using Telestion's APIs to get type safety in event bus messages, add
 configurability to your Verticle (allowing you to re-use it), and more.
 

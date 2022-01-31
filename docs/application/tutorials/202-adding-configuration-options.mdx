@@ -3,7 +3,7 @@ title: Adding configuration options
 # e.g., "Publishing messages to the event bus" or "Installing a dependency using npm"
 
 description:
-  Verticles work best when you can quickly adjust their parameters and re-use
+  Verticles work best when you can adjust their parameters and re-use
   them. Learn how to make your Verticles configurable.
 ---
 
@@ -49,7 +49,7 @@ import { Reference, Image } from '/components';
 
 <!-- Short description of what the article covers: -->
 
-While it is already great to have a Verticle that does its job, the effort of
+While it's already great to have a Verticle that does its job, the effort of
 making it configurable, and thus, reusable, is minimal.
 
 Developing your Verticle in a re-usable way means that it'll take far less time
@@ -63,15 +63,15 @@ and using the `JsonMessage` interface from the Telestion APIs.
 
 :::
 
-## What we'll build
+## What you'll build
 
 <Reference to="/application/tutorials/using-jsonmessage/">Base Code</Reference>
 
 Based on the code from the
-[`JsonMessage` tutorial](/application/tutorials/using-jsonmessage/), we'll add
-configurability to our `MessageTransformer` Verticle.
+[`JsonMessage` tutorial](/application/tutorials/using-jsonmessage/), you'll make
+your `MessageTransformer` Verticle configurable.
 
-After the tutorial, our Verticle will look like this:
+After the tutorial, your Verticle looks like this:
 
 ```java title='MessageTransformer.java' {3-4,5,7-9,11,18,20-23,28-36,42,45,46}
 package de.wuespace.telestion.project.example;
@@ -131,19 +131,19 @@ public class MessageTransformer extends TelestionVerticle<MessageTransformer.Con
 The Telestion APIs re-use the `JsonMessage` interface to deal with type safety
 in configuration options. The reason for this is basically the same as with the
 event bus: Vert.x natively uses `JsonObject` instances. While in specific,
-dynamic use-cases, this is useful, we typically want our configuration to be
-type safe, which is why we can use convenience functions that are very similar
-to the `JsonMessage` APIs.
+dynamic use-cases, this is useful, you typically want your configuration to be
+type safe, which is why you can use convenience functions that are like the
+`JsonMessage` APIs.
 
-Since our Verticle is rather basic, there are only three parameters that we
+Since this Verticle is rather basic, there are only three parameters that you
 could expose to be configurable:
 
-1. the event bus address we're listening to
-1. the event bus address we're publishing to
+1. the event bus address you're listening to
+1. the event bus address you're publishing to
 1. the multiplier
 
-Add a `record Configuration implements TelestionConfiguration` containing these fields as a
-member of our `MessageTransformer` Verticle:
+Add a `record Configuration implements TelestionConfiguration` containing these
+fields as a member of your `MessageTransformer` Verticle:
 
 :::tip
 
@@ -177,13 +177,17 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration> 
 }
 ```
 
-Now that we have defined a configuration record, let's take a look at how we can
-apply it in our Verticle.
+Now that you have defined a configuration record, you can take a look at how you
+can apply it in your Verticle.
 
 ## Step 2: Adjusting the Verticle structure
 
-To actually use our configuration, we need to make some slight adjustments to
-the existing code:
+To actually use your configuration, you need to make some slight adjustments to
+the existing code.
+
+Now, the generic type enters the game. You need to give the `TelestionVerticle`
+class a hint about your new configuration. Replace the `GenericConfiguration`
+type with your configuration type `MessageTransformer.Configuration`:
 
 ```java title='MessageTransformer.java' {5}
 package de.wuespace.telestion.project.example;
@@ -195,23 +199,17 @@ public class MessageTransformer extends TelestionVerticle<MessageTransformer.Con
 }
 ```
 
-Now, the generic type enters the game.
-We need to give the `TelestionVerticle` class a hint about our new configuration.
-So we replace the `GenericConfiguration` type
-with our configuration type `MessageTransformer.Configuration`.
-
-With that, our Verticle is fully set up to handle our configuration objects.
-Next, let's take a look at how we can retrieve configuration values to actually
-use them within our Verticle.
+With that, your Verticle is fully set up to handle configuration objects.
 
 ## Step 3: Retrieving configuration values
 
-When the Verticle starts, it automatically retrieves
-and merges the configuration provided by the `Vertx` context with the default configuration.
+When the Verticle starts, it automatically retrieves and merges the
+configuration provided by the `Vertx` context with the default configuration.
 
-Then it maps the merged configuration back to our `Configuration` type.
+Then it maps the merged configuration back to your `Configuration` type.
 
-To access the configuration, use one of the `TelestionVerticle`'s convenience methods:
+To access the configuration, use one of the `TelestionVerticle`'s convenience
+methods:
 
 ```java title='MessageTransformer.java' {}
 package de.wuespace.telestion.project.example;
@@ -240,10 +238,11 @@ public class MessageTransformer extends TelestionVerticle<MessageTransformer.Con
 }
 ```
 
-As you can see, we can now just access configuration options by using the
-`getConfig` method provided by the `TelestionVerticle` base class.
+You can now just access configuration options by using the `getConfig` method
+provided by the `TelestionVerticle` base class.
 
-To access the configuration in other types, take a look at the API reference of the `TelestionVerticle`:
+To access the configuration in other types, take a look at the API reference of
+the `TelestionVerticle`:
 
 <Reference to="https://javadoc.io/doc/de.wuespace.telestion/telestion-api/latest/de/wuespace/telestion/api/verticle/TelestionVerticle.html">
 	<code>TelestionVerticle</code> API reference
@@ -251,14 +250,13 @@ To access the configuration in other types, take a look at the API reference of 
 
 ## Step 4: Adding default configuration parameters
 
-Having every single configuration option for every single Verticle one deploys
+Having every single configuration option for every single Verticle you deploy
 can be quite cumbersome.
 
-Therefore, it is good practice to define the default values for your
-`Configuration` record.
+It's good practice to define the default values for your `Configuration` record.
 
-And a default constructor with no arguments defining the default values
-to our `Configuration` class:
+Add a default constructor with no arguments defining the default values to your
+`Configuration` class:
 
 ```java title="MessageTransformer.java" {14-16}
 package de.wuespace.telestion.project.example;
@@ -283,12 +281,12 @@ public class MessageTransformer extends TelestionVerticle<MessageTransformer.Con
 }
 ```
 
-That's it! The `TelestionVerticle` class will try to load the default configuration
-once the Verticle is created.
+That's it! The `TelestionVerticle` class will try to load the default
+configuration once the Verticle is created.
 
 ## Step 5: Adjusting the `main()` method
 
-To test what we've just written, we also need to adjust our main method.
+To test what you've just written, you also need to adjust our main method.
 
 Use `new DeploymentOptions().setConfig(jsonObject)` to pass a configuration
 object to the deployed Verticle:
@@ -321,13 +319,13 @@ public class MessageTransformer extends TelestionVerticle<MessageTransformer.Con
 }
 ```
 
-That's it. When you now re-run the main method, you should see that we now get a
-`value` of `18`, i.e., `6 * 3`.
+That's it. When you now re-run the main method, you now get a `value` of `18`,
+that is, `6 * 3`.
 
 :::tip
 
-We're using `new JsonObject().put()` instead of `new Configuration()` since it
-wouldn't be possible to test our default values if we instantiated a "full"
+You're using `new JsonObject().put()` instead of `new Configuration()` since it
+wouldn't be possible to test your default values if you instantiated a "full"
 `Configuration` instance.
 
 :::
