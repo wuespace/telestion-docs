@@ -192,13 +192,14 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration> 
 }
 ```
 
-Instead of handling the `event` directly, you pass it into the `JsonMessage.on()`
-function. This then filters messages and calls a handler passed into it if and
-only if the message type matches the specified class (here: `IntegerMessage`).
+Instead of handling the `event` directly, you pass it into the
+`JsonMessage.on()` function. This then filters messages and calls a handler
+passed into it if and only if the message type matches the specified class
+(here: `IntegerMessage`).
 
 The first argument to the handler, `message`, then is the already deserialized
-instance of `IntegerMessage` and you can, thus, use it to further process
-the data.
+instance of `IntegerMessage` and you can, thus, use it to further process the
+data.
 
 In this case, you use `message.value()` to retrieve the `value` field within the
 record. Since you already know that it's of the type `IntegerMessage` where
@@ -207,7 +208,8 @@ cases.
 
 ## Step 3: Publishing messages
 
-Now that you can receive `IntegerMessage` messages, you also need to publish them.
+Now that you can receive `IntegerMessage` messages, you also need to publish
+them.
 
 Create a new `IntegerMessage` instance called `output` and instead of publishing
 `received * 2`, publish `output.json()`:

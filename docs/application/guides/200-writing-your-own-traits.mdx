@@ -121,8 +121,8 @@ example below for better understanding.
 
 ### The problem
 
-Imagine having more than one verticle that use the `vertx.eventBus()` context. They
-use `JsonMessage` based messages to communicate with each other.
+Imagine having more than one verticle that use the `vertx.eventBus()` context.
+They use `JsonMessage` based messages to communicate with each other.
 
 Thus, they need to convert the received messages to the wanted `"JsonMessage"`
 type every time.
@@ -452,8 +452,8 @@ public class Rerequester extends TelestionVerticle<GenericConfiguration>
 }
 ```
 
-You can write even more traits for Verticle. For example, the timing functions or
-shared data from the `vertx` context.
+You can write even more traits for Verticle. For example, the timing functions
+or shared data from the `vertx` context.
 
 The Telestion API provides many more traits for verticles:
 
