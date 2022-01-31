@@ -1,5 +1,32 @@
 # Changelog
 
+## [2.6.0](https://github.com/wuespace/telestion-docs/compare/v2.5.0...v2.6.0) (2022-01-31)
+
+
+### Features
+
+* **docs/application:** Add concept describing traits in Java ([5fd219d](https://github.com/wuespace/telestion-docs/commit/5fd219d3af6277841f2668e7edd09cb82186ff01))
+* **docs/application:** Add concept describing traits in Java ([4e916dc](https://github.com/wuespace/telestion-docs/commit/4e916dc5e374d4561acc16a7ca9dfbda61eacba9))
+* **docs/application:** Add tutorial on how to use traits in Verticles ([9774def](https://github.com/wuespace/telestion-docs/commit/9774def7224ca7ad1ec5bf6097a0a0ed835971b6))
+* **docs/application:** Add tutorial on how to use traits in Verticles ([79b7175](https://github.com/wuespace/telestion-docs/commit/79b7175a829caad848be40f475a33916f08211da))
+* **docs/application:** Update adding configuration options tutorial to use the new `TelestionVerticle` class ([eaa9bf6](https://github.com/wuespace/telestion-docs/commit/eaa9bf606d2cb91cc6e39dd7353fe8b6f56ba501))
+* **docs/application:** Update adding configuration options tutorial to use the new `TelestionVerticle` class ([1b51bc9](https://github.com/wuespace/telestion-docs/commit/1b51bc918900e4af0fd83efb64560372184e289b))
+* **docs/application:** Update using json message tutorial to use the new `TelestionVerticle` class ([66cb81d](https://github.com/wuespace/telestion-docs/commit/66cb81da98bfb317b1234b4491fa6d0d4254bfc0))
+* **docs/application:** Update using json message tutorial to use the new `TelestionVerticle` class ([d3bb94c](https://github.com/wuespace/telestion-docs/commit/d3bb94c687af1c93e0770254c6d5ac8df428d0f6))
+* **docs/application:** Update verticle concept to use the new `TelestionVerticle` class ([9e6896f](https://github.com/wuespace/telestion-docs/commit/9e6896f6ecd877dbc29eb244337db4452860cf96))
+* **docs/application:** Update verticle concept to use the new `TelestionVerticle` class ([22c3559](https://github.com/wuespace/telestion-docs/commit/22c35599e37705d651ea72917c7179726d96f1da))
+* **docs/application:** Update writing a verticle tutorial to use the new `TelestionVerticle` class ([72b5bbc](https://github.com/wuespace/telestion-docs/commit/72b5bbc6944743c51c7986adb4cc38ccd0ec6b0f))
+* **docs/application:** Update writing a verticle tutorial to use the new `TelestionVerticle` class ([79b2a3d](https://github.com/wuespace/telestion-docs/commit/79b2a3d076e103c9d0513768a8065855cb10d39a))
+* **docs/client:** :sparkles: Add Electron concept ([646fdae](https://github.com/wuespace/telestion-docs/commit/646fdae5eb5844c5f49828918ebc8814f289fabd)), closes [#150](https://github.com/wuespace/telestion-docs/issues/150)
+* **docs/client:** Add guide on how to write own traits ([bb02da0](https://github.com/wuespace/telestion-docs/commit/bb02da0361078e0ea59af13d48789f8e5b1edd4b))
+* **docs/client:** Add guide on how to write own traits ([bd065f6](https://github.com/wuespace/telestion-docs/commit/bd065f6d46880463b63c2d1c20135b6c1f3f5278))
+* **docs/client:** Add tutorial about writing a stateful dialog ([e4ea70b](https://github.com/wuespace/telestion-docs/commit/e4ea70b1a0d4d6c344183b0d5c24503ba8ef3e55))
+* **docs/client:** Add tutorial about writing a static dialog ([f5999fb](https://github.com/wuespace/telestion-docs/commit/f5999fb65ab5afdb0f8f82e0e5731af2c732fef7))
+* **docs/client:** Add tutorials to index page ([e211b01](https://github.com/wuespace/telestion-docs/commit/e211b01ddaf48ba72f07743c4cbea8902cc33326))
+* Move to new domain https://docs.telestion.wuespace.de/ ([9d250d4](https://github.com/wuespace/telestion-docs/commit/9d250d4757cbd4f90545a2543de04fa2c17d7234))
+* Overall language improvements (and adding `vale` as a prose linter to enforce it) ([0543b0c](https://github.com/wuespace/telestion-docs/commit/0543b0cb7cd296c5da828f93aa9c096bf51288a0))
+* Rework sidebar configuration and add API reference links ([7a44014](https://github.com/wuespace/telestion-docs/commit/7a440143a8abeb1919a1578e26d649c5a01d0dfd))
+
 ## [2.5.0](https://github.com/wuespace/telestion-docs/compare/v2.4.0...v2.5.0) (2022-01-15)
 
 
