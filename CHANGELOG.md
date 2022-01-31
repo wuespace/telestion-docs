@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.6.1](https://github.com/wuespace/telestion-docs/compare/v2.6.0...v2.6.1) (2022-01-31)
+
+
+### Bug Fixes
+
+* **deployment:** :ambulance: Fix scroll lock issue on Chrome/Windows 10 ([09cc6f5](https://github.com/wuespace/telestion-docs/commit/09cc6f5c10c84407301967c8fc93749466d2918c))
+
 ## [2.6.0](https://github.com/wuespace/telestion-docs/compare/v2.5.0...v2.6.0) (2022-01-31)
 
 
