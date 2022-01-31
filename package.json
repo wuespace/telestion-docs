@@ -17,9 +17,9 @@
     "prettier:check": "prettier --check ."
   },
   "dependencies": {
-    "@cmfcmf/docusaurus-search-local": "^0.9.4",
+    "@cmfcmf/docusaurus-search-local": "^0.10.0",
     "@docusaurus/core": "^2.0.0-beta.15",
-    "@docusaurus/preset-classic": "2.0.0-beta.14",
+    "@docusaurus/preset-classic": "2.0.0-beta.15",
     "@mdx-js/react": "^1.6.21",
     "@svgr/webpack": "^6.2.0",
     "clsx": "^1.1.1",

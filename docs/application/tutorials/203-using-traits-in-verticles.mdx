@@ -1,0 +1,269 @@
+---
+title: Using traits in Verticles
+# e.g., "Publishing messages to the event bus" or "Installing a dependency using npm"
+
+description:
+  Enrich your coding experience in Verticles by using Verticle traits.
+---
+
+<!--
+Tutorial
+========
+
+=== When to use this template:
+Use this template when you want to give a quick, step-by-step tutorial for solving a specific
+technical problem. Tutorials allow the reader to learn how to implement something within
+their projects quickly.
+
+=== When not to use this template:
+When your article focuses more on a concept/technology and is not rooted in a specific technical
+problem ("how to do XY?"), consider using a guide instead.
+
+=== Guide or Tutorial
+A tutorial provides a quick, technical "step-by-step" tutorial for a
+given problem. Thus, a guide describes less the handling of a specific problem
+and more the general interaction of the reader with a given concept.
+
+Example with npm articles:
+- "npm": (Concept, explaining what npm is)
+- "Installing a dependency with npm" (Tutorial, providing a quick tutorial to
+	solve a technical problem)
+- "Managing dependencies with npm" (Guide, including both technical knowledge, but
+	also best practices and more)
+
+=== Writing tips:
+- Write in the present tense
+- Use neutral pronouns (they/them instead of he/she and him/her)
+- Be respectful to everyone
+- Be aware of the potential for cultural misunderstandings
+- Provide explanations for what you do, but focus on the step-by-step guide
+	without deeply explaining every technical decision and why it's best prcatice
+	to do so (you can describe best practices in a guide, a tutorial must focus on
+	keeping the "step by step" flow going)
+-->
+
+<!-- Relevant imports: -->
+
+import { Reference, Image } from '/components';
+
+<!-- Short description of what the article covers: -->
+
+It's tedious to do common tasks in Verticles like registering event handlers or
+publishing `JsonMessage` based messages.
+
+Doing this over and over again in your Verticle the code becomes bloated and
+unreadable.
+
+Provide a better reading experience using traits in your Verticle.
+
+:::info Prerequisites
+
+To complete this tutorial, you should be familiar with writing basic Verticles
+and using the `JsonMessage` interface from the Telestion APIs.
+
+:::
+
+## What you'll build
+
+<Reference to="/application/tutorials/using-jsonmessage/">Base Code</Reference>
+
+Based on the code from the
+[`JsonMessage` tutorial](/application/tutorials/using-jsonmessage/), you'll add
+traits to your `MessageTransformer` Verticle.
+
+For a concept on what a trait actually is, please take a look on this concept:
+
+<Reference to="/application/concepts/traits/">Traits concept</Reference>
+
+After the tutorial, your Verticle looks like this:
+
+```java title='MessageTransformer.java' {5,7-8,16,18,19}
+package de.wuespace.telestion.project.example;
+
+import de.wuespace.telestion.api.verticle.GenericConfiguration;
+import de.wuespace.telestion.api.verticle.TelestionVerticle;
+import de.wuespace.telestion.api.verticle.trait.WithEventBus;
+
+public class MessageTransformer extends TelestionVerticle<GenericConfiguration>
+		implements WithEventBus {
+
+	public static void main(String[] args) throws InterruptedException {
+		// [...]
+	}
+
+	@Override
+	public void onStart() {
+		register("input", message -> {
+			int received = message.value();
+			publish("output", new IntegerMessage(received * 2));
+		}, IntegerMessage.class);
+	}
+}
+```
+
+## Step 1: Add a trait to our Verticle
+
+The Telestion API already provides some traits especially for Verticles.
+
+<Reference to="https://javadoc.io/doc/de.wuespace.telestion/telestion-api/latest/de/wuespace/telestion/api/verticle/trait/package-summary.html">
+	List of Telestion Core Verticle traits
+</Reference>
+
+Import the `WithEventBus` trait and use it in your `MessageTransformer`
+Verticle:
+
+```java title='MessageTransformer.java' {5,7-8}
+package de.wuespace.telestion.project.example;
+
+import de.wuespace.telestion.api.verticle.GenericConfiguration;
+import de.wuespace.telestion.api.verticle.TelestionVerticle;
+import de.wuespace.telestion.api.verticle.trait.WithEventBus;
+
+public class MessageTransformer extends TelestionVerticle<GenericConfiguration>
+		implements WithEventBus {
+
+	public static void main(String[] args) throws InterruptedException {
+		// [...]
+	}
+
+	@Override
+	public void onStart() {
+		// [...]
+	}
+}
+```
+
+The `WithEventBus` trait contains a bunch of methods to interact with the
+[`EventBus`](/application/concepts/event-bus/).
+
+For more information, take a look at the API reference:
+
+<Reference to="https://javadoc.io/doc/de.wuespace.telestion/telestion-api/latest/de/wuespace/telestion/api/verticle/trait/WithEventBus.html">
+	`WithEventBus` API reference
+</Reference>
+
+## Step 2: Rewrite the event bus consumer
+
+Currently the Verticle extracts the event bus instance from the `vertx` context
+and registers an event handler and an event bus channel. The incoming message is
+then converted to an `IntegerMessage` if possible and another event handler is
+called which multiplies the received value.
+
+That's a tedious task especially if you want to consume messages on multiple
+channels throughout your Verticle.
+
+Use the `register` method from the `WithEventBus`:
+
+```java title='MessageTransformer.java' {18-20}
+package de.wuespace.telestion.project.example;
+
+import de.wuespace.telestion.api.verticle.GenericConfiguration;
+import de.wuespace.telestion.api.verticle.TelestionVerticle;
+import de.wuespace.telestion.api.verticle.trait.WithEventBus;
+
+public class MessageTransformer extends TelestionVerticle<GenericConfiguration>
+		implements WithEventBus {
+
+	public static void main(String[] args) throws InterruptedException {
+		// [...]
+	}
+
+	@Override
+	public void onStart() {
+		var eb = vertx.eventBus();
+
+		register("input", message -> {
+			// [...]
+		}, IntegerMessage.class);
+	}
+}
+```
+
+The `register` method combines multiple operations in one call. First, it
+registers an event handler on the event bus channel `"input"`. If a messages
+arrives at the channel the `register` method tries to convert received message
+to the specified message type (here `IntegerMessage.class`). If the conversion
+succeeded, `register` calls the given event handler with the converted message.
+
+In short, it has the same behaviour as the already existing implementation but
+is much more readable and maintainable.
+
+## Step 3: Rewrite the event bus publisher
+
+To completely eliminate the `eb` event bus reference, you can use the `publish`
+method also provided by the `WithEventBus` trait:
+
+```java title='MessageTransformer.java' {17-18}
+package de.wuespace.telestion.project.example;
+
+import de.wuespace.telestion.api.verticle.GenericConfiguration;
+import de.wuespace.telestion.api.verticle.TelestionVerticle;
+import de.wuespace.telestion.api.verticle.trait.WithEventBus;
+
+public class MessageTransformer extends TelestionVerticle<GenericConfiguration>
+		implements WithEventBus {
+
+	public static void main(String[] args) throws InterruptedException {
+		// [...]
+	}
+
+	@Override
+	public void onStart() {
+		register("input", message -> {
+			int received = message.value();
+			publish("output", new IntegerMessage(received * 2));
+		}, IntegerMessage.class);
+	}
+}
+```
+
+The `publish` is essentially a shorthand to access the
+`vertx.eventBus().publish()` method.
+
+One neat feature of `publish` is that it does the conversion from a
+`JsonMessage` based message back to the `JsonObject` automatically. So you don't
+need to call `.json()` on the message anymore. (as described in
+[Using `JsonMessage`](/application/tutorials/using-jsonmessage/#step-3-publishing-messages))
+
+## Next steps
+
+<!-- Short concluding sentence: -->
+
+That's it. You've successfully using traits in your first Verticle! 🍹
+
+Althrough it doesn't look like much of an improvement right now, it really
+cleans up your code in bigger and complexer Verticles.
+
+But that's not the end. The Telestion Core provides more traits for Verticles.
+Take a look at them if you like.
+
+You can also write your own traits not only for Verticles but much more types.
+
+<!-- Links to next steps/related articles -->
+
+<Reference to="/application/concepts/traits/">Traits concept</Reference>
+
+<Reference to="https://javadoc.io/doc/de.wuespace.telestion/telestion-api/latest/de/wuespace/telestion/api/verticle/trait/package-summary.html">
+	List of Telestion Core Verticle traits
+</Reference>
+
+<Reference to="https://javadoc.io/doc/de.wuespace.telestion/telestion-api/latest/de/wuespace/telestion/api/verticle/trait/WithEventBus.html">
+	`WithEventBus` API reference
+</Reference>
+
+<Reference to="/application/guides/writing-your-own-traits/">
+	Writing your own traits
+</Reference>
+
+<!--
+Snippets
+--------
+
+<Reference to="../other-article">
+		Relative Link to other article
+</Reference>
+
+<Reference to="https://www.example.com">
+		Example Website
+</Reference>
+-->

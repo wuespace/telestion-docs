@@ -1,0 +1,483 @@
+---
+title: Writing your own traits
+# e.g., "Working with the Event Bus" or "Managing dependencies with npm"
+
+description:
+  Traits are a convenient way to remove duplicate code and clean up your
+  codebase. Learn how to write your traits.
+---
+
+<!--
+Guide
+=====
+
+=== When to use this template:
+Use this template when you want to explain how to work with a specific technology/concept.
+
+=== When not to use this template:
+When
+- the article provides a quick explanation of a single concept (use a concept instead)
+- the article should be a quick way to look things up (use a reference instead)
+- the article focuses on how to solve a particular technical problem (use a tutorial instead)
+
+=== Guide or Tutorial
+A tutorial provides a quick, technical "step-by-step" tutorial for a
+given problem. Thus, a guide describes less the handling of a specific problem
+and more the general interaction of the reader with a given concept.
+
+Example with npm articles:
+- "npm": (Concept, explaining what npm is)
+- "Installing a dependency with npm" (Tutorial, providing a quick tutorial to
+  solve a technical problem)
+- "Managing dependencies with npm" (Guide, including both technical knowledge, but
+  also best practices and more)
+
+=== Writing tips:
+- Write in the present tense
+- Use neutral pronouns (they/them instead of he/she and him/her)
+- Be respectful to everyone
+- Be aware of the potential for cultural misunderstandings
+- Guides are more comprehensive than many other article types.
+  Feel free to add context and best practices.
+- Mention common pitfalls and how not to use something (and why)
+-->
+
+<!-- Relevant imports: -->
+
+import { Reference, Image } from '/components';
+
+<!-- Short description of what the article covers: -->
+
+This guide teaches you how to write your own traits in Java while using the
+Telestion APIs.
+
+<!-- Describe the intended target audience: -->
+
+:::tip Is this the right guide for you?
+
+This guide primarily targets Backend Developers and everyone who wants to write
+their own traits.
+
+To best understand the topics covered here, you should be familiar with the
+following concepts before reading this article:
+
+- [The concept of traits](/application/concepts/traits/)
+- [Using traits in Verticles](/application/tutorials/using-traits-in-verticles/)
+
+<!-- a list of prerequisite knowledge, linking to articles as a simple Markdown link, if applicable -->
+
+:::
+
+## Before implementing your own trait
+
+Before you implement your trait, first sit back and think about the following
+questions:
+
+### What specific problem wants your trait to solve?
+
+First, write down the scope of your problem and try to slice it up into
+specialized feature sets. One great feature of Java interfaces is that you can
+import more than one of them at once. "Importing" more than one interface keeps
+a trait's source file small, readable and maintainable.
+
+It's not a good idea to push every feature into one giant trait. Too big traits
+bloat the implementing class and pollute the class's namespace, which can create
+name collisions.
+
+### Are there existing interfaces or traits you can use to support your trait?
+
+Most of the time, you want to write a trait is when you implement the same
+feature over and over again in different parts of your Application. The
+maintenance of your code shrinks, and you don't have the ultimate source of
+truth because two or more implementations diverged at some point.
+
+Try to find these implementations and look at what features you use. Is there an
+existing interface or trait that you can extend? If that's the case, that's
+great because you can keep your source code footprint small and maintainable.
+
+### Are there other users that want to use your trait in a different context?
+
+It's already handy to write a trait for your specialized context. It becomes
+even more helpful when you can re-use it in a lot of places at once. But what if
+your trait is so restrictive that you cannot re-use it elsewhere?
+
+Try to think about a greater context of your trait and where you can use it.
+Another neat feature of Java is method overloading. You can define more than one
+method with the same name but different argument sets. Then, the compiler
+automatically selects the most suitable method for the problem you want to solve
+with your imported trait.
+
+Then you can extend your specialized method by adding more methods with a
+different and broader set of arguments.
+
+The user of your trait thanks you later. 😉
+
+### Decision
+
+If you don't understand all things right away, that's okay. Take a look at the
+example below for better understanding.
+
+## Example implementation of a trait
+
+### The problem
+
+Imagine having more than one verticle that use the `vertx.eventBus()` context. They
+use `JsonMessage` based messages to communicate with each other.
+
+Thus, they need to convert the received messages to the wanted `"JsonMessage"`
+type every time.
+
+For example:
+
+```java title="Responder.java"
+public class Responder extends TelestionVerticle<GenericConfiguration> {
+  @Override
+  public void onStart() {
+    var eb = vertx.eventBus();
+
+    eb.consumer("some-address", message -> {
+      JsonMessage.on(SpecialMessage.class, message, body -> {
+        logger.debug("Received: {}", body);
+
+        // do some calcuation or change something
+        var result = new SpecialMessage(/* [...] */);
+
+        message.reply(result.json());
+        eb.publish("update-address", result.json());
+      });
+    });
+  }
+}
+```
+
+```java title="Repeater.java"
+public class Repeater extends TelestionVerticle<GenericConfiguration> {
+  @Override
+  public void onStart() {
+    var eb = vertx.eventBus();
+    var delay = Duration.ofSeconds(1).toMillis();
+
+    vertx.setInterval(delay, id -> {
+      var message = new PingMessage();
+
+      var options = new DeliveryOptions();
+      var headers = options.getHeaders()
+          .add("send-time", System.currentTimeInMillis());
+
+      eb.publish("ping-address", message.json(), options);
+    });
+  }
+}
+```
+
+```java title="Rerequester.java"
+public class Rerequester extends TelestionVerticle<GenericConfiguration> {
+  @Override
+  public void onStart() {
+    var eb = vertx.eventBus();
+
+    eb.consumer("request-address", message -> {
+      JsonMessage.on(RequestMessage.class, message, request -> {
+        // okay, we received a request message, we need another request
+        var internalRequest = new InternalMessage(request);
+        eb.request("internal-address", internalRequest.json(), result -> {
+          if (!result.failed()) {
+            message.reply(result.result());
+          } else {
+            message.fail(500, "Ohh something went wrong.");
+          }
+        });
+      });
+    });
+  }
+}
+```
+
+Do you see the repetition?
+
+You can do that better. Let's introduce a trait that allows verticles to get
+better and simpler access to the event bus.
+
+### Defining the trait
+
+You need a name for your new trait. What's about `WithEventBus`?
+
+Okay, let's define it:
+
+```java title="WithEventBus.java"
+public interface WithEventBus {
+}
+```
+
+Hmm, how do you get access to the event bus instance? Traits should not force
+the using class to implement a function.
+
+Every Verticle implements the `Verticle` interface. That's your access point.
+
+<Reference to="https://vertx.io/docs/apidocs/io/vertx/core/Verticle.html">
+	`Verticle` API reference
+</Reference>
+
+Add it to your existing implementation:
+
+```java title="WithEventBus.java" {1}
+public interface WithEventBus extends Verticle {
+}
+```
+
+:::tip Exposed interfaces
+
+Many exposed types on the Vert.x framework are Java interfaces. The
+implementation side of Vert.x often imports these. If you want to write traits
+for Verticles and other types, these interfaces are your intercept point.
+
+:::
+
+### The `publish` method
+
+Now you have the definition of your trait, let's add the first method:
+
+```java title="WithEventBus.java" {2-4}
+public interface WithEventBus extends Verticle {
+  default void publish(String address, Object message) {
+    getVertx().eventBus().publish(address, message);
+  }
+}
+```
+
+You start with the publishing part and add a method to publish messages on a
+specific event bus channel.
+
+That's an improvement because the Verticle doesn't need to extract the event bus
+instance anymore. But what's with the `JsonMessage` based messages. You must
+convert them to `JsonObject` before transmitting them over the event bus.
+
+Overload the `publish` method to handle `JsonMessage` messages in a special way:
+
+```java title="WithEventBus.java" {6-8}
+public interface WithEventBus extends Verticle {
+  default void publish(String address, Object message) {
+    getVertx().eventBus().publish(address, message);
+  }
+
+  default void publish(String address, JsonMessage message) {
+    publish(address, message.json());
+  }
+}
+```
+
+The overloaded method only accepts `JsonMessage` as a message type, so you are
+safe to call `json()` on it to convert it to a `JsonObject`. Then you pass the
+arguments further to the base method.
+
+Now the user of your trait cannot forget the conversion anyone because you do
+it. That's convenient.
+
+Now we repeat this step with the call method call but you want to provide
+delivery options, too:
+
+```java title="WithEventBus.java" {6-8,14-16}
+public interface WithEventBus extends Verticle {
+  default void publish(String address, Object message) {
+    getVertx().eventBus().publish(address, message);
+  }
+
+  default void publish(String address, Object message, DeliveryOptions options) {
+    getVertx().eventBus().publish(address, message, options);
+  }
+
+  default void publish(String address, JsonMessage message) {
+    publish(address, message.json());
+  }
+
+  default void publish(String address, JsonMessage message, DeliveryOptions options) {
+    publish(address, message.json(), options);
+  }
+}
+```
+
+The user of your trait can provide delivery options if they like. But they
+aren't forced to do so because you provide a method without any options. That's
+convenient, too.
+
+### The `register` method
+
+Repeat this procedure for the `consumer` method from the event bus instance. Add
+a `register` method to your trait:
+
+```java title="WithEventBus.java" {4-6}
+public interface WithEventBus extends Verticle {
+  // [...]
+
+  default <T> void register(String address, Handler<Message<T>> handler) {
+    getVertx().eventBus().consumer(address, handler);
+  }
+}
+```
+
+In this example, you provide convenient access to the consuming side of the
+event bus and rename the method to specify better the behavior that your trait's
+user expects.
+
+To integrate the automatic conversion from receiving messages to `JsonMessage`
+based messages, you need to write a functional interface that provides the
+converted type to the implementing method:
+
+```java title="MessageHandler.java"
+@FunctionalInterface
+public interface MessageHandler<T extends JsonMessage> {
+  void handle(T body);
+}
+```
+
+Now, you use that interface in the `WithEventBus` trait:
+
+```java title="WithEventBus.java" {8-10}
+public interface WithEventBus extends Verticle {
+  // [...]
+
+  default <T> void register(String address, Handler<Message<T>> handler) {
+    getVertx().eventBus().consumer(address, handler);
+  }
+
+  default <V extends JsonMessage> void register(String address, MessageHandler<V> handler, Class<V> type) {
+    this.<JsonObject>register(address, message -> JsonMessage.on(type, message, handler));
+  }
+}
+```
+
+Now, the `register` method automatically converts the incoming message to the
+specified type when the user provides it.
+
+The same step is repeatable so that the handler not only provides the converted
+message body but also the message itself:
+
+```java title="ExtendedMessageHandler.java"
+@FunctionalInterface
+public interface ExtendedMessageHandler<V extends JsonMessage, T> {
+	void handle(V body, Message<T> message);
+}
+```
+
+```java title="WithEventBus.java" {12-19}
+public interface WithEventBus extends Verticle {
+  // [...]
+
+  default <T> void register(String address, Handler<Message<T>> handler) {
+    getVertx().eventBus().consumer(address, handler);
+  }
+
+  default <V extends JsonMessage> void register(String address, MessageHandler<V> handler, Class<V> type) {
+    this.<JsonObject>register(address, message -> JsonMessage.on(type, message, handler));
+  }
+
+  default <V extends JsonMessage, T> void register(
+    String address,
+    ExtendedMessageHandler<V, T> handler,
+    Class<V> type) {
+      this.<JsonObject>register(address,
+        message -> JsonMessage.on(type, message,
+          body -> handler.handle(body, message)));
+    }
+}
+```
+
+You can extend your trait further with many more event bus methods if you like.
+However, for this example, the current functionality can reduce repetition in
+the sample verticles.
+
+### Refactoring of the sample verticles
+
+The `WithEventBus` now simplifies the access to the event bus in verticles.
+Let's update the sample verticle using your new trait:
+
+```java title="Responder.java" {1-2,6,9-18}
+public class Responder extends TelestionVerticle<GenericConfiguration>
+    implements WithEventBus {
+
+  @Override
+  public void onStart() {
+    register("some-address", this::handle, SpecialMessage.class);
+  }
+
+  private void handle(SpecialMessage body, Message<JsonObject> message) {
+    logger.debug("Received: {}", body);
+
+    // do some calcuation or change something
+    var result = new SpecialMessage(/* [...] */);
+
+    message.reply(result.json());
+    publish("update-address", result);
+  }
+}
+```
+
+```java title="Repeater.java" {1-2,15}
+public class Repeater extends TelestionVerticle<GenericConfiguration>
+    implements WithEventBus {
+
+  @Override
+  public void onStart() {
+    var delay = Duration.ofSeconds(1).toMillis();
+
+    vertx.setInterval(delay, id -> {
+      var message = new PingMessage();
+
+      var options = new DeliveryOptions();
+      var headers = options.getHeaders()
+          .add("send-time", System.currentTimeInMillis());
+
+      publish("ping-address", message, options);
+    });
+  }
+}
+```
+
+```java title="Rerequester.java" {1-2,6,9-15}
+public class Rerequester extends TelestionVerticle<GenericConfiguration>
+    implements WithEventBus {
+
+  @Override
+  public void onStart() {
+    register("request-address", this::handle, RequestMessage.class);
+  }
+
+  private void handle(RequestMessage request, Message<JsonObject> message) {
+    // okay, we received a request message, we need another request
+    var internalRequest = new InternalMessage(request);
+    request("internal-address", internalRequest)
+      .onSuccess(response -> message.reply(response))
+      .onFailure(cause -> message.fail(500, cause.getMessage()));
+  }
+}
+```
+
+You can write even more traits for Verticle. For example, the timing functions or
+shared data from the `vertx` context.
+
+The Telestion API provides many more traits for verticles:
+
+<Reference to="https://javadoc.io/doc/de.wuespace.telestion/telestion-api/latest/de/wuespace/telestion/api/verticle/trait/package-summary.html">
+	List of Telestion Core Verticle traits
+</Reference>
+
+## See also
+
+<Reference to="/application/concepts/traits/">Traits concept</Reference>
+
+<Reference to="/application/tutorials/using-traits-in-verticles">
+	Using traits in Verticles
+</Reference>
+
+<!--
+Snippets
+--------
+
+<Reference to="../other-article">
+    Relative Link to other article
+</Reference>
+
+<Reference to="https://www.example.com">
+    Example Website
+</Reference>
+-->
