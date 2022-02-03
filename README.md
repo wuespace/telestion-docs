@@ -6,8 +6,7 @@
 [![GitHub](https://img.shields.io/github/license/wuespace/telestion-docs)](LICENSE)
 [![Twitter Follow](https://img.shields.io/twitter/follow/wuespace?style=social)](https://twitter.com/wuespace)
 
-This repository contains the documentation for the Telestion Project. It's
-available at https://wuespace.github.io/telestion-docs.
+This repository contains the documentation for the Telestion Project. [Go to docs page](https://wuespace.github.io/telestion-docs).
 
 _Please note that this **does not** contain technical references for all
 Telestion modules. For that, please refer to the individual READMEs and other
