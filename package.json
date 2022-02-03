@@ -13,7 +13,7 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "prettier:fix": "prettier --write .",
+    "prettier:fix": "prettier --write . && node prettify-mdx.js",
     "prettier:check": "prettier --check ."
   },
   "dependencies": {
@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "fast-glob": "^3.2.11",
     "prettier": "^2.5.1"
   }
 }

@@ -22,3 +22,5 @@ Dialogs
 tada
 [...]
 namespace
+configurability
+deserialized
