@@ -31,6 +31,6 @@ jobs:
       - name: Vale Linter
         uses: errata-ai/vale-action@v1.4.3
         with:
-          files: docs src
+          files: docs
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
