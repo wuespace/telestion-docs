@@ -1,5 +1,15 @@
 # Changelog
 
+### [2.6.2](https://github.com/wuespace/telestion-docs/compare/v2.6.1...v2.6.2) (2022-02-03)
+
+
+### Bug Fixes
+
+* **docs/application:** Fix formatting in "Using Traits in Verticles" tutorial ([58b44ff](https://github.com/wuespace/telestion-docs/commit/58b44ffdda711c16937c1ba29c7ff45dc10ab871))
+* **docs/general:** :adhesive_bandage: Fix more language inconsistencies ([ed91fa8](https://github.com/wuespace/telestion-docs/commit/ed91fa84c2462b68424064913bc4d01021695743))
+* **docs/general:** :adhesive_bandage: Fix various language inconsistencies ([4dec5a0](https://github.com/wuespace/telestion-docs/commit/4dec5a00c5454171a621bc031dcac901fe25d6db))
+* **docs/internal:** :bug: Fix typo in Error Messages Concept ([eb93e41](https://github.com/wuespace/telestion-docs/commit/eb93e41c67650ab193cb3b98f279e952c380a295))
+
 ### [2.6.1](https://github.com/wuespace/telestion-docs/compare/v2.6.0...v2.6.1) (2022-01-31)
 
 
