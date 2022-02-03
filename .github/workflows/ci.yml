@@ -28,9 +28,9 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
       - run: npm run prettier:fix
-      - name: Vale Linter
-        uses: errata-ai/vale-action@v1.4.3
-        with:
-          files: docs
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      # - name: Vale Linter
+      #   uses: errata-ai/vale-action@v1.4.3
+      #   with:
+      #     files: docs
+      #   env:
+      #     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
