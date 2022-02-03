@@ -266,8 +266,8 @@ public interface WithEventBus extends Verticle {
 }
 ````
 
-The overloaded method accepts `JsonMessage` as a message type, so you are
-safe to call `json()` on it to convert it to a `JsonObject`. Then you pass the
+The overloaded method accepts `JsonMessage` as a message type, so you are safe
+to call `json()` on it to convert it to a `JsonObject`. Then you pass the
 arguments further to the base method.
 
 Now the user of your trait cannot forget the conversion anyone because you do
@@ -349,8 +349,8 @@ public interface WithEventBus extends Verticle {
 Now, the `register` method automatically converts the incoming message to the
 specified type when the user provides it.
 
-The same step is repeatable so that the handler provides the converted
-message body but also the message itself:
+The same step is repeatable so that the handler provides the converted message
+body but also the message itself:
 
 ````java title="ExtendedMessageHandler.java"
 @FunctionalInterface

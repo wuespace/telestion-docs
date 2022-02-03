@@ -146,11 +146,11 @@ You should use JSON based messages in real Telestion projects.
 
 ### Step 3: Republish Messages
 
-Verticles that listen to channels without ever publishing anything
-themselves can be useful, too. For example, you could write a Verticle that logs
-all incoming messages to a file or saves them to the database. But in this
-tutorial, you want to transform the data and "republish" it to the event bus
-(this time, on a different channel called `"output"`).
+Verticles that listen to channels without ever publishing anything themselves
+can be useful, too. For example, you could write a Verticle that logs all
+incoming messages to a file or saves them to the database. But in this tutorial,
+you want to transform the data and "republish" it to the event bus (this time,
+on a different channel called `"output"`).
 
 Thankfully, the Event Bus APIs make this quite easy using the
 `publish(address, body)` method:
