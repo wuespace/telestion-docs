@@ -78,7 +78,7 @@ Bus message when an operator presses the "Reset" button.
 
 In the end, you'll have written the following code:
 
-```ts title=src/plugins/mock-server.ts
+````ts title=src/plugins/mock-server.ts
 import {
 	CallbackId,
 	MockServer,
@@ -116,17 +116,17 @@ export function onReady() {
 	console.log('Starting mock Application Server');
 	mockServer.listen();
 }
-```
+````
 
-```ts title=telestion.config.js
+````ts title=telestion.config.js
 const path = require('path');
 
 module.exports = {
 	plugins: [path.join(__dirname, 'src', 'plugins', 'mock-server.ts')]
 };
-```
+````
 
-```ts title=src/widgets/my-new-widget/widget.tsx
+````ts title=src/widgets/my-new-widget/widget.tsx
 import {
 	useBroadcast,
 	useChannelLatest
@@ -149,21 +149,21 @@ function Indicator(props: { system: string }) {
 		</Flex>
 	);
 }
-```
+````
 
 ## Step 1: Add an event bus mock server for local testing
 
 Install the `@wuespace/vertx-mock-server` package by running the following
 terminal in your client project folder:
 
-```sh
+````sh
 npm i -D @wuespace/vertx-mock-server
-```
+````
 
 Add a file for your new plugin called `src/plugins/mock-server.ts` with the
 following code:
 
-```ts title=src/plugins/mock-server.ts
+````ts title=src/plugins/mock-server.ts
 import {
 	CallbackId,
 	MockServer,
@@ -201,7 +201,7 @@ export function onReady() {
 	console.log('Starting mock Application Server');
 	mockServer.listen();
 }
-```
+````
 
 This code creates a plugin that gets called in the Electron thread once the
 Electron thread gets started (when running `npm start`). It creates a mock
@@ -216,13 +216,13 @@ To load the plugin, you need to do one last step: in the client's root folder,
 there is a `telestion.config.js` that exports an empty object right now. Adjust
 it to include a list of plugins with your new plugin:
 
-```js title=telestion.config.js
+````js title=telestion.config.js
 const path = require('path');
 
 module.exports = {
 	plugins: [path.join(__dirname, 'src', 'plugins', 'mock-server.ts')]
 };
-```
+````
 
 When you now restart the `npm start` command (that is, re-run
 `tc-cli start --electron`), you can see the message
@@ -255,7 +255,7 @@ Adjust the `<Indicator />` functional component to use the hook to listen to the
 system status on the system's system status channel and wire up your UI to use
 the new status:
 
-```ts title=src/widgets/my-new-widget/widget.tsx
+````ts title=src/widgets/my-new-widget/widget.tsx
 // [...]
 // highlight-start
 import { useChannelLatest } from '@wuespace/telestion-client-core';
@@ -278,7 +278,7 @@ function Indicator(props: { system: string }) {
 		</Flex>
 	);
 }
-```
+````
 
 Take note of the `?? false`. This defaults the value to `false` in case it's
 `undefined`. The default value is for when the widget hasn't received a system
@@ -304,7 +304,7 @@ Reset button's `onPress` event to call that function to broadcast a message to
 that channel. Pass an object containing details about the system into the
 message:
 
-```ts title=src/widgets/my-new-widget/widget.tsx
+````ts title=src/widgets/my-new-widget/widget.tsx
 // [...]
 import {
 	// highlight-next-line
@@ -332,18 +332,18 @@ function Indicator(props: { system: string }) {
 		</Flex>
 	);
 }
-```
+````
 
 When you reload your client application and press the reset buttons, you can see
 corresponding output in the terminal where you ran `npm start`:
 
-```text
+````text
 Received reset request: { system: 'SAT C' }
 Received reset request: { system: 'SAT B' }
 Received reset request: { system: 'SAT A' }
 Received reset request: { system: 'SAT B' }
 Received reset request: { system: 'SAT C' }
-```
+````
 
 ## Next steps
 

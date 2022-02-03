@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 Edit at: https://tree.nathanfriend.io/?s=(%27optiVs!(%27fancy!true~fullPzQtCilingSlasQrootDot!true)~Z(%27Z%27K*index.jWexport5all%20K6XWmosGof%20youHwork%20happq5here%27%3A%7D*_RWR5foHspecific%20M%20types8tutorialA*93_9.yml_0a%209%20FuCYfile8M1A3M2A*introA0th4XumqtaYJhom4pLJ6src*css3custom.csWcustom%20styles%7D*pLWgqeCl%20%2F%20nV-X5pLs8BA0accessibl4aG%2FB%2C%20you%20ar4her4%3AP6stzic0cVtqt5served%20directly%20undeHJ%2FJ*img0imLs8dCwioNimL5thaGcVtai7DCwIO%20metadza8eUNsam4a5DCwIO%2C%20buGfoHEU8logo.svg0th4TelesYlogo6Xusaurus.F.jWFure5th4pag4i7gqeCl%7D%27)~versiV!%271%27)*%5C7%200%20%7B3*%20%204e%205s%206%7D%5Cn7n%208%7D39czegoryA.mdxBwriters-guideCraFcVfigGt%20Hr%20J%5C%27KcompVqtsLageMtopicN-diagCmWQh!false~RtemplzeUxcalidCwVonWs0XdocYtio7Zsource!qenzat%01zqZYXWVURQNMLKJHGFCBA98765430*
 -->
 
-```text title='telestion-docs'
+````text title='telestion-docs'
 .
 ├── components
 │   └── index.js (exports all components)
@@ -37,7 +37,7 @@ Edit at: https://tree.nathanfriend.io/?s=(%27optiVs!(%27fancy!true~fullPzQtCilin
 │       ├── excalidraw-diagrams (same as DrawIO, but for Excalidraw)
 │       └── logo.svg (the Telestion logo)
 └── docusaurus.config.js (configures the page in general)
-```
+````
 
 :::tip Templates
 
@@ -52,7 +52,7 @@ in, contain a couple of things to get you started:
    for the topic
 1. Writing tips for the kind of content the topic is for
 
-To use a template within VSCode, hold the "Ctrl" key and drag it into the
+To use a template within VSCode, hold the _Ctrl_ key and drag it into the
 relevant folder, rename it, and adjust it to your liking:
 
 <Image src={require('./writers-guide/using-a-template.png').default} />
@@ -62,7 +62,7 @@ relevant folder, rename it, and adjust it to your liking:
 ## General Writing Guidelines
 
 - Write in the present tense
-- Use neutral pronouns ("they/them" instead of "he/she" and "him/her")
+- Use neutral pronouns (_"they/them"_ instead of _"he/she"_ and _"him/her"_)
 - Be respectful to everyone
 - Be aware of the potential for cultural misunderstandings
 
@@ -83,31 +83,31 @@ Below, you can see a quick overview of these features, as well:
 
 #### Code:
 
-````markdown topic.mdx
-```java title='MyClass.java' {3}
+``````markdown topic.mdx
+````java title='MyClass.java' {3}
 class MyClass {
     MyClass(String message) {
         System.out.println(message);
     }
 }
-```
 ````
+``````
 
 #### Result:
 
-```java title='MyClass.java' {3}
+````java title='MyClass.java' {3}
 class MyClass {
     MyClass(String message) {
         System.out.println(message);
     }
 }
-```
+````
 
 ### Admonitions
 
 #### Code:
 
-```mdx
+````mdx
 :::note Optional Title
 
 Content
@@ -137,7 +137,7 @@ Content
 Content
 
 :::
-```
+````
 
 #### Result:
 
@@ -178,12 +178,12 @@ components for the Telestion documentation:
 
 ### `<Grid />`
 
-Allows to display several block elements next to each other, especially useful
-in combination with [`<Reference />`](#reference-)
+Allows you to display several block elements next to each other, most useful in
+combination with [`<Reference />`](#reference-)
 
 #### Code:
 
-```mdx title='topic.mdx'
+````mdx title='topic.mdx'
 import { Grid } from '/components';
 
 <Grid cols={2}>
@@ -201,7 +201,7 @@ Note content
 :::
 
 </Grid>
-```
+````
 
 #### Result:
 
@@ -225,13 +225,13 @@ Note content
 
 #### Code:
 
-```mdx title='topic.mdx'
+````mdx title='topic.mdx'
 import { Reference } from '/components';
 
 <Reference to="https://docusaurus.io/docs/markdown-features">
 	Docusuarus Docs regarding Mardkown
 </Reference>
-```
+````
 
 #### Result:
 
@@ -243,11 +243,11 @@ import { Reference } from '/components';
 
 #### Code:
 
-```mdx
+````mdx
 import { FileDownload } from '/components';
 
 <FileDownload file="/img/logo.svg">XD Template</FileDownload>
-```
+````
 
 #### Result:
 
@@ -257,7 +257,7 @@ import { FileDownload } from '/components';
 
 #### Code:
 
-```mdx
+````mdx
 import { Image } from '/components';
 
 <Image src="/img/logo.svg" />
@@ -265,7 +265,7 @@ import { Image } from '/components';
 
 <Image src="/img/logo.svg" alt="Telestion Logo" />
 <Image src="/img/logo.svg" invertible />
-```
+````
 
 #### Props
 
@@ -279,22 +279,35 @@ import { Image } from '/components';
 	<tbody>
 		<tr>
 			<td>
-				<code>src: string</code>
+				<code>
+					{/* vale off */}
+					src: string
+					{/* vale on */}
+				</code>
 			</td>
 			<td>
-				url of the image. Must not include base url (`/telestion-docs`). May
-				include `/static` (this gets handled automatically)
+				url of the image. Must not include base url (
+				<code>/telestion-docs</code>). May include `/static` (this gets handled
+				automatically)
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<code>invertible: boolean = false</code>
+				<code>
+					{/* vale off */}
+					invertible: boolean = false
+					{/* vale on */}
+				</code>
 			</td>
-			<td>Whether the image may be inverted for the dark theme</td>
+			<td>Whether to invert the image for the dark theme</td>
 		</tr>
 		<tr>
 			<td>
-				<code>...</code>
+				<code>
+					{/* vale off */}
+					...
+					{/* vale on */}
+				</code>
 			</td>
 			<td>
 				All other props get passed to the `<img />` element itself without
@@ -317,7 +330,7 @@ import { Image } from '/components';
 To write Markdown content inside MDX components, leave a blank line before and
 after your content and do not indent the content:
 
-```mdx
+````mdx
 <MyComponent>
     <MyChildComponent>
 
@@ -326,12 +339,12 @@ Some Markdown Content
     </MyChildComponent>
 
 </MyComponent>
-```
+````
 
 ## Static Assets (images, videos and other files)
 
-Static assets are stored within the `static` folder and served at the root of
-the repository, i.e., an image in `static/img/logo.svg` can be referenced using
+This repository stores static assets within the `static` folder which get served
+at the root of the page. You can refer to an image in `static/img/logo.svg` with
 `/img/logo.svg`.
 
 ### Including an image
@@ -339,25 +352,25 @@ the repository, i.e., an image in `static/img/logo.svg` can be referenced using
 :::caution Big image sizes
 
 Images with a big file size affect the page's load time and, through that, also
-the search engine ranking. Therefore, when your image is bigger than 500 kB, try
-to reduce its size with these steps before using them:
+the search engine ranking. Thus, when your image is bigger than 500 kB, try to
+reduce its size with these steps before using them:
 
 1. For diagrams and other "illustration-like" images, consider using a vector
    format (SVG)
-1. Consider what size the image has to, reasonably, be displayed at, and reduce
-   the image's dimensions if necessary.
+1. Consider what size the image, reasonably, gets displayed at, and reduce the
+   image's dimensions if necessary.
 1. Run your JPEG and PNG files through https://tinypng.com/ to reduce their file
    size without changing the image itself
 
 :::
 
-To include an image, you can use the `<Image />` component from above:
+To include an image, you can use the `<Image />` component:
 
 #### Code:
 
-```mdx
+````mdx
 <Image alt="Description of the image" src="/img/logo.svg" width="200" />
-```
+````
 
 #### Result:
 
@@ -378,12 +391,12 @@ text/shapes on a white/transparent background.
 
 #### Code:
 
-```mdx
+````mdx
 <Image
 	src="/static/img/drawio-diagrams/conventional-commits/conventional-commits-decision-table.drawio.svg"
 	invertible
 />
-```
+````
 
 #### Result:
 

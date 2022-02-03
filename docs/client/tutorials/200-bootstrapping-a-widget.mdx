@@ -89,17 +89,17 @@ In the end, you'll have one less _Missing widget_ message on your dashboard:
 Within your project folder, use the `tc-cli` to automatically bootstrap a new
 widget for you:
 
-```sh
+````sh
 tc-cli generate widget my-first-widget
-```
+````
 
 The result looks something like this:
 
-```sh
+````sh
 $ tc-cli generate widget my-first-widget
  SUCCESS  widget-generator  Widget myFirstWidget created successfully.
  INFO     widget-generator  You can find it at src/widgets/my-first-widget.
-```
+````
 
 This command does four things:
 
@@ -124,7 +124,7 @@ configuration. For that, you need a way to reference your newly created widget.
 Thankfully, if you take a closer look at the `index.ts` of your new widget, you
 can see that it already exports a name (`'myFirstWidget'`):
 
-```ts title=src/widgets/my-new-widget/index.ts
+````ts title=src/widgets/my-new-widget/index.ts
 import { Widget } from '@wuespace/telestion-client-types';
 import { Widget as WidgetRenderer } from './widget';
 
@@ -135,13 +135,13 @@ export const widget: Widget = {
 	version: '0.0.0',
 	Widget: WidgetRenderer
 };
-```
+````
 
 You can find the administrator user's dashboard's configuration in the
 `src/model/sample-user-config.ts` file. Replace the second widget's `widgetName`
 property with your widget name:
 
-```ts title=src/model/sample-user-config.ts
+````ts title=src/model/sample-user-config.ts
 import { UserConfig } from '@wuespace/telestion-client-types';
 
 export const userConfig: UserConfig = {
@@ -171,7 +171,7 @@ export const userConfig: UserConfig = {
 		]
 	}
 };
-```
+````
 
 When you save the file and return to the client's window, it automatically
 reloads the page, and you can see your widget on the left of the second row:
@@ -189,14 +189,14 @@ create whatever UI you want.
 For demonstration purposes, you'll adjust the heading to something more
 readable. Open the file and edit the headline to something you like:
 
-```tsx title=src/widgets/my-first-widget/widget.tsx
+````tsx title=src/widgets/my-first-widget/widget.tsx
 import { Heading } from '@adobe/react-spectrum';
 
 export function Widget() {
 	// highlight-next-line
 	return <Heading level={2}>Hello from my first widget!</Heading>;
 }
-```
+````
 
 Once again, all you need to do is save the file, wait for a couple of seconds,
 and return to the client window. Now, you should be able to see your first "own"

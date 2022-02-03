@@ -78,7 +78,7 @@ bus) that's a part of the following tutorial.
 
 The code you'll write looks like this:
 
-```ts title='src/widgets/my-new-widget/widget.tsx'
+````ts title='src/widgets/my-new-widget/widget.tsx'
 import {
 	Divider,
 	Flex,
@@ -110,13 +110,13 @@ function Indicator(props: { system: string }) {
 		</Flex>
 	);
 }
-```
+````
 
-## Step 1: Build the overall layout
+## Step 1: Build the layout
 
-Adjust the `widget.tsx` to have a base layout for our widget's UI:
+Adjust the `widget.tsx` to have a base layout for your widget's UI:
 
-```ts title='src/widgets/my-new-widget/widget.tsx'
+````ts title='src/widgets/my-new-widget/widget.tsx'
 // highlight-start
 import { Divider, Flex, Heading, View } from '@adobe/react-spectrum';
 // highlight-end
@@ -134,7 +134,7 @@ export function Widget() {
 	);
 	// highlight-end
 }
-```
+````
 
 The result should look something like this:
 
@@ -146,15 +146,15 @@ Since you have three different systems, you'll extract their connection status
 UI into one reusable `<Indicator />` component and use it for your three
 different systems:
 
-```java title='Car.java'
+````ts title='src/widgets/my-new-widget/widget.tsx'
 import {
 	Divider,
 	Flex,
 	Heading,
-  // highlight-next-line
+	// highlight-next-line
 	StatusLight,
 	View,
-  // highlight-next-line
+	// highlight-next-line
 	ActionButton
 } from '@adobe/react-spectrum';
 
@@ -184,9 +184,9 @@ function Indicator(props: { system: string }) {
 	);
 }
 // highlight-end
-```
+````
 
-Now, our UI has status-light indicators for the connection status of the three
+Now, your UI has status-light indicators for the connection status of the three
 different systems and reset buttons:
 
 <Image src="img/client/my-first-widget/04.png" center />

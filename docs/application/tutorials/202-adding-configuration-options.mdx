@@ -73,7 +73,7 @@ your `MessageTransformer` Verticle configurable.
 
 After the tutorial, your Verticle looks like this:
 
-```java title='MessageTransformer.java' {3-4,5,7-9,11,18,20-23,28-36,42,45,46}
+````java title='MessageTransformer.java' {3-4,5,7-9,11,18,20-23,28-36,42,45,46}
 package de.wuespace.telestion.project.example;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -124,7 +124,7 @@ public class MessageTransformer extends TelestionVerticle<MessageTransformer.Con
 		});
 	}
 }
-```
+````
 
 ## Step 1: Defining the `record Configuration` for the Verticle
 
@@ -152,7 +152,7 @@ Verticle and name them `Configuration`.
 
 :::
 
-```java title="MessageTransformer.java" {11-16}
+````java title="MessageTransformer.java" {11-16}
 package de.wuespace.telestion.project.example;
 
 // [...]
@@ -175,7 +175,7 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration> 
 		// [...]
 	}
 }
-```
+````
 
 Now that you have defined a configuration record, you can take a look at how you
 can apply it in your Verticle.
@@ -189,7 +189,7 @@ Now, the generic type enters the game. You need to give the `TelestionVerticle`
 class a hint about your new configuration. Replace the `GenericConfiguration`
 type with your configuration type `MessageTransformer.Configuration`:
 
-```java title='MessageTransformer.java' {5}
+````java title='MessageTransformer.java' {5}
 package de.wuespace.telestion.project.example;
 
 // [...]
@@ -197,7 +197,7 @@ package de.wuespace.telestion.project.example;
 public class MessageTransformer extends TelestionVerticle<MessageTransformer.Configuration> {
 	// [...]
 }
-```
+````
 
 With that, your Verticle is fully set up to handle configuration objects.
 
@@ -211,7 +211,7 @@ Then it maps the merged configuration back to your `Configuration` type.
 To access the configuration, use one of the `TelestionVerticle`'s convenience
 methods:
 
-```java title='MessageTransformer.java' {}
+````java title='MessageTransformer.java' {}
 package de.wuespace.telestion.project.example;
 
 // [...]
@@ -236,7 +236,7 @@ public class MessageTransformer extends TelestionVerticle<MessageTransformer.Con
 
 	// [...]
 }
-```
+````
 
 You can now just access configuration options by using the `getConfig` method
 provided by the `TelestionVerticle` base class.
@@ -258,7 +258,7 @@ It's good practice to define the default values for your `Configuration` record.
 Add a default constructor with no arguments defining the default values to your
 `Configuration` class:
 
-```java title="MessageTransformer.java" {14-16}
+````java title="MessageTransformer.java" {14-16}
 package de.wuespace.telestion.project.example;
 
 // [...]
@@ -279,19 +279,19 @@ public class MessageTransformer extends TelestionVerticle<MessageTransformer.Con
 
 	// [...]
 }
-```
+````
 
-That's it! The `TelestionVerticle` class will try to load the default
-configuration once the Verticle is created.
+That's it. The `TelestionVerticle` class tries to load the default configuration
+once the Verticle starts.
 
 ## Step 5: Adjusting the `main()` method
 
-To test what you've just written, you also need to adjust our main method.
+To test what you've just written, you also need to adjust your `main()` method.
 
 Use `new DeploymentOptions().setConfig(jsonObject)` to pass a configuration
 object to the deployed Verticle:
 
-```java title='MessageTransformer.java' {14,16-19}
+````java title='MessageTransformer.java' {14,16-19}
 package de.wuespace.telestion.project.example;
 
 // [...]
@@ -317,7 +317,7 @@ public class MessageTransformer extends TelestionVerticle<MessageTransformer.Con
 
 	// [...]
 }
-```
+````
 
 That's it. When you now re-run the main method, you now get a `value` of `18`,
 that is, `6 * 3`.

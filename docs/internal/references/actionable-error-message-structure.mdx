@@ -58,24 +58,24 @@ For this example, the developer passed an invalid host name to your function.
 ## AWESA: Actionable Error Message components
 
 Actionable Error Messages should follow the **AWESA** (inspired by the Swahili
-term "kuweza" = "to be able to") structure:
+term _"kuweza"_ = _"to be able to"_) structure:
 
 ### Attention
 
 Describe, as fast as possible, that an error occurred and what kind of error
 happened.
 
-```text
+````text
 Error validating the passed hostname.
-```
+````
 
 ### Where (Context)
 
 Describe where and when the error took place.
 
-```text
+````text
 The hostname provided to validateHostnameOrThrow(hostname) is invalid.
-```
+````
 
 :::info Skipping this section
 
@@ -95,9 +95,9 @@ Describe the technical details of what's required for the operation to succeed
 and what you got instead. This, then, gives developers a clear idea of your
 expectations and can help explain any misunderstandings in the documentation.
 
-```text
+````text
 Expected hostname to match /^[a-z]+$/, but got "hello1".
-```
+````
 
 :::info Skipping this section
 
@@ -105,8 +105,8 @@ You can skip this step if you're unable to provide any further details than the
 ones you've already provided in the "Attention" section.
 
 For example, if the validation of the host name was too complex, you don't need
-to write "expected hostname to be valid, but got 'abc'" if your "Attention" step
-already says "Hostname 'abc' is invalid."
+to write _"expected hostname to be valid, but got 'abc'"_ if your "Attention"
+step already says _"Hostname 'abc' is invalid."_
 
 But if, like here, you can describe more details (for example, the validation
 regular expression), you should always provide these details to enable
@@ -114,7 +114,7 @@ developers to debug the error without having to study your source code.
 
 :::
 
-### "So (... we did this)"
+### _"So (... we did this)"_
 
 Inform the developer about what already happened / where in the process (if at
 all) you aborted the code's execution and how you otherwise handled the error.
@@ -124,9 +124,9 @@ all) you aborted the code's execution and how you otherwise handled the error.
   invalid data?
 - etc.
 
-```text
+````text
 The error occurred during the initial validation and no further action took place.
-```
+````
 
 ### Action (to rectify the situation)
 
@@ -136,10 +136,10 @@ to not run into this error.
 
 Be helpful for once and tell them :wink::
 
-```text
+````text
 Hostnames can only contain lowercase alphabetic characters (a-z).
 Make sure that the host name passed to the function is valid.
-```
+````
 
 <!-- Content (e.g., a table, a list, a diagram, or a definition list) -->
 

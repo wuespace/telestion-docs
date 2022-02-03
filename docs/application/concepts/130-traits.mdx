@@ -62,7 +62,7 @@ Take a look at the following example for a better understanding:
 
 Imagine you have a class that wants to log a message to the console:
 
-```java title="MyClass.java"
+````java title="MyClass.java"
 public class MyClass {
 	public void addNumbers() {
 		int sum = 1 + 2;
@@ -71,41 +71,41 @@ public class MyClass {
 		System.out.printf("The sum is %d", sum);
 	}
 }
-```
+````
 
 And you have a trait to support the requested feature:
 
-```java title="WithLogging.java"
+````java title="WithLogging.java"
 public interface WithLogging {
 	default void log(String format, Object ...args) {
 		System.out.print(getClass().getName() + ": ");
 		System.out.printf(format, args);
 	}
 }
-```
+````
 
 You can now implement the `WithLogging` by using the default implemented method
 `log`:
 
-```java title="MyClass.java" {1,4}
+````java title="MyClass.java" {1,4}
 public class MyClass implements WithLogging {
 	public void addNumbers() {
 		int sum = 1 + 2;
 		log("The sum is %d", sum);
 	}
 }
-```
+````
 
 ## Conventions
 
-The name of a trait usually contains the prefix `With` and an action call
+The name of a trait typically contains the prefix `With` and an action call
 describing what the trait provides to the implementing class or interface. For
 example:
 
 - `WithLogging`
 - `WithEventBus`
 - `WithTiming`
-- ...
+- etc.
 
 ## See also
 

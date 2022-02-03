@@ -77,7 +77,7 @@ For a concept on what a trait actually is, please take a look on this concept:
 
 After the tutorial, your Verticle looks like this:
 
-```java title='MessageTransformer.java' {5,7-8,16,18,19}
+````java title='MessageTransformer.java' {5,7-8,16,18,19}
 package de.wuespace.telestion.project.example;
 
 import de.wuespace.telestion.api.verticle.GenericConfiguration;
@@ -99,11 +99,11 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration>
 		}, IntegerMessage.class);
 	}
 }
-```
+````
 
-## Step 1: Add a trait to our Verticle
+## Step 1: Add a trait to your Verticle
 
-The Telestion API already provides some traits especially for Verticles.
+The Telestion API already provides a lot of traits for your Verticles.
 
 <Reference to="https://javadoc.io/doc/de.wuespace.telestion/telestion-api/latest/de/wuespace/telestion/api/verticle/trait/package-summary.html">
 	List of Telestion Core Verticle traits
@@ -112,7 +112,7 @@ The Telestion API already provides some traits especially for Verticles.
 Import the `WithEventBus` trait and use it in your `MessageTransformer`
 Verticle:
 
-```java title='MessageTransformer.java' {5,7-8}
+````java title='MessageTransformer.java' {5,7-8}
 package de.wuespace.telestion.project.example;
 
 import de.wuespace.telestion.api.verticle.GenericConfiguration;
@@ -131,7 +131,7 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration>
 		// [...]
 	}
 }
-```
+````
 
 The `WithEventBus` trait contains a bunch of methods to interact with the
 [`EventBus`](/application/concepts/event-bus/).
@@ -144,17 +144,17 @@ For more information, take a look at the API reference:
 
 ## Step 2: Rewrite the event bus consumer
 
-Currently the Verticle extracts the event bus instance from the `vertx` context
+Right now, the Verticle extracts the event bus instance from the `vertx` context
 and registers an event handler and an event bus channel. The incoming message is
-then converted to an `IntegerMessage` if possible and another event handler is
+then converted to an `IntegerMessage` if possible and another event handler gets
 called which multiplies the received value.
 
-That's a tedious task especially if you want to consume messages on multiple
-channels throughout your Verticle.
+That's a tedious task if you want to consume messages on more than one channel
+throughout your Verticle.
 
 Use the `register` method from the `WithEventBus`:
 
-```java title='MessageTransformer.java' {18-20}
+````java title='MessageTransformer.java' {18-20}
 package de.wuespace.telestion.project.example;
 
 import de.wuespace.telestion.api.verticle.GenericConfiguration;
@@ -177,23 +177,23 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration>
 		}, IntegerMessage.class);
 	}
 }
-```
+````
 
-The `register` method combines multiple operations in one call. First, it
+The `register` method combines several operations in one call. First, it
 registers an event handler on the event bus channel `"input"`. If a messages
 arrives at the channel the `register` method tries to convert received message
 to the specified message type (here `IntegerMessage.class`). If the conversion
 succeeded, `register` calls the given event handler with the converted message.
 
-In short, it has the same behaviour as the already existing implementation but
-is much more readable and maintainable.
+In short, it has the same behaviour as the existing implementation but is much
+more readable and maintainable.
 
 ## Step 3: Rewrite the event bus publisher
 
-To completely eliminate the `eb` event bus reference, you can use the `publish`
-method also provided by the `WithEventBus` trait:
+To remove the `eb` event bus reference, you can use the `publish` method
+provided by the `WithEventBus` trait:
 
-```java title='MessageTransformer.java' {17-18}
+````java title='MessageTransformer.java' {17-18}
 package de.wuespace.telestion.project.example;
 
 import de.wuespace.telestion.api.verticle.GenericConfiguration;
@@ -215,24 +215,24 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration>
 		}, IntegerMessage.class);
 	}
 }
-```
+````
 
 The `publish` is essentially a shorthand to access the
 `vertx.eventBus().publish()` method.
 
 One neat feature of `publish` is that it does the conversion from a
-`JsonMessage` based message back to the `JsonObject` automatically. So you don't
-need to call `.json()` on the message anymore. (as described in
-[Using `JsonMessage`](/application/tutorials/using-jsonmessage/#step-3-publishing-messages))
+`JsonMessage` based message back to the `JsonObject` automatically. Thus, you
+don't need to call `.json()` on the message anymore (as described in
+[Using `JsonMessage`](/application/tutorials/using-jsonmessage/#step-3-publishing-messages)).
 
 ## Next steps
 
 <!-- Short concluding sentence: -->
 
-That's it. You've successfully using traits in your first Verticle! 🍹
+That's it. You've used traits in your first Verticle. 🍹
 
-Althrough it doesn't look like much of an improvement right now, it really
-cleans up your code in bigger and complexer Verticles.
+It doesn't look like much of an improvement right now, but it cleans up your
+code in bigger and more complex Verticles.
 
 But that's not the end. The Telestion Core provides more traits for Verticles.
 Take a look at them if you like.

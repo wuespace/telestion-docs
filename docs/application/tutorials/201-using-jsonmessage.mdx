@@ -86,7 +86,7 @@ that doesn't necessarily have fixed types.
 	Writing a Verticle (Base Code)
 </Reference>
 
-```java title='IntegerMessage.java'
+````java title='IntegerMessage.java'
 package de.wuespace.telestion.project.example;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -95,9 +95,9 @@ import de.wuespace.telestion.api.message.JsonMessage;
 record IntegerMessage(
 		@JsonProperty int value
 ) implements JsonMessage {}
-```
+````
 
-```java title='MessageTransformer.java' {12,21-25}
+````java title='MessageTransformer.java' {12,21-25}
 package de.wuespace.telestion.project.example;
 
 import de.wuespace.telestion.api.verticle.GenericConfiguration;
@@ -126,7 +126,7 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration> 
 		});
 	}
 }
-```
+````
 
 ## Step 1: Creating the `record`
 
@@ -139,7 +139,7 @@ record that holds one integer value.
 Create a file `IntegerMessage.java` in the
 `de.wuespace.telestion.project.example` package and add the following code:
 
-```java title='IntegerMessage.java'
+````java title='IntegerMessage.java'
 package de.wuespace.telestion.project.example;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -148,7 +148,7 @@ import de.wuespace.telestion.api.message.JsonMessage;
 record IntegerMessage(
 		@JsonProperty int value
 ) implements JsonMessage {}
-```
+````
 
 The two _special ingredients_ to make this a `JsonMessage` are:
 
@@ -169,7 +169,7 @@ valid messages.
 Replace your previous `eb.consumer()` logic in `MessageTransformer::onStart()`
 with this code:
 
-```java title='MessageTransformer.java' {13-16}
+````java title='MessageTransformer.java' {13-16}
 package de.wuespace.telestion.project.example;
 
 // [...]
@@ -190,7 +190,7 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration> 
 		});
 	}
 }
-```
+````
 
 Instead of handling the `event` directly, you pass it into the
 `JsonMessage.on()` function. This then filters messages and calls a handler
@@ -214,7 +214,7 @@ them.
 Create a new `IntegerMessage` instance called `output` and instead of publishing
 `received * 2`, publish `output.json()`:
 
-```java title='MessageTransformer.java' {13-14}
+````java title='MessageTransformer.java' {13-14}
 // [...]
 
 public class MessageTransformer extends TelestionVerticle<GenericConfiguration> {
@@ -233,7 +233,7 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration> 
 		});
 	}
 }
-```
+````
 
 :::warning Calling `.json()`
 
@@ -243,10 +243,10 @@ a JSON `String` that can get parsed on the receiving end.
 
 :::
 
-Now, all you need to do to test our code is to also publish an `IntegerMessage`
-within your `main()`:
+Now, all you need to do to test your code is to also publish an `IntegerMessage`
+in the `main()` method:
 
-```java title='MessageTransformer.java' {7}
+````java title='MessageTransformer.java' {7}
 // [...]
 
 public class MessageTransformer extends TelestionVerticle<GenericConfiguration> {
@@ -261,19 +261,19 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration> 
 
 	// [...]
 }
-```
+````
 
-When you now re-run our `main()` method, you should get the following output:
+When you now re-run your `main()` method, you should get the following output:
 
-```txt
+````txt
 Output: {"value":6,"className":"de.wuespace.telestion.project.example.IntegerMessage"}
-```
+````
 
 :::tip `className` attribute
 
 As you can see, `JsonMessage` instances automatically encode a `className`
-attribute into the encoded JSON. This allows our helper functions to verify and
-automatically re-instantiate it with the correct class type.
+attribute into the encoded JSON. This allows the Telestion helper functions to
+verify and automatically re-instantiate it with the correct class type.
 
 :::
 

@@ -30,7 +30,7 @@ into a suitable format for the database.
 
 The full code for this tutorial looks like this:
 
-```java title='MessageTransformer.java'
+````java title='MessageTransformer.java'
 package de.wuespace.telestion.project.example;
 
 import de.wuespace.telestion.api.verticle.GenericConfiguration;
@@ -47,7 +47,7 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration> 
 		});
 	}
 }
-```
+````
 
 ## Steps
 
@@ -56,14 +56,14 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration> 
 A _Verticle_ is nothing else than a Java class that extends the
 `de.wuespace.telestion.api.verticle.TelestionVerticle` class.
 
-Therefore, to create a new Verticle, the first thing you need to do is to create
-a new class. This tutorial assumes that you're working in the
+To create a new Verticle, the first thing you need to do is to create a new
+class. This tutorial assumes that you're working in the
 `de.wuespace.telestion.project.example` package.
 
 Within that package, create a new class called `MessageTransformer` and paste
 the following code:
 
-```java title='MessageTransformer.java'
+````java title='MessageTransformer.java'
 package de.wuespace.telestion.project.example;
 
 import de.wuespace.telestion.api.verticle.GenericConfiguration;
@@ -75,16 +75,16 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration> 
 		// your code goes here
 	}
 }
-```
+````
 
 ### Step 2: Listen to messages
 
-Basically, every Verticle's main functionality is to listen for messages on the
+Basically, every Verticle's main feature is to listen for messages on the
 so-called [event bus](/application/concepts/event-bus), process them, and
 potentially publish new information to the event bus.
 
-Messages on the event bus are "grouped" on so-called channels that are
-identified by their address (a `String`):
+Messages on the event bus are "grouped" on so-called channels. Addresses
+(`String`s) define a channel:
 
 <Image
 	src="/img/drawio-diagrams/vertx/eventbus.drawio.svg"
@@ -96,7 +96,7 @@ one Verticle receiving messages from that bus"
 
 For now, keep it simple and listen to the `"input"` channel:
 
-```java title='MessageTransformer.java' {9,11-14}
+````java title='MessageTransformer.java' {9,11-14}
 package de.wuespace.telestion.project.example;
 
 import de.wuespace.telestion.api.verticle.GenericConfiguration;
@@ -113,7 +113,7 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration> 
 		});
 	}
 }
-```
+````
 
 This first gets an instance to the Event Bus APIs using `vertx.eventBus()`.
 
@@ -125,15 +125,15 @@ contains all information about the message, including the body, optional
 headers, and more.
 
 You can get the message's body by calling its `body()` method. Since this
-returns an `Object` (containing whatever we published to that channel), you need
-to cast it to an integer.
+returns an `Object` (containing whatever you published to that channel), you
+need to cast it to an integer.
 
 :::tip Body data type
 
-For this simple example, we chose to send simple integers over the event bus.
+In this simple example, you'll just send simple integers over the event bus.
 
-This isn't ideal for several reasons, including missing type safety (our
-Verticle could fail if we sent something to `"input"` that Java can't cast to
+This isn't ideal for several reasons, including missing type safety (your
+Verticle could fail if you sent something to `"input"` that Java can't cast to
 `int`).
 
 In the later sections, you'll learn how to use JSON structures (including the
@@ -146,16 +146,16 @@ You should only ever use JSON based messages in real Telestion projects.
 
 ### Step 3: Republish Messages
 
-There are uses for Verticles that only listen to channels without ever
-publishing anything themselves. For example, you could write a Verticle that
-simply logs all incoming messages to a file or saves them to the database. In
-this case, however, you want to transform the data and "republish" it to the
-event bus (this time, on a different channel called `"output"`).
+Verticles that only listen to channels without ever publishing anything
+themselves can be useful, too. For example, you could write a Verticle that logs
+all incoming messages to a file or saves them to the database. But in this
+tutorial, you want to transform the data and "republish" it to the event bus
+(this time, on a different channel called `"output"`).
 
 Thankfully, the Event Bus APIs make this quite easy using the
 `publish(address, body)` method:
 
-```java title='MessageTransformer.java' {13}
+````java title='MessageTransformer.java' {13}
 package de.wuespace.telestion.project.example;
 
 import de.wuespace.telestion.api.verticle.GenericConfiguration;
@@ -172,7 +172,7 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration> 
 		});
 	}
 }
-```
+````
 
 With that, whenever this receives a value `received` on `"input"`, it publishes
 `received * 2` to `"output"`.
@@ -184,12 +184,12 @@ to the Verticle class that tests the Verticle.
 
 Given the fact that a Verticle, if it's well written, doesn't depend on any
 other Verticles, all you need to do to test the Verticle is to spawn it, send
-some messages to a channel it listens to and monitor the reaction / messages on
+some messages to a channel it listens to and watch the reaction / messages on
 its output channels.
 
-Put theory into practice and write our static `main()` method:
+Put the theory into practice and write your static `main()` method:
 
-```java title='MessageTransformer.java' {5,9-21}
+````java title='MessageTransformer.java' {5,9-21}
 package de.wuespace.telestion.project.example;
 
 import de.wuespace.telestion.api.verticle.GenericConfiguration;
@@ -214,25 +214,25 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration> 
 
   // [...]
 }
-```
+````
 
 First, you create a `Vertx` instance called `vertx` using `Vertx.vertx()`.
 
 Then, you add a listener on the `"output"` address that just prints
 `"Output: [body]"` to the console for every message. You can get an `EventBus`
-instance using `vertx.eventBus()` and just use the same APIs we used inside the
+instance using `vertx.eventBus()` and just use the same APIs you used inside the
 Verticle's `onStart()` method to interact with the event bus.
 
-Next, you deploy our `MessageTransformer` Verticle by creating an instance and
-hand it over to `Vertx`. This will, in turn, call its `onStart()` method to
-deploy the Verticle.
+Next, you deploy your `MessageTransformer` Verticle by creating an instance and
+hand it over to `Vertx`. This, in turn, calls its `onStart()` method to deploy
+the Verticle.
 
 The deployment process returns a future object. When it resolves, you publish a
 random number (here: `3`) to the `"input"` channel.
 
 If everything worked out, you should, after a short while, see `Output: 6` in
-your console. If it doesn't work, double-check that your code matches the code
-on this page.
+your console. If it doesn't work, verify that your code matches the code on this
+page.
 
 ## Next steps
 
@@ -240,7 +240,7 @@ Congratulations: You've just built your first Verticle. While this might not
 seem that impressive, right now, it's the core of everything you'll do when
 developing for the Application (Java) side of a Telestion project.
 
-While the "inner functionality" of a Verticle might get more complex in your
+While the "inner workings" of a Verticle might get more complex in your
 projects, the basis always consists of a subset of the following steps:
 
 1. Setup listeners in the Verticle's `onStart()` method

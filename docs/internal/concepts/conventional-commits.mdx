@@ -62,13 +62,13 @@ Conventional commits consist of five primary elements:
 
 All in all, the structure looks something like this:
 
-```
+````
 <type>[(optional scope)][!]: <description>
 
 [optional body]
 
 [optional footers]
-```
+````
 
 ## Examples
 
@@ -77,7 +77,7 @@ commit messages:
 
 :::tip Example: A commit message for a bug fix introducing breaking changes
 
-```
+````
 fix!: Fix parameter conversion in `updateParents()`
 
 Before, it automatically converted strings to numbers in such a
@@ -86,13 +86,13 @@ way that non-number inputs also got allowed. This is now changed.
 Fixes: #8
 BREAKING CHANGE: Non-number inputs no lead to `updateParents()` to
 throw
-```
+````
 
 :::
 
 :::tip Example: A commit message for a feature in the package pkg-1
 
-```
+````
 feat(pkg-1): Constructor for JSON parameter
 
 added constructor for a JSON string as the single parameter
@@ -100,7 +100,7 @@ to `PackageOneClass`
 
 Fixes: #22
 Co-Authored-By: Pablo Klaschka <contact@pabloklaschka.de>
-```
+````
 
 :::
 

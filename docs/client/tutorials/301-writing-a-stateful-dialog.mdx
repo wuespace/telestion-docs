@@ -73,7 +73,7 @@ Take a look at the last tutorial, in case you missed anything:
 
 The full code for this tutorial looks like this:
 
-```tsx title='widget.tsx'
+````tsx title='widget.tsx'
 import { useState } from 'react';
 import {
 	ActionButton,
@@ -170,16 +170,16 @@ export function Widget() {
 		</View>
 	);
 }
-```
+````
 
 ## Step 1: Define the delivery options
 
-To be able to send delivery options with the telecommand, we need a new type
+To be able to send delivery options with the telecommand, you need a new type
 that defines the delivery options first.
 
-Add an interface to our widget describing the new delivery options:
+Add an interface to your widget describing the new delivery options:
 
-```tsx title='widget.tsx' {5-18,20-24}
+````tsx title='widget.tsx' {5-18,20-24}
 import { useState } from 'react';
 import { ActionButton, Flex, TextField, View } from '@adobe/react-spectrum';
 import { showDialog } from '@wuespace/telestion-client-common';
@@ -235,7 +235,7 @@ export function Widget() {
 		</View>
 	);
 }
-```
+````
 
 This also creates default delivery options which you'll use later as initial
 value in the React state.
@@ -243,7 +243,7 @@ value in the React state.
 Now update your `sendTC` placeholder function to accept the delivery options you
 defined before:
 
-```tsx title='widget.tsx' {26-28}
+````tsx title='widget.tsx' {26-28}
 import { useState } from 'react';
 import { ActionButton, Flex, TextField, View } from '@adobe/react-spectrum';
 import { showDialog } from '@wuespace/telestion-client-common';
@@ -299,7 +299,7 @@ export function Widget() {
 		</View>
 	);
 }
-```
+````
 
 ## Step 2: Add state for storing the delivery options
 
@@ -307,7 +307,7 @@ To pass the user defined delivery options to your external telecommand API, you
 need another React state which stores them. Then, you can pass these options to
 the `sendTC` function in the resolved promise:
 
-```tsx title='widget.tsx' {31,39}
+````tsx title='widget.tsx' {31,39}
 import { useState } from 'react';
 import { ActionButton, Flex, TextField, View } from '@adobe/react-spectrum';
 import { showDialog } from '@wuespace/telestion-client-common';
@@ -364,7 +364,7 @@ export function Widget() {
 		</View>
 	);
 }
-```
+````
 
 ## Step 3: Add an action button for the options dialog
 
@@ -374,7 +374,7 @@ the current selection to the user.
 
 Place it beside the telecommand text field:
 
-```tsx title='widget.tsx' {45,52-55}
+````tsx title='widget.tsx' {45,52-55}
 import { useState } from 'react';
 import { ActionButton, Flex, TextField, View } from '@adobe/react-spectrum';
 import { showDialog } from '@wuespace/telestion-client-common';
@@ -434,7 +434,7 @@ export function Widget() {
 		</View>
 	);
 }
-```
+````
 
 This wraps the existing text field in another flex container with the new action
 button and aligns them horizontally. Give the action button a flex shrink of `0`
@@ -456,7 +456,7 @@ Now, your widget should look like this:
 Now, the added action button does nothing. Attach an event handler that opens
 the dialog which presents the delivery options to the user:
 
-```tsx title='widget.tsx' {34-40,42,60,64}
+````tsx title='widget.tsx' {34-40,42,60,64}
 import { useState } from 'react';
 import { ActionButton, Flex, TextField, View } from '@adobe/react-spectrum';
 import { showDialog } from '@wuespace/telestion-client-common';
@@ -526,7 +526,7 @@ export function Widget() {
 		</View>
 	);
 }
-```
+````
 
 This creates a new event handler called `onOptions` which opens the options
 dialog. The new dialog receives the current options as initial state and sets
@@ -537,7 +537,7 @@ the "global" options state via the setter when it succeeds.
 The dialog has no content which can interact with the dialog state. Define the
 dialog's content:
 
-```tsx title='widget.tsx' {37-39}
+````tsx title='widget.tsx' {37-39}
 import { useState } from 'react';
 import { ActionButton, Flex, TextField, View } from '@adobe/react-spectrum';
 import { showDialog } from '@wuespace/telestion-client-common';
@@ -607,16 +607,16 @@ export function Widget() {
 		</View>
 	);
 }
-```
+````
 
 Here comes the trick: Instead of using strings or static components as content,
 you give the dialog a function that returns the content. This function receives
 from the dialog the current dialog state (here called `state`) and as second
 argument a function to change it (here called `setState`).
 
-Now, we define the layout in the dialogs center part:
+Now, define the layout in the dialogs center part:
 
-```tsx title='widget.tsx' {38-57}
+````tsx title='widget.tsx' {38-57}
 import { useState } from 'react';
 import { ActionButton, Flex, TextField, View } from '@adobe/react-spectrum';
 import { showDialog } from '@wuespace/telestion-client-common';
@@ -707,24 +707,23 @@ export function Widget() {
 		</View>
 	);
 }
-```
+````
 
-Every option gets an own check box which shows the current state of the specific
-option. When the user presses on the check box, the check box emits an event
-which changes only the specific option leaving the rest of the dialog state
-untouched.
+Every option gets an own checkbox which shows the current state of the specific
+option. When the user presses on the checkbox, the checkbox emits an event which
+changes only the specific option leaving the rest of the dialog state untouched.
 
 This comes from the nature of the `setState` function. It accepts a new partial
-dialog state (e.g. one specific boolean value like in this tutorial) and shallow
-merges it with current state. In the end, the changes "win" but the other values
-remain intact.
+dialog state (e.g. one specific `boolean` value like in this tutorial) and
+shallow merges it with current state. In the end, the changes "win" but the
+other values remain intact.
 
 To wrap it up:
 
 1. the dialog receives the "global" options state
 2. the dialog it opens
-3. the dialog content receives the dialog state (which is currently equal to the
-   "global" state) and renders
+3. the dialog content receives the dialog state (which is equal to the "global"
+   state) and renders
 4. the user changes something
 5. the dialog content changes the dialog state through the given function
 6. the dialog state diverts from the "global" state
@@ -762,12 +761,12 @@ The send a new telecommand and look in the development console of your browser:
 
 <!-- Short concluding sentence: -->
 
-That's it! You've successfully written your first stateful dialog!
+That's it. You've created your first stateful dialog.
 
 Due to the usage of the `showDialog` function, you also can add modals in other
-parts of the web client very easily.
+parts of the web client.
 
-As previously mentioned, take a look at the API reference of the dialog
+As mentioned, you should take a look at the API reference of the dialog
 function:
 
 <!-- Links to next steps/related articles -->

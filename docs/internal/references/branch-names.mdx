@@ -73,9 +73,9 @@ This is quite easy to read:
 
 Your branch names should have the following structure:
 
-```ebnf
+````ebnf
 <branch name> ::= [<branch ownership prefix>] <branch content> ;
-```
+````
 
 ## Branch owner prefix (optional)
 
@@ -88,9 +88,9 @@ within the branch.
 
 A branch ownership prefix consists of your GitHub username, followed by a `/`:
 
-```ebnf
+````ebnf
 <branch ownership prefix> ::= <GitHub username> "/" ;
-```
+````
 
 ## Branch content
 
@@ -103,9 +103,9 @@ Within the Telestion Ecosystem, you should use one of two ways:
 - a conventional commit-based approach (cf.
   [Conventional Commit based](#conventional-commit-based))
 
-```ebnf
+````ebnf
 <branch content> ::= <issue-based> | <conventional-commit-based> ;
-```
+````
 
 ### Issue-based
 
@@ -116,32 +116,31 @@ When you're working on an issue, please also make sure to assign yourself to the
 issue. That way, other contributors can see that you're already working on this
 issue.
 
-```ebnf
+````ebnf
 <issue-based> ::= "issue-" <issue number> ;
 
 <issue number> ::= <positive, whole number> ;
-```
+````
 
 ### Conventional Commit based
 
-Alternatively, you can also describe the content directly in a "conventional
-commit like" structure.
+You can also describe the content directly in a "conventional commit like"
+structure.
 
 :::tip
 
-Describing branch names in a way that's similar to conventional commits is
-especially helpful as it already forces you to take on the "one change per
-branch" conventional commit mindset.
+Describing branch names in a way that's like conventional commits is helpful as
+it already forces you to take on the "one change per branch" conventional commit
+mindset.
 
 :::
 
-Instead of colons and scopes, we use slashes (`/`). Also, we don't care about
-breaking changes within the branch name, yet.
+Instead of colons and scopes, use slashes (`/`). Don't care about breaking
+changes within the branch name, yet.
 
-Therefore, a conventional commit based branch description should be structured
-like this:
+Structure a conventional commit based branch description like this:
 
-```ebnf
+````ebnf
 <conventional-commit-based> ::= <conv-type> "/" [<conv-scope>] <description> ;
 
 <conv-type> ::= "feat" | "fix" | "docs" | "chore" | "test" | "refactor" | "style" | "perf" ;
@@ -151,7 +150,7 @@ like this:
 <scope-name> ::= <valid-char> {<valid-char>} ;
 
 <valid-char> ::= "a" | "b" | ... | "z" | "-" | "/" ;
-```
+````
 
 where
 
@@ -170,9 +169,9 @@ For the following examples, assume that your username is `@githubuser`.
 You have discussed a change in issue `#83` for quite a while. You're
 contributing a fix on your branch.
 
-```text
+````text
 githubuser/issue-83
-```
+````
 
 :::
 
@@ -183,9 +182,9 @@ issue and instead covers more than one issue.
 
 Two or more contributors are working on this branch.
 
-```text
+````text
 feat/cli/restructure-the-cli
-```
+````
 
 :::
 
@@ -196,9 +195,9 @@ time than just changing the line yourself.
 
 You omit opening an issue and instead commit the change without any issue.
 
-```text
+````text
 githubuser/fix/cli/fix-args-parsing
-```
+````
 
 :::
 
