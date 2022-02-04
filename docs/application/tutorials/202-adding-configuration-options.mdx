@@ -105,7 +105,7 @@ public class MessageTransformer extends TelestionVerticle<MessageTransformer.Con
 			@JsonProperty String inAddress,
 			@JsonProperty String outAddress,
 			@JsonProperty int multiplier
-	) implements TelestionVerticle {
+	) implements TelestionConfiguration {
 		public Configuration() {
 			this("input", "output", 2); // default values
 		}
@@ -271,7 +271,7 @@ public class MessageTransformer extends TelestionVerticle<MessageTransformer.Con
 			@JsonProperty String inAddress,
 			@JsonProperty String outAddress,
 			@JsonProperty int multiplier
-	) implements JsonMessage {
+	) implements TelestionConfiguration {
 		public Configuration() {
 			this("input", "output", 2); // default values
 		}
