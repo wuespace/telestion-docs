@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.6.3](https://github.com/wuespace/telestion-docs/compare/v2.6.2...v2.6.3) (2022-02-04)
+
+
+### Bug Fixes
+
+* **docs/application:** Fix configuration base interfaces ([962c711](https://github.com/wuespace/telestion-docs/commit/962c71124c4a9aea023695598094d65e7ee1e5fb))
+
 ### [2.6.2](https://github.com/wuespace/telestion-docs/compare/v2.6.1...v2.6.2) (2022-02-03)
 
 
