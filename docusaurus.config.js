@@ -113,10 +113,6 @@ module.exports = {
 			additionalLanguages: ['java', 'powershell', 'ebnf'],
 			theme: lightCodeTheme,
 			darkTheme: darkCodeTheme
-		},
-		colorMode: {
-			disableSwitch: true,
-			respectPrefersColorScheme: false
 		}
 	},
 	clientModules: [],
