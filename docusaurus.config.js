@@ -21,12 +21,22 @@ module.exports = {
 				src: 'img/logo.svg'
 			},
 			items: [
-				// {
-				// 	type: 'doc',
-				// 	docId: 'intro',
-				// 	position: 'left',
-				// 	label: 'Documentation'
-				// },
+				{
+					to: '/',
+					position: 'left',
+					label: 'Docs',
+					activeBaseRegex: '^/(common-concepts/.*)?$'
+				},
+				{
+					to: 'application',
+					position: 'left',
+					label: 'Application'
+				},
+				{
+					to: 'client',
+					position: 'left',
+					label: 'Client'
+				},
 				{
 					href: 'https://telestion.wuespace.de',
 					label: 'Project Homepage',
@@ -75,6 +85,10 @@ module.exports = {
 					title: 'More',
 					items: [
 						{
+							to: 'internal',
+							label: 'Internal Documentation'
+						},
+						{
 							label: "Writer's Guide",
 							href: '/writers-guide'
 						},
@@ -120,7 +134,9 @@ module.exports = {
 			'@docusaurus/preset-classic',
 			{
 				docs: {
+					id: 'docs',
 					sidebarPath: require.resolve('./sidebars.js'),
+					path: 'docs',
 
 					routeBasePath: '/',
 					// Please change this to your repo.
