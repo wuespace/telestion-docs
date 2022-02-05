@@ -1,5 +1,7 @@
 ---
 title: Verticle
+description:
+  The building blocks of the Vert.x framework and Telestion Application
 ---
 
 import { Reference, Image } from '/components';
@@ -9,7 +11,26 @@ Verticles are the "building blocks," so to speak, of the
 
 ## Basic mechanism
 
-<Image src="/static/img/excalidraw-diagrams/vertx/verticle.svg" invertible />
+Verticles are, essentially, modular blocks of code that fulfill
+a specific function.
+
+They get triggered by either something external or another Verticle and can, in
+turn, also trigger other Verticles.
+
+<Image src="/static/img/drawio-diagrams/vertx/verticle.drawio.svg" invertible />
+
+Verticles communicate with each other using messages on the so-called
+[Event Bus](/application/concepts/event-bus).
+
+You can think about Verticles as processes in a data flow diagram:
+
+<Image
+	src="/static/img/drawio-diagrams/vertx/data-pipeline.drawio.svg"
+	invertible
+/>
+
+Here, processes are Verticles and the data between them are messages on the
+[Event Bus](/application/concepts/event-bus).
 
 ## Example Code
 
