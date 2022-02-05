@@ -20,7 +20,12 @@ const genBlock = (id, label, items) => ({
 	items
 });
 
-const genCategory = (id, label, description = undefined, categoryOptions = {}) => ({
+const genCategory = (
+	id,
+	label,
+	description = undefined,
+	categoryOptions = {}
+) => ({
 	type: 'category',
 	label,
 	link: {
@@ -63,7 +68,7 @@ module.exports = {
 			'These tutorials cover everything you need to know to build the Application side of the Telestion ecosystem.'
 		),
 		genCategory('internal/guides', 'Guides'),
-		genCategory('internal/references', 'References'),
+		genCategory('internal/references', 'References')
 	],
 	application: [
 		'application/index',
