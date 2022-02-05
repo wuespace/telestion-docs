@@ -45,6 +45,55 @@ import { Reference } from '/components';
 The _telestion-client CLI_, which gets called with the `tc-cli` command, is a
 CLI for developing Project-Specific clients, or short, PSCs.
 
+## Installation
+
+You can install the _telestion-client CLI_ using `npm`:
+
+````bash
+npm install -g @wuespace/telestion-client-cli
+````
+
+## Available commands
+
+After its installation, the CLI is available as `tc-cli`. It has several
+commands that you can execute using `tc-cli <command>`.
+
+### `tc-cli build`
+
+Builds a Telestion Client Project for different platforms.
+
+### `tc-cli docs`
+
+Opens the Telestion Documentation in a web browser.
+
+### `tc-cli generate <component> <name>`
+
+Adds a new component to an existing Telestion Client Project. For example, to
+generate a new widget, run:
+
+````bash
+tc-cli generate widget telecommand-widget
+````
+
+### `tc-cli init [name]`
+
+Initializes a new Telestion Client Project with the name `[name]` in the folder
+`[name]`.
+
+### `tc-cli start`
+
+Runs a development version of the client, including live hot reloading of source
+code changes.
+
+Also opens the client as either an Electron app or in the browser if you add
+`--electron` (short: `-b`) or `--browser` (short: `-b`) respectively.
+
+### `tc-cli stats`
+
+Displays some interesting statistics of the Telestion Client Project.
+
+---
+
 ## See also
 
 <Reference to="https://github.com/wuespace/telestion-client/tree/main/packages/telestion-client-cli">
