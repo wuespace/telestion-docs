@@ -62,7 +62,7 @@ You should also have the widget's code from
 
 ## What you'll build
 
-In this tutorial, you'll add a `readonly` configuration option to your widget.
+In this tutorial, you'll add a `isReadonly` configuration option to your widget.
 You'll also add a user interface to let Ground Station Operators configure your
 widget without having to adjust the code.
 
@@ -78,7 +78,7 @@ export interface WidgetProps extends GenericProps {
 	/**
 	 * Whether the widget should be read-only. If `true`, the reset buttons get disabled.
 	 */
-	readonly: boolean;
+	isReadonly: boolean;
 }
 ````
 
@@ -91,8 +91,8 @@ export function ConfigControls(props: BaseConfigControlsProps<WidgetProps>) {
 	return (
 		<View padding="size-200">
 			<Checkbox
-				isSelected={props.currentProps.readonly}
-				onChange={readonly => props.onUpdate({ readonly })}
+				isSelected={props.currentProps.isReadonly}
+				onChange={isReadonly => props.onUpdate({ isReadonly })}
 			>
 				Readonly (disable buttons)
 			</Checkbox>
@@ -137,7 +137,7 @@ export interface WidgetProps extends GenericProps {
 	/**
 	 * Whether the widget should be read-only. If `true`, the reset buttons get disabled.
 	 */
-	readonly: boolean;
+	isReadonly: boolean;
 }
 ````
 
@@ -188,7 +188,7 @@ export const projectWidgets: Widget[] = [
 
 The props passed to your widget now have the `WidgetProps` type.
 
-Use the props' `readonly` property to deactivate the action buttons if the
+Use the props' `isReadonly` property to deactivate the action buttons if the
 property's value is true:
 
 ````ts title='src/widgets/my-first-widget/widget.tsx'
@@ -204,9 +204,9 @@ export function Widget(props: WidgetProps) {
 				<Heading level={3}>Connection Status</Heading>
 				<Divider size="M" marginBottom={'size-200'} />
 				// highlight-start
-				<Indicator system="SAT A" readonly={props.readonly} />
-				<Indicator system="SAT B" readonly={props.readonly} />
-				<Indicator system="SAT C" readonly={props.readonly} />
+				<Indicator system="SAT A" isReadonly={props.isReadonly} />
+				<Indicator system="SAT B" isReadonly={props.isReadonly} />
+				<Indicator system="SAT C" isReadonly={props.isReadonly} />
 				// highlight-end
 			</Flex>
 		</View>
@@ -214,7 +214,7 @@ export function Widget(props: WidgetProps) {
 }
 
 // highlight-next-line
-function Indicator(props: { system: string; readonly: boolean }) {
+function Indicator(props: { system: string; isReadonly: boolean }) {
 	const broadcast = useBroadcast('reset');
 	const status = useChannelLatest(`system-status/${props.system}`) ?? false;
 
@@ -226,7 +226,7 @@ function Indicator(props: { system: string; readonly: boolean }) {
 			<ActionButton
 				onPress={() => broadcast({ system: props.system })}
 				// highlight-next-line
-				isDisabled={props.readonly}
+				isDisabled={props.isReadonly}
 			>
 				Reset
 			</ActionButton>
@@ -241,7 +241,7 @@ To make sure that the widget always gets the correct type, you need to specify
 the widget usage's default configuration options in your dashboard's
 declaration.
 
-Add the `initialProps` field with `readonly` set to `false` to your widget's
+Add the `initialProps` field with `isReadonly` set to `false` to your widget's
 declaration in your `sample-user-config.ts`:
 
 ````ts title='src/model/sample-user-config.ts'
@@ -253,7 +253,7 @@ declaration in your `sample-user-config.ts`:
   height: 2,
   // highlight-start
   initialProps: {
-    readonly: false
+    isReadonly: false
   }
   // highlight-end
 },
@@ -282,8 +282,8 @@ export function ConfigControls(props: BaseConfigControlsProps<WidgetProps>) {
 	return (
 		<View padding="size-200">
 			<Checkbox
-				isSelected={props.currentProps.readonly}
-				onChange={readonly => props.onUpdate({ readonly })}
+				isSelected={props.currentProps.isReadonly}
+				onChange={isReadonly => props.onUpdate({ isReadonly })}
 			>
 				Readonly (disable buttons)
 			</Checkbox>
