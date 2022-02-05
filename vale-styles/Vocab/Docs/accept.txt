@@ -24,3 +24,5 @@ tada
 namespace
 configurability
 deserialized
+getter
+getters

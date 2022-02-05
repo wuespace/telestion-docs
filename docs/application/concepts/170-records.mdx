@@ -46,7 +46,7 @@ Records are immutable data classes used in Java to encapsulate "packets" of
 data.
 
 Records make it much easier to implement these kinds of "wrapper classes"
-without having to define constructors, `toString()`, etc., every single time.
+without having to define constructors, `toString()`, getters, etc., every single time.
 
 ## Example code
 
@@ -58,6 +58,16 @@ public record Car(String engine, String brand) {
         return brand().toLowerCase();
     }
 }
+````
+
+This, automatically, also creates getters `String engine()` and `String brand()` on `Car` objects.
+
+You can create an instance of a Record just like with any other class:
+
+````java
+var car = new Car("my engine", "Porsche");
+
+System.out.println(car.engine());
 ````
 
 ## `JsonMessage`
