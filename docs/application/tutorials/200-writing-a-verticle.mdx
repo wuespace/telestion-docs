@@ -80,8 +80,8 @@ public class MessageTransformer extends TelestionVerticle<GenericConfiguration> 
 ### Step 2: Listen to messages
 
 Basically, every Verticle's main feature is to listen for messages on the
-so-called [event bus](/application/concepts/event-bus), process them, and
-potentially publish new information to the event bus.
+so-called [event bus](/common-concepts/event-bus), process them, and potentially
+publish new information to the event bus.
 
 Messages on the event bus are "grouped" on so-called channels. Addresses
 (`String`s) define a channel:
