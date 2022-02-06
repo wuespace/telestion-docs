@@ -118,7 +118,7 @@ export function onReady() {
 }
 ````
 
-````ts title=telestion.config.js
+````js title=telestion.config.js
 const path = require('path');
 
 module.exports = {
@@ -126,7 +126,7 @@ module.exports = {
 };
 ````
 
-````ts title=src/widgets/my-new-widget/widget.tsx
+````tsx title=src/widgets/my-new-widget/widget.tsx
 import {
 	useBroadcast,
 	useChannelLatest
@@ -255,7 +255,7 @@ Adjust the `<Indicator />` functional component to use the hook to listen to the
 system status on the system's system status channel and wire up your UI to use
 the new status:
 
-````ts title=src/widgets/my-new-widget/widget.tsx
+````tsx title=src/widgets/my-new-widget/widget.tsx
 // [...]
 // highlight-start
 import { useChannelLatest } from '@wuespace/telestion-client-core';
@@ -304,7 +304,7 @@ Reset button's `onPress` event to call that function to broadcast a message to
 that channel. Pass an object containing details about the system into the
 message:
 
-````ts title=src/widgets/my-new-widget/widget.tsx
+````tsx title=src/widgets/my-new-widget/widget.tsx
 // [...]
 import {
 	// highlight-next-line

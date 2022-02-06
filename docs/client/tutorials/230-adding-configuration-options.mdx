@@ -82,7 +82,7 @@ export interface WidgetProps extends GenericProps {
 }
 ````
 
-````ts title='src/widgets/my-first-widget/config.tsx'
+````tsx title='src/widgets/my-first-widget/config.tsx'
 import { Checkbox, View } from '@adobe/react-spectrum';
 import { BaseConfigControlsProps } from '@wuespace/telestion-client-types';
 import { WidgetProps } from './model';
@@ -191,7 +191,7 @@ The props passed to your widget now have the `WidgetProps` type.
 Use the props' `isReadonly` property to deactivate the action buttons if the
 property's value is true:
 
-````ts title='src/widgets/my-first-widget/widget.tsx'
+````tsx title='src/widgets/my-first-widget/widget.tsx'
 // [...]
 // highlight-next-line
 import { WidgetProps } from './model';
@@ -273,7 +273,7 @@ and declare it.
 Create a file `config.tsx` in your widget's folder and define a `ConfigControls`
 component like this:
 
-````ts title='src/widgets/my-first-widget/config.tsx'
+````tsx title='src/widgets/my-first-widget/config.tsx'
 import { Checkbox, View } from '@adobe/react-spectrum';
 import { BaseConfigControlsProps } from '@wuespace/telestion-client-types';
 import { WidgetProps } from './model';

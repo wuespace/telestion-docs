@@ -78,7 +78,7 @@ bus) that's a part of the following tutorial.
 
 The code you'll write looks like this:
 
-````ts title='src/widgets/my-new-widget/widget.tsx'
+````tsx title='src/widgets/my-new-widget/widget.tsx'
 import {
 	Divider,
 	Flex,
@@ -116,7 +116,7 @@ function Indicator(props: { system: string }) {
 
 Adjust the `widget.tsx` to have a base layout for your widget's UI:
 
-````ts title='src/widgets/my-new-widget/widget.tsx'
+````tsx title='src/widgets/my-new-widget/widget.tsx'
 // highlight-start
 import { Divider, Flex, Heading, View } from '@adobe/react-spectrum';
 // highlight-end
@@ -146,7 +146,7 @@ Since you have three different systems, you'll extract their connection status
 UI into one reusable `<Indicator />` component and use it for your three
 different systems:
 
-````ts title='src/widgets/my-new-widget/widget.tsx'
+````tsx title='src/widgets/my-new-widget/widget.tsx'
 import {
 	Divider,
 	Flex,
