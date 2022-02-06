@@ -1,0 +1,185 @@
+---
+title: Event Bus
+description:
+  The "nervous system" of the Telestion ecosystem through which all components
+  communicate
+---
+
+<!--
+Concept
+=======
+
+=== When to use this template:
+Use this template when you need to describe a concept, technology,
+or something similar. In other words: whenever you need to write an
+article that describes a concept where the concept's name can be the
+article's title (e.g., "Vert. x", "Verticle", "Event Bus")
+
+=== When not to use this template:
+Do not use these templates for articles that give context on how
+to use/approach the topic. Instead, it would be best if you used a guide for that.
+
+Writing a guide and a concept article are not mutually exclusive. Instead,
+you should, in most cases, write both, where the concept gives a brief overview
+of what it is, and the guide is a longer article explaining best practices on using
+it.
+
+E.g.:
+Concept: Event Bus
+Guide: Interacting with the Event Bus
+
+
+=== Writing tips:
+- Write in the present tense
+- Use neutral pronouns (they/them instead of he/she and him/her)
+- Be respectful to everyone
+- Be aware of the potential for cultural misunderstandings
+-->
+
+<!-- Relevant imports: -->
+
+import { Reference, Image } from '/components';
+
+<!-- Brief Description (1-3 lines) of the concept: -->
+
+The Event Bus is, basically, the nervous system of the Telestion Ecosystem. The
+ecosystem uses the Event Bus for the communication between its various
+components.
+
+## Video version
+
+You can find a video version of this concept's explanation here:
+
+<Reference to="https://www.youtube.com/watch?v=X92A77OdEg0">
+	Event Bus | Telestion Concepts (Video)
+</Reference>
+
+## Messages
+
+At the core of the Event Bus, there are so-called _Messages_. Messages are data
+packets that you can send to a specific channel. Then, all components monitoring
+that channel receive you message.
+
+## Channels and Addresses
+
+A _Channel_ is defined by its _Address_ (or _Channel Address_), which is a
+string (text) and essentially serves as the channel's name.
+
+<Image
+	invertible
+	src="/static/img/drawio-diagrams/vertx/eventbus.drawio.svg"
+	center
+/>
+
+The address typically describes the channel's content (e.g., `raw-telemetry`,
+`telecommand-out`, etc.).
+
+:::tip Mental model
+
+As a mental model, you can compare the event bus to radio communication, e.g.,
+in Air Traffic Control:
+
+| Concept in Radio Communication | Corresponding concept in the Event Bus |
+| ------------------------------ | -------------------------------------- |
+| Radio Transmission             | Message                                |
+| Frequency                      | Address                                |
+
+:::
+
+## Data Pipeline
+
+Through the combination of more than one component
+([Verticles](/application/concepts/verticle/) on the _Application_ side) sending
+each other messages and performing small, atomic tasks, you can create a sort of
+data pipeline that's both easier to think about (as individual components only
+need to perform smaller tasks) and more adjustable (since you can just plug
+components together in different ways):
+
+<Image
+	invertible
+	src="/static/img/drawio-diagrams/vertx/data-pipeline.drawio.svg"
+	center
+/>
+
+## Requests
+
+The event bus also allows for so-called _Requests_.
+
+This enables _Request Messages_ which another component can then respond to.
+This is most useful when dealing with data that you don't need constantly, but
+only on specific occasions:
+
+<Image
+	invertible
+	src="/static/img/drawio-diagrams/vertx/requests.drawio.svg"
+	center
+/>
+
+In more technical terms: _Requests_ enable a polling-based system. This works by
+providing a dedicated (auto-generated) response address in the requesting
+message and then listening for a response on that channel.
+
+## Event Bus Bridge
+
+The _Event Bus Bridge_ enables communication between the
+[Application](/common-concepts/application/) and
+[Client](/common-concepts/client/) without the need for an extra API.
+
+<Image
+	invertible
+	src="/static/img/drawio-diagrams/vertx/eventbus-bridge.drawio.svg"
+	center
+/>
+
+It achieves this by sharing the event bus (or at least the parts of it that you
+configure) via a web socket, meaning the Client can interact with the event bus
+as if it were a part of the Application itself.
+
+### Setting up the Event Bus Bridge in the Application
+
+Thankfully, the Vert.x framework already provides an implementation of the
+Bridge, meaning all you need to do to enable it in your Application is to add
+the corresponding Verticle to your configuration:
+
+````json title='conf/config.json'
+{
+	"name": "Eventbus Tcp Bridge",
+	"verticle": "de.wuespace.telestion.services.connection.EventbusTcpBridge",
+	"magnitude": 1,
+	"config": {
+		"host": "0.0.0.0",
+		"port": 9870,
+		"inboundPermitted": ["request-time"],
+		"outboundPermitted": ["parsed-tm"]
+	}
+}
+````
+
+With that configuration, every client connecting to the Bridge on port `9870`
+could now send messages to `request-time` (and receive responses to request
+messages) and receive any message published to `parsed-tm`.
+
+## See also
+
+<Reference to="https://vertx.io/docs/vertx-core/java/#event_bus">
+	Vert.x Event Bus Documentation
+</Reference>
+<Reference to="https://vertx.io/docs/vertx-tcp-eventbus-bridge/java/">
+	Vert.x TCP Event Bus Bridge Documentation
+</Reference>
+<Reference to="https://wuespace.github.io/telestion-client/@wuespace/vertx-event-bus/">
+	Telestion Event Bus Bridge Client API Reference
+</Reference>
+
+<!--
+Snippets
+--------
+
+<Reference to="../other-article">
+    Relative Link to other article
+</Reference>
+
+<Reference to="https://www.example.com">
+    Example Website
+</Reference>
+-->
