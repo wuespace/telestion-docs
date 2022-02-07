@@ -47,14 +47,22 @@ telemetry to the database), and communicates with the Client.
 
 ## Verticles
 
-Verticles are the building blocks of the Application. As a mental model, you can compare them to _mini computers_ communicating with each other in a network and reacting to each other's messages.
+Verticles are the building blocks of the Application. As a mental model, you can
+compare them to _mini computers_ communicating with each other in a network and
+reacting to each other's messages.
 
-Verticles should perform small, modular/atomic tasks so that the combination of more than one Verticle creates a data pipeline. Having Verticles do specific tasks. These smaller tasks are than much easier to develop. A resulting data pipeline could, then, look something like this (where processes are Verticles):
+Verticles should perform small, modular/atomic tasks so that the combination of
+more than one Verticle creates a data pipeline. Having Verticles do specific
+tasks. These smaller tasks are than much easier to develop. A resulting data
+pipeline could, then, look something like this (where processes are Verticles):
 
-<Image invertible src="/static/img/drawio-diagrams/vertx/data-pipeline.drawio.svg" />
+<Image
+	invertible
+	src="/static/img/drawio-diagrams/vertx/data-pipeline.drawio.svg"
+/>
 
 <Reference to="/application/concepts/verticle/">
-    Verticles for Java / Application developers
+	Verticles for Java / Application developers
 </Reference>
 
 ## See also
