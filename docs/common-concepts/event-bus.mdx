@@ -119,6 +119,16 @@ In more technical terms: _Requests_ enable a polling-based system. This works by
 providing a dedicated (auto-generated) response address in the requesting
 message and then listening for a response on that channel.
 
+:::info Request Handling
+
+In contrast to the system described in the previous sections (publish/subscribe,
+meaning every component monitoring a channel gets notified about every message),
+requests are point-to-point based. This means that of all handlers registered
+for the request's address, only one of them (determined by a round-robin
+algorithm) gets used.
+
+:::
+
 ## Event Bus Bridge
 
 The _Event Bus Bridge_ enables communication between the
