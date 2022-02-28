@@ -1,0 +1,315 @@
+---
+title: Deploying your project
+# e.g., "Publishing messages to the event bus" or "Installing a dependency using npm"
+
+description: Deploy a new version of your Telestion Project
+---
+
+<!--
+Tutorial
+========
+
+=== When to use this template:
+Use this template when you want to give a quick, step-by-step tutorial for solving a specific
+technical problem. Tutorials allow the reader to learn how to implement something within
+their projects quickly.
+
+=== When not to use this template:
+When your article focuses more on a concept/technology and is not rooted in a specific technical
+problem ("how to do XY?"), consider using a guide instead.
+
+=== Guide or Tutorial
+A tutorial provides a quick, technical "step-by-step" tutorial for a
+given problem. Thus, a guide describes less the handling of a specific problem
+and more the general interaction of the reader with a given concept.
+
+Example with npm articles:
+- "npm": (Concept, explaining what npm is)
+- "Installing a dependency with npm" (Tutorial, providing a quick tutorial to
+  solve a technical problem)
+- "Managing dependencies with npm" (Guide, including both technical knowledge, but
+  also best practices and more)
+
+=== Writing tips:
+- Write in the present tense
+- Use neutral pronouns (they/them instead of he/she and him/her)
+- Be respectful to everyone
+- Be aware of the potential for cultural misunderstandings
+- Provide explanations for what you do, but focus on the step-by-step guide
+  without deeply explaining every technical decision and why it's best prcatice
+  to do so (you can describe best practices in a guide, a tutorial must focus on
+  keeping the "step by step" flow going)
+-->
+
+<!-- Relevant imports: -->
+
+import { Reference, Image } from '/components';
+
+<!-- Short description of what the article covers: -->
+
+In this tutorial, you'll write a simple Verticle for the Telestion ecosystem.
+
+:::info Prerequisites
+
+To complete this tutorial, you should be familiar with starting a new project
+and the concept of [Docker](https://www.docker.com/).
+
+:::
+
+## What you'll build
+
+You'll create a new release in your project and deploy the application part via
+[Docker](https://www.docker.com/).
+
+## Using GitHub
+
+### Step 1: Review the release pull request
+
+Once you're happy with your changes in your Telestion Project, it's time to release
+a new version.
+
+Head over to your GitHub repository that contains the Telestion Project
+and take a look in the pull request section.
+
+<Image
+  src="/img/deploy/github-pull-request-section.png"
+  alt="GitHub pull request section"
+/>
+
+As you can see, the `release.yml` GitHub workflow automatically created a pull request
+that is ready for your review.
+
+<Image
+  src="/img/deploy/github-release-pull-request.png"
+  alt="GitHub's pull request section containing the release pull request"
+/>
+
+Open the pull request and review the changes.
+
+<Image
+  src="/img/deploy/github-pull-request-overview.png"
+  alt="The overview page of the release pull request"
+/>
+
+:::info Conventional Commits
+
+The GitHub action can only detect your changes if you're using the
+[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) in your repository.
+
+It then bumps the project version based on [Semantic Versioning](https://semver.org/).
+
+:::
+
+If you satisfied with the changelog and the new project version, merge the pull request.
+
+<Image
+  src="/img/deploy/github-merge-pull-request.png"
+  alt="The merge pull request button in the GitHub's pull request overview"
+/>
+
+:::tip Set release version explicitly
+
+You can overwrite the [Semantic Versioning](https://semver.org/) behavior
+by pushing a empty commit containing the version number:
+
+```shell
+git commit --allow-empty -m "chore: release 2.0.0" -m "Release-As: 2.0.0"
+git push
+```
+
+This triggers the `release.yml` workflow and changes the release version to your preference.
+
+:::
+
+The merge commit triggers the `release.yml` workflow again which in turn builds and pushes the application
+to the [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry).
+
+### Step 2: Access the setup archive
+
+To run the Telestion Project on your production system, a setup archive is required.
+
+Head to the latest release via the link on the project metadata.
+
+<Image
+  src="/img/deploy/github-project-metadata.png"
+  alt="Metadata sidebar of the GitHub repository"
+/>
+
+And download the archive named `<your-project-name>-<tag>.zip`.
+
+<Image
+  src="/img/deploy/github-latest-release-downloads.png"
+  alt="GitHub's release page with the uploaded artifacts"
+/>
+
+Go to the deployment section of this tutorial.
+
+<Reference to="#deploy-on-your-production-system">
+  Deploy on your production system
+</Reference>
+
+## Manually
+
+### Step 1: Bump project version
+
+Update the project version in the `version.txt` file which resides in the project root.
+
+Next, open the console and commit the version bump:
+
+```shell
+git add version.txt
+git commit -m "chore(main): release $(<version.txt)"
+git tag -a "v$(<version.txt)" -m "release $(<version.txt)"
+git push --follow-tags
+```
+
+:::danger Semantic Versioning
+
+The deployment scripts and tools require that you use the
+[Semantic Versioning](https://semver.org/) release style in your project.
+
+:::
+
+:::tip Conventional Commits
+
+Before bumping, you may look at your commit history with:
+
+```shell
+git log --oneline "v$(<version.txt)..HEAD"
+```
+
+And decide based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+to which version you might bump.
+
+:::
+
+### Step 2: Build the application
+
+Before pushing the release image to docker, you need to build the application part.
+
+Open your IDE and select the `assembleDist` task in the `distribution` section of Gradle.
+
+Or run the Gradle task in your console:
+
+```shell
+cd application
+JAVA_HOME="<path-to-jdk16>" ./gradlew assembleDist
+cd ..
+```
+
+### Step 3: Build and push the Docker images
+
+Now, build and push the Docker images:
+
+```shell
+./scripts/push-docker-images.sh
+```
+
+The script asks if things are unclear or cannot be recognized automatically.
+
+:::info Docker Login
+
+The deployment script uses the Docker CLI to push the images to specified Docker registry.
+You probably need to login before you can push the images.
+
+Take a look at the [Docker login reference](https://docs.docker.com/engine/reference/commandline/login/)
+on how you can login in the console.
+
+:::
+
+:::tip Specify another registry
+
+By default, the script pushes the images to the [Docker Hub](https://hub.docker.com/),
+the official Docker registry.
+
+If you would like to push to a different registry instead, use the `--docker-registry <registry-uri>`
+flag to specify the Docker registry explicitly.
+
+See the script help for more information:
+
+```shell
+./scripts/push-docker-images.sh --help
+```
+
+:::
+
+### Step 4: Create the setup archive
+
+Now, the Docker images are available on your preferred registry.
+Lets create the setup archive you can then deploy on your production system.
+
+Open the console and run the create setup script:
+
+```shell
+./scripts/create-setup.sh
+```
+
+The script asks if things are unclear or cannot be recognized automatically.
+
+It creates a setup archive and place it in the `build` folder which resides in the project root.
+
+## Deploy on your production system
+
+Before running Telestion on your production system, you need a working Docker and docker-compose installation.
+
+<Reference to="https://docs.docker.com/get-docker/">
+  Install Docker
+</Reference>
+
+<Reference to="https://docs.docker.com/compose/install/">
+  Install docker-compose
+</Reference>
+
+You should received a copy of the setup archive of the Telestion Project you want to deploy.
+
+Copy it to your production system and extract it via:
+
+```shell
+unzip my-telestion-project-v1.3.0.zip
+```
+
+Head into the folder which contains the `docker-compose.yml` and start Telestion:
+
+```shell
+docker-compose up -d
+```
+
+This downloads and starts the required components to run Telestion.
+
+If you want to stop Telestion, call:
+
+```shell
+docker-compose down
+```
+
+## Next steps
+
+<!-- Short concluding sentence: -->
+
+Congratulations: You've just deployed your first Telestion Project.
+
+You can configure the deployed Telestion Project via the configuration files in the `conf` folder
+beside the `docker-compose.yml` and restart it if you like.
+
+You might also want to use a graphical interface to interact with the running application.
+
+Take a look at our tutorials for the Web Client.
+
+<!-- Links to next steps/related articles -->
+
+<Reference to="/client/tutorials/">
+  Client Tutorials
+</Reference>
+
+<!--
+Snippets
+--------
+
+<Reference to="../other-article">
+    Relative Link to other article
+</Reference>
+
+<Reference to="https://www.example.com">
+    Example Website
+</Reference>
+-->
