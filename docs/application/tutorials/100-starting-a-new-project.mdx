@@ -61,7 +61,9 @@ the usage of GitHub templates as well as the GitHub web interface.
 
 A "ready to implement" project for your specific groundstation-related problem.
 
-## Step 1: Create a new Project repository
+## Using GitHub
+
+### Step 1: Create a new Project repository
 
 First, log into GitHub with your user account.
 
@@ -89,7 +91,7 @@ information, press the `Create repository from template` button.
 
 That's it.
 
-## Step 2: Initialize the new project
+### Step 2: Initialize the new project
 
 Now, you should have a new repository under your control.
 
@@ -119,6 +121,71 @@ for example, beginning with the company URL in reverse.
 
 :::
 
+## Manually
+
+### Step 1: Create an empty git repository
+
+Open your console and create a new git repository:
+
+```shell
+mkdir my-telestion-project
+cd my-telestion-project
+git init
+```
+
+### Step 2: Import the template
+
+Fetch the latest changes from our Project Template:
+
+```shell
+git fetch --depth=1 -n "https://github.com/wuespace/telestion-project-template.git"
+```
+
+<Reference to="https://github.com/wuespace/telestion-project-template">
+	Telestion Project Template
+</Reference>
+
+Use the last commit as your starting point:
+
+```shell
+git reset --hard "$(git commit-tree FETCH_HEAD^{tree} -m "feat: Initial commit")"
+```
+
+### Step 3: Initialize the project
+
+Run the provided initialization script:
+
+```shell
+./scripts/initialize.sh
+```
+
+The script asks if things are unclear or cannot be recognized automatically.
+
+:::tip Explicit inputs
+
+You can also provide the information via command line parameters.
+Run `./scripts/initializate.sh --help` for more information.
+
+:::
+
+As suggested by the script, commit the initialization changes:
+
+```shell
+git add .
+git commit -m 'feat: Initialize project'
+```
+
+### (Optional) Step 4: Push to a remote repository
+
+If you have a remote repository at your hand, you can add it as the default remote
+of the new Telestion Project:
+
+```shell
+git remote add origin "git@gitlab.com:your-name/my-telestion-project.git"
+git branch -M main
+git push -u origin main
+```
+
 ## Next steps
 
 <!-- Short concluding sentence: -->
@@ -127,7 +194,9 @@ That's it. Now, you have a new Telestion Project ready for development.
 
 <!-- Links to next steps/related articles -->
 
-Next steps: coming soon™
+<Reference to="/application/tutorials/writing-a-verticle">
+	Writing your first verticle
+</Reference>
 
 <!--
 Snippets
