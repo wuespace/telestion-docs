@@ -1,0 +1,393 @@
+---
+title: Writing asynchronous code
+# e.g., "Working with the Event Bus" or "Managing dependencies with npm"
+
+description:
+  Writing asynchronous code is a core requirement in Telestion.
+  Learn what library and language features you can use to write code in Telestion.
+---
+
+<!--
+Guide
+=====
+
+=== When to use this template:
+Use this template when you want to explain how to work with a specific technology/concept.
+
+=== When not to use this template:
+When
+- the article provides a quick explanation of a single concept (use a concept instead)
+- the article should be a quick way to look things up (use a reference instead)
+- the article focuses on how to solve a particular technical problem (use a tutorial instead)
+
+=== Guide or Tutorial
+A tutorial provides a quick, technical "step-by-step" tutorial for a
+given problem. Thus, a guide describes less the handling of a specific problem
+and more the general interaction of the reader with a given concept.
+
+Example with npm articles:
+- "npm": (Concept, explaining what npm is)
+- "Installing a dependency with npm" (Tutorial, providing a quick tutorial to
+  solve a technical problem)
+- "Managing dependencies with npm" (Guide, including both technical knowledge, but
+  also best practices and more)
+
+=== Writing tips:
+- Write in the present tense
+- Use neutral pronouns (they/them instead of he/she and him/her)
+- Be respectful to everyone
+- Be aware of the potential for cultural misunderstandings
+- Guides are more comprehensive than many other article types.
+  Feel free to add context and best practices.
+- Mention common pitfalls and how not to use something (and why)
+-->
+
+<!-- Relevant imports: -->
+
+import { Reference, Image } from '/components';
+
+<!-- Short description of what the article covers: -->
+
+This guide teaches you on how to write asynchronous code
+with the help of language and library features.
+
+<!-- Describe the intended target audience: -->
+
+:::tip Is this the right guide for you?
+
+This guide primarily targets Backend Developers and everyone who wants to understand
+and write asynchronous code.
+
+To best understand the topics covered here, you should be familiar with the
+following concepts before reading this article:
+
+- [The Vert.x framework](/application/concepts/vertx)
+- [The Verticle](/application/concepts/verticle)
+- [Event Loop](/application/concepts/event-loop)
+
+<!-- a list of prerequisite knowledge, linking to articles as a simple Markdown link, if applicable -->
+
+:::
+
+## Why writing asynchronous?
+
+Accessing resources that aren't immediately available like reading files from the filesystem
+or launching a HTTP server take some time and can block the event loop of a verticle.
+This can slow down the specific verticle and in the worst case the entire application resulting
+in dropped mission-critical data.
+
+Therefore Vert.x and Telestion make usage of asynchronous code execution.
+
+Java and Vert.x provide different mechanisms to fulfill that requirement.
+
+Lets take a look at some of them.
+
+## Asynchronous code structures
+
+### Recurring events
+
+#### Concept of anonymous and reference functions
+
+Handlers or lambda functions are nothing more than functions
+passed as arguments into other functions.
+
+Sometimes the passed function is already defined as instance or class method inside the class
+or declared "on-the-fly" like lambda functions (also called anonymous functions).
+
+To receive functions as arguments and successfully call them, you need a functional interface.
+
+Lets define a function that receives two operands, evaluate them and return the result:
+
+```java title="MathFunction.java"
+@FunctionalInterface
+public interface MathFunction {
+  int handle(int op1, int op2);
+}
+```
+
+Now, use this definition to combine multiple values from e.g. an integer array:
+
+```java title="MathReducer.java"
+public class MathReducer {
+  public static int reduce(int[] values, MathFunction function) {
+    if (values.length < 1) return 0;
+    if (values.length < 2) return values[0];
+
+    int result = function.handle(values[0], values[1]);
+
+    for (int i = 2; i < values.length; i++) {
+      result = function.handle(result, values[i]);
+    }
+
+    return result;
+  }
+
+  public static int add(int op1, int op2) {
+    return op1 + op2;
+  }
+
+  public static int multiply(int op1, int op2) {
+    return op1 * op2;
+  }
+}
+```
+
+The `reduce` method receives the value array and a function to combine two values into one.
+Additionally, there are some predefined "reducer" functions like summation or multiplication.
+
+Lets use the reducer on a sample set of integer values:
+
+```java title="Main.java"
+public class Main {
+  public static void main(String[] args) {
+    // your integer values you want to reduce
+    var values = new int[]{ 5, 8, 2, 4, 11 };
+
+    // use predefined functions via the '::' scope operator
+    System.out.println("Sum: " + MathReducer.reduce(values, MathReducer::add)); // 30
+    System.out.println("Product: " + MathReducer.reduce(values, MathReducer::multiply)); // 3520
+
+    // or define your own specialised function handler on the fly
+    // (called lambda or anonymous function)
+    System.out.println("Modulo: " + MathReducer.reduce(values, (op1, op2) -> op1 % op2)); // 1
+  }
+}
+```
+
+In the first example the `reducer` takes the sample array and a reference to the `add` method
+to summarize all values.
+The second example does roughly the same with one exception that the values aren't summarized
+but instead multiplied via the `multiply` method.
+The last example doesn't use a predefined method at all but instead define an anonymous function
+directly in the function call to calculate the residual value.
+
+As you can see, you don't need to change the core implementation of the `reduce` method
+to handle a great collection of mathematical functions. Cool, isn't it?
+
+#### Vert.x handlers
+
+Vert.x already provides a function definition that is used all around in the Vert.x ecosystem.
+
+<Reference to="https://javadoc.io/static/io.vertx/vertx-core/4.2.6/io/vertx/core/Handler.html">
+  Vert.x <code>Handler</code> API reference
+</Reference>
+
+For example registering a consumer on an event bus address uses this type definition:
+
+```java title="RegisterVerticle.java"
+public class RegisterVerticle extends TelestionVerticle<NoConfiguration> {
+  @Override
+  public void onStart() {
+    vertx.eventBus().consumer("some-address", message -> {
+      // I'm a lambda function of the type "Handler<Message>"
+    });
+  }
+}
+```
+
+### One-time events
+
+#### Futures
+
+Futures wrap asynchronous operations and provide a unified event-driven API to hear on a result
+from the wrapped operation and act accordingly.
+
+A future has three states:
+
+- the `Pending` state which is the _initial_ state during creation
+- the `Success` state which indicates that the asynchronous operation has ended _successfully_
+- the `Failure` state which indicates that the asynchronous operation has ended _with errors_
+
+<Image
+	src="/static/img/drawio-diagrams/vertx/promise-states.drawio.svg"
+	invertible
+  center
+/>
+
+Due to the nature of futures not completing directly you can add event handlers
+to the future object that are called based on the outcome of the asynchronous operation
+represented by the future:
+
+- use the `onSuccess` handler to run further steps if the operation has ended _successfully_
+- use the `onFailure` handler to run further steps if the operation has ended _with errors_
+- use the `onComplete` handler if you only interested in the completion
+  of the operation _regardless_ of the outcome
+
+Take a look at the following example on requesting information via the event bus:
+
+```java title="Requester.java"
+public class Requester extends TelestionVerticle<NoConfiguration> implements WithEventBus {
+  public static void main(String[] args) {
+    var vertx = Vertx.vertx();
+
+    vertx.eventBus().consumer("some-address", message -> message.reply("Pong"));
+    vertx.deployVerticle(new Requester());
+  }
+
+  @Override
+  public void onStart() throws Exception {
+    request("some-address", "Ping")
+        .onSuccess(message -> logger.info("Response: {}", message.body().toString()))
+        .onFailure(error -> logger.error("Cannot request infos:", error))
+        .onComplete(result -> logger.debug("Request has succeeded or failed."));
+
+    logger.debug("Request sent.");
+
+    // 1. Request sent.
+    // 2. Response: Pong
+    // 3. Request has succeeded or failed.
+  }
+}
+```
+
+The `request` method receives the target address and a message for the responder.
+Additionally it returns a future which succeeds if the response if positive
+and fails if the response is negative.
+
+Directly after the call the future is still pending.
+Therefore the logger call below the request runs first.
+
+Eventually, the future completes.
+Then the future calls (depending on the result) the success or failure handler
+and always the completion handler.
+
+#### Promises
+
+Promises are the "inner" part of futures. They control the final future state and pass through the computed result (if there is any).
+
+The best examples are the `onStart` and `onStop` methods of the `TelestionVerticle`.
+Here the extending verticle methods receive promises the inform the "outer" world about their final state.
+
+This verticle starts a HTTP server that listens on port `8080`:
+
+```java title="HttpServerVerticle.java"
+public class HttpServerVerticle extends TelestionVerticle<NoConfiguration> {
+  @Override
+  public void onStart(Promise<Void> startPromise) throws Exception {
+    server = vertx.createHttpServer();
+    server.listen(8080)
+        .onSuccess(server -> startPromise.complete())
+        .onFailure(startPromise::fail);
+  }
+
+  @Override
+  public void onStop(Promise<Void> stopPromise) throws Exception {
+    server.close().onComplete(stopPromise);
+  }
+
+  private HttpServer server;
+}
+```
+
+The verticle registers a success handler on the returned future from the `server.listen` method (as described in [futures](#futures)).
+This method completes the `startPromise` which in turn informs the "outer" world about the successful startup of the entire verticle.
+
+To capture startup failures of the HTTP server, the registered failure handler receives possible startup errors and pass them through
+to the "outer" world via the `startPromise.fail` method.
+
+To gracefully stop the server on verticle stop, use the same principle on the returned future from the `server.close` method.
+Because of equivalent types of promise and future you can directly use the `onComplete` event to control the provided promise.
+This keeps the source code short and readable.
+
+:::tip Type Mismatch
+
+Sometimes future and promise type don't match. This prevents you from using the `onComplete(promise)` shorthand.
+To fix this issue, you can use the `map` function on the future to change the futures return type to the desired result
+before completing the promise via the shorthand call.
+
+The `mapEmpty` function changes the futures return type to `Void` to also support void promises.
+
+:::
+
+#### Mapping Future Results
+
+<Image
+	src="/static/img/drawio-diagrams/vertx/future-map.drawio.svg"
+	invertible
+  center
+/>
+
+The `map` function has the same behavior as the `map` function of a stream.
+It receives the result from the succeeded future and returns the replacement.
+Use `mapEmpty` to map to a `Void` value.
+
+The `otherwise` function has the same behavior as the `map` function but only changes
+the rejected result (exceptions most of the time) if the future fails.
+Use `otherwiseEmpty` to map to a `Void` value.
+
+#### Composing Futures
+
+<Image
+	src="/static/img/drawio-diagrams/vertx/future-compose.drawio.svg"
+	invertible
+  center
+/>
+
+The `compose` function receives the result from the succeeded future
+and should return another future that "replaces" the old one.
+
+If the start future or the replacement future failes, following `compose` functions get skipped.
+
+#### Recovering Futures
+
+<Image
+	src="/static/img/drawio-diagrams/vertx/future-recover.drawio.svg"
+	invertible
+  center
+/>
+
+The `recover` function can "recover" a future from a failure state. It receives the failure result
+and should return another future that "replaces" the old one.
+
+If the start future or the replacement future succeeds, following `recover` functions get skipped.
+
+#### Transforming Futures
+
+<Image
+	src="/static/img/drawio-diagrams/vertx/future-transform.drawio.svg"
+	invertible
+  center
+/>
+
+The `transform` function receives the succeeded result or the failed result depending
+on the future's final state.
+It should return a new future which "replaces" the old one.
+
+`transform` functions are called regardless of the final state of the prior future.
+
+#### Finalizing Futures
+
+<Image
+	src="/static/img/drawio-diagrams/vertx/future-eventually.drawio.svg"
+	invertible
+  center
+/>
+
+The `eventually` function "blocks" the result transmission on the calling future.
+It receives the succeeded result or the failed result depending
+on the future's final state and should return a new future.
+
+Once the returned future succeeds or fails, the lock is raised and the calling future continues.
+
+## See also
+
+<Reference to="/application/concepts/event-loop">
+  Event Loop Concept
+</Reference>
+
+<Reference to="https://javadoc.io/static/io.vertx/vertx-core/4.2.6/index.html?io/vertx/core/Future.html">
+  Vert.x `Future` API Reference
+</Reference>
+
+<!--
+Snippets
+--------
+
+<Reference to="../other-article">
+    Relative Link to other article
+</Reference>
+
+<Reference to="https://www.example.com">
+    Example Website
+</Reference>
+-->
