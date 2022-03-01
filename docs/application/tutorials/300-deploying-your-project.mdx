@@ -47,8 +47,8 @@ import { Reference, Image, Grid } from '/components';
 
 <!-- Short description of what the article covers: -->
 
-Deploying your Application is an important part in the Project livecycle.
-Learn how you deploy your Application on GitHub and manually.
+Deploying your Application is an important part in the Project livecycle. Learn
+how you deploy your Application on GitHub and manually.
 
 :::info Prerequisites
 
@@ -62,17 +62,14 @@ and the concept of [Docker](https://www.docker.com/).
 You'll create a new release in your project and deploy the Application part via
 [Docker](https://www.docker.com/).
 
-You can deploy your Application with different methods based on your current Project setup:
+You can deploy your Application with different methods based on your current
+Project setup:
 
 <Grid cols={2}>
 
-<Reference to="#using-github">
-  Deploy using GitHub
-</Reference>
+<Reference to="#using-github">Deploy using GitHub</Reference>
 
-<Reference to="#manually">
-  Deploy manually
-</Reference>
+<Reference to="#manually">Deploy manually</Reference>
 
 </Grid>
 
@@ -80,103 +77,110 @@ You can deploy your Application with different methods based on your current Pro
 
 ### Step 1: Review the release pull request
 
-Once you're happy with your changes in your Telestion Project, it's time to release
-a new version.
+Once you're happy with your changes in your Telestion Project, it's time to
+release a new version.
 
-Head over to your GitHub repository that contains the Telestion Project
-and take a look in the pull request section.
+Head over to your GitHub repository that contains the Telestion Project and take
+a look in the pull request section.
 
 <Image
-  src="/img/deploy/github-pull-request-section.png"
-  alt="GitHub pull request section"
+	src="/img/deploy/github-pull-request-section.png"
+	alt="GitHub pull request section"
 />
 
-As you can see, the `release.yml` GitHub workflow automatically created a pull request
-that is ready for your review.
+As you can see, the `release.yml` GitHub workflow automatically created a pull
+request that is ready for your review.
 
 <Image
-  src="/img/deploy/github-release-pull-request.png"
-  alt="GitHub's pull request section containing the release pull request"
+	src="/img/deploy/github-release-pull-request.png"
+	alt="GitHub's pull request section containing the release pull request"
 />
 
 Open the pull request and review the changes.
 
 <Image
-  src="/img/deploy/github-pull-request-overview.png"
-  alt="The overview page of the release pull request"
+	src="/img/deploy/github-pull-request-overview.png"
+	alt="The overview page of the release pull request"
 />
 
 :::info Conventional Commits
 
 The GitHub action can only detect your changes if you're using
-[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) in your repository.
+[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) in your
+repository.
 
-It then bumps the project version based on [Semantic Versioning](https://semver.org/).
+It then bumps the project version based on
+[Semantic Versioning](https://semver.org/).
 
 :::
 
-If you satisfied with the changelog and the new project version, merge the pull request.
+If you satisfied with the changelog and the new project version, merge the pull
+request.
 
 <Image
-  src="/img/deploy/github-merge-pull-request.png"
-  alt="The merge pull request button in the GitHub's pull request overview"
+	src="/img/deploy/github-merge-pull-request.png"
+	alt="The merge pull request button in the GitHub's pull request overview"
 />
 
 :::tip Set release version explicitly
 
-You can overwrite the [Semantic Versioning](https://semver.org/) behavior
-by pushing a empty commit containing the version number:
+You can overwrite the [Semantic Versioning](https://semver.org/) behavior by
+pushing a empty commit containing the version number:
 
-```shell
+````shell
 git commit --allow-empty -m "chore: release 2.0.0" -m "Release-As: 2.0.0"
 git push
-```
+````
 
-This triggers the `release.yml` workflow and changes the release version to your preference.
+This triggers the `release.yml` workflow and changes the release version to your
+preference.
 
 :::
 
-The merge commit triggers the `release.yml` workflow again which in turn builds and pushes the application
-to the [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry).
+The merge commit triggers the `release.yml` workflow again which in turn builds
+and pushes the application to the
+[GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry).
 
 ### Step 2: Access the setup archive
 
-To run the Telestion Project on your production system, a setup archive is required.
+To run the Telestion Project on your production system, a setup archive is
+required.
 
 Head to the latest release via the link on the project metadata.
 
 <Image
-  src="/img/deploy/github-project-metadata.png"
-  alt="Metadata sidebar of the GitHub repository"
+	src="/img/deploy/github-project-metadata.png"
+	alt="Metadata sidebar of the GitHub repository"
 />
 
 And download the archive named `<your-project-name>-<tag>.zip`.
 
 <Image
-  src="/img/deploy/github-latest-release-downloads.png"
-  alt="GitHub's release page with the uploaded artifacts"
+	src="/img/deploy/github-latest-release-downloads.png"
+	alt="GitHub's release page with the uploaded artifacts"
 />
 
 Go to the deployment section of this tutorial.
 
 <Reference to="#deploy-on-your-production-system">
-  Deploy on your production system
+	Deploy on your production system
 </Reference>
 
 ## Manually
 
 ### Step 1: Bump project version
 
-Update the project version in the `version.txt` file which resides in the project root.
+Update the project version in the `version.txt` file which resides in the
+project root.
 
 Next, open the console and commit the version bump:
 
-```shell
+````shell
 git add version.txt
 git commit -m "chore(main): release $(<version.txt)"
 git tag -a "v$(<version.txt)" -m "release $(<version.txt)"
 git push --follow-tags
-```
+````
 
 :::danger Semantic Versioning
 
@@ -189,111 +193,120 @@ The deployment scripts and tools require that you use the
 
 Before bumping, you may look at your commit history with:
 
-```shell
+````shell
 git log --oneline "v$(<version.txt)..HEAD"
-```
+````
 
-And decide based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
-to which version you might bump.
+And decide based on
+[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) to which
+version you might bump.
 
 :::
 
 ### Step 2: Build the Application
 
-Before pushing the release image to docker, you need to build the Application part.
+Before pushing the release image to docker, you need to build the Application
+part.
 
-Open your IDE and select the `assembleDist` task in the `distribution` section of Gradle.
+Open your IDE and select the `assembleDist` task in the `distribution` section
+of Gradle.
 
 Or run the Gradle task in your console:
 
-```shell
+````shell
 cd application
 JAVA_HOME="<path-to-jdk16>" ./gradlew assembleDist
 cd ..
-```
+````
 
 ### Step 3: Build and push the Docker images
 
 Now, build and push the Docker images:
 
-```shell
+````shell
 ./scripts/push-docker-images.sh
-```
+````
 
 The script asks if things are unclear or cannot be recognized automatically.
 
 :::info Docker Login
 
-The deployment script uses the Docker CLI to push the images to specified Docker registry.
-You probably need to login before you can push the images.
+The deployment script uses the Docker CLI to push the images to specified Docker
+registry. You probably need to login before you can push the images.
 
-Take a look at the [Docker login reference](https://docs.docker.com/engine/reference/commandline/login/)
+Take a look at the
+[Docker login reference](https://docs.docker.com/engine/reference/commandline/login/)
 on how you can login in the console.
 
 :::
 
 :::tip Specify another registry
 
-By default, the script pushes the images to the [Docker Hub](https://hub.docker.com/),
-the official Docker registry.
+By default, the script pushes the images to the
+[Docker Hub](https://hub.docker.com/), the official Docker registry.
 
-If you would like to push to a different registry instead, use the `--docker-registry <registry-uri>`
-flag to specify the Docker registry explicitly.
+If you would like to push to a different registry instead, use the
+`--docker-registry <registry-uri>` flag to specify the Docker registry
+explicitly.
 
 See the script help for more information:
 
-```shell
+````shell
 ./scripts/push-docker-images.sh --help
-```
+````
 
 :::
 
 ### Step 4: Create the setup archive
 
-Now, the Docker images are available on your preferred registry.
-Lets create the setup archive you can then deploy on your production system.
+Now, the Docker images are available on your preferred registry. Lets create the
+setup archive you can then deploy on your production system.
 
 Open the console and run the create setup script:
 
-```shell
+````shell
 ./scripts/create-setup.sh
-```
+````
 
 The script asks if things are unclear or cannot be recognized automatically.
 
-It creates a setup archive and place it in the `build` folder which resides in the project root.
+It creates a setup archive and place it in the `build` folder which resides in
+the project root.
 
 ## Deploy on your production system
 
-Before running Telestion on your production system, you need a working Docker and docker-compose installation.
+Before running Telestion on your production system, you need a working Docker
+and docker-compose installation.
 
-<Reference to="https://docs.docker.com/get-docker/">
-  Install Docker
-</Reference>
+<Reference to="https://docs.docker.com/get-docker/">Install Docker</Reference>
 
 <Reference to="https://docs.docker.com/compose/install/">
-  Install docker-compose
+	Install docker-compose
 </Reference>
 
-You should received a copy of the setup archive of the Telestion Project you want to deploy.
+You should received a copy of the setup archive of the Telestion Project you
+want to deploy.
 
 Copy it to your production system and extract it via:
 
-```shell
+````shell
 unzip my-telestion-project-v1.3.0.zip
-```
+````
 
-Head into the folder which contains the `docker-compose.yml` and start Telestion:
+Head into the folder which contains the `docker-compose.yml` and start
+Telestion:
 
-```shell
+````shell
 docker-compose up -d
-```
+````
 
 :::tip Modify `docker-compose.yml`
 
-The packaged `docker-compose.yml` is a copy of the `application/docker-compose.prod.yml` configuration file.
+The packaged `docker-compose.yml` is a copy of the
+`application/docker-compose.prod.yml` configuration file.
 
-In this file you can define which Docker images run on your production system, which ports are exposed, etc.
+In this file you can define which Docker images run on your production system,
+which ports are exposed, etc.
 
 :::
 
@@ -301,9 +314,9 @@ This downloads and starts the required components to run Telestion.
 
 If you want to stop Telestion, call:
 
-```shell
+````shell
 docker-compose down
-```
+````
 
 ## Next steps
 
@@ -311,18 +324,17 @@ docker-compose down
 
 Congratulations: You've just deployed your first Telestion Project.
 
-You can configure the deployed Telestion Project with the configuration files in the `conf` folder
-beside the `docker-compose.yml` and restart it if you like.
+You can configure the deployed Telestion Project with the configuration files in
+the `conf` folder beside the `docker-compose.yml` and restart it if you like.
 
-You might also want to use a graphical interface to interact with the running application.
+You might also want to use a graphical interface to interact with the running
+application.
 
 Take a look at our tutorials for the Web Client.
 
 <!-- Links to next steps/related articles -->
 
-<Reference to="/client/tutorials/">
-  Client Tutorials
-</Reference>
+<Reference to="/client/tutorials/">Client Tutorials</Reference>
 
 <!--
 Snippets
