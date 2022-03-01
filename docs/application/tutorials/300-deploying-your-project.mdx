@@ -43,11 +43,12 @@ Example with npm articles:
 
 <!-- Relevant imports: -->
 
-import { Reference, Image } from '/components';
+import { Reference, Image, Grid } from '/components';
 
 <!-- Short description of what the article covers: -->
 
-In this tutorial, you'll write a simple Verticle for the Telestion ecosystem.
+Deploying your Application is an important part in the Project livecycle.
+Learn how you deploy your Application on GitHub and manually.
 
 :::info Prerequisites
 
@@ -58,8 +59,22 @@ and the concept of [Docker](https://www.docker.com/).
 
 ## What you'll build
 
-You'll create a new release in your project and deploy the application part via
+You'll create a new release in your project and deploy the Application part via
 [Docker](https://www.docker.com/).
+
+You can deploy your Application with different methods based on your current Project setup:
+
+<Grid cols={2}>
+
+<Reference to="#using-github">
+  Deploy using GitHub
+</Reference>
+
+<Reference to="#manually">
+  Deploy manually
+</Reference>
+
+</Grid>
 
 ## Using GitHub
 
@@ -93,7 +108,7 @@ Open the pull request and review the changes.
 
 :::info Conventional Commits
 
-The GitHub action can only detect your changes if you're using the
+The GitHub action can only detect your changes if you're using
 [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) in your repository.
 
 It then bumps the project version based on [Semantic Versioning](https://semver.org/).
@@ -183,9 +198,9 @@ to which version you might bump.
 
 :::
 
-### Step 2: Build the application
+### Step 2: Build the Application
 
-Before pushing the release image to docker, you need to build the application part.
+Before pushing the release image to docker, you need to build the Application part.
 
 Open your IDE and select the `assembleDist` task in the `distribution` section of Gradle.
 
@@ -274,6 +289,14 @@ Head into the folder which contains the `docker-compose.yml` and start Telestion
 docker-compose up -d
 ```
 
+:::tip Modify `docker-compose.yml`
+
+The packaged `docker-compose.yml` is a copy of the `application/docker-compose.prod.yml` configuration file.
+
+In this file you can define which Docker images run on your production system, which ports are exposed, etc.
+
+:::
+
 This downloads and starts the required components to run Telestion.
 
 If you want to stop Telestion, call:
@@ -288,7 +311,7 @@ docker-compose down
 
 Congratulations: You've just deployed your first Telestion Project.
 
-You can configure the deployed Telestion Project via the configuration files in the `conf` folder
+You can configure the deployed Telestion Project with the configuration files in the `conf` folder
 beside the `docker-compose.yml` and restart it if you like.
 
 You might also want to use a graphical interface to interact with the running application.
