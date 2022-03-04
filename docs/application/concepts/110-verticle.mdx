@@ -35,10 +35,10 @@ Here, processes are Verticles and the data between them are messages on the
 ## Example Code
 
 ````java
-import de.wuespace.telestion.api.verticle.GenericConfiguration;
+import de.wuespace.telestion.api.verticle.NoConfiguration;
 import de.wuespace.telestion.api.verticle.TelestionVerticle;
 
-public class MyVerticle extends TelestionVerticle<GenericConfiguration> {
+public class MyVerticle extends TelestionVerticle<NoConfiguration> {
     // Called when Verticle is deployed
     @Override
     public void onStart() {

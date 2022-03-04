@@ -80,11 +80,11 @@ After the tutorial, your Verticle looks like this:
 ````java title='MessageTransformer.java' {5,7-8,16,18,19}
 package de.wuespace.telestion.project.example;
 
-import de.wuespace.telestion.api.verticle.GenericConfiguration;
+import de.wuespace.telestion.api.verticle.NoConfiguration;
 import de.wuespace.telestion.api.verticle.TelestionVerticle;
 import de.wuespace.telestion.api.verticle.trait.WithEventBus;
 
-public class MessageTransformer extends TelestionVerticle<GenericConfiguration>
+public class MessageTransformer extends TelestionVerticle<NoConfiguration>
 		implements WithEventBus {
 
 	public static void main(String[] args) throws InterruptedException {
@@ -115,11 +115,11 @@ Verticle:
 ````java title='MessageTransformer.java' {5,7-8}
 package de.wuespace.telestion.project.example;
 
-import de.wuespace.telestion.api.verticle.GenericConfiguration;
+import de.wuespace.telestion.api.verticle.NoConfiguration;
 import de.wuespace.telestion.api.verticle.TelestionVerticle;
 import de.wuespace.telestion.api.verticle.trait.WithEventBus;
 
-public class MessageTransformer extends TelestionVerticle<GenericConfiguration>
+public class MessageTransformer extends TelestionVerticle<NoConfiguration>
 		implements WithEventBus {
 
 	public static void main(String[] args) throws InterruptedException {
@@ -157,11 +157,11 @@ Use the `register` method from the `WithEventBus`:
 ````java title='MessageTransformer.java' {18-20}
 package de.wuespace.telestion.project.example;
 
-import de.wuespace.telestion.api.verticle.GenericConfiguration;
+import de.wuespace.telestion.api.verticle.NoConfiguration;
 import de.wuespace.telestion.api.verticle.TelestionVerticle;
 import de.wuespace.telestion.api.verticle.trait.WithEventBus;
 
-public class MessageTransformer extends TelestionVerticle<GenericConfiguration>
+public class MessageTransformer extends TelestionVerticle<NoConfiguration>
 		implements WithEventBus {
 
 	public static void main(String[] args) throws InterruptedException {

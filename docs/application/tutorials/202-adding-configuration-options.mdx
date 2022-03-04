@@ -157,7 +157,7 @@ package de.wuespace.telestion.project.example;
 
 // [...]
 
-public class MessageTransformer extends TelestionVerticle<GenericConfiguration> {
+public class MessageTransformer extends TelestionVerticle<MessageTransformer.Configuration> {
 
 	public static void main(String[] args) throws InterruptedException {
 		// [...]
@@ -186,7 +186,7 @@ To actually use your configuration, you need to make some slight adjustments to
 the existing code.
 
 Now, the generic type enters the game. You need to give the `TelestionVerticle`
-class a hint about your new configuration. Replace the `GenericConfiguration`
+class a hint about your new configuration. Replace the `NoConfiguration`
 type with your configuration type `MessageTransformer.Configuration`:
 
 ````java title='MessageTransformer.java' {5}
@@ -300,7 +300,7 @@ import io.vertx.core.json.JsonObject;
 
 public class MessageTransformer extends TelestionVerticle<MessageTransformer.Configuration> {
 
-  public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException {
 		var vertx = Vertx.vertx();
 
 		// [...]

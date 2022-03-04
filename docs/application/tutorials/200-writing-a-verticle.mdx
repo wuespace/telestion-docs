@@ -33,10 +33,10 @@ The full code for this tutorial looks like this:
 ````java title='MessageTransformer.java'
 package de.wuespace.telestion.project.example;
 
-import de.wuespace.telestion.api.verticle.GenericConfiguration;
+import de.wuespace.telestion.api.verticle.NoConfiguration;
 import de.wuespace.telestion.api.verticle.TelestionVerticle;
 
-public class MessageTransformer extends TelestionVerticle<GenericConfiguration> {
+public class MessageTransformer extends TelestionVerticle<NoConfiguration> {
 	@Override
 	public void onStart() {
 		var eb = vertx.eventBus();
@@ -66,10 +66,10 @@ the following code:
 ````java title='MessageTransformer.java'
 package de.wuespace.telestion.project.example;
 
-import de.wuespace.telestion.api.verticle.GenericConfiguration;
+import de.wuespace.telestion.api.verticle.NoConfiguration;
 import de.wuespace.telestion.api.verticle.TelestionVerticle;
 
-public class MessageTransformer extends TelestionVerticle<GenericConfiguration> {
+public class MessageTransformer extends TelestionVerticle<NoConfiguration> {
 	@Override
 	public void onStart() {
 		// your code goes here
@@ -99,10 +99,10 @@ For now, keep it simple and listen to the `"input"` channel:
 ````java title='MessageTransformer.java' {9,11-14}
 package de.wuespace.telestion.project.example;
 
-import de.wuespace.telestion.api.verticle.GenericConfiguration;
+import de.wuespace.telestion.api.verticle.NoConfiguration;
 import de.wuespace.telestion.api.verticle.TelestionVerticle;
 
-public class MessageTransformer extends TelestionVerticle<GenericConfiguration> {
+public class MessageTransformer extends TelestionVerticle<NoConfiguration> {
 	@Override
 	public void onStart() {
 		var eb = vertx.eventBus();
@@ -158,10 +158,10 @@ Thankfully, the Event Bus APIs make this quite easy using the
 ````java title='MessageTransformer.java' {13}
 package de.wuespace.telestion.project.example;
 
-import de.wuespace.telestion.api.verticle.GenericConfiguration;
+import de.wuespace.telestion.api.verticle.NoConfiguration;
 import de.wuespace.telestion.api.verticle.TelestionVerticle;
 
-public class MessageTransformer extends TelestionVerticle<GenericConfiguration> {
+public class MessageTransformer extends TelestionVerticle<NoConfiguration> {
 	@Override
 	public void onStart() {
 		var eb = vertx.eventBus();
@@ -192,11 +192,11 @@ Put the theory into practice and write your static `main()` method:
 ````java title='MessageTransformer.java' {5,9-21}
 package de.wuespace.telestion.project.example;
 
-import de.wuespace.telestion.api.verticle.GenericConfiguration;
+import de.wuespace.telestion.api.verticle.NoConfiguration;
 import de.wuespace.telestion.api.verticle.TelestionVerticle;
 import io.vertx.core.Vertx;
 
-public class MessageTransformer extends TelestionVerticle<GenericConfiguration> {
+public class MessageTransformer extends TelestionVerticle<NoConfiguration> {
 
 	public static void main(String[] args) throws InterruptedException {
 		var vertx = Vertx.vertx(); // create a new Vertx instance to test on

@@ -100,11 +100,11 @@ record IntegerMessage(
 ````java title='MessageTransformer.java' {12,21-25}
 package de.wuespace.telestion.project.example;
 
-import de.wuespace.telestion.api.verticle.GenericConfiguration;
+import de.wuespace.telestion.api.verticle.NoConfiguration;
 import de.wuespace.telestion.api.verticle.TelestionVerticle;
 
-public class MessageTransformer extends TelestionVerticle<GenericConfiguration> {
-  public static void main(String[] args) throws InterruptedException {
+public class MessageTransformer extends TelestionVerticle<NoConfiguration> {
+	public static void main(String[] args) throws InterruptedException {
 		// [...]
 
 		vertx.deployVerticle(new MessageTransformer()).onSuccess(res -> {
@@ -174,7 +174,7 @@ package de.wuespace.telestion.project.example;
 
 // [...]
 
-public class MessageTransformer extends TelestionVerticle<GenericConfiguration> {
+public class MessageTransformer extends TelestionVerticle<NoConfiguration> {
 	// [...]
 
 	@Override
@@ -217,7 +217,7 @@ Create a new `IntegerMessage` instance called `output` and instead of publishing
 ````java title='MessageTransformer.java' {13-14}
 // [...]
 
-public class MessageTransformer extends TelestionVerticle<GenericConfiguration> {
+public class MessageTransformer extends TelestionVerticle<NoConfiguration> {
 	// [...]
 
 	@Override
@@ -249,15 +249,15 @@ in the `main()` method:
 ````java title='MessageTransformer.java' {7}
 // [...]
 
-public class MessageTransformer extends TelestionVerticle<GenericConfiguration> {
-  public static void main(String[] args) throws InterruptedException {
-    // [...]
+public class MessageTransformer extends TelestionVerticle<NoConfiguration> {
+	public static void main(String[] args) throws InterruptedException {
+    	// [...]
 
-    vertx.deployVerticle(new MessageTransformer()).onSuccess(res -> {
-			// publish a number once the Verticle is deployed
-			vertx.eventBus().publish("input", new IntegerMessage(3).json());
+		vertx.deployVerticle(new MessageTransformer()).onSuccess(res -> {
+				// publish a number once the Verticle is deployed
+				vertx.eventBus().publish("input", new IntegerMessage(3).json());
 		});
-  }
+	}
 
 	// [...]
 }
