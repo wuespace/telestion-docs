@@ -1,5 +1,34 @@
 # Changelog
 
+## [2.7.0](https://github.com/wuespace/telestion-docs/compare/v2.6.3...v2.7.0) (2022-03-04)
+
+
+### Features
+
+* **application:** Add deployment tutorial ([0703b84](https://github.com/wuespace/telestion-docs/commit/0703b8404d604e92f3b17a0292be6fe6cc053683))
+* **application:** Add manual steps to initialize a Telestion Project ([e5db14e](https://github.com/wuespace/telestion-docs/commit/e5db14e20d19daba9e924c24a4c6ae906fa1a443))
+* **docs/application:** :children_crossing: Improve the Verticle concept article ([f0b99b1](https://github.com/wuespace/telestion-docs/commit/f0b99b1ce552fb5ead45ca52f7f92db77edee3a6))
+* **docs/application:** :sparkles: Add Java Records concept ([b9538fc](https://github.com/wuespace/telestion-docs/commit/b9538fc373d51c753960373044ca3a2fa97cbe9b)), closes [#164](https://github.com/wuespace/telestion-docs/issues/164)
+* **docs/client:** :children_crossing: Improve Telestion Client CLI concept ([e9999b1](https://github.com/wuespace/telestion-docs/commit/e9999b10b0b6798b4de0353692f10823c90cd56a))
+* **docs/client:** :sparkles: Add "TypeScript" concept ([18f9f39](https://github.com/wuespace/telestion-docs/commit/18f9f396c62124d26559abf0f8f64bfb8b3934eb)), closes [#182](https://github.com/wuespace/telestion-docs/issues/182)
+* **docs/client:** :sparkles: Add React concept ([d0690fe](https://github.com/wuespace/telestion-docs/commit/d0690fe9b1a2a153d7a33283a51b6d3b219e6ad1)), closes [#181](https://github.com/wuespace/telestion-docs/issues/181)
+* **docs/client:** :sparkles: Add tutorial about adding configuration options to Telestion Client Widgets ([3e87ce3](https://github.com/wuespace/telestion-docs/commit/3e87ce308fc847734f47ca736e151ec8da4b8e87)), closes [#152](https://github.com/wuespace/telestion-docs/issues/152)
+* **docs/general:** :children_crossing: Add more details to general audience Client concept ([a3f7196](https://github.com/wuespace/telestion-docs/commit/a3f7196374c5b8236844ab79c2cb7bdaa301345f))
+* **docs/general:** :children_crossing: Add more details to the general audience Application concept ([7f97dcc](https://github.com/wuespace/telestion-docs/commit/7f97dccc4931cb2cb35372f9f59769de9de5adb5))
+* **docs/general:** :sparkles: Add "Application" concept article for general audiences ([e145674](https://github.com/wuespace/telestion-docs/commit/e145674ec0a8a0d2d201e3a3897a180edacca26f))
+* **docs/general:** :sparkles: Add "Client" concept article for general audiences ([338d99d](https://github.com/wuespace/telestion-docs/commit/338d99da00fa17c9d2f6e60fcb2dd7075055ec9e))
+* **docs/general:** :sparkles: Add general audience "Event Bus" concept ([e3378ee](https://github.com/wuespace/telestion-docs/commit/e3378eece2a700bf2016dc268a34a1e5b736a5b9)), closes [#151](https://github.com/wuespace/telestion-docs/issues/151)
+* **docs/general:** :truck: Improve information architecture with more specialized, less cluttered navigation menus ([6e2ab70](https://github.com/wuespace/telestion-docs/commit/6e2ab70029912197a5c6d62731edf5949a9e003f)), closes [#86](https://github.com/wuespace/telestion-docs/issues/86)
+* **stylesheet:** :lipstick: Add dark mode support ([5390a8c](https://github.com/wuespace/telestion-docs/commit/5390a8c033148bf5a9c78c83172b13e36707e737))
+
+
+### Bug Fixes
+
+* **docs/application:** Replace deprecated GenericConfiguration class with designated replacement ([856df60](https://github.com/wuespace/telestion-docs/commit/856df603a8697425dddedbade68a97dd64a315c7))
+* **docs/client:** :bug: Fix syntax highlighting for `.tsx` file code blocks ([91b7d73](https://github.com/wuespace/telestion-docs/commit/91b7d73bd38087ac1951bab642fcd8ae8e8be8bb))
+* **docs/internal:** Improve dark mode support in conventional commit diagram ([cf9b284](https://github.com/wuespace/telestion-docs/commit/cf9b284577ddd617c3101a61a5dc38e8720e004e))
+* **images:** :bug: Remove old reference to "PSC" in Event Bus Bridge Diagram ([8a50959](https://github.com/wuespace/telestion-docs/commit/8a50959cfc38febbbc8dce4df7a00e22a1f22bf6))
+
 ### [2.6.3](https://github.com/wuespace/telestion-docs/compare/v2.6.2...v2.6.3) (2022-02-04)
 
 
