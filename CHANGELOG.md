@@ -1,5 +1,13 @@
 # Changelog
 
+### [2.7.1](https://github.com/wuespace/telestion-docs/compare/v2.7.0...v2.7.1) (2022-03-05)
+
+
+### Bug Fixes
+
+* **docs/application:** Fix code formatting issue in a `<Reference />` ([891db72](https://github.com/wuespace/telestion-docs/commit/891db72edf7ee9ba609ed07c0c3ecc6b3acaba08))
+* **docs/application:** Fix code formatting issue in a `<Reference />` ([7f25812](https://github.com/wuespace/telestion-docs/commit/7f25812e258865e211a8d57800752f9cfb3bf827))
+
 ## [2.7.0](https://github.com/wuespace/telestion-docs/compare/v2.6.3...v2.7.0) (2022-03-04)
 
 
