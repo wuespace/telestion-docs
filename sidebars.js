@@ -65,7 +65,7 @@ module.exports = {
 		genCategory(
 			'internal/tutorials',
 			'Tutorials',
-			'These tutorials cover everything you need to know to build the Application side of the Telestion ecosystem.'
+			'These tutorials cover everything you need to know to contribute to the Telestion Ecosystem'
 		),
 		genCategory('internal/guides', 'Guides'),
 		genCategory('internal/references', 'References')
