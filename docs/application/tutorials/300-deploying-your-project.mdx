@@ -47,7 +47,7 @@ import { Reference, Image, Grid } from '/components';
 
 <!-- Short description of what the article covers: -->
 
-Deploying your Application is an important part in the Project livecycle. Learn
+Deploying your Application is an important part in the Project lifecycle. Learn
 how you deploy your Application on GitHub and manually.
 
 :::info Prerequisites
@@ -143,8 +143,7 @@ and pushes the application to the
 
 ### Step 2: Access the setup archive
 
-To run the Telestion Project on your production system, a setup archive is
-required.
+To run the Telestion Project on your production system, you need a setup archive.
 
 Head to the latest release via the link on the project metadata.
 
@@ -221,13 +220,13 @@ cd ..
 
 ### Step 3: Build and push the Docker images
 
-Now, build and push the Docker images:
+Now build and push the Docker images:
 
 ````shell
 ./scripts/push-docker-images.sh
 ````
 
-The script asks if things are unclear or cannot be recognized automatically.
+The script asks if things are unclear or if it can't recognize anything automatically.
 
 :::info Docker Login
 
@@ -259,7 +258,7 @@ See the script help for more information:
 
 ### Step 4: Create the setup archive
 
-Now, the Docker images are available on your preferred registry. Lets create the
+Now, the Docker images are available on your preferred registry. You now need to create the
 setup archive you can then deploy on your production system.
 
 Open the console and run the create setup script:
@@ -268,7 +267,7 @@ Open the console and run the create setup script:
 ./scripts/create-setup.sh
 ````
 
-The script asks if things are unclear or cannot be recognized automatically.
+The script asks if things are unclear or if it can't recognize them automatically.
 
 It creates a setup archive and place it in the `build` folder which resides in
 the project root.
@@ -300,13 +299,13 @@ Telestion:
 docker-compose up -d
 ````
 
-:::tip Modify `docker-compose.yml`
+:::tip Editing the `docker-compose.yml`
 
 The packaged `docker-compose.yml` is a copy of the
 `application/docker-compose.prod.yml` configuration file.
 
 In this file you can define which Docker images run on your production system,
-which ports are exposed, etc.
+which ports it exposes, etc.
 
 :::
 
@@ -330,7 +329,7 @@ the `conf` folder beside the `docker-compose.yml` and restart it if you like.
 You might also want to use a graphical interface to interact with the running
 application.
 
-Take a look at our tutorials for the Web Client.
+Take a look at the tutorials for the Web Client:
 
 <!-- Links to next steps/related articles -->
 
