@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.8.0](https://github.com/wuespace/telestion-docs/compare/v2.7.1...v2.8.0) (2022-03-17)
+
+
+### Features
+
+* **docs/application:** :sparkles: Add reference of prerequisites for Application development ([7dba3fa](https://github.com/wuespace/telestion-docs/commit/7dba3faae6f9392192e7007560b2e48babca3c9d)), closes [#116](https://github.com/wuespace/telestion-docs/issues/116)
+* **docs/client:** :sparkles: Add reference of prerequisites for Client development ([1e6d8f6](https://github.com/wuespace/telestion-docs/commit/1e6d8f6fb332d96a72ab933e77f3862765a09e49)), closes [#116](https://github.com/wuespace/telestion-docs/issues/116)
+
+
+### Bug Fixes
+
+* :ambulance: Fix broken links of empty categories with placeholder "Coming soon" pages ([02d169b](https://github.com/wuespace/telestion-docs/commit/02d169b1ce4dcfe0fe7a025c79d6aeb0dd4eefa3))
+* **docs/application:** :art: Fix grammar and writing style issues in Deployment tutorial ([381f09f](https://github.com/wuespace/telestion-docs/commit/381f09f79b037136536bb1de50e5a2e59fecafb1))
+* **docs/application:** :art: Fix writing style issues in "Starting a new Project" tutorial ([c426aa0](https://github.com/wuespace/telestion-docs/commit/c426aa048f633fefa01126e927c0faf81629b31b))
+* **docs/internal:** :adhesive_bandage: Fix wording on "Internal Tutorials" category overview page ([7c24fd5](https://github.com/wuespace/telestion-docs/commit/7c24fd50d7a93e821a008822feefb6dd280e43e2))
+
 ### [2.7.1](https://github.com/wuespace/telestion-docs/compare/v2.7.0...v2.7.1) (2022-03-05)
 
 
