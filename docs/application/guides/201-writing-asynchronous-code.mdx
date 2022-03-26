@@ -253,10 +253,12 @@ and always the completion handler.
 
 #### Promises
 
-Promises are the "inner" part of futures. They control the final future state and pass through the computed result (if there is any).
+Promises are the "inner" part of futures. They control the final future state
+and pass through the computed result (if there is any).
 
 The best examples are the `onStart` and `onStop` methods of the `TelestionVerticle`.
-Here the extending verticle methods receive promises the inform the "outer" world about their final state.
+Here the extending verticle methods receive promises the inform the "outer" world
+about their final state.
 
 This verticle starts a HTTP server that listens on port `8080`:
 
@@ -279,21 +281,26 @@ public class HttpServerVerticle extends TelestionVerticle<NoConfiguration> {
 }
 ```
 
-The verticle registers a success handler on the returned future from the `server.listen` method (as described in [futures](#futures)).
-This method completes the `startPromise` which in turn informs the "outer" world about the successful startup of the entire verticle.
+The verticle registers a success handler on the returned future from the `server.listen` method
+(as described in [futures](#futures)).
+This method completes the `startPromise` which in turn informs the "outer" world
+about the successful startup of the entire verticle.
 
-To capture startup failures of the HTTP server, the registered failure handler receives possible startup errors and pass them through
-to the "outer" world via the `startPromise.fail` method.
+To capture startup failures of the HTTP server, the registered failure handler receives possible
+startup errors and pass them through to the "outer" world via the `startPromise.fail` method.
 
-To gracefully stop the server on verticle stop, use the same principle on the returned future from the `server.close` method.
-Because of equivalent types of promise and future you can directly use the `onComplete` event to control the provided promise.
+To gracefully stop the server on verticle stop, use the same principle on the returned future
+from the `server.close` method.
+Because of equivalent types of promise and future you can directly use the `onComplete` event
+to control the provided promise.
 This keeps the source code short and readable.
 
 :::tip Type Mismatch
 
-Sometimes future and promise type don't match. This prevents you from using the `onComplete(promise)` shorthand.
-To fix this issue, you can use the `map` function on the future to change the futures return type to the desired result
-before completing the promise via the shorthand call.
+Sometimes future and promise type don't match.
+This prevents you from using the `onComplete(promise)` shorthand.
+To fix this issue, you can use the `map` function on the future to change the futures return type
+to the desired result before completing the promise via the shorthand call.
 
 The `mapEmpty` function changes the futures return type to `Void` to also support void promises.
 
@@ -364,7 +371,7 @@ It should return a new future which "replaces" the old one.
 />
 
 The `eventually` function "blocks" the result transmission on the calling future.
-It receives the succeeded result or the failed result depending
+The function receives the succeeded or failed result depending
 on the future's final state and should return a new future.
 
 Once the returned future succeeds or fails, the lock is raised and the calling future continues.
