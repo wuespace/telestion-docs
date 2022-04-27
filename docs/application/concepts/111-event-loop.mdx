@@ -44,7 +44,7 @@ The event loop is the executing mechanism of a Verticle.
 
 ## Java Thread distribution
 
-In Vert.x every verticle runs in its own thread and waiting for incoming events (_event-driven_).
+In Vert.x, every verticle runs in its own thread and waits for incoming events (_event-driven_).
 
 The Java main thread executes the Vert.x instance which in turn:
 
@@ -75,13 +75,13 @@ A verticle thread:
 />
 
 Since a verticle is only executed by one thread, this thread must handle all incoming events
-and their connected event handler.
+and their connected event handlers.
 
-Most of the time this is no problem especially if the event handler is compact and runs fast code.
+Most of the time this isn't a problem, especially if the event handler is compact and runs fast code.
 But once the thread grabs an event handler that contains blocking or heavy-lifting code,
-new events cloak up the event queue making the verticle inresponsive.
+new events clog up the event queue, making the verticle unresponsive.
 
-Therefore Vert.x and Telestion uses asynchronous code structures to move the blocking part away
+Therefore, Vert.x and Telestion use asynchronous code structures to move the blocking part away
 from the Verticle Thread into another "service" Thread which handles the resource-intensive task
 (e.g. the HTTP server in turn spawns another Thread in the background
 to efficiently handle incoming connections).
