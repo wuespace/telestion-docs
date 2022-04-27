@@ -48,8 +48,8 @@ import { Reference, Image } from '/components';
 
 <!-- Short description of what the article covers: -->
 
-This guide teaches you on how to write asynchronous code
-with the help of language and library features.
+This guide teaches you how to write asynchronous code
+with the help of several language and library features.
 
 <!-- Describe the intended target audience: -->
 
@@ -72,11 +72,11 @@ following concepts before reading this article:
 ## Why writing asynchronous?
 
 Accessing resources that aren't immediately available like reading files from the filesystem
-or launching a HTTP server take some time and can block the event loop of a verticle.
-This can slow down the specific verticle and in the worst case the entire application resulting
+or launching a HTTP server take time and can block the event loop of a verticle.
+This can slow down the specific verticle and in the worst case the entire application, resulting
 in dropped mission-critical data.
 
-Therefore Vert.x and Telestion make usage of asynchronous code execution.
+Therefore, Vert.x and Telestion make usage of asynchronous code execution.
 
 Java and Vert.x provide different mechanisms to fulfill that requirement.
 
@@ -91,7 +91,7 @@ Lets take a look at some of them.
 Handlers or lambda functions are nothing more than functions
 passed as arguments into other functions.
 
-Sometimes the passed function is already defined as instance or class method inside the class
+Sometimes, the passed function is already defined as an instance or class method inside the class
 or declared "on-the-fly" like lambda functions (also called anonymous functions).
 
 To receive functions as arguments and successfully call them, you need a functional interface.
@@ -154,11 +154,11 @@ public class Main {
 }
 ```
 
-In the first example the `reducer` takes the sample array and a reference to the `add` method
+In the first example, the `reducer` takes the sample array and a reference to the `add` method
 to summarize all values.
-The second example does roughly the same with one exception that the values aren't summarized
-but instead multiplied via the `multiply` method.
-The last example doesn't use a predefined method at all but instead define an anonymous function
+The second example does roughly the same with one exception that the values aren't getting summed up,
+but instead multiplied with the `multiply` method.
+The last example doesn't use a predefined method at all, but instead define an anonymous function
 directly in the function call to calculate the residual value.
 
 As you can see, you don't need to change the core implementation of the `reduce` method
@@ -172,7 +172,7 @@ Vert.x already provides a function definition that is used all around in the Ver
   Vert.x <code>Handler</code> API reference
 </Reference>
 
-For example registering a consumer on an event bus address uses this type definition:
+For example, registering a consumer on an event bus address uses this type definition:
 
 ```java title="RegisterVerticle.java"
 public class RegisterVerticle extends TelestionVerticle<NoConfiguration> {
@@ -189,7 +189,7 @@ public class RegisterVerticle extends TelestionVerticle<NoConfiguration> {
 
 #### Futures
 
-Futures wrap asynchronous operations and provide a unified event-driven API to hear on a result
+Futures wrap asynchronous operations and provide a unified event-driven API to listen for a result
 from the wrapped operation and act accordingly.
 
 A future has three states:
@@ -204,7 +204,7 @@ A future has three states:
   center
 />
 
-Due to the nature of futures not completing directly you can add event handlers
+Due to the nature of futures not completing immediately, you can add event handlers
 to the future object that are called based on the outcome of the asynchronous operation
 represented by the future:
 
@@ -241,15 +241,15 @@ public class Requester extends TelestionVerticle<NoConfiguration> implements Wit
 ```
 
 The `request` method receives the target address and a message for the responder.
-Additionally it returns a future which succeeds if the response if positive
+Additionally, it returns a future which succeeds if the response if positive
 and fails if the response is negative.
 
-Directly after the call the future is still pending.
-Therefore the logger call below the request runs first.
+Directly after the call, the future is still pending.
+Therefore, the logger call below the request runs first.
 
 Eventually, the future completes.
 Then the future calls (depending on the result) the success or failure handler
-and always the completion handler.
+and, in any event, the completion handler.
 
 #### Promises
 
@@ -257,7 +257,7 @@ Promises are the "inner" part of futures. They control the final future state
 and pass through the computed result (if there is any).
 
 The best examples are the `onStart` and `onStop` methods of the `TelestionVerticle`.
-Here the extending verticle methods receive promises the inform the "outer" world
+Here, the extending verticle methods receive promises that inform the "outer" world
 about their final state.
 
 This verticle starts a HTTP server that listens on port `8080`:
@@ -281,13 +281,13 @@ public class HttpServerVerticle extends TelestionVerticle<NoConfiguration> {
 }
 ```
 
-The verticle registers a success handler on the returned future from the `server.listen` method
+The verticle registers a success handler on the  future returned by the `server.listen` method
 (as described in [futures](#futures)).
-This method completes the `startPromise` which in turn informs the "outer" world
+This method completes the `startPromise`, which in turn informs the "outer" world
 about the successful startup of the entire verticle.
 
 To capture startup failures of the HTTP server, the registered failure handler receives possible
-startup errors and pass them through to the "outer" world via the `startPromise.fail` method.
+startup errors and passes them through to the "outer" world via the `startPromise.fail` method.
 
 To gracefully stop the server on verticle stop, use the same principle on the returned future
 from the `server.close` method.
@@ -297,7 +297,7 @@ This keeps the source code short and readable.
 
 :::tip Type Mismatch
 
-Sometimes future and promise type don't match.
+Sometimes, the future and promise types don't match.
 This prevents you from using the `onComplete(promise)` shorthand.
 To fix this issue, you can use the `map` function on the future to change the futures return type
 to the desired result before completing the promise via the shorthand call.
@@ -331,7 +331,7 @@ Use `otherwiseEmpty` to map to a `Void` value.
 />
 
 The `compose` function receives the result from the succeeded future
-and should return another future that "replaces" the old one.
+and returns another future that "replaces" the old one.
 
 If the start future or the replacement future failes, following `compose` functions get skipped.
 
@@ -344,7 +344,7 @@ If the start future or the replacement future failes, following `compose` functi
 />
 
 The `recover` function can "recover" a future from a failure state. It receives the failure result
-and should return another future that "replaces" the old one.
+and returns another future that "replaces" the old one.
 
 If the start future or the replacement future succeeds, following `recover` functions get skipped.
 
@@ -358,7 +358,7 @@ If the start future or the replacement future succeeds, following `recover` func
 
 The `transform` function receives the succeeded result or the failed result depending
 on the future's final state.
-It should return a new future which "replaces" the old one.
+It returns a new future which "replaces" the old one.
 
 `transform` functions are called regardless of the final state of the prior future.
 
