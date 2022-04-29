@@ -44,57 +44,57 @@ The event loop is the executing mechanism of a Verticle.
 
 ## Java Thread distribution
 
-In Vert.x, every verticle runs in its own thread and waits for incoming events (_event-driven_).
+In Vert.x, every verticle runs in its own thread and waits for incoming events
+(_event-driven_).
 
 The Java main thread executes the Vert.x instance which in turn:
 
 - deploys and undeploys verticles
 - coordinates the startup and shutdown of all verticles
-- provides the APIs so that verticles can talk to each other and with the outside world
-  (e.g. the event bus)
+- provides the APIs so that verticles can talk to each other and with the
+  outside world (e.g. the event bus)
 
 <Image
 	src="/static/img/drawio-diagrams/vertx/java-threads.drawio.svg"
 	invertible
-    center
+	center
 />
 
 A verticle thread:
 
 - _spawns_ once the verticle starts
-- _executes_ asynchronous code inside the verticle on incoming events
-  (which can trigger other events)
+- _executes_ asynchronous code inside the verticle on incoming events (which can
+  trigger other events)
 - _dies_ once the verticle stops
 
 ## Event Loop inside a Verticle Thread
 
 <Image
-    src="/static/img/drawio-diagrams/vertx/verticle-event-loop.drawio.svg"
-    invertible
-    center
+	src="/static/img/drawio-diagrams/vertx/verticle-event-loop.drawio.svg"
+	invertible
+	center
 />
 
-Since a verticle is only executed by one thread, this thread must handle all incoming events
-and their connected event handlers.
+Since a verticle is only executed by one thread, this thread must handle all
+incoming events and their connected event handlers.
 
-Most of the time this isn't a problem, especially if the event handler is compact and runs fast code.
-But once the thread grabs an event handler that contains blocking or heavy-lifting code,
-new events clog up the event queue, making the verticle unresponsive.
+Most of the time this isn't a problem, especially if the event handler is
+compact and runs fast code. But once the thread grabs an event handler that
+contains blocking or heavy-lifting code, new events clog up the event queue,
+making the verticle unresponsive.
 
-Therefore, Vert.x and Telestion use asynchronous code structures to move the blocking part away
-from the Verticle Thread into another "service" Thread which handles the resource-intensive task
-(e.g. the HTTP server in turn spawns another Thread in the background
-to efficiently handle incoming connections).
+Therefore, Vert.x and Telestion use asynchronous code structures to move the
+blocking part away from the Verticle Thread into another "service" Thread which
+handles the resource-intensive task (e.g. the HTTP server in turn spawns another
+Thread in the background to efficiently handle incoming connections).
 
 ## See also
 
 <Reference to="/application/guides/writing-asynchronous-code">
-    Writing asynchronous code
+	Writing asynchronous code
 </Reference>
 
-<Reference to="/application/concepts/verticle">
-    The Verticle
-</Reference>
+<Reference to="/application/concepts/verticle">The Verticle</Reference>
 
 <!--
 Snippets
