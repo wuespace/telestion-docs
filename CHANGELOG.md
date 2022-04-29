@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.9.0](https://github.com/wuespace/telestion-docs/compare/v2.8.0...v2.9.0) (2022-04-29)
+
+
+### Features
+
+* **docs/application:** Add asynchronous coding guide ([4073c64](https://github.com/wuespace/telestion-docs/commit/4073c648b5a50585fc3d8fb650ae1cf445151126))
+* **docs/application:** Add Verticle event loop concept ([b2c95be](https://github.com/wuespace/telestion-docs/commit/b2c95be3454604f1e481d94616d9e4ed1ee31afc))
+* **images:** Add Future compose diagram ([d6b30a5](https://github.com/wuespace/telestion-docs/commit/d6b30a5dc60c03be8c81ad7d731e4086ca34f3e9))
+* **images:** Add Future eventually diagram ([93d120a](https://github.com/wuespace/telestion-docs/commit/93d120a7a73c15c73a1657c60f64ed9583dbde6c))
+* **images:** Add future map diagram ([569b05a](https://github.com/wuespace/telestion-docs/commit/569b05a5d6aae79252725118570c7060d54fee0c))
+* **images:** Add Future recover diagram ([6be062a](https://github.com/wuespace/telestion-docs/commit/6be062a58c30819c20d336b5cd670cd3baf2a6bf))
+* **images:** Add Future transform diagram ([1f2d021](https://github.com/wuespace/telestion-docs/commit/1f2d021fd9fdf3236533a60b6de8c4fcd80ca9ba))
+* **images:** Add Java thread distribution diagram ([319f830](https://github.com/wuespace/telestion-docs/commit/319f830a612bba193cb0ec01557f9984d10199c3))
+* **images:** Add Promise states diagram ([cd2bbf2](https://github.com/wuespace/telestion-docs/commit/cd2bbf2ebc5bcc9867e1a538855c2409ed413e05))
+* **images:** Add Verticle event loop diagram ([d92c5ab](https://github.com/wuespace/telestion-docs/commit/d92c5ab441faef4fe1e3b9d41ac6ba14314f7c15))
+
 ## [2.8.0](https://github.com/wuespace/telestion-docs/compare/v2.7.1...v2.8.0) (2022-03-17)
 
 
