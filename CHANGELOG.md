@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.9.1](https://github.com/wuespace/telestion-docs/compare/v2.9.0...v2.9.1) (2022-05-27)
+
+
+### Bug Fixes
+
+* **docs/application:** Fix git command for squashing a commit for ZSH ([727513f](https://github.com/wuespace/telestion-docs/commit/727513f1a0742266043a106003db1d2c42e3f378)), closes [#216](https://github.com/wuespace/telestion-docs/issues/216)
+
 ## [2.9.0](https://github.com/wuespace/telestion-docs/compare/v2.8.0...v2.9.0) (2022-04-29)
 
 
