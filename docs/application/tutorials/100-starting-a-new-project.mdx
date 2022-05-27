@@ -148,7 +148,7 @@ git fetch --depth=1 -n "https://github.com/wuespace/telestion-project-template.g
 Use the last commit as your starting point:
 
 ````shell
-git reset --hard "$(git commit-tree FETCH_HEAD^{tree} -m "feat: Initial commit")"
+git reset --hard "$(git commit-tree 'FETCH_HEAD^{tree}' -m "feat: Initial commit")"
 ````
 
 ### Step 3: Initialize the project
