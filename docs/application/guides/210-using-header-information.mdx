@@ -1,0 +1,462 @@
+---
+title: Using Header Information
+# e.g., "Working with the Event Bus" or "Managing dependencies with npm"
+
+description:
+  Header Information are an additional way to transmit information.
+  Learn how to use Telestion Header Information in your project
+  and how to create your own custom Header Information.
+---
+
+<!--
+Guide
+=====
+
+=== When to use this template:
+Use this template when you want to explain how to work with a specific technology/concept.
+
+=== When not to use this template:
+When
+- the article provides a quick explanation of a single concept (use a concept instead)
+- the article should be a quick way to look things up (use a reference instead)
+- the article focuses on how to solve a particular technical problem (use a tutorial instead)
+
+=== Guide or Tutorial
+A tutorial provides a quick, technical "step-by-step" tutorial for a
+given problem. Thus, a guide describes less the handling of a specific problem
+and more the general interaction of the reader with a given concept.
+
+Example with npm articles:
+- "npm": (Concept, explaining what npm is)
+- "Installing a dependency with npm" (Tutorial, providing a quick tutorial to
+  solve a technical problem)
+- "Managing dependencies with npm" (Guide, including both technical knowledge, but
+  also best practices and more)
+
+=== Writing tips:
+- Write in the present tense
+- Use neutral pronouns (they/them instead of he/she and him/her)
+- Be respectful to everyone
+- Be aware of the potential for cultural misunderstandings
+- Guides are more comprehensive than many other article types.
+  Feel free to add context and best practices.
+- Mention common pitfalls and how not to use something (and why)
+-->
+
+<!-- Relevant imports: -->
+
+import { Reference, Image } from '/components';
+
+<!-- Short description of what the article covers: -->
+
+This guide teaches you how to use the Telestion Header Information in your project
+and how to write your own custom Header Information.
+
+<!-- Describe the intended target audience: -->
+
+:::tip Is this the right guide for you?
+
+This guide primarily targets Backend Developers
+and anyone who wants to learn how to use the Telestion Header Information.
+
+To best understand the topics covered here, you should be familiar with the
+following concepts before reading this article:
+
+<!-- a list of prerequisite knowledge, linking to articles as a simple Markdown link, if applicable -->
+
+- [Message headers](/application/concepts/message-headers)
+- [Using traits in Verticles](/application/tutorials/using-traits-in-verticles)
+
+:::
+
+## Using Header Information in your project
+
+### Create and extract Header Information from different sources
+
+Header Information are nothing more than meta information storage.
+
+You can create empty Header Information or extract the metadata from different sources.
+These can be Vert.x messages, delivery options or Vert.x MultiMaps.
+
+For example, create new and empty Header Information:
+
+```java
+var information = new HeaderInformation();
+logger.debug(information.size()); // 0
+```
+
+Or from different sources:
+
+```java
+// your sources
+Message<?> vertxMessage;
+DeliveryOptions options;
+MultiMap vertxMultiMap;
+
+// using the suitable constructor
+var infos1 = new HeaderInformation(vertxMessage);
+var infos2 = new HeaderInformation(options);
+var infos3 = new HeaderInformation(vertxMultiMap);
+
+// using the from utility method
+var infos4 = HeaderInformation.from(vertxMessage);
+var infos5 = HeaderInformation.from(options);
+var infos6 = HeaderInformation.from(vertxMultiMap);
+```
+
+### Add and manipulate metadata
+
+Then you can manipulate the metadata inside the Header Information.
+
+For example, adding more metadata:
+
+```java
+var information = new HeaderInformation();
+
+// adds an additional value to already existing ones
+information.add("key1", "value1");
+information.add("key1", "value2");
+
+logger.debug("Values: {}", information.getAll("key1")); // Values: ["value1", "value2"]
+```
+
+:::info
+
+If there are already existing information on the specified keyslot,
+the `add` method appends the new information to the list of already existing information.
+
+<Image src="/static/img/drawio-diagrams/header-information/add.drawio.svg" invertible />
+
+:::
+
+Or replacing existing information:
+
+```java
+var information = new HeaderInformation();
+
+// adds an additional value to already existing ones
+information.set("key1", "value1");
+information.set("key1", "value2");
+
+logger.debug("Values: {}", information.getAll("key1")); // Values: ["value2"]
+```
+
+:::info
+
+The `set` method **overwrites** the current content in the specified keyslot.
+
+<Image src="/static/img/drawio-diagrams/header-information/set.drawio.svg" invertible />
+
+:::
+
+You can also delete existing information:
+
+```java
+var information = new HeaderInformation();
+
+// adds an additional value to already existing ones
+information.set("key1", "value1");
+information.remove("key1");
+
+logger.debug("Values: {}", information.getAll("key1")); // Values: []
+```
+
+### Publish the results
+
+Once you're happy with your changes, it's time to publish them.
+Telestion provides multiple convenience functions to make this step easier.
+
+For example, the `WithEventBus` trait accepts Header Information,
+merge them and attach the result to the outgoing message:
+
+```java
+// some information
+var infos1 = new HeaderInformation().add("key1", "value1");
+var infos2 = new HeaderInformation().add("key2", "value2");
+
+// attach to publish message
+publish("some-address", "Ping", infos1, infos2);
+
+register("some-address", message -> {
+  // extract attached information
+  var infos = HeaderInformation.from(message);
+
+  logger.debug("Key 1: {}", infos.get("key1", "default1")); // Key 1: value1
+  logger.debug("Key 2: {}", infos.get("key2", "default2")); // Key 2: value2
+});
+```
+
+If you have a more complex use case, you can use one of the export methods:
+
+```java
+var information = new HeaderInformation().set("key1", "value1");
+
+// to delivery options
+var deliveryOptions = information.toOptions();
+// to Vert.x MultiMap
+var multiMap = information.getHeaders();
+```
+
+Or you have multiple Header Information and your target only accept one, you can merge them:
+
+```java
+var infos1 = new HeaderInformation().add("key1", "value1");
+var infos2 = new HeaderInformation().add("key2", "value2");
+
+var merged = HeaderInformation.merge(infos1, infos2);
+
+logger.debug("Key 1: {}", merged.get("key1", "default1")); // Key 1: value1
+logger.debug("Key 2: {}", merged.get("key2", "default2")); // Key 2: value2
+```
+
+## Writing custom Header Information
+
+If you plan to distribute a collection of verticles and you use headers to spread information,
+you can extend the Header Information class to specify attributes.
+This gives you and other users outside of your collection access to bundled Header Information
+in a well-defined way.
+
+### Extending Header Information
+
+To kick off you new Header Information, all you need to do, is extending the `HeaderInformation` class:
+
+````java
+import de.wuespace.telestion.api.message.HeaderInformation;
+
+public class CounterInformation extends HeaderInformation {
+}
+````
+
+:::tip
+
+All custom Header Information class names should end with `Information`.
+
+:::
+
+In this abstraction we want to store and access a counter value. Lets add a getter and setter method:
+
+````java
+import de.wuespace.telestion.api.message.HeaderInformation;
+
+public class CounterInformation extends HeaderInformation {
+
+  public CounterInformation() {
+    this(-1);
+  }
+
+  public CounterInformation(int counter) {
+    setCounter(counter);
+  }
+
+  public CounterInformation(CounterInformation other) {
+		this(other.getCounter());
+	}
+
+	public CounterInformation setCounter(int counter) {
+		add("counter", counter);
+		return this;
+	}
+
+	public int getCounter() {
+		return getInt("counter", -1);
+	}
+}
+````
+
+:::tip
+
+Add a constructor for:
+
+- default values (the default constructor)
+- other custom Header Information
+
+Add a setter and getter method for every property you want to control.
+
+:::
+
+### Merge duplicates and add sane defaults
+
+As you can see, we have some redundant parts. Lets merge and move them up:
+
+````java
+import de.wuespace.telestion.api.message.HeaderInformation;
+
+public class CounterInformation extends HeaderInformation {
+
+  // highlight-next-line
+	public static final String COUNTER_KEY = "counter";
+
+  // highlight-next-line
+	public static final int COUNTER_DEFAULT = -1;
+
+	public CounterInformation() {
+    // highlight-next-line
+		this(COUNTER_DEFAULT);
+	}
+
+	public CounterInformation(int counter) {
+		setCounter(counter);
+	}
+
+  public CounterInformation(CounterInformation other) {
+		this(other.getCounter());
+	}
+
+	public CounterInformation setCounter(int counter) {
+    // highlight-next-line
+		add(COUNTER_KEY, counter);
+		return this;
+	}
+
+	public int getCounter() {
+    // highlight-next-line
+		return getInt(COUNTER_KEY, COUNTER_DEFAULT);
+	}
+}
+````
+
+:::tip
+
+Key names and default values should be class constants.
+Specifiers for key names should end with `_KEY`.
+Specifiers for default values should end with `_DEFAULT`.
+
+:::
+
+:::caution
+
+Always think and add sane defaults to your stored values.
+Header Information are always completely optional and the user expects good default values.
+
+:::
+
+### Add convenience methods
+
+Currently the user needs to cast the header information to get access to your counter methods.
+Lets simplify that and add methods to parse MultiMaps, messages and delivery options:
+
+````java
+import de.wuespace.telestion.api.message.HeaderInformation;
+// highlight-start
+import io.vertx.core.MultiMap;
+import io.vertx.core.eventbus.DeliveryOptions;
+import io.vertx.core.eventbus.Message;
+// highlight-end
+
+public class CounterInformation extends HeaderInformation {
+
+	public static final String COUNTER_KEY = "counter";
+
+	public static final int COUNTER_DEFAULT = -1;
+
+  // highlight-start
+	public static CounterInformation from(MultiMap headers) {
+		return new CounterInformation(headers);
+	}
+  // highlight-end
+
+  // highlight-start
+	public static CounterInformation from(Message<?> message) {
+		return new CounterInformation(message);
+	}
+  // highlight-end
+
+  // highlight-start
+	public static CounterInformation from(DeliveryOptions options) {
+		return new CounterInformation(options);
+	}
+  // highlight-end
+
+	public CounterInformation() {
+		this(COUNTER_DEFAULT);
+	}
+
+	public CounterInformation(int counter) {
+		setCounter(counter);
+	}
+
+	public CounterInformation(CounterInformation other) {
+		this(other.getCounter());
+	}
+
+  // highlight-start
+	public CounterInformation(MultiMap headers) {
+		super(headers);
+	}
+  // highlight-end
+
+  // highlight-start
+	public CounterInformation(Message<?> message) {
+		super(message);
+	}
+  // highlight-end
+
+  // highlight-start
+	public CounterInformation(DeliveryOptions options) {
+		super(options);
+	}
+  // highlight-end
+
+	public CounterInformation setCounter(int counter) {
+		add(COUNTER_KEY, counter);
+		return this;
+	}
+
+	public int getCounter() {
+		return getInt(COUNTER_KEY, COUNTER_DEFAULT);
+	}
+}
+````
+
+:::tip
+
+Custom header information should provide constructors to parse:
+
+- multimaps
+- messages
+- delivery options
+
+and an overloaded method named `from` that passes through all listed items mentioned above
+and returns a new header information object.
+
+:::
+
+That's it! You've written your first custom header information.
+
+### Wrap up
+
+If you want to write custom Header Information, consider the following things:
+
+- your class name should with `Information`
+- add a setter and getter method for every property you want to control
+- provide class constants for key names and default values
+- add sane defaults
+- specifiers for key names should end with `_KEY`
+- specifiers for default values should end with `_DEFAULT`
+- add a default constructor
+- add a constructor that accepts other custom Header Information
+- add constructors that accept multimaps, messages and delivery options
+- add an overloaded static method `from` that accepts the arguments from above and returns a new instance
+
+## See also
+
+<Reference to="/application/concepts/message-headers/">
+  Message Headers concept
+</Reference>
+
+<Reference to="/application/tutorials/using-traits-in-verticles/">
+  Using traits in Verticles
+</Reference>
+
+<!--
+Snippets
+--------
+
+<Reference to="../other-article">
+    Relative Link to other article
+</Reference>
+
+<Reference to="https://www.example.com">
+    Example Website
+</Reference>
+-->
