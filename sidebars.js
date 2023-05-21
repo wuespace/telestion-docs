@@ -46,6 +46,7 @@ const genCategory = (
 module.exports = {
 	docs: [
 		'index',
+		'vertx-based-telestion-deprecation',
 		genCategory(
 			'common-concepts',
 			'Common Concepts',

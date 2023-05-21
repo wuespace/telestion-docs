@@ -14,6 +14,16 @@ module.exports = {
 	organizationName: 'wuespace', // Usually your GitHub org/user name.
 	projectName: 'telestion-docs', // Usually your repo name.
 	themeConfig: {
+		announcementBar: {
+			id: 'move-to-typescript',
+			content: `
+				Telestion is moving to TypeScript! Writing Telestion applications in Java is now deprecated.
+				Find more information about what this means for you <a href="/vertx-based-telestion-deprecation/">on this page</a>.
+				`,
+			backgroundColor: 'red',
+			textColor: '#fff',
+			isCloseable: false
+		},
 		navbar: {
 			title: 'Telestion Docs',
 			logo: {
