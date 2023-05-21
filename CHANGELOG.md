@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.10.0](https://github.com/wuespace/telestion-docs/compare/v2.9.1...v2.10.0) (2023-05-21)
+
+
+### Features
+
+* Add Vert.x based Telestion deprecation warning / information about moving to TypeScript ([d9a66df](https://github.com/wuespace/telestion-docs/commit/d9a66df283c84162c5aef6de49512696858eb0a4))
+* **docs/application:** Add Java Virtual Machine concept explanation ([846a12c](https://github.com/wuespace/telestion-docs/commit/846a12c8f32d7bddb000b806219845933c76ec2a))
+
+
+### Bug Fixes
+
+* **docs/client:** Fix typo in argument for `tc-cli start` ([79391c1](https://github.com/wuespace/telestion-docs/commit/79391c19f254fc877721871bbe52cb09a4d48214)), closes [#249](https://github.com/wuespace/telestion-docs/issues/249)
+
 ### [2.9.1](https://github.com/wuespace/telestion-docs/compare/v2.9.0...v2.9.1) (2022-05-27)
 
 
