@@ -1,27 +1,57 @@
 :::warning Deprecated: Vert.x-based Telestion
 
-Please note that the application and development of backend services using Vert.x in Telestion are deprecated. In the future, Telestion backend services will be developed using TypeScript and Deno, or through custom integrations with other languages.
+Please note that the application and development of backend services using
+Vert.x in Telestion are deprecated. In the future, Telestion backend services
+will be developed using TypeScript and Deno, or through custom integrations with
+other languages.
 
-While there may be a compatibility layer for Vert.x services in the future, its availability is not guaranteed.
+While there may be a compatibility layer for Vert.x services in the future, its
+availability is not guaranteed.
 
-For developing backend services, please refer to the (Work-in-Progress) documentation available here: [https://pklaschka.github.io/telestion-docs-new/](https://pklaschka.github.io/telestion-docs-new/). Once the documentation is complete, it will be moved to the main Telestion documentation.
+For developing backend services, please refer to the (Work-in-Progress)
+documentation available here:
+[https://pklaschka.github.io/telestion-docs-new/](https://pklaschka.github.io/telestion-docs-new/).
+Once the documentation is complete, it will be moved to the main Telestion
+documentation.
 
 Additional Information:
+
 - NATS will be used as the distributed message bus/message broker for Telestion.
-- NATS' integrated authentication and authorization features will handle authentication and authorization for Ground Station operators, providing a single source of truth.
-- The event bus bridge will no longer be featured, and clients will be directly connected to the NATS server.
+- NATS' integrated authentication and authorization features will handle
+  authentication and authorization for Ground Station operators, providing a
+  single source of truth.
+- The event bus bridge will no longer be featured, and clients will be directly
+  connected to the NATS server.
 
-To establish a more technology-independent terminology, the Telestion project will modify the naming conventions as follows:
-- The NATS server will be referred to as the message broker, message bus, or NATS server interchangeably.
-- Components that act as services without an attached user interface, will be referred to as services or backend services collectively.
-- Components that provide a user interface, formerly known as "clients," will be referred to as frontends. In most cases, the frontend will authenticate to the message broker as the user, while backend services will act on their own behalf.
+To establish a more technology-independent terminology, the Telestion project
+will modify the naming conventions as follows:
 
-These changes aim to provide clearer and more consistent terminology, accounting for the possibility of components having both service and frontend functionalities. Additionally, the use of "client" for frontends will be replaced to avoid potential confusion.
+- The NATS server will be referred to as the message broker, message bus, or
+  NATS server interchangeably.
+- Components that act as services without an attached user interface, will be
+  referred to as services or backend services collectively.
+- Components that provide a user interface, formerly known as "clients," will be
+  referred to as frontends. In most cases, the frontend will authenticate to the
+  message broker as the user, while backend services will act on their own
+  behalf.
 
-We recommend using the NATS client libraries recommended by NATS itself, unless there are no suitable options available for the targeted language/environment. We will not develop our own client libraries unless there is a lack of suitable options or significant advantages justify the effort.
+These changes aim to provide clearer and more consistent terminology, accounting
+for the possibility of components having both service and frontend
+functionalities. Additionally, the use of "client" for frontends will be
+replaced to avoid potential confusion.
 
-While Deno/TypeScript is the recommended choice for backend services, its use is not mandatory. Developers will be encouraged to use Deno/TypeScript where appropriate, but other options will still be supported for specific services. Comprehensive documentation and resources will be provided for writing and deploying Deno-based backend services in TypeScript.
+We recommend using the NATS client libraries recommended by NATS itself, unless
+there are no suitable options available for the targeted language/environment.
+We will not develop our own client libraries unless there is a lack of suitable
+options or significant advantages justify the effort.
 
-Please consider these changes and updates as you continue with Telestion development.
+While Deno/TypeScript is the recommended choice for backend services, its use is
+not mandatory. Developers will be encouraged to use Deno/TypeScript where
+appropriate, but other options will still be supported for specific services.
+Comprehensive documentation and resources will be provided for writing and
+deploying Deno-based backend services in TypeScript.
+
+Please consider these changes and updates as you continue with Telestion
+development.
 
 :::
